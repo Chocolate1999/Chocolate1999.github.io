@@ -42,10 +42,12 @@
         <div id="navContainer" class="nav-wrapper container">
             <div class="brand-logo">
                 <a href="/" class="waves-effect waves-light">
-                    
-                    <!--<img src="/medias/logo.png" class="logo-img" alt="LOGO">-->
-                    
-                    <span class="logo-span">超逸の博客</span>
+                    <div>
+                        
+                        <!--<img src="/medias/logo.png" class="logo-img" alt="LOGO">-->
+                        
+                        <span class="logo-span">超逸の博客</span>
+                    </div>
                 </a>
             </div>
             
@@ -574,7 +576,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2020-02-14
+                    2020-02-15
                 </div>
                 
 
@@ -920,8 +922,7 @@
                 <a href="/posts/17041.html">
                     <div class="card-image">
                         
-                        
-                        <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="2020 愿远方依旧有篮球为伴 致敬24号 科比">
+                        <img src="https://s2.ax1x.com/2020/02/15/1zfInH.jpg" class="responsive-img" alt="2020 愿远方依旧有篮球为伴 致敬24号 科比">
                         
                         <span class="card-title">2020 愿远方依旧有篮球为伴 致敬24号 科比</span>
                     </div>
@@ -1476,6 +1477,34 @@ $(function () {
     
 
     
+        <script src="//code.tidio.co/6zixawmbeiaa828saryl7ifmarrxgl7p.js"></script>
+        <script> 
+            $(document).ready(function () {
+                setInterval(change_Tidio, 50);  
+                function change_Tidio() { 
+                    var tidio=$("#tidio-chat iframe");
+                    if(tidio.css("display")=="block"&& $(window).width()>977 ){
+                        document.getElementById("tidio-chat-iframe").style.bottom= ($("div#backTop.top-scroll").css("display")=="none" &&$(window).width()>977)>0? "-40px" : ($("div.toc-title").length&&$(window).width()>977)>0?"85px":"20px";   
+                        document.getElementById("tidio-chat-iframe").style.right="-15px";   
+                        document.getElementById("tidio-chat-iframe").style.height=parseInt(tidio.css("height"))>=520?"520px":tidio.css("height");
+                        document.getElementById("tidio-chat-iframe").style.zIndex="997";
+                    } 
+                    else if(tidio.css("display")=="block"&&$(window).width()>601 &&$(window).width()<992 ){
+                        document.getElementById("tidio-chat-iframe").style.bottom= ($("div#backTop.top-scroll").css("display")=="none" && 601< $(window).width()<992)>0? "-40px":"20px" ;   
+                        document.getElementById("tidio-chat-iframe").style.right="-15px"; 
+                        document.getElementById("tidio-chat-iframe").style.zIndex="997";
+                    }
+                    else if(tidio.css("display")=="block"&&$(window).width()<601 && parseInt(tidio.css("height"))<230){
+                        document.getElementById("tidio-chat-iframe").style.bottom= ($("div#backTop.top-scroll").css("display")=="none" && $(window).width()<601)>0? "-10px":"45px" ;   
+                        document.getElementById("tidio-chat-iframe").style.zIndex="997";
+                    }
+                    if( tidio.css("display")=="block"&&$(window).width()<601 && parseInt(tidio.css("height"))>=230){
+                        document.getElementById("tidio-chat-iframe").style.zIndex="998";
+                    }
+                } 
+            }); 
+        </script>
+    
 
     
 
@@ -1507,6 +1536,6 @@ $(function () {
 
 
 
-<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/haruto.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"react":{"opacity":0.7}});</script></body>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/haruto.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":true},"react":{"opacity":0.7}});</script></body>
 
 </html>

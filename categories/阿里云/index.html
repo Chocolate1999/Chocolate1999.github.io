@@ -42,10 +42,12 @@
         <div id="navContainer" class="nav-wrapper container">
             <div class="brand-logo">
                 <a href="/" class="waves-effect waves-light">
-                    
-                    <!--<img src="/medias/logo.png" class="logo-img" alt="LOGO">-->
-                    
-                    <span class="logo-span">超逸の博客</span>
+                    <div>
+                        
+                        <!--<img src="/medias/logo.png" class="logo-img" alt="LOGO">-->
+                        
+                        <span class="logo-span">超逸の博客</span>
+                    </div>
                 </a>
             </div>
             
@@ -480,28 +482,19 @@
                 </a>
                 
                 
-                <a href="/categories/Java-EE/" title="Java EE: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            style="background-color: #F5EEF8;">Java EE
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
                 <a href="/categories/Hexo%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/" title="Hexo个人博客: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            style="background-color: #D5F5E3;">Hexo个人博客
+                            style="background-color: #F5EEF8;">Hexo个人博客
                         <span class="tag-length">1</span>
                     </span>
                 </a>
                 
                 
-                <a href="/categories/Linux/" title="Linux: 1">
+                <a href="/categories/Java-EE/" title="Java EE: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            style="background-color: #E8F8F5;">Linux
+                            style="background-color: #D5F5E3;">Java EE
                         <span class="tag-length">1</span>
                     </span>
                 </a>
@@ -510,7 +503,7 @@
                 <a href="/categories/Vue/" title="Vue: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            style="background-color: #FEF9E7;">Vue
+                            style="background-color: #E8F8F5;">Vue
                         <span class="tag-length">1</span>
                     </span>
                 </a>
@@ -519,8 +512,17 @@
                 <a href="/categories/Docker/" title="Docker: 2">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            style="background-color: #F8F9F9;">Docker
+                            style="background-color: #FEF9E7;">Docker
                         <span class="tag-length">2</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/categories/Linux/" title="Linux: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            style="background-color: #F8F9F9;">Linux
+                        <span class="tag-length">1</span>
                     </span>
                 </a>
                 
@@ -543,19 +545,19 @@
                 </a>
                 
                 
-                <a href="/categories/%E9%BB%91%E7%A7%91%E6%8A%80/" title="黑科技: 1">
+                <a href="/categories/24%E5%8F%B7%E7%A7%91%E6%AF%94/" title="24号科比: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            style="background-color: #A3E4D7;">黑科技
+                            style="background-color: #A3E4D7;">24号科比
                         <span class="tag-length">1</span>
                     </span>
                 </a>
                 
                 
-                <a href="/categories/24%E5%8F%B7%E7%A7%91%E6%AF%94/" title="24号科比: 1">
+                <a href="/categories/%E9%BB%91%E7%A7%91%E6%8A%80/" title="黑科技: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            style="background-color: #85C1E9;">24号科比
+                            style="background-color: #85C1E9;">黑科技
                         <span class="tag-length">1</span>
                     </span>
                 </a>
@@ -917,6 +919,34 @@ $(function () {
     
 
     
+        <script src="//code.tidio.co/6zixawmbeiaa828saryl7ifmarrxgl7p.js"></script>
+        <script> 
+            $(document).ready(function () {
+                setInterval(change_Tidio, 50);  
+                function change_Tidio() { 
+                    var tidio=$("#tidio-chat iframe");
+                    if(tidio.css("display")=="block"&& $(window).width()>977 ){
+                        document.getElementById("tidio-chat-iframe").style.bottom= ($("div#backTop.top-scroll").css("display")=="none" &&$(window).width()>977)>0? "-40px" : ($("div.toc-title").length&&$(window).width()>977)>0?"85px":"20px";   
+                        document.getElementById("tidio-chat-iframe").style.right="-15px";   
+                        document.getElementById("tidio-chat-iframe").style.height=parseInt(tidio.css("height"))>=520?"520px":tidio.css("height");
+                        document.getElementById("tidio-chat-iframe").style.zIndex="997";
+                    } 
+                    else if(tidio.css("display")=="block"&&$(window).width()>601 &&$(window).width()<992 ){
+                        document.getElementById("tidio-chat-iframe").style.bottom= ($("div#backTop.top-scroll").css("display")=="none" && 601< $(window).width()<992)>0? "-40px":"20px" ;   
+                        document.getElementById("tidio-chat-iframe").style.right="-15px"; 
+                        document.getElementById("tidio-chat-iframe").style.zIndex="997";
+                    }
+                    else if(tidio.css("display")=="block"&&$(window).width()<601 && parseInt(tidio.css("height"))<230){
+                        document.getElementById("tidio-chat-iframe").style.bottom= ($("div#backTop.top-scroll").css("display")=="none" && $(window).width()<601)>0? "-10px":"45px" ;   
+                        document.getElementById("tidio-chat-iframe").style.zIndex="997";
+                    }
+                    if( tidio.css("display")=="block"&&$(window).width()<601 && parseInt(tidio.css("height"))>=230){
+                        document.getElementById("tidio-chat-iframe").style.zIndex="998";
+                    }
+                } 
+            }); 
+        </script>
+    
 
     
 
@@ -948,6 +978,6 @@ $(function () {
 
 
 
-<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/haruto.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"react":{"opacity":0.7}});</script></body>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/haruto.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":true},"react":{"opacity":0.7}});</script></body>
 
 </html>
