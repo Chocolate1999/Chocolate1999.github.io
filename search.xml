@@ -60,37 +60,6 @@
     
     
     <entry>
-      <title>完全免费的下载神器，这速度，还需要IDM吗？</title>
-      <link href="/posts/60397.html"/>
-      <url>/posts/60397.html</url>
-      
-        <content type="html"><![CDATA[<p><strong><font color="chocolate">NDM（Neat Download Manager）</font></strong></p><font color="chocolate"><a id="more"></a><p>NDM是一款完全免费的多线程下载工具，他支持多种网络下载协议，最大连接数同样支持32线程。（在Setting里面修改即可）</p><p><img src="https://img-blog.csdnimg.cn/20200111000441600.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MjQyOTcxOA==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p><p>另外，这款软件的体积仅有：850kb，连1MB都不足。这点就可以看出这款是多么的简洁，但这并不意味着他的功能少。</p><p>最后附上下载链接：</p><p>链接：<a href="https://pan.baidu.com/s/14U0Tswd0sUbLeo21iK46YA" target="_blank" rel="noopener">https://pan.baidu.com/s/14U0Tswd0sUbLeo21iK46YA</a><br>提取码：pkgk</p><pre class=" language-java"><code class="language-java">学如逆水行舟，不进则退</code></pre></font><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
-      
-      
-      <categories>
-          
-          <category> 工具 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> 工具安装 </tag>
-            
-            <tag> 黑科技 </tag>
-            
-            <tag> 下载神器 </tag>
-            
-            <tag> IDM </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>2020 网络课 智慧树自动刷课代码，自动跳转，自动答题并关闭弹窗，自动1.5倍速静音</title>
       <link href="/posts/39458.html"/>
       <url>/posts/39458.html</url>
