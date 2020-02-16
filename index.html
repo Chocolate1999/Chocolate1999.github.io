@@ -32,7 +32,10 @@
     <link rel="stylesheet" type="text/css" href="/css/my.css">
 
     <script src="/libs/jquery/jquery.min.js"></script>
-    
+    <!-- 每日诗词 -->
+    <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
+    <!-- 一言名句 -->
+    <script src="https://v1.hitokoto.cn/?c=d&encode=js&select=%23hitokoto" defer></script>
 <meta name="generator" content="Hexo 4.1.1"><link rel="alternate" href="/atom.xml" title="超逸の博客" type="application/atom+xml">
 <link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
 
@@ -484,19 +487,10 @@
             </div>
 
             <div class="description center-align">
+                <!-- 启用每日诗词 -->
                 
-                <span id="subtitle"></span>
-                <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11"></script>
-                <script>
-                    var typed = new Typed("#subtitle", {
-                        strings: ['从来没有真正的绝境, 只有心灵的迷途','Never really desperate, only the lost of the soul'],
-                        startDelay: 300,
-                        typeSpeed: 100,
-                        loop: true,
-                        backSpeed: 50,
-                        showCursor: true
-                    });
-                </script>
+                <!--一个热爱编程，热爱生活的程序员个人主页，有一定acm算法基础，专注于前端开发，有着CSDN博客，GitHub,欢迎大家讨论学习！-->
+                <span id="jinrishici-sentence">正在加载今日诗词....</span>
                 
             </div>
         </div>
@@ -648,6 +642,7 @@
             <div class="card">
                 <div class="card-content">
                     
+                        <!-- 启用dream -->
                         <div class="dream">
     
     <div class="title center-align">
@@ -660,6 +655,7 @@
         </div>
     </div>
 </div>
+                        <!--<i class="fa fa-volume-up fa-lg fa-fw text-color"></i> <span id="hitokoto">一言API请求超时。请稍后重试。</span> （来源：一言API）-->
                     
 
                     
