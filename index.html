@@ -1,0 +1,398 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>超逸の博客 - 超逸の博客</title><meta name="keywords" content="Vue,超逸,CSDN,一百个Chocolate,React,前端"><meta name="author" content="一百个Chocolate"><meta name="copyright" content="一百个Chocolate"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="不是只会写业务代码的前端攻城狮！">
+<meta property="og:type" content="website">
+<meta property="og:title" content="超逸の博客">
+<meta property="og:url" content="https://yangchaoyi.vip/index.html">
+<meta property="og:site_name" content="超逸の博客">
+<meta property="og:description" content="不是只会写业务代码的前端攻城狮！">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://yangchaoyi.vip/img/Chocolate.jpg">
+<meta property="article:author" content="一百个Chocolate">
+<meta property="article:tag" content="Vue">
+<meta property="article:tag" content="超逸">
+<meta property="article:tag" content="CSDN">
+<meta property="article:tag" content="一百个Chocolate">
+<meta property="article:tag" content="React">
+<meta property="article:tag" content="前端">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://yangchaoyi.vip/img/Chocolate.jpg"><link rel="shortcut icon" href="/img/favicon.ico"><link rel="canonical" href="https://yangchaoyi.vip/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  noticeOutdate: {"limitDay":500,"position":"top","messagePrev":"It has been","messageNext":"days since the last update, the content of the article may be outdated."},
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#121212","position":"bottom-left"},
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isanchor: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = { 
+  isPost: false,
+  isHome: true,
+  isHighlightShrink: false,
+  isToc: false,
+  postUpdate: '2021-06-22 16:01:48'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const now = new Date()
+          const hour = now.getHours()
+          const isNight = hour <= 6 || hour >= 18
+          if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
+          else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const fontSizeVal = saveToLocal.get('global-font-size')
+    if (fontSizeVal !== undefined) {
+      document.documentElement.style.setProperty('--global-font-size', fontSizeVal + 'px')
+    }
+    })(window)</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/l-lin/font-awesome-animation/dist/font-awesome-animation.min.css"  media="defer" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/sviptzk/HexoStaticFile@master/Hexo/css/flink.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/sviptzk/HexoStaticFile@master/Hexo/css/iconfont.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Rr210/Lantern@2.4/dl.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/HCLonely/images@master/others/heartbeat.min.css"><meta name="generator" content="Hexo 5.3.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="wizard-scene"><div class="wizard-objects"><div class="wizard-square"></div><div class="wizard-circle"></div><div class="wizard-triangle"></div></div><div class="wizard"><div class="wizard-body"></div><div class="wizard-right-arm"><div class="wizard-right-hand"></div></div><div class="wizard-left-arm"><div class="wizard-left-hand"></div></div><div class="wizard-head"><div class="wizard-beard"></div><div class="wizard-face"><div class="wizard-adds"></div></div><div class="wizard-hat"><div class="wizard-hat-of-the-hat"></div><div class="wizard-four-point-star --first"></div><div class="wizard-four-point-star --second"></div><div class="wizard-four-point-star --third"></div></div></div></div></div></div><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" data-lazy-src="/img/Chocolate.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">62</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">30</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">8</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-book"></i><span> 文章</span><i class="fas fa-chevron-down expand hide"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> 时间轴</span></a></li><li><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></li><li><a class="site-page" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> 分类</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 娱乐</span><i class="fas fa-chevron-down expand hide"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/bangumis/"><i class="fa-fw fab fa-youtube"></i><span> 番剧</span></a></li><li><a class="site-page" href="/movies/"><i class="fa-fw fa fa-film"></i><span> 电影</span></a></li><li><a class="site-page" href="/books/"><i class="fa-fw fas fa-book"></i><span> 书单</span></a></li><li><a class="site-page" href="/music/"><i class="fa-fw fa fa-music"></i><span> 音乐</span></a></li><li><a class="site-page" href="/"><i class="fa-fw fas fa-gamepad"></i><span> 游戏</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fa fa-heartbeat"></i><span> 清单</span><i class="fas fa-chevron-down expand hide"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/gallery/"><i class="fa-fw far fa-image"></i><span> 相册</span></a></li><li><a class="site-page" href="/home/"><i class="fa-fw fab fa-phoenix-framework"></i><span> 主页</span></a></li><li><a class="site-page" href="/sponsorWall/"><i class="fa-fw fas fa-money-check-alt"></i><span> 赞助墙</span></a></li><li><a class="site-page" href="/box/"><i class="fa-fw fas fa-th-large"></i><span> 聚宝盒</span></a></li></ul></div><div class="menus_item"><a class="site-page" target="_blank" rel="noopener" href="https://hearling.github.io/"><i class="fa-fw fas fa-book"></i><span> HearLingの博客</span></a></div><div class="menus_item"><a class="site-page" href="/talk/"><i class="fa-fw fas fa-coffee"></i><span> 说说</span></a></div><div class="menus_item"><a class="site-page" href="/contact/"><i class="fa-fw far fa-comments"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 关于</span><i class="fas fa-chevron-down expand hide"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/about/"><i class="fa-fw fa fa-heart"></i><span> 关于我</span></a></li><li><a class="site-page" target="_blank" rel="noopener" href="https://yangchaoyi.avosapps.us/"><i class="fa-fw fas fa-box"></i><span> Valine评论后台</span></a></li><li><a class="site-page" target="_blank" rel="noopener" href="https://console.leancloud.app/applist.html#/apps"><i class="fa-fw fas fa-box"></i><span> LeanCloud应用</span></a></li></ul></div></div></div></div><div class="page" id="body-wrap"><header class="not-top-img" id="page-header"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">超逸の博客</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-book"></i><span> 文章</span><i class="fas fa-chevron-down expand hide"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> 时间轴</span></a></li><li><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></li><li><a class="site-page" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> 分类</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 娱乐</span><i class="fas fa-chevron-down expand hide"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/bangumis/"><i class="fa-fw fab fa-youtube"></i><span> 番剧</span></a></li><li><a class="site-page" href="/movies/"><i class="fa-fw fa fa-film"></i><span> 电影</span></a></li><li><a class="site-page" href="/books/"><i class="fa-fw fas fa-book"></i><span> 书单</span></a></li><li><a class="site-page" href="/music/"><i class="fa-fw fa fa-music"></i><span> 音乐</span></a></li><li><a class="site-page" href="/"><i class="fa-fw fas fa-gamepad"></i><span> 游戏</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fa fa-heartbeat"></i><span> 清单</span><i class="fas fa-chevron-down expand hide"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/gallery/"><i class="fa-fw far fa-image"></i><span> 相册</span></a></li><li><a class="site-page" href="/home/"><i class="fa-fw fab fa-phoenix-framework"></i><span> 主页</span></a></li><li><a class="site-page" href="/sponsorWall/"><i class="fa-fw fas fa-money-check-alt"></i><span> 赞助墙</span></a></li><li><a class="site-page" href="/box/"><i class="fa-fw fas fa-th-large"></i><span> 聚宝盒</span></a></li></ul></div><div class="menus_item"><a class="site-page" target="_blank" rel="noopener" href="https://hearling.github.io/"><i class="fa-fw fas fa-book"></i><span> HearLingの博客</span></a></div><div class="menus_item"><a class="site-page" href="/talk/"><i class="fa-fw fas fa-coffee"></i><span> 说说</span></a></div><div class="menus_item"><a class="site-page" href="/contact/"><i class="fa-fw far fa-comments"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 关于</span><i class="fas fa-chevron-down expand hide"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/about/"><i class="fa-fw fa fa-heart"></i><span> 关于我</span></a></li><li><a class="site-page" target="_blank" rel="noopener" href="https://yangchaoyi.avosapps.us/"><i class="fa-fw fas fa-box"></i><span> Valine评论后台</span></a></li><li><a class="site-page" target="_blank" rel="noopener" href="https://console.leancloud.app/applist.html#/apps"><i class="fa-fw fas fa-box"></i><span> LeanCloud应用</span></a></li></ul></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav></header><main class="layout" id="content-inner"><div class="recent-posts" id="recent-posts"><div class="recent-post-item" style="height:200px;width:100%;"><div class="blog-slider swiper-container-fade swiper-container-horizontal" id="swiper_container"><div class="blog-slider__wrp swiper-wrapper" style="transition-duration: 0ms;"><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" href="/posts/520520/" alt=""><img width="48" height="48" src="https://cdn.jsdelivr.net/gh/chocolate1999/cdn/img/20200907094731.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt=""/></a><div class="blog-slider__content"><span class="blog-slider__code">2020-04-24</span><a class="blog-slider__title" href="/posts/520520/" alt="">「源码开放」🦋butterfly 和 matery 主题 搭建完全教程</a><div class="blog-slider__text">基于butterfly的魔改美化记录.</div><a class="blog-slider__button" href="/posts/520520/" alt="">🍡详情</a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" href="/posts/20200812/" alt=""><img width="48" height="48" src="https://cdn.jsdelivr.net/gh/chocolate1999/cdn/img/20200906171843.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt=""/></a><div class="blog-slider__content"><span class="blog-slider__code">2020-08-28</span><a class="blog-slider__title" href="/posts/20200812/" alt="">「查漏补缺」2020 秋招前端の面试记录&amp;心路历程</a><div class="blog-slider__text">2020 秋招前端の面试记录&amp;心路历程.</div><a class="blog-slider__button" href="/posts/20200812/" alt="">🍡详情</a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" href="/posts/20201231/" alt=""><img width="48" height="48" src="https://cdn.jsdelivr.net/gh/chocolate1999/cdn/img/20201229201533.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt=""/></a><div class="blog-slider__content"><span class="blog-slider__code">2020-12-09</span><a class="blog-slider__title" href="/posts/20201231/" alt="">「成长之路」挥手2020，Chocolate 同学年度总结，所遇 | 所思 | 所学 | 所悟</a><div class="blog-slider__text">挥手2020，Chocolate 同学年度总结.</div><a class="blog-slider__button" href="/posts/20201231/" alt="">🍡详情</a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" href="/posts/520521/" alt=""><img width="48" height="48" src="https://cdn.jsdelivr.net/gh/chocolate1999/cdn/img/20200905084504.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt=""/></a><div class="blog-slider__content"><span class="blog-slider__code">2020-06-15</span><a class="blog-slider__title" href="/posts/520521/" alt="">「春招&amp;实习」前端学习の优质资料整理&amp;心路历程</a><div class="blog-slider__text">春招实习，前端学习心路历程.</div><a class="blog-slider__button" href="/posts/520521/" alt="">🍡详情</a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" href="/posts/2021520/" alt=""><img width="48" height="48" src="https://cdn.jsdelivr.net/gh/chocolate1999/cdn/img/20201210205243.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt=""/></a><div class="blog-slider__content"><span class="blog-slider__code">2020-12-10</span><a class="blog-slider__title" href="/posts/2021520/" alt="">「星辰大海」Chocolate 同学 前端学习路线总结</a><div class="blog-slider__text">Chocolate 同学 前端学习路线大整理.</div><a class="blog-slider__button" href="/posts/2021520/" alt="">🍡详情</a></div></div></div><div class="blog-slider__pagination swiper-pagination-clickable swiper-pagination-bullets"></div></div><script defer="defer" src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.1.6/js/swiper.min.js"></script><script defer="defer" data-pjax="data-pjax" src="/js/swiper_init.js"></script></div><div class="recent-post-item"><div class="post_cover left_radius"><a href="/posts/20201231/" title="「成长之路」挥手2020，Chocolate 同学年度总结，所遇 | 所思 | 所学 | 所悟">     <img class="post_bg" data-lazy-src="https://cdn.jsdelivr.net/gh/chocolate1999/cdn/img/20201229201533.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="「成长之路」挥手2020，Chocolate 同学年度总结，所遇 | 所思 | 所学 | 所悟"></a></div><div class="recent-post-info"><a class="article-title" href="/posts/20201231/" title="「成长之路」挥手2020，Chocolate 同学年度总结，所遇 | 所思 | 所学 | 所悟">「成长之路」挥手2020，Chocolate 同学年度总结，所遇 | 所思 | 所学 | 所悟</a><div class="article-meta-wrap"><span class="article-meta"><i class="fas fa-thumbtack sticky"></i><span class="sticky">置顶</span><span class="article-meta__separator">|</span></span><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-05-07T13:48:39.345Z" title="发表于 2021-05-07 21:48:39">2021-05-07</time><span class="article-meta__separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2021-05-07T13:48:39.345Z" title="更新于 2021-05-07 21:48:39">2021-05-07</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E6%80%BB%E7%BB%93/">总结</a></span><span class="article-meta tags"><span class="article-meta__separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/Chocolate/">Chocolate</a><span class="article-meta__link">•</span><a class="article-meta__tags" href="/tags/%E5%B9%B4%E5%BA%A6%E6%80%BB%E7%BB%93/">年度总结</a></span></div><div class="content">介绍本人双非本科，目前大四在读，JS，TS，LeetCode，Vue，React，算法爱好者。 座右铭：学如逆水行舟，不进则退！
+
+经常看我文章的小伙伴应该都会在结尾看到这一句座右铭了：「学如逆水行舟，不进则退」我觉得不管在任何领域，持续学习是很有必要的，把学习当做一种习惯，受益终身！
+
+2020年，我经历了春招，秋招，求职到主动离职，去过杭州，游过西湖，经历一个offer也没有，到收到满意offer，当然还有一些校园经历，感情经历…你有兴趣继续听我唠嗑，我拿起酒杯与你分享~
+
+下面我将讲述我在2020年成长之路，所遇 | 所思 | 所学 | 所悟。
+春招求职之路2020年春招和秋招对于即将毕业又不考研的本科生显得额外重要，所以我想来说说我的求职之路。
+在2月份自己确定要走前端这条路之后，就开始学习前端，然而当初缺少指导，走过不少弯路，犹记得当初为了学习如何开发一个仿某团网还折腾了一个月，《🚀🚀2020最新Vue全家桶+SSR+Koa2全栈开发☁》 现在 github 上面都有了90 star，这一个月时间我没有注重基础知识的学习，然而技术栈方面对于那个时候的我都显得很新，学完感觉 ...</div></div></div><div class="recent-post-item"><div class="post_cover right_radius"><a href="/posts/20210101/" title="「星辰大海」❤前端面经汇总（面向腾讯学习）">     <img class="post_bg" data-lazy-src="https://cdn.jsdelivr.net/gh/chocolate1999/cdn/img/20210104114749.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="「星辰大海」❤前端面经汇总（面向腾讯学习）"></a></div><div class="recent-post-info"><a class="article-title" href="/posts/20210101/" title="「星辰大海」❤前端面经汇总（面向腾讯学习）">「星辰大海」❤前端面经汇总（面向腾讯学习）</a><div class="article-meta-wrap"><span class="article-meta"><i class="fas fa-thumbtack sticky"></i><span class="sticky">置顶</span><span class="article-meta__separator">|</span></span><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-05-07T13:48:39.340Z" title="发表于 2021-05-07 21:48:39">2021-05-07</time><span class="article-meta__separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2021-05-07T13:48:39.341Z" title="更新于 2021-05-07 21:48:39">2021-05-07</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E5%86%99%E7%BB%99%E5%A5%B3%E5%8F%8B/">写给女友</a></span><span class="article-meta tags"><span class="article-meta__separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/%E9%9D%A2%E8%AF%95/">面试</a><span class="article-meta__link">•</span><a class="article-meta__tags" href="/tags/%E8%85%BE%E8%AE%AF/">腾讯</a><span class="article-meta__link">•</span><a class="article-meta__tags" href="/tags/%E5%89%8D%E7%AB%AF/">前端</a></span></div><div class="content">前言收获了很多大佬们的经验分享和知识总结，现在来一份诚意满满的回馈，将2020年腾讯前端面经进行一次大整理，同时也会提供答案，希望大家都能参与进来，2021年春招顺利~
+
+答案提供在 https://github.com/Chocolate1999/Front-end-learning-to-organize-notes （小狮子前端の学习整理笔记），别忘了star ┗|｀O′|┛ 嗷~~
+
+
+最后更新时间：2020/1/6 下午5点  持续更新中…
+
+部门相关
+整理从2020年2月份到年底的腾讯面经「仅校招」，数据并不一定真实，仅作参考。
+
+
+
+
+部门
+上岸次数
+面经次数
+备注
+
+
+
+CSIG
+4
+5
+
+
+
+PCG
+6
+13
+
+
+
+WXG
+3
+5
+
+
+
+TEG
+1
+2
+
+
+
+CDG
+1
+1
+
+
+
+计算机网络
+常见状态码知道哪些？ 304 403 405分别是什么
+http状态码 302 504分别代表什么意思
+响应状态码，200(from disk cache)，200（from memory cache），304的区别。
+POST和GET 的区别，除了长度，安全其他的
+http介绍 ...</div></div></div><div class="recent-post-item"><div class="post_cover left_radius"><a href="/posts/2021520/" title="「星辰大海」Chocolate 同学 前端学习路线总结【建议收藏】">     <img class="post_bg" data-lazy-src="https://cdn.jsdelivr.net/gh/chocolate1999/cdn/img/20201210205243.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="「星辰大海」Chocolate 同学 前端学习路线总结【建议收藏】"></a></div><div class="recent-post-info"><a class="article-title" href="/posts/2021520/" title="「星辰大海」Chocolate 同学 前端学习路线总结【建议收藏】">「星辰大海」Chocolate 同学 前端学习路线总结【建议收藏】</a><div class="article-meta-wrap"><span class="article-meta"><i class="fas fa-thumbtack sticky"></i><span class="sticky">置顶</span><span class="article-meta__separator">|</span></span><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-05-07T13:48:39.337Z" title="发表于 2021-05-07 21:48:39">2021-05-07</time><span class="article-meta__separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2021-05-07T13:48:39.337Z" title="更新于 2021-05-07 21:48:39">2021-05-07</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E5%86%99%E7%BB%99%E5%A5%B3%E5%8F%8B/">写给女友</a></span><span class="article-meta tags"><span class="article-meta__separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/%E9%9D%A2%E8%AF%95/">面试</a><span class="article-meta__link">•</span><a class="article-meta__tags" href="/tags/%E6%80%BB%E7%BB%93/">总结</a><span class="article-meta__link">•</span><a class="article-meta__tags" href="/tags/JS/">JS</a></span></div><div class="content">自我介绍哈喽，小伙伴，很高兴你能阅读我的这篇文章，能点进来也是一份缘分，在这篇文章你将收获许多干货。
+
+简短介绍：【CSDN】【掘金】【B站】【知乎】【Github】【https://yangchaoyi.vip】【公众号：小狮子前端】重度使用者。JS，TS，LeetCode，Vue，React，算法爱好者。座右铭：学如逆水行舟，不进则退！ 
+
+前言最近很多小伙伴们以及学弟学妹们都来私信我，询问我前端是怎么学习的，想了又想，还是打算写一份自己的前端学习路线，至于为什么要写这一份前端学习路线呢？我觉得有如下几点：
+
+春招以及秋招过程受很多大佬的教导，最终的offer离不开他们的支持，我想着自己受到过许多人的帮助，而自己写一份学习路线，也是一份 回馈。
+很早就想写一份学习路线图，但整个秋招下来又让我停止了脚步，我觉得还是要继续扎实基础，但现在，我有了时间来输出一些文章，因此，这篇文章它来了！
+临近毕业，有许多不舍，我也想留下一些有价值的东西，那就是将自己学习过程中的坑埋住，少走我的坑，让学弟学妹们看到后能有一份指导路线。
+一份挑战，我也在带人学习，她会参加2021年春招，这份学习路线基本上 ...</div></div></div><div class="recent-post-item"><div class="post_cover right_radius"><a href="/posts/520520/" title="【源码开放】Hexo+Github 博客butterfly 和 matery 主题 搭建完全教程【整理】">     <img class="post_bg" data-lazy-src="https://cdn.jsdelivr.net/gh/chocolate1999/cdn/img/20200907094731.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="【源码开放】Hexo+Github 博客butterfly 和 matery 主题 搭建完全教程【整理】"></a></div><div class="recent-post-info"><a class="article-title" href="/posts/520520/" title="【源码开放】Hexo+Github 博客butterfly 和 matery 主题 搭建完全教程【整理】">【源码开放】Hexo+Github 博客butterfly 和 matery 主题 搭建完全教程【整理】</a><div class="article-meta-wrap"><span class="article-meta"><i class="fas fa-thumbtack sticky"></i><span class="sticky">置顶</span><span class="article-meta__separator">|</span></span><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-05-07T13:48:39.316Z" title="发表于 2021-05-07 21:48:39">2021-05-07</time><span class="article-meta__separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2021-05-07T13:48:39.316Z" title="更新于 2021-05-07 21:48:39">2021-05-07</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Hexo/">Hexo</a></span><span class="article-meta tags"><span class="article-meta__separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/hexo/">hexo</a><span class="article-meta__link">•</span><a class="article-meta__tags" href="/tags/%E6%BA%90%E7%A0%81/">源码</a></span></div><div class="content">
+时间：2021年2月8日，本篇文章不再更新教程，本站已更新butterfly主题3.6.1以上，将会注重内容的输出，当然如若您需要请教问题，请留言板留言或者在本站关于我页面找到我，前端技术交流群：666151691，欢迎大家的加入~
+
+阅读须知
+注意，本篇博客并不是从零手把手教你去搭博客，那样会很花费时间去写一篇文档，况且从零搭建的博客一搜也是一大把，太多重复的内容就没必要继续写了。因此，对于不知道怎么搭建的伙伴，我会提供我搭建时用到的学习资料，任意选一篇按着教程搭建就好了。另外，本篇博客教程内容主要是记载本站美化DIY方面，更多后续内容将会更新在本站内 https://yangchaoyi.vip 教程内容可复制引用，但请加一个参考链接，谢谢！
+
+关于博客是否开源因为本站博客也是最近重新搭建起来的，还有一些优化和功能也在完善。当然，我也会朝着开源方向发展，但具体什么时候公开博客源码，这还不确定，还需要一段时间准备。因为选择去开源的话还需要修改很多信息内容，有些隐私以及安全部分需要进行修改，也需要进行版本发布等等。这些都需要一段时间去准备的。
+但你也不用因为看到这里就觉得这篇文章没有 ...</div></div></div><div class="recent-post-item"><div class="post_cover left_radius"><a href="/posts/20210506/" title="时隔两个月，来一份总结【文末彩蛋】">     <img class="post_bg" data-lazy-src="https://cdn.jsdelivr.net/gh/chocolate1999/cdn/img/20210506215206.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="时隔两个月，来一份总结【文末彩蛋】"></a></div><div class="recent-post-info"><a class="article-title" href="/posts/20210506/" title="时隔两个月，来一份总结【文末彩蛋】">时隔两个月，来一份总结【文末彩蛋】</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-05-07T14:38:41.474Z" title="发表于 2021-05-07 22:38:41">2021-05-07</time><span class="article-meta__separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2021-05-07T14:57:39.951Z" title="更新于 2021-05-07 22:57:39">2021-05-07</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E6%80%BB%E7%BB%93/">总结</a></span><span class="article-meta tags"><span class="article-meta__separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/%E7%A6%8F%E5%88%A9/">福利</a><span class="article-meta__link">•</span><a class="article-meta__tags" href="/tags/%E6%80%BB%E7%BB%93/">总结</a></span></div><div class="content">两个月来，基本上没有总结输出博客了，说实话，鸽都是有原因的（嘿嘿），今天刚收拾整理完新家，马不停蹄地来总结一下这两个月来的所见，所想。
+
+每一次总结都能见证自己的成长。
+
+初来深圳20年下半年秋招签了腾云扣钉之后，就决定以后要去 深圳 这个城市了，21年过年之后，早早地就和女友一起乘着高铁来到了深圳，说一句见笑的话，我当时还穿着秋裤，行李箱里还带了毛衣…
+在高铁路上，披着我老爸的外套（实在是没从学校带薄外套回家），出发当天长沙天气感觉有点冷，所以又多加了一条秋裤在里，一回想到这里就感觉快笑出了声 hhh
+下了高铁，那叫一个热啊，前几个小时还在长沙穿着秋裤披着小风衣出门，来到深圳北站我只想找个空调地舒舒服服躺着，啊这啊这，这也太热了。
+难道这就是所谓往南飞，会发现自己衣服一件件脱嘛，是这个道理嘛？
+租房事情来到深圳，第一件事当然是要租房啦，没房子就流浪街头咯，但在租房这件事情上，没错，我踩坑了，虽然说是损失不大，房子租的也还算舒适，但觉得还是亏了（因为自己没有白嫖一点的感觉），刚开始因为是过来实习，没有直接考虑长久居住的打算，自己找房也挺费时间，所以就找了公寓。
+当初找房时几乎能下的 a ...</div></div></div><div class="recent-post-item"><div class="post_cover right_radius"><a href="/posts/50975/" title="15个前端攻城狮必备的学习网站 | 你知道几个？（附视频介绍）">     <img class="post_bg" data-lazy-src="https://cdn.jsdelivr.net/gh/chocolate1999/cdn/img/20200610155519.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="15个前端攻城狮必备的学习网站 | 你知道几个？（附视频介绍）"></a></div><div class="recent-post-info"><a class="article-title" href="/posts/50975/" title="15个前端攻城狮必备的学习网站 | 你知道几个？（附视频介绍）">15个前端攻城狮必备的学习网站 | 你知道几个？（附视频介绍）</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-05-07T13:48:39.367Z" title="发表于 2021-05-07 21:48:39">2021-05-07</time><span class="article-meta__separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2021-06-13T08:01:13.468Z" title="更新于 2021-06-13 16:01:13">2021-06-13</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a></span><span class="article-meta tags"><span class="article-meta__separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/%E5%89%8D%E7%AB%AF/">前端</a><span class="article-meta__link">•</span><a class="article-meta__tags" href="/tags/%E7%BD%91%E7%AB%99%E6%8E%A8%E8%8D%90/">网站推荐</a></span></div><div class="content">前端开发所需掌握知识点概要
+HTML&amp;CSS：
+  对Web标准的理解（结构、表现、行为）、浏览器内核、渲染原理、依赖管理、兼容性、CSS语法、层次关系，常用属性、布局、选择器、权重、盒模型、Hack、CSS预处理器、  CSS3、Flexbox、CSS Modules、Document flow、BFC、HTML5（离线 &amp; 存储、Histoy,多媒体、WebGL\SVG\Canvas）；        
+
+JavaScript：
+  数据类型、运算、对象、Function、继承、闭包、作用域、事件、Prototype、RegExp、JSON、Ajax、DOM、BOM、  内存泄漏、跨域、异步请求、模板引擎、模块化、Flux、同构、算法、ECMAScript6、Nodejs、HTTP、
+
+其他：
+  主流MVVM框架(React\Vue\Angular)、Hybrid App\React Native\Weex、TypeScript、RESTFul、WEB安全、前端工程化、依赖管理、性能优化、  重构、团队协作、可维护、易用性、SEO、UED、前端技术选型、快速学习能 ...</div></div></div><div class="recent-post-item"><div class="post_cover left_radius"><a href="/posts/20541/" title="前端知识梳理之webpack篇">     <img class="post_bg" data-lazy-src="https://cdn.jsdelivr.net/gh/chocolate1999/cdn/img/20200914094504.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="前端知识梳理之webpack篇"></a></div><div class="recent-post-info"><a class="article-title" href="/posts/20541/" title="前端知识梳理之webpack篇">前端知识梳理之webpack篇</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-05-07T13:48:39.366Z" title="发表于 2021-05-07 21:48:39">2021-05-07</time><span class="article-meta__separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2021-05-07T13:48:39.366Z" title="更新于 2021-05-07 21:48:39">2021-05-07</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a></span><span class="article-meta tags"><span class="article-meta__separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/%E5%89%8D%E7%AB%AF/">前端</a></span></div><div class="content">webpack
+前端代码为何要进行构建和打包？第一点，代码层面：
+
+体积更小（Tree-Shaking 、压缩、合并），加载更快
+编译高级语言或语法（TS、ES6+、模块化、scss）
+兼容性和错误检查（Polyfill、postcss、eslint）
+
+第二点，研发流程方面：
+
+统一、高效的开发环境
+统一的构建流程、产出标准
+集成公司构建规范（提测、上线等）module chunk bundle分别什么意思，有何区别？
+module —— 各个源码文件，webpack中一切皆模块
+chunk —— 多模块合并成的，如 entry import() splitChunk
+bundle —— 最终的输出文件loader 和 plugin 的区别？
+loader 模块转换器，如 less -&gt; css 。常见 loader : json-loader、cache-loader、babel-loader、html,css,less,imports…
+plugin 拓展插件，如 HtmlWebpackPlugin，把 js 或 css 塞进 html 文件里。常见 puglin：Defi ...</div></div></div><div class="recent-post-item"><div class="post_cover right_radius"><a href="/posts/20201009/" title="某跳动面试官：说说微信扫码登录背后的实现原理？">     <img class="post_bg" data-lazy-src="https://cdn.jsdelivr.net/gh/chocolate1999/cdn/img/20201009202845.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="某跳动面试官：说说微信扫码登录背后的实现原理？"></a></div><div class="recent-post-info"><a class="article-title" href="/posts/20201009/" title="某跳动面试官：说说微信扫码登录背后的实现原理？">某跳动面试官：说说微信扫码登录背后的实现原理？</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-05-07T13:48:39.366Z" title="发表于 2021-05-07 21:48:39">2021-05-07</time><span class="article-meta__separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2021-05-07T13:48:39.367Z" title="更新于 2021-05-07 21:48:39">2021-05-07</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a></span><span class="article-meta tags"><span class="article-meta__separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/%E5%89%8D%E7%AB%AF/">前端</a></span></div><div class="content">
+引言这个问题我是在今年8月份的时候被问到过，当时一脸懵，当面试官一提出这个问题，我当场回答这个没接触过，可能不知道。面试官笑了笑：这是一个设计题，如果你原本就会的话，我就不会要你来设计了。
+我：（苦笑…）凭借三寸不烂之舌和面试官讨论了起来，说完之后信心满满，但结果反手就收到了一份正式地感谢信。
+当时，面试官问你还有什么想要问我的吗？ 我请教了这个问题，面试官回答说，你其实也猜到了一点，但是我想要的那个逻辑你没理清楚，然后吧啦吧啦引导了一下，告知可以待会学习一下，这个也挺多人讨论的。
+
+
+直到今天，又收到了一份“新”的感谢信后，我突然回想到了这个问题，想了想，这个问题不能一直丢着不管，我不去学习，当然不会自然就明白其中原理，下面我们一起来探讨一下吧。
+如若有帮助到您，请一键三连，当然，本文表述有问题的地方，欢迎读者指正，也是一个学习的过程，谢谢~
+基本技术原理扫码登录功能到底是什么样的？现在大部分手机上都装有微信、qq和淘宝这一类的软件。而这些app都有他们相对应的网页端。为了让用户在使用他们的网页时登录更加方便和安全，使用手机扫一扫就可以登录的服务，就显得自然而然了。
+扫码登录时的界 ...</div></div></div><div class="recent-post-item"><div class="post_cover left_radius"><a href="/posts/205511/" title="前端知识梳理之Vue篇">     <img class="post_bg" data-lazy-src="https://cdn.jsdelivr.net/gh/chocolate1999/cdn/img/20200911085935.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="前端知识梳理之Vue篇"></a></div><div class="recent-post-info"><a class="article-title" href="/posts/205511/" title="前端知识梳理之Vue篇">前端知识梳理之Vue篇</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-05-07T13:48:39.365Z" title="发表于 2021-05-07 21:48:39">2021-05-07</time><span class="article-meta__separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2021-05-07T13:48:39.365Z" title="更新于 2021-05-07 21:48:39">2021-05-07</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a></span><span class="article-meta tags"><span class="article-meta__separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/%E5%89%8D%E7%AB%AF/">前端</a></span></div><div class="content">Vuev-show和v-if有什么区别
+v-show 通过 CSS display 控制显示和隐藏
+v-if 组件真正的渲染和销毁，而不是显示和隐藏
+
+为何在v-for使用key
+必须用 key ， 且不能是 index 和 random
+diff 算法中通过 tag 和 key 来判断，是否是 sameNode
+减少渲染次数，提升渲染性能
+
+Vue 组件生命周期（包括父子组件）参考：Vue生命周期
+Vue 组件如何通信（常见）
+父子组件 props 和 this.$emit
+自定义事件 event.$no  event.$off   event.$emit
+vuex
+
+描述组件渲染和更新的过程如上图所示，vue原理三大模块：响应式、模板渲染、vdom
+初次渲染过程
+
+解析模板为 render 函数 （或在开发环境已完成，vue-loader）
+触发响应式，监听 data 属性 getter、 setter
+执行 render 函数，生成 vnode ，patch(elem,vnode)
+
+更新过程
+
+修改 data，触发 setter（此前在 getter 中已被监听）
+重新执行 r ...</div></div></div><div class="recent-post-item"><div class="post_cover right_radius"><a href="/posts/20542/" title="前端知识梳理之HTML篇">     <img class="post_bg" data-lazy-src="https://cdn.jsdelivr.net/gh/chocolate1999/cdn/img/20200913074030.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="前端知识梳理之HTML篇"></a></div><div class="recent-post-info"><a class="article-title" href="/posts/20542/" title="前端知识梳理之HTML篇">前端知识梳理之HTML篇</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-05-07T13:48:39.365Z" title="发表于 2021-05-07 21:48:39">2021-05-07</time><span class="article-meta__separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2021-05-07T13:48:39.365Z" title="更新于 2021-05-07 21:48:39">2021-05-07</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a></span><span class="article-meta tags"><span class="article-meta__separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/%E5%89%8D%E7%AB%AF/">前端</a></span></div><div class="content">html5有哪些新特性、移除了那些元素？
+HTML5 现在已经不是 SGML 的子集，主要是关于图像，位置，存储，多任务等功能的增加
+  绘画 canvas  用于媒介回放的video 和 audio 元素  本地离线存储localStorage 长期存储数据，浏览器关闭后数据不丢失  sessionStorage 的数据在浏览器关闭后自动删除  语意化更好的内容元素，比如article、footer、header、nav、section  表单控件，calendar、date、time、email、url、search  新的技术webworker、websocket、 Geolocation
+
+移除 的元素：
+  纯表现的元素：basefont、big、center、font、 s、strike、tt、u  对可用性产生负面影响的元素：frame、frameset、noframes
+
+支持HTML5新标签：
+  IE8/IE7/IE6支持通过document.createElement方法产生的标签  可以利用这一特性让这些浏览器支持HTML5新标签  浏览器支持新标签后，还需要添 ...</div></div></div><nav id="pagination"><div class="pagination"><span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/2/"><i class="fas fa-chevron-right fa-fw"></i></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-info-avatar is-center"><img class="avatar-img" data-lazy-src="/img/Chocolate.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-info__name">一百个Chocolate</div><div class="author-info__description">不是只会写业务代码的前端攻城狮！</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">62</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">标签</div><div class="length-num">30</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">分类</div><div class="length-num">8</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/Chocolate1999"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://chocolate.blog.csdn.net/" target="_blank" title=""><i class="iconfont icon-csdn"></i></a><a class="social-icon" href="https://juejin.im/user/5ed1c55be51d457889261840/posts" target="_blank" title=""><i class="iconfont icon-juejin"></i></a><a class="social-icon" href="https://github.com/Chocolate1999" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="https://space.bilibili.com/351534170" target="_blank" title=""><i class="iconfont icon-bilibili1"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>小狮子初心</span></div><div class="announcement_content">最近收到了很多小伙伴的关注，在此非常感谢各位的支持。<br/>Chocolate 开通了个人公众号，在这里分享我的大厂面试经历，租房攻略，计算机领域那些事儿。<br/>希望小伙伴们能够喜欢我的文章，这里是小狮子前端，保持狮子座的热情带给你学习的动力，愿我们成为最好的自己~<br/><img src="https://cdn.jsdelivr.net/gh/chocolate1999/cdn/img/20201202223856.jpg"> <br/>QQ交流群：666151691</div></div><div class="sticky_layout"><div class="card-widget card-pixiv"><div class="card-content"><div class="item-headline"><i class="fa fa-image" aria-hidden="true"></i><span>Pixiv日榜Top50</span><iframe src="https://cloud.mokeyjay.com/pixiv" frameborder="0" style="width:99%;height:380px;margin:0;"></iframe></div></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/posts/20210506/" title="时隔两个月，来一份总结【文末彩蛋】"><img data-lazy-src="https://cdn.jsdelivr.net/gh/chocolate1999/cdn/img/20210506215206.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="时隔两个月，来一份总结【文末彩蛋】"/></a><div class="content"><a class="title" href="/posts/20210506/" title="时隔两个月，来一份总结【文末彩蛋】">时隔两个月，来一份总结【文末彩蛋】</a><time datetime="2021-05-07T14:38:41.474Z" title="发表于 2021-05-07 22:38:41">2021-05-07</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/50975/" title="15个前端攻城狮必备的学习网站 | 你知道几个？（附视频介绍）"><img data-lazy-src="https://cdn.jsdelivr.net/gh/chocolate1999/cdn/img/20200610155519.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="15个前端攻城狮必备的学习网站 | 你知道几个？（附视频介绍）"/></a><div class="content"><a class="title" href="/posts/50975/" title="15个前端攻城狮必备的学习网站 | 你知道几个？（附视频介绍）">15个前端攻城狮必备的学习网站 | 你知道几个？（附视频介绍）</a><time datetime="2021-05-07T13:48:39.367Z" title="发表于 2021-05-07 21:48:39">2021-05-07</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/20541/" title="前端知识梳理之webpack篇"><img data-lazy-src="https://cdn.jsdelivr.net/gh/chocolate1999/cdn/img/20200914094504.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="前端知识梳理之webpack篇"/></a><div class="content"><a class="title" href="/posts/20541/" title="前端知识梳理之webpack篇">前端知识梳理之webpack篇</a><time datetime="2021-05-07T13:48:39.366Z" title="发表于 2021-05-07 21:48:39">2021-05-07</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/20201009/" title="某跳动面试官：说说微信扫码登录背后的实现原理？"><img data-lazy-src="https://cdn.jsdelivr.net/gh/chocolate1999/cdn/img/20201009202845.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="某跳动面试官：说说微信扫码登录背后的实现原理？"/></a><div class="content"><a class="title" href="/posts/20201009/" title="某跳动面试官：说说微信扫码登录背后的实现原理？">某跳动面试官：说说微信扫码登录背后的实现原理？</a><time datetime="2021-05-07T13:48:39.366Z" title="发表于 2021-05-07 21:48:39">2021-05-07</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/205511/" title="前端知识梳理之Vue篇"><img data-lazy-src="https://cdn.jsdelivr.net/gh/chocolate1999/cdn/img/20200911085935.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="前端知识梳理之Vue篇"/></a><div class="content"><a class="title" href="/posts/205511/" title="前端知识梳理之Vue篇">前端知识梳理之Vue篇</a><time datetime="2021-05-07T13:48:39.365Z" title="发表于 2021-05-07 21:48:39">2021-05-07</time></div></div></div></div><div class="card-widget card-tags"><div class="item-headline"><i class="fas fa-tags"></i><span>标签</span></div><div class="card-tag-cloud"><a href="/tags/%E9%9D%A2%E8%AF%95/" style="font-size: 1.5em; color: rgb(30, 182, 155)">面试</a><a href="/tags/%E6%98%A5%E6%8B%9B/" style="font-size: 1.33em; color: rgb(51, 76, 164)">春招</a><a href="/tags/%E6%81%92%E7%94%9F%E7%94%B5%E5%AD%90/" style="font-size: 1.1em; color: rgb(132, 132, 100)">恒生电子</a><a href="/tags/%E8%85%BE%E8%AE%AF/" style="font-size: 1.21em; color: rgb(27, 186, 151)">腾讯</a><a href="/tags/%E9%A1%B9%E7%9B%AE/" style="font-size: 1.21em; color: rgb(106, 74, 104)">项目</a><a href="/tags/hexo/" style="font-size: 1.16em; color: rgb(114, 1, 194)">hexo</a><a href="/tags/%E7%A7%8B%E6%8B%9B/" style="font-size: 1.39em; color: rgb(99, 134, 98)">秋招</a><a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 1.44em; color: rgb(119, 80, 119)">前端</a><a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 1.27em; color: rgb(7, 0, 105)">算法</a><a href="/tags/%E7%BE%8E%E5%9B%A2/" style="font-size: 1.1em; color: rgb(85, 67, 167)">美团</a><a href="/tags/%E5%AD%97%E8%8A%82%E8%B7%B3%E5%8A%A8/" style="font-size: 1.21em; color: rgb(173, 153, 9)">字节跳动</a><a href="/tags/%E6%BB%B4%E6%BB%B4/" style="font-size: 1.1em; color: rgb(69, 27, 164)">滴滴</a><a href="/tags/%E5%BF%AB%E6%89%8B/" style="font-size: 1.1em; color: rgb(42, 122, 61)">快手</a><a href="/tags/%E7%BD%91%E6%98%93%E4%BA%92%E5%A8%B1/" style="font-size: 1.1em; color: rgb(48, 123, 146)">网易互娱</a><a href="/tags/%E5%86%85%E6%8E%A8/" style="font-size: 1.1em; color: rgb(46, 191, 115)">内推</a><a href="/tags/CODING/" style="font-size: 1.1em; color: rgb(26, 137, 38)">CODING</a><a href="/tags/%E7%BD%91%E7%AB%99%E6%8E%A8%E8%8D%90/" style="font-size: 1.1em; color: rgb(186, 9, 188)">网站推荐</a><a href="/tags/%E7%A6%8F%E5%88%A9/" style="font-size: 1.1em; color: rgb(123, 64, 132)">福利</a><a href="/tags/%E6%80%BB%E7%BB%93/" style="font-size: 1.21em; color: rgb(196, 173, 44)">总结</a><a href="/tags/%E6%B7%B1%E4%BF%A1%E6%9C%8D/" style="font-size: 1.1em; color: rgb(47, 161, 160)">深信服</a><a href="/tags/LeetCode/" style="font-size: 1.1em; color: rgb(73, 130, 118)">LeetCode</a><a href="/tags/%E9%98%BF%E9%87%8C%E5%B7%B4%E5%B7%B4/" style="font-size: 1.1em; color: rgb(140, 15, 104)">阿里巴巴</a><a href="/tags/JS/" style="font-size: 1.33em; color: rgb(85, 111, 29)">JS</a><a href="/tags/%E6%95%B0%E7%BB%84/" style="font-size: 1.1em; color: rgb(181, 4, 73)">数组</a><a href="/tags/Vue/" style="font-size: 1.1em; color: rgb(13, 177, 47)">Vue</a><a href="/tags/Chocolate/" style="font-size: 1.1em; color: rgb(104, 176, 79)">Chocolate</a><a href="/tags/%E5%B9%B4%E5%BA%A6%E6%80%BB%E7%BB%93/" style="font-size: 1.1em; color: rgb(101, 43, 192)">年度总结</a><a href="/tags/%E5%BF%83%E5%BE%97/" style="font-size: 1.16em; color: rgb(61, 162, 184)">心得</a><a href="/tags/Vue%E6%BA%90%E7%A0%81/" style="font-size: 1.1em; color: rgb(59, 186, 120)">Vue源码</a><a href="/tags/%E6%BA%90%E7%A0%81/" style="font-size: 1.1em; color: rgb(159, 97, 109)">源码</a></div></div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>网站资讯</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">文章数目 :</div><div class="item-count">62</div></div><div class="webinfo-item"><div class="item-name">已运行时间 :</div><div class="item-count" id="runtimeshow" data-publishDate="2020-02-23T16:00:00.000Z"></div></div><div class="webinfo-item"><div class="item-name">本站总字数 :</div><div class="item-count">320.2k</div></div><div class="webinfo-item"><div class="item-name">本站访客数 :</div><div class="item-count" id="busuanzi_value_site_uv"></div></div><div class="webinfo-item"><div class="item-name">本站总访问量 :</div><div class="item-count" id="busuanzi_value_site_pv"></div></div><div class="webinfo-item"><div class="item-name">最后更新时间 :</div><div class="item-count" id="last-push-date" data-lastPushDate="2021-06-22T08:01:46.538Z"></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2019 - 2021  <i id="heartbeat" class="fa fas fa-heartbeat"></i> 一百个Chocolate</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text"><p><a style="margin-inline:5px" target="_blank" href="https://hexo.io/"><img src="https://img.shields.io/badge/Frame-Hexo-blue?style=flat&logo=hexo" title="博客框架为Hexo"></a><a style="margin-inline:5px" target="_blank" href="https://butterfly.js.org/"><img src="https://img.shields.io/badge/Theme-Butterfly-6513df?style=flat&logo=bitdefender" title="主题采用butterfly"></a><a style="margin-inline:5px" target="_blank" href="https://www.jsdelivr.com/"><img src="https://img.shields.io/badge/CDN-jsDelivr-orange?style=flat&logo=jsDelivr" title="本站使用JsDelivr为静态资源提供CDN加速"></a><a style="margin-inline:5px" target="_blank" href="https://vercel.com/ "><img src="https://img.shields.io/badge/Hosted-Vervel-brightgreen?style=flat&logo=Vercel" title="本站采用双线部署，默认线路托管于Vercel"></a><a style="margin-inline:5px" target="_blank" href="https://vercel.com/ "><img src="https://img.shields.io/badge/Hosted-Coding-0cedbe?style=flat&logo=Codio" title="本站采用双线部署，联通线路托管于Coding"></a><a style="margin-inline:5px" target="_blank" href="https://github.com/"><img src="https://img.shields.io/badge/Source-Github-d021d6?style=flat&logo=GitHub" title="本站项目由Gtihub托管"></a><a style="margin-inline:5px" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img src="https://img.shields.io/badge/Copyright-BY--NC--SA%204.0-d42328?style=flat&logo=Claris" title="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可"></a></p></div><div class="icp"><a target="_blank" rel="noopener" href="http://www.beian.miit.gov.cn/"><img class="icp-icon" src="/img/icp.png"/><span>湘ICP备20002952号</span></a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="font-plus" type="button" title="放大字体"><i class="fas fa-plus"></i></button><button id="font-minus" type="button" title="缩小字体"><i class="fas fa-minus"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="chat_btn" type="button" title="rightside.chat_btn"><i class="fas fa-sms"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div></div><hr/><div id="local-search-results"></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/vue@2.6.11"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><script src="/js/search/local-search.js"></script><script async="async">var preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',preloader.endLoading())
+setTimeout(function(){preloader.endLoading();}, 5000);</script><div class="js-pjax"></div><script src="https://cdn.jsdelivr.net/gh/sviptzk/StaticFile_HEXO@master/xkTool/v3.1.1/xkTool.js"></script><script defer src="https://cdn.jsdelivr.net/npm/hexo-theme-volantis@latest/source/js/issues.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = [
+  'title',
+  '#config-diff',
+  '#body-wrap',
+  '#rightside-config-hide',
+  '#rightside-config-show',
+  '.js-pjax'
+]
+
+if (false) {
+  pjaxSelectors.unshift('meta[property="og:image"]', 'meta[property="og:title"]', 'meta[property="og:url"]')
+}
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  if (typeof gtag === 'function') {
+    gtag('config', '', {'page_path': window.location.pathname});
+  }
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // Analytics
+  if (false) {
+    MtaH5.pgv()
+  }
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+
+  typeof preloader === 'object' && preloader.endLoading()
+})
+
+
+document.addEventListener('pjax:send', function () {
+  typeof preloader === 'object' && preloader.initLoading()
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

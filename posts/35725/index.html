@@ -1,0 +1,633 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>【Vue全家桶+SSR+Koa2全栈开发】项目搭建过程  整合  学习目录（持续更新中） | 超逸の博客</title><meta name="keywords" content="前端，美团，SSR，全栈"><meta name="author" content="一百个Chocolate"><meta name="copyright" content="一百个Chocolate"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="写在开头 大家好，这里是lionLoveVue，基础知识决定了编程思维，学如逆水行舟，不进则退。金三银四，为了面试也还在慢慢积累知识，Github上面可以直接查看所有前端知识点梳理，github传送门，觉得不错，点个Star★，好运连连，Offer终究鼠于你，持续更新中。另外，也可以关注微信公众号：小狮子前端Vue，源码以及资料今后都会放在里面。  Vue基础  全局安装vue&#x2F;cli脚手架 管理">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【Vue全家桶+SSR+Koa2全栈开发】项目搭建过程  整合  学习目录（持续更新中）">
+<meta property="og:url" content="https://yangchaoyi.vip/posts/35725/index.html">
+<meta property="og:site_name" content="超逸の博客">
+<meta property="og:description" content="写在开头 大家好，这里是lionLoveVue，基础知识决定了编程思维，学如逆水行舟，不进则退。金三银四，为了面试也还在慢慢积累知识，Github上面可以直接查看所有前端知识点梳理，github传送门，觉得不错，点个Star★，好运连连，Offer终究鼠于你，持续更新中。另外，也可以关注微信公众号：小狮子前端Vue，源码以及资料今后都会放在里面。  Vue基础  全局安装vue&#x2F;cli脚手架 管理">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/chocolate1999/cdn/img/20200526104803.jpg">
+<meta property="article:published_time" content="2021-05-07T13:48:39.318Z">
+<meta property="article:modified_time" content="2021-05-07T13:48:39.318Z">
+<meta property="article:author" content="一百个Chocolate">
+<meta property="article:tag" content="项目">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/chocolate1999/cdn/img/20200526104803.jpg"><link rel="shortcut icon" href="/img/favicon.ico"><link rel="canonical" href="https://yangchaoyi.vip/posts/35725/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  noticeOutdate: {"limitDay":500,"position":"top","messagePrev":"It has been","messageNext":"days since the last update, the content of the article may be outdated."},
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#121212","position":"bottom-left"},
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isanchor: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = { 
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2021-05-07 21:48:39'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const now = new Date()
+          const hour = now.getHours()
+          const isNight = hour <= 6 || hour >= 18
+          if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
+          else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const fontSizeVal = saveToLocal.get('global-font-size')
+    if (fontSizeVal !== undefined) {
+      document.documentElement.style.setProperty('--global-font-size', fontSizeVal + 'px')
+    }
+    })(window)</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/l-lin/font-awesome-animation/dist/font-awesome-animation.min.css"  media="defer" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/sviptzk/HexoStaticFile@master/Hexo/css/flink.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/sviptzk/HexoStaticFile@master/Hexo/css/iconfont.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Rr210/Lantern@2.4/dl.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/HCLonely/images@master/others/heartbeat.min.css"><meta name="generator" content="Hexo 5.3.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="wizard-scene"><div class="wizard-objects"><div class="wizard-square"></div><div class="wizard-circle"></div><div class="wizard-triangle"></div></div><div class="wizard"><div class="wizard-body"></div><div class="wizard-right-arm"><div class="wizard-right-hand"></div></div><div class="wizard-left-arm"><div class="wizard-left-hand"></div></div><div class="wizard-head"><div class="wizard-beard"></div><div class="wizard-face"><div class="wizard-adds"></div></div><div class="wizard-hat"><div class="wizard-hat-of-the-hat"></div><div class="wizard-four-point-star --first"></div><div class="wizard-four-point-star --second"></div><div class="wizard-four-point-star --third"></div></div></div></div></div></div><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" data-lazy-src="/img/Chocolate.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">62</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">30</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">8</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-book"></i><span> 文章</span><i class="fas fa-chevron-down expand hide"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> 时间轴</span></a></li><li><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></li><li><a class="site-page" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> 分类</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 娱乐</span><i class="fas fa-chevron-down expand hide"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/bangumis/"><i class="fa-fw fab fa-youtube"></i><span> 番剧</span></a></li><li><a class="site-page" href="/movies/"><i class="fa-fw fa fa-film"></i><span> 电影</span></a></li><li><a class="site-page" href="/books/"><i class="fa-fw fas fa-book"></i><span> 书单</span></a></li><li><a class="site-page" href="/music/"><i class="fa-fw fa fa-music"></i><span> 音乐</span></a></li><li><a class="site-page" href="/"><i class="fa-fw fas fa-gamepad"></i><span> 游戏</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fa fa-heartbeat"></i><span> 清单</span><i class="fas fa-chevron-down expand hide"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/gallery/"><i class="fa-fw far fa-image"></i><span> 相册</span></a></li><li><a class="site-page" href="/home/"><i class="fa-fw fab fa-phoenix-framework"></i><span> 主页</span></a></li><li><a class="site-page" href="/sponsorWall/"><i class="fa-fw fas fa-money-check-alt"></i><span> 赞助墙</span></a></li><li><a class="site-page" href="/box/"><i class="fa-fw fas fa-th-large"></i><span> 聚宝盒</span></a></li></ul></div><div class="menus_item"><a class="site-page" target="_blank" rel="noopener" href="https://hearling.github.io/"><i class="fa-fw fas fa-book"></i><span> HearLingの博客</span></a></div><div class="menus_item"><a class="site-page" href="/talk/"><i class="fa-fw fas fa-coffee"></i><span> 说说</span></a></div><div class="menus_item"><a class="site-page" href="/contact/"><i class="fa-fw far fa-comments"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 关于</span><i class="fas fa-chevron-down expand hide"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/about/"><i class="fa-fw fa fa-heart"></i><span> 关于我</span></a></li><li><a class="site-page" target="_blank" rel="noopener" href="https://yangchaoyi.avosapps.us/"><i class="fa-fw fas fa-box"></i><span> Valine评论后台</span></a></li><li><a class="site-page" target="_blank" rel="noopener" href="https://console.leancloud.app/applist.html#/apps"><i class="fa-fw fas fa-box"></i><span> LeanCloud应用</span></a></li></ul></div></div></div></div><div class="post" id="body-wrap"><header class="not-top-img" id="page-header"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">超逸の博客</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-book"></i><span> 文章</span><i class="fas fa-chevron-down expand hide"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> 时间轴</span></a></li><li><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></li><li><a class="site-page" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> 分类</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 娱乐</span><i class="fas fa-chevron-down expand hide"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/bangumis/"><i class="fa-fw fab fa-youtube"></i><span> 番剧</span></a></li><li><a class="site-page" href="/movies/"><i class="fa-fw fa fa-film"></i><span> 电影</span></a></li><li><a class="site-page" href="/books/"><i class="fa-fw fas fa-book"></i><span> 书单</span></a></li><li><a class="site-page" href="/music/"><i class="fa-fw fa fa-music"></i><span> 音乐</span></a></li><li><a class="site-page" href="/"><i class="fa-fw fas fa-gamepad"></i><span> 游戏</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fa fa-heartbeat"></i><span> 清单</span><i class="fas fa-chevron-down expand hide"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/gallery/"><i class="fa-fw far fa-image"></i><span> 相册</span></a></li><li><a class="site-page" href="/home/"><i class="fa-fw fab fa-phoenix-framework"></i><span> 主页</span></a></li><li><a class="site-page" href="/sponsorWall/"><i class="fa-fw fas fa-money-check-alt"></i><span> 赞助墙</span></a></li><li><a class="site-page" href="/box/"><i class="fa-fw fas fa-th-large"></i><span> 聚宝盒</span></a></li></ul></div><div class="menus_item"><a class="site-page" target="_blank" rel="noopener" href="https://hearling.github.io/"><i class="fa-fw fas fa-book"></i><span> HearLingの博客</span></a></div><div class="menus_item"><a class="site-page" href="/talk/"><i class="fa-fw fas fa-coffee"></i><span> 说说</span></a></div><div class="menus_item"><a class="site-page" href="/contact/"><i class="fa-fw far fa-comments"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 关于</span><i class="fas fa-chevron-down expand hide"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/about/"><i class="fa-fw fa fa-heart"></i><span> 关于我</span></a></li><li><a class="site-page" target="_blank" rel="noopener" href="https://yangchaoyi.avosapps.us/"><i class="fa-fw fas fa-box"></i><span> Valine评论后台</span></a></li><li><a class="site-page" target="_blank" rel="noopener" href="https://console.leancloud.app/applist.html#/apps"><i class="fa-fw fas fa-box"></i><span> LeanCloud应用</span></a></li></ul></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav></header><main class="layout" id="content-inner"><div id="post"><div id="post-info"><h1 class="post-title">【Vue全家桶+SSR+Koa2全栈开发】项目搭建过程  整合  学习目录（持续更新中）</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-05-07T13:48:39.318Z" title="发表于 2021-05-07 21:48:39">2021-05-07</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2021-05-07T13:48:39.318Z" title="更新于 2021-05-07 21:48:39">2021-05-07</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E9%A1%B9%E7%9B%AE/">项目</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">8.1k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>29分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div><div class="top-img gist" style="background-image: url(/false)"></div><article class="post-content" id="article-container"><h2 id="写在开头"><a href="#写在开头" class="headerlink" title="写在开头"></a>写在开头</h2><blockquote>
+<div>大家好，这里是<font color=chocolate>lionLoveVue</font>，基础知识决定了编程思维，学如逆水行舟，不进则退。金三银四，为了面试也还在慢慢积累知识，Github上面可以直接查看所有前端知识点梳理，<a target="_blank" rel="noopener" href="https://github.com/Chocolate1999/Front-end-learning-to-organize-notes">github传送门</a>，觉得不错，点个Star★，好运连连，Offer终究鼠于你，持续更新中。另外，也可以关注微信公众号：<font color=chocolate>小狮子前端Vue</font>，源码以及资料今后都会放在里面。</div>
+</blockquote>
+<h2 id="Vue基础"><a href="#Vue基础" class="headerlink" title="Vue基础"></a>Vue基础</h2><hr/>
+
+<p>全局安装<code>vue/cli</code>脚手架</p>
+<p>管理员身份运行cmd，执行如下代码：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">npm install -g @vue/cli</span><br></pre></td></tr></table></figure>
+<p>或</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">yarn <span class="built_in">global</span> add @vue/cli</span><br></pre></td></tr></table></figure>
+<p>命令行输入<code>vue ui</code> 打开可视化界面</p>
+<p>使用默认<code>default</code>配置</p>
+<p><img src= "/img/loading.gif" data-lazy-src="https://img-blog.csdnimg.cn/20200405213511680.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MjQyOTcxOA==,size_16,color_FFFFFF,t_70" alt=""></p>
+<p>用vscode打开项目，执行如下命令</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">npm/cnpm run serve</span><br></pre></td></tr></table></figure>
+<p>访问：<a target="_blank" rel="noopener" href="http://localhost:8080/">http://localhost:8080/</a> 查看是否配置成功</p>
+<h3 id="自定义指令"><a href="#自定义指令" class="headerlink" title="自定义指令"></a>自定义指令</h3><p><a target="_blank" rel="noopener" href="https://cn.vuejs.org/v2/guide/custom-directive.html">推荐阅读：官方文档-自定义指令</a></p>
+<p>除了核心功能默认内置的指令 (<code>v-model</code> 和 <code>v-show</code>)，Vue 也允许注册自定义指令。注意，在 Vue2.0 中，代码复用和抽象的主要形式是组件。然而，有的情况下，你仍然需要对普通 DOM 元素进行底层操作，这时候就会用到自定义指令。</p>
+<h3 id="组件"><a href="#组件" class="headerlink" title="组件"></a>组件</h3><p><strong>父子组件的通信方式</strong></p>
+<p>父组件传子组件，是在子组件使用<code>props</code>，然后再父组件，通过<code>:=</code>绑定变量</p>
+<p>子组件传父组件，是在子组件使用自定义事件，例如：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">//子组件配置</span></span><br><span class="line">@click=<span class="string">&quot;$emit(&#x27;patch(xxx)&#x27;)&quot;</span></span><br><span class="line"><span class="comment">//父组件配置</span></span><br><span class="line">@patch=<span class="string">&quot;func&quot;</span></span><br></pre></td></tr></table></figure>
+<p>如果是跨组件，不是父子组件关系，就使用 <code>Vuex</code>。</p>
+<p><strong>slot</strong></p>
+<p>插槽在组件抽象设计中的应用：</p>
+<p>原本组件不能嵌入html内容，但通过父子组件传递插槽即可实现</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">//父组件</span></span><br><span class="line">slot=<span class="string">&quot;a&quot;</span></span><br><span class="line"><span class="comment">//子组件</span></span><br><span class="line">&lt;slot name=<span class="string">&quot;a&quot;</span>&gt;&lt;/slot&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="Vuex基础"><a href="#Vuex基础" class="headerlink" title="Vuex基础"></a>Vuex基础</h2><hr/>
+
+<p>Vuex简单来说就是多个组件共享数据，但是组件是不能直接操纵数据的，如下图所示，我们的数据放在紫色部分<code>state</code>里面（没有放在<code>data</code>里），操作数据源由红色部分<code>Mutations</code>完成，什么时候操控数据有黄色部分<code>Actions</code>来控制，这里就是由用户来操纵组件来触发 <code>Actions</code> ，最后，由 <code>Actons</code> 提交 <code>Commit</code> 通知改变数据源，来完成组件视图的更新渲染。<br><img src= "/img/loading.gif" data-lazy-src="https://img-blog.csdnimg.cn/20200406210920118.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MjQyOTcxOA==,size_16,color_FFFFFF,t_70" alt=""></p>
+<p><strong>安装Vuex</strong></p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">npm/cnpm i vuex</span><br></pre></td></tr></table></figure>
+<h2 id="Koa2基础"><a href="#Koa2基础" class="headerlink" title="Koa2基础"></a>Koa2基础</h2><hr/>
+
+<h3 id="koa-generator"><a href="#koa-generator" class="headerlink" title="koa-generator"></a>koa-generator</h3><p>管理员身份打开cmd，运行如下代码，全局安装</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">npm install -g koa-generator</span><br></pre></td></tr></table></figure>
+<p>使用<code>git bash</code>，在文件夹内创建项目</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">koa2 -e project_name</span><br></pre></td></tr></table></figure>
+<p>-e 表示使用<code>ejs</code>，不加和 <code>node</code> 一样</p>
+<p><img src= "/img/loading.gif" data-lazy-src="https://img-blog.csdnimg.cn/20200407104615983.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MjQyOTcxOA==,size_16,color_FFFFFF,t_70" alt=""><br>接下来，执行安装命令</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">cd koa2_learn</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">npm install</span><br></pre></td></tr></table></figure>
+<p>安装&amp;更新 <code>fsevents</code> 包</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">npm install --update-binary</span><br></pre></td></tr></table></figure>
+<p>run app命令：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">DEBUG=koa2_learn:* npm start</span><br></pre></td></tr></table></figure>
+<p>执行后输出 <code>node bin/www</code> 说明服务端已经跑起来了</p>
+<p>访问 <a target="_blank" rel="noopener" href="http://localhost:3000/">http://localhost:3000/</a> 查看页面效果</p>
+<p><img src= "/img/loading.gif" data-lazy-src="https://img-blog.csdnimg.cn/2020040710530544.png" alt=""><br>我们查看 <code>package.json</code> ，发现启动脚本是通过 <code>npm scripts</code> ，如果你想要自启动的话，执行如下命令：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">npm run dev</span><br></pre></td></tr></table></figure>
+<p><img src= "/img/loading.gif" data-lazy-src="https://img-blog.csdnimg.cn/20200407105417668.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MjQyOTcxOA==,size_16,color_FFFFFF,t_70" alt=""><br>对于上述执行指令，<code>dev</code> 和 <code>prd</code> 必须使用 <code>npm run xxx</code></p>
+<p>与此同时，我们在 <code>index.js</code> 全局打印一下，加入如下代码：<br><img src= "/img/loading.gif" data-lazy-src="https://img-blog.csdnimg.cn/20200407105756505.png" alt=""></p>
+<p>在 <code>git bash</code> 中执行如下命令</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">npm run dev</span><br></pre></td></tr></table></figure>
+<p>说明我们改变服务端脚本，服务能够自启动了<br><img src= "/img/loading.gif" data-lazy-src="https://img-blog.csdnimg.cn/20200407105837914.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MjQyOTcxOA==,size_16,color_FFFFFF,t_70" alt=""></p>
+<h2 id="Koa2中间件"><a href="#Koa2中间件" class="headerlink" title="Koa2中间件"></a>Koa2中间件</h2><hr/>
+
+<p>图片来自Koa2官方，大致意思就是服务端接受客户端的 <code>Request</code>，经过服务端一些流程，然后 <code>Response</code> 返回给浏览器，其中每一个环，都是一个中间件。进来的时候会经过某个中间件，出去的时候也会经过，<strong>这样的机制就可以让中间件引用顺序和代码执行顺序不一致。</strong><br><img src= "/img/loading.gif" data-lazy-src="https://img-blog.csdnimg.cn/20200407112345912.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MjQyOTcxOA==,size_16,color_FFFFFF,t_70" alt=""></p>
+<h2 id="mongoose基础"><a href="#mongoose基础" class="headerlink" title="mongoose基础"></a>mongoose基础</h2><hr/>
+
+<h3 id="mongodb概念-amp-安装"><a href="#mongodb概念-amp-安装" class="headerlink" title="mongodb概念&amp;安装"></a>mongodb概念&amp;安装</h3><p>mongodb属于<code>非关系型</code>数据库，与<code>mysql</code>相对的（mysql是关系型数据库）</p>
+<p>mongodb里面没有 <code>table</code>表，只有 <code>Collections</code></p>
+<p>原本mysql一行叫做 <code>row</code>，而在mongodb中叫做 <code>document</code>，原本一列叫做 <code>cloumn</code>，而现在叫做 <code>fields</code></p>
+<p>windows 10 安装教程：</p>
+<p><a target="_blank" rel="noopener" href="https://www.runoob.com/mongodb/mongodb-window-install.html">推荐阅读：Windows 平台安装 MongoDB</a></p>
+<p><strong>注意</strong></p>
+<p>安装<code>Install MongoDB Compass</code> 不勾选，否则可能要很长时间都一直在执行安装，MongoDB Compass是一个图形界面管理工具，后面会去下载一个图形界面管理工具<code>Robo3T</code>。</p>
+<p>其它选项就默认选择 <code>next</code> 即可</p>
+<p>找到下面位置下的两个 <code>.exe</code> 都点击运行一下好了…  （启动服务应该是下面那一个）<br><img src= "/img/loading.gif" data-lazy-src="https://img-blog.csdnimg.cn/20200407135608794.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MjQyOTcxOA==,size_16,color_FFFFFF,t_70" alt=""></p>
+<p><strong>检测是否安装成功</strong></p>
+<p>访问：<a target="_blank" rel="noopener" href="http://127.0.0.1:27017/">http://127.0.0.1:27017/</a> 是否出现如下界面：</p>
+<p><img src= "/img/loading.gif" data-lazy-src="https://img-blog.csdnimg.cn/20200407135531155.png" alt=""></p>
+<h3 id="图形界面管理工具-Robo3T-安装与使用"><a href="#图形界面管理工具-Robo3T-安装与使用" class="headerlink" title="图形界面管理工具 Robo3T 安装与使用"></a>图形界面管理工具 <code>Robo3T</code> 安装与使用</h3><p><a target="_blank" rel="noopener" href="https://robomongo.org/">官网地址</a></p>
+<p><a target="_blank" rel="noopener" href="https://studio3t.com/download/">Studio windows下载地址</a></p>
+<p><a target="_blank" rel="noopener" href="https://robomongo.org/download">Robo 3T下载</a></p>
+<p>进入安装页面后选择 <code>easy</code> 版本 ，然后选择你喜欢的主题风格，是明亮还是黑暗风格</p>
+<p>进入图形化界面后，新建一个 <code>connection</code>，选择默认端口 <code>27017</code>，保存</p>
+<h3 id="mongoose-中文文档"><a href="#mongoose-中文文档" class="headerlink" title="mongoose 中文文档"></a>mongoose 中文文档</h3><p><a target="_blank" rel="noopener" href="https://xiaoxiami.gitbook.io/mongoose/">参考：mongoose 4.5中文文档</a></p>
+<p>在之前配置好的 Koa2 文件夹内（我的是koa2_learn文件夹） 打开 <code>bash</code> 界面，输入如下命令，安装 <code>mongoose</code></p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">npm i mongoose</span><br></pre></td></tr></table></figure>
+<h3 id="连接数据库"><a href="#连接数据库" class="headerlink" title="连接数据库"></a>连接数据库</h3><p><strong>接下来就是配置相关了</strong></p>
+<p>在项目根目录下创建 名为 <code>dbs</code> 的文件夹</p>
+<p><img src= "/img/loading.gif" data-lazy-src="https://img-blog.csdnimg.cn/2020040714493081.png" alt=""><br>新建一个 <code>config.js</code> 文件，配置如下代码</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">    dbs: <span class="string">&#x27;mongodb://127.0.0.1:27017/dbs&#x27;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在 <code>dbs</code> 目录下创建 名为 <code>models</code> 的文件夹<br><img src= "/img/loading.gif" data-lazy-src="https://img-blog.csdnimg.cn/20200407145636457.png" alt=""><br>新建一个 <code>person.js</code> 文件，配置如下代码（此时的文件名对应着之后我们的“表名”，也就是 <code>Collections</code>）</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> mongoose = <span class="built_in">require</span>(<span class="string">&#x27;mongoose&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">//创建模式 </span></span><br><span class="line"><span class="keyword">let</span> personSchema = <span class="keyword">new</span> mongoose.Schema(&#123;</span><br><span class="line">    name: <span class="built_in">String</span>,</span><br><span class="line">    age: <span class="built_in">Number</span></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">//创建模型</span></span><br><span class="line"><span class="built_in">module</span>.exports = mongoose.model(<span class="string">&#x27;Person&#x27;</span>,personSchema)</span><br></pre></td></tr></table></figure>
+<p>然后在 <code>app.js</code> 中进行导入</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> mongoose = <span class="built_in">require</span>(<span class="string">&#x27;mongoose&#x27;</span>)</span><br><span class="line"><span class="keyword">const</span> dbConfig = <span class="built_in">require</span>(<span class="string">&#x27;./dbs/config&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<p>在 <code>app.js</code> 默认注释 <code>routes</code> 后面，添加第三行连接代码</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// routes</span></span><br><span class="line">app.use(index.routes(), index.allowedMethods())</span><br><span class="line">app.use(users.routes(), users.allowedMethods())</span><br><span class="line">mongoose.connect(dbConfig.dbs,&#123;</span><br><span class="line">  useNewUrlParser:<span class="literal">true</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>基本配置就结束了，现在最好是重启一下koa服务，<code>ctrl+c</code> 退出，然后输入如下命令：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">npm run dev</span><br></pre></td></tr></table></figure>
+<p>出现如下界面，说明配置是没有问题的，连接成功！<br><img src= "/img/loading.gif" data-lazy-src="https://img-blog.csdnimg.cn/20200407151732459.png" alt=""><br>接下来就是尝试写一个api试试，在 <code>users.js</code> 文件内配置如下代码</p>
+<p>头部导入模型</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">//导入模型</span></span><br><span class="line"><span class="keyword">const</span> Person = <span class="built_in">require</span>(<span class="string">&#x27;../dbs/models/person&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<p>自定义api接口</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">router.post(<span class="string">&#x27;/addPerson&#x27;</span>,<span class="keyword">async</span> <span class="function"><span class="keyword">function</span>(<span class="params">ctx</span>)</span>&#123;</span><br><span class="line">  <span class="comment">//新建一个模型的实例</span></span><br><span class="line">  <span class="keyword">const</span> person = <span class="keyword">new</span> Person(&#123;</span><br><span class="line">    name: ctx.request.body.name,</span><br><span class="line">    age: ctx.request.body.age</span><br><span class="line">  &#125;)</span><br><span class="line">  <span class="keyword">let</span> code</span><br><span class="line">  <span class="keyword">try</span> &#123;</span><br><span class="line">    <span class="keyword">await</span> person.save()</span><br><span class="line">    code=<span class="number">0</span></span><br><span class="line">  &#125; <span class="keyword">catch</span> (error) &#123;</span><br><span class="line">    code=-<span class="number">1</span></span><br><span class="line">  &#125;</span><br><span class="line">  ctx.body=&#123;</span><br><span class="line">    code</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>调用接口。 <code>curl</code> 是一个shell 命令，  <code>-d</code>命令表示是 <code>post</code> 请求 ，接下来是数据项，最后是api接口地址</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">curl -d <span class="string">&#x27;name=chocolate&amp;age=20&#x27;</span> http:<span class="comment">//localhost:3000/users/addPerson</span></span><br></pre></td></tr></table></figure>
+<p><img src= "/img/loading.gif" data-lazy-src="https://img-blog.csdnimg.cn/20200407162123495.png" alt=""><br>此时，打开Robo 3T，刷新一下我们的数据库，就能发现多了一个 <code>dbs</code><br><img src= "/img/loading.gif" data-lazy-src="https://img-blog.csdnimg.cn/20200407162222285.png" alt=""><br>查看一下，是否有对应写入数据：<br><img src= "/img/loading.gif" data-lazy-src="https://img-blog.csdnimg.cn/2020040716231684.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MjQyOTcxOA==,size_16,color_FFFFFF,t_70" alt=""><br>上述过程，基本上把我们的后端服务和数据库进行了打通，后续我们只需要套着之前的例子来就好了，接下来再展示写一个api，因为上文是增加操作，也就是写操作，下文我们再来个读操作吧。</p>
+<p>依旧是在 <code>users.js</code> 中加入如下代码</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">//数据库读取api</span></span><br><span class="line">router.post(<span class="string">&#x27;/getPerson&#x27;</span>,<span class="keyword">async</span> <span class="function"><span class="keyword">function</span>(<span class="params">ctx</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">const</span> result = <span class="keyword">await</span> Person.findOne(&#123;<span class="attr">name</span>:ctx.request.body.name&#125;)</span><br><span class="line">  <span class="keyword">const</span> results = <span class="keyword">await</span> Person.find(&#123;<span class="attr">name</span>:ctx.request.body.name&#125;)</span><br><span class="line">  ctx.body = &#123;</span><br><span class="line">    code: <span class="number">0</span>,</span><br><span class="line">    result,</span><br><span class="line">    results</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>打开 <code>bash</code> ，执行如下命令：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">curl -d <span class="string">&#x27;name=chocolate&#x27;</span> http:<span class="comment">//localhost:3000/users/getPerson</span></span><br></pre></td></tr></table></figure>
+<p>发现，会返回给我们json数据包，证明api接口实现<br><img src= "/img/loading.gif" data-lazy-src="https://img-blog.csdnimg.cn/20200407171844176.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MjQyOTcxOA==,size_16,color_FFFFFF,t_70" alt=""><br>最后，附上更新和删除api，亲测有效嗷</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">//更新api</span></span><br><span class="line">router.post(<span class="string">&#x27;/updatePerson&#x27;</span>,<span class="keyword">async</span> <span class="function"><span class="keyword">function</span>(<span class="params">ctx</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">const</span> result = <span class="keyword">await</span> Person.where(&#123;</span><br><span class="line">    name:ctx.request.body.name</span><br><span class="line">  &#125;).update(&#123;</span><br><span class="line">    age: ctx.request.body.age</span><br><span class="line">  &#125;)</span><br><span class="line">  ctx.body = &#123;</span><br><span class="line">    code: <span class="number">0</span>,</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">//删除api</span></span><br><span class="line">router.post(<span class="string">&#x27;/removePerson&#x27;</span>,<span class="keyword">async</span> <span class="function"><span class="keyword">function</span>(<span class="params">ctx</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">const</span> result = <span class="keyword">await</span> Person.where(&#123;</span><br><span class="line">    name:ctx.request.body.name</span><br><span class="line">  &#125;).remove()</span><br><span class="line"></span><br><span class="line">  ctx.body = &#123;</span><br><span class="line">    code: <span class="number">0</span>,</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p><a target="_blank" rel="noopener" href="https://xiaoxiami.gitbook.io/mongoose/">更多知识点请参考：mongoose 4.5中文文档</a></p>
+<h2 id="Redis基础"><a href="#Redis基础" class="headerlink" title="Redis基础"></a>Redis基础</h2><hr/>
+
+<h3 id="cookie-和-session-引入"><a href="#cookie-和-session-引入" class="headerlink" title="cookie 和 session 引入"></a>cookie 和 session 引入</h3><p>这里就要扯到 <code>cookie</code> 和 <code>session</code>的相关知识点了，划重点啦！ </p>
+<p>服务端的程序如何去识别客户端的状态，大家知道，http是无状态的，<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_42429718/article/details/105264747">推荐阅读：如何学好前端，白嫖知识</a> </p>
+<p>比如现在有个用户A，它访问了服务器程序，那服务器程序如何知道下一次再访问的时候还是A呢？</p>
+<p>因此，对于这一块就要用到非常重要的概念，<code>session</code>，当然，这个<code>session</code>可不是浏览器的，<strong>而是服务器的</strong>，它是用来存储用户的信息的。</p>
+<p>那么，服务器的 <code>session</code>是如何保持在客户端呢？</p>
+<p>这个时候呢，又要引出另一个非常重要的概念，浏览器中的 <code>cookie</code> 。</p>
+<p>综上所述，<code>cookie</code> 和 <code>session</code> 的关系是：服务端用 <code>session</code> 来保存用户的状态，然后客户端用 <code>cookie</code> 来保存 <code>session</code> ，服务器端把 <code>session</code> 种植到 <code>cookie</code> 中，然后下次访问时，<code>cookie</code> 会携带着 <code>session</code> ，进而<strong>达到一个身份认证的效果</strong>。</p>
+<h3 id="redis概念-amp-安装"><a href="#redis概念-amp-安装" class="headerlink" title="redis概念&amp;安装"></a>redis概念&amp;安装</h3><p>上文我们知道了cookie 和 session 在浏览器和服务器端的作用，那么与我们<code>redis</code> 有什么关系呢？</p>
+<p>想一想，既然是认证的功能，那我们服务端的<code>session</code> 应该存在哪呢，也许你会想着放入服务器端存储，放入内存当中，这确实是一种方式，没有问题，但当应用程序很大的时候，<code>session</code> 容量特别大的时候呢？例如某宝这样的呢？此时内存肯定不够用了，这个时候就需要一个容器来存储大容量的 <code>session</code> 了，此时存储数据库 <code>redis</code>就发挥了它的作用了！</p>
+<p>关于数据库的话，上文也提到了<code>mongodb</code>，我们是不是也可以用这个呢？</p>
+<p>这个的话，虽然也是一种方式，但我们要考虑<strong>读写性能问题</strong>，因为 <code>redis</code>是<strong>快速读写类型的数据库</strong>，使用灵活方便，是 <code>key-value</code> 型的</p>
+<hr/>
+
+<p>为了更加了解<code>redis</code>，这里我就引用官方介绍了：</p>
+<ul>
+<li><p>REmote DIctionary Server(Redis) 是一个由Salvatore Sanfilippo写的key-value存储系统。</p>
+</li>
+<li><p>Redis是一个开源的使用ANSI C语言编写、遵守BSD协议、支持网络、可基于内存亦可持久化的日志型、Key-Value数据库，并提供多种语言的API。</p>
+</li>
+<li><p>它通常被称为数据结构服务器，因为值（value）可以是 字符串(String), 哈希(Hash), 列表(list), 集合(sets) 和 有序集合(sorted sets)等类型。</p>
+</li>
+</ul>
+<p><strong>安装教程</strong></p>
+<p><a target="_blank" rel="noopener" href="https://www.runoob.com/redis/redis-install.html">参考：redis安装教程</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/u012343297/article/details/78839063?depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-3&utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-3">参考：windows下Redis的安装和配置–图文教程</a></p>
+<p>在 <code>koa</code> 的 <code>bash</code>界面，执行如下命令，完成 <code>koa</code> 与 <code>redis</code> 的连接</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">npm i koa-generic-session koa-redis</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">redis-server.exe redis.windows.conf</span><br></pre></td></tr></table></figure>
+<h3 id="启动-redis-服务"><a href="#启动-redis-服务" class="headerlink" title="启动 redis 服务"></a>启动 redis 服务</h3><p>一、[9980] 21 Apr 02:57:05.611 # Creating Server TCP listening socket 127.0.0.1:6379: bind: No error</p>
+<p>解决方法：在命令行中运行</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">redis-cli.exe</span><br><span class="line"><span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">6379</span>&gt;shutdown</span><br></pre></td></tr></table></figure>
+<p>二、Redis (error) NOAUTH Authentication required.解决方法</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">6379</span>&gt;auth <span class="string">&quot;123456&quot;</span></span><br><span class="line"><span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">6379</span>&gt;shutdown</span><br><span class="line">not connected&gt;exit</span><br></pre></td></tr></table></figure>
+<p>然后重新运行 <code>redis-server.exe redis.windows.conf</code> ，启动成功！</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/sweetgirl520/article/details/79001056#commentBox">参考：Redis启动报错：Creating Server TCP listening socket 127.0.0.1:6379: bind: No error</a></p>
+<h2 id="Nuxt-js基础"><a href="#Nuxt-js基础" class="headerlink" title="Nuxt.js基础"></a>Nuxt.js基础</h2><hr/>
+
+<p>Nuxt.js 是一个基于Vue.js的通用应用框架，预设了利用Vue.js开发服务端渲染的应用所需要的各种配置。</p>
+<p>基于Vue 2做的，包括Vue-Router，支持Vuex、Vue Server Render、vue-meta</p>
+<p><img src= "/img/loading.gif" data-lazy-src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly91cGxvYWQtaW1hZ2VzLmppYW5zaHUuaW8vdXBsb2FkX2ltYWdlcy82NTUwMDk2LTc4NDVmMjgxYzg1NjVlNTAucG5n?x-oss-process=image/format,png#pic_center" alt=""></p>
+<h3 id="Nuxt-js工作流"><a href="#Nuxt-js工作流" class="headerlink" title="Nuxt.js工作流"></a>Nuxt.js工作流</h3><p>下图源自Nuxt官网，简单介绍一下它的工作流程</p>
+<p><a target="_blank" rel="noopener" href="https://nuxtjs.org/api">更多内容，请参考：nuxtjs 英文官方文档</a></p>
+<p><a target="_blank" rel="noopener" href="https://zh.nuxtjs.org/guide">参考：nuxtjs 中文文档</a><br><img src= "/img/loading.gif" data-lazy-src="https://img-blog.csdnimg.cn/20200407200805943.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MjQyOTcxOA==,size_16,color_FFFFFF,t_70" alt=""><br>从浏览器发出一个请求，到最终服务端渲染完成，关于Nuxt的生命周期如下：</p>
+<ul>
+<li><code>Incoming Request</code> 浏览器发送一个请求</li>
+<li>服务端检查是否有 <code>nuxtServerInit</code> 配置项，有的话就会执行这个函数，其中包含一个标注： <code>Store action</code> 用来操作 <code>vuex</code></li>
+<li>下一个环节就是中间件 <code>middleware</code> ，与路由相关，做任何你想要的功能</li>
+<li>预验证 <code>validate()</code> 可以配合高级动态路由，做一些验证，比如是否允许跳转某个页面</li>
+<li><code>asyncData() &amp; fetch()</code> 获取数据，前一个是用来渲染<code>vue component</code>，即 vue组件的，后一个通常用来修改 <code>vuex</code>，即 <code>Store</code>的</li>
+<li>有了数据，模板后，最后一步就是 <code>Render</code> 渲染了，方式是 <code>SSR</code></li>
+</ul>
+<h3 id="Nuxt-js-安装"><a href="#Nuxt-js-安装" class="headerlink" title="Nuxt.js 安装"></a>Nuxt.js 安装</h3><p>如果没有安装vue cli的话，先全局安装一下</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">npm/cnpm install -g @vue/cli-init</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">vue init nuxt-community/koa-template nuxt_learn（这里填入你自己的文件名）</span><br></pre></td></tr></table></figure>
+<p>安装完成后，依次执行如下命令</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">cd nuxt_learn</span><br><span class="line">npm install # Or yarn</span><br><span class="line">npm install --update-binary</span><br><span class="line">npm install ajv@^<span class="number">6</span>（可选项，如果有报warn，就装一下）</span><br><span class="line">npm run dev</span><br></pre></td></tr></table></figure>
+<p>如果安装过程网络有问题，报错了，可以试试用 <code>cnpm</code>或者</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">nrm use cnpm</span><br></pre></td></tr></table></figure>
+<p><strong>eslint版本问题：</strong> 需要更新eslint版本<br><img src= "/img/loading.gif" data-lazy-src="https://img-blog.csdnimg.cn/20200407212332515.png" alt=""><br>解决：执行如下代码：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">npm install eslint-plugin-html@^<span class="number">3</span></span><br></pre></td></tr></table></figure>
+<p>执行完如下步骤后，最后一步，打开服务：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">npm run dev</span><br></pre></td></tr></table></figure>
+<p><strong>babel编译版本有问题：</strong> 解决办法是升级<code>backpack-core@0.3.0</code>到<code>backpack-core@0.7.0</code></p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">npm install backpack-core@<span class="number">0.7</span><span class="number">.0</span> --save-dev</span><br></pre></td></tr></table></figure>
+<p>解决上述问题后，编译能成功，但是客户端依旧运行报错</p>
+<p>解决办法是：在<code>nuxt.config.js</code>里找到<code>eslint-loader</code>将<code>ctx.isClient</code>改成<code>ctx.Client</code>就可以运行了</p>
+<p><img src= "/img/loading.gif" data-lazy-src="https://img-blog.csdnimg.cn/20200408075951708.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MjQyOTcxOA==,size_16,color_FFFFFF,t_70" alt=""></p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/ITtt/p/10515456.html">参考：解决vue init nuxt-community/koa-template项目，安装报错问题</a></p>
+<p>解决完上述问题后，执行如下指令：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">npm run dev</span><br></pre></td></tr></table></figure>
+<p><img src= "/img/loading.gif" data-lazy-src="https://img-blog.csdnimg.cn/20200408082532970.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MjQyOTcxOA==,size_16,color_FFFFFF,t_70" alt=""></p>
+<p><img src= "/img/loading.gif" data-lazy-src="https://img-blog.csdnimg.cn/20200408082553312.png" alt=""><br>访问：<a target="_blank" rel="noopener" href="http://localhost:3000/">http://localhost:3000/</a>  出现如下界面，代表配置成功 ✿✿ヽ(°▽°)ノ✿</p>
+<p><img src= "/img/loading.gif" data-lazy-src="https://img-blog.csdnimg.cn/20200408082558408.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MjQyOTcxOA==,size_16,color_FFFFFF,t_70" alt=""><br>附：微信公众号：【小狮子前端】 回复【nuxt-learn】即可获取本节源码</p>
+<h3 id="知识拓展"><a href="#知识拓展" class="headerlink" title="知识拓展"></a>知识拓展</h3><p>当使用 <code>SSR</code> 时， <code>mounted</code> 只在浏览器端渲染，而<strong>在服务器端不会渲染</strong> ：浏览器通过axios请求的数据，只有 <code>created</code> 在开启SSR时会执行。</p>
+<p>SSR原理：① 服务器端将编译好的内容（模板）下发（包括样式、内容、数据）  ② 把异步获取的数据响应给浏览器端（把交互交给浏览器来完成）</p>
+<p><strong>SSR原理深入</strong></p>
+<p>我们打开页面源代码，查看一下：<br><img src= "/img/loading.gif" data-lazy-src="https://img-blog.csdnimg.cn/20200408105343967.png" alt=""><br>服务器端渲染完页面后给浏览器端的html分了几个部分，第一个是样式 <code>style</code> ，第二个是模板内容，例如上图中圈中的<font color=blue>蓝色</font>部分，第三个是服务端拿到的数据结果，例如上图中圈中的<font color=red>红色</font>部分，为什么服务端拿到的数据给到浏览器端呢？<br>这里我们得思考一个<font color=red><strong>SSR的工作原理</strong></font> 了</p>
+<p>如果不给数据的话，就是一个静态html模板，一个<strong>静态的内容</strong>，没有任何交互，那交互是在哪完成的呢？</p>
+<p>交互是在浏览器端完成的，也就是说浏览器端会有一个入口，进行预编译，但不会再渲染页面了，因为服务器端已经在页面渲染过一次了。<strong>它要做的是创建一个虚拟的编译结果（可以理解为虚拟dom），</strong> 和服务器端传过来的结果进行对比，如果有区别，它会重新请求数据。在nuxt项目中都是一套文件，没有特别指定是在浏览器端运行还是服务端运行，也就是SSR常说的<strong>同构</strong>，浏览器端编译虚拟dom，也依赖于 <code>vue</code> 文件，因此模板是有的，而编译这个dom，需要的是额外的数据，此数据是服务器端渲染之前请求而来的数据，如果数据不同步在浏览器端，<strong>编译出来的结果必然和服务器端编译结果不一致</strong>。 </p>
+<p>综上，<strong>服务器端异步获取的数据会同步在浏览器端</strong>，作对比，如果对比一致的话，浏览器端就会对对应的dom结点注册事件，达到交互作用。</p>
+<p><a target="_blank" rel="noopener" href="https://nuxtjs.org/api">更多内容，请参考：nuxtjs 英文官方文档</a></p>
+<p><a target="_blank" rel="noopener" href="https://zh.nuxtjs.org/guide">参考：nuxtjs 中文文档</a></p>
+<p><font color=chocolate>以上，就是我们项目搭建所需的基础知识啦，已经整理完结啦，当然还有许多地方没有提及，读者可以去查阅一些官方文档来补充更多知识，下文我们将逐步深入全栈开发过程记录，制作不易，点赞收藏评论，一键三连一波~</font></p>
+<h2 id="项目搭建开始"><a href="#项目搭建开始" class="headerlink" title="项目搭建开始"></a>项目搭建开始</h2><hr/>
+
+
+
+<h2 id="配置环境"><a href="#配置环境" class="headerlink" title="配置环境"></a>配置环境</h2><ul>
+<li>node</li>
+<li>vue</li>
+<li>npm</li>
+<li>webpack</li>
+<li>nuxt</li>
+</ul>
+<h3 id="创建项目"><a href="#创建项目" class="headerlink" title="创建项目"></a>创建项目</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">npm install -g npx</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">npx create-nuxt-app loveVueApp</span><br></pre></td></tr></table></figure>
+<p>使用 <code>npx</code> 可以帮助我们更快速的搭建项目环境，在你需要创建项目文件夹的地方 <code>shift+鼠标右键</code> 打开 <code>powershell</code> 窗口，执行上述命令，然后按照下列图片选择对应的模块：</p>
+<p><img src= "/img/loading.gif" data-lazy-src="https://img-blog.csdnimg.cn/20200408131621565.png" alt=""><br><img src= "/img/loading.gif" data-lazy-src="https://img-blog.csdnimg.cn/20200408131631954.png" alt=""><br><img src= "/img/loading.gif" data-lazy-src="https://img-blog.csdnimg.cn/20200408131650677.png" alt=""></p>
+<p><img src= "/img/loading.gif" data-lazy-src="https://img-blog.csdnimg.cn/20200408131703632.png" alt=""><br><img src= "/img/loading.gif" data-lazy-src="https://img-blog.csdnimg.cn/2020040813172024.png" alt=""></p>
+<p><img src= "/img/loading.gif" data-lazy-src="https://img-blog.csdnimg.cn/20200408131730286.png" alt=""><br><img src= "/img/loading.gif" data-lazy-src="https://img-blog.csdnimg.cn/20200408131810561.png" alt=""><br><img src= "/img/loading.gif" data-lazy-src="https://img-blog.csdnimg.cn/20200408131823305.png" alt=""><br><img src= "/img/loading.gif" data-lazy-src="https://img-blog.csdnimg.cn/20200408131845331.png" alt=""><br>安装完成后，会提示你执行如下命令：</p>
+<p>这里我们就执行开发环境的指令就好了</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">cd loveVueApp</span><br><span class="line">npm run dev</span><br></pre></td></tr></table></figure>
+<p>另附上，生产环境的指令：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">cd loveVueApp</span><br><span class="line">npm run build</span><br><span class="line">npm run start</span><br></pre></td></tr></table></figure>
+<p>访问：<a target="_blank" rel="noopener" href="http://localhost:3000/">http://localhost:3000/</a> 会有一个nuxtjs的图标出现，代表环境搭配成功 ✿✿ヽ(°▽°)ノ✿</p>
+<p>此时，再 <code>ctrl+c</code> 退出当前服务</p>
+<p>执行如下命令，重新安装一下，防止版本问题等</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">npm install  --update-binary</span><br></pre></td></tr></table></figure>
+<p>重装之后，再跑一次服务，看能不能打开界面</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">npm run dev</span><br></pre></td></tr></table></figure>
+<h3 id="增加-babel-node-处理（使用ES6的import指令问题）"><a href="#增加-babel-node-处理（使用ES6的import指令问题）" class="headerlink" title="增加 babel-node 处理（使用ES6的import指令问题）"></a>增加 babel-node 处理（使用ES6的import指令问题）</h3><p>创建好我们的基本项目后，我们还需要对我们所需要的模块进行更改。</p>
+<p>例如，对应目标文件的第一行代码：<br><img src= "/img/loading.gif" data-lazy-src="https://img-blog.csdnimg.cn/20200408154705542.png" alt=""><br>改为如下代码</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> Koa  <span class="keyword">from</span> <span class="string">&#x27;koa&#x27;</span></span><br></pre></td></tr></table></figure>
+<p>于是，就会出现报错，无法识别<br><img src= "/img/loading.gif" data-lazy-src="https://img-blog.csdnimg.cn/20200408154830122.png" alt=""></p>
+<p>在上文讲解 <code>nuxtjs</code>基础 我们是可以直接用 <code>import</code> 操作的，但当我们使用官方脚手架时，是没有处理这个 <code>bug</code> 的。下面来解释一下为什么会出现这个问题：</p>
+<p>当我们使用命令 <code>npm run dev</code> 的时候，其实是用了 <code>npm</code> 的 <code>script</code> 的方法，如下图所示：</p>
+<p><img src= "/img/loading.gif" data-lazy-src="https://img-blog.csdnimg.cn/20200408155247326.png" alt=""></p>
+<p>可见使用了 <code>node</code>，并且不支持 <code>import</code> 操作，上文是因为使用了 <code>babel</code> 进行了处理，在这里官方脚手架时使用 <code>node</code> 来启动服务，没有经过 <code>babel</code> 处理，因此就不会识别 <code>import</code> 指令了。</p>
+<p><strong>解决上述问题</strong></p>
+<p>上文提到了是因为没有 <code>babel</code>处理，执行服务程序，那就自己加上去咯，具体如下：</p>
+<p>在 <code>dev</code> 和 <code>start</code> 后面添加 <code>--exec babel-node</code></p>
+<p>或者直接使用下面代码覆盖你的 <code>scripts</code></p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="string">&quot;scripts&quot;</span>: &#123;</span><br><span class="line">    <span class="string">&quot;dev&quot;</span>: <span class="string">&quot;cross-env NODE_ENV=development nodemon server/index.js --watch server --exec babel-node&quot;</span>,</span><br><span class="line">    <span class="string">&quot;build&quot;</span>: <span class="string">&quot;nuxt build&quot;</span>,</span><br><span class="line">    <span class="string">&quot;start&quot;</span>: <span class="string">&quot;cross-env NODE_ENV=production node server/index.js --exec babel-node&quot;</span>,</span><br><span class="line">    <span class="string">&quot;generate&quot;</span>: <span class="string">&quot;nuxt generate&quot;</span></span><br><span class="line">  &#125;,</span><br></pre></td></tr></table></figure>
+<p>然后，在根目录下创建一个 <code>.babelrc</code> 的配置文件，然后给它指定一个指令集</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="string">&quot;presets&quot;</span>:[<span class="string">&quot;es2015&quot;</span>]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>有了代码还不行，还要再安装插件，执行如下命令</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">npm install babel-preset-es2015</span><br><span class="line">npm install babel-cli -S</span><br></pre></td></tr></table></figure>
+<p>好了，有了 <code>babel-node</code> 后我们就能启动服务程序了，改成了我们常用的 <code>ES6</code>语法了</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">npm run dev</span><br></pre></td></tr></table></figure>
+<p>访问：<a target="_blank" rel="noopener" href="http://localhost:3000/">http://localhost:3000/</a> 会有一个nuxtjs的图标出现，代表环境搭配成功 ✿✿ヽ(°▽°)ノ✿</p>
+<h3 id="解决-sass-导致编译出错问题"><a href="#解决-sass-导致编译出错问题" class="headerlink" title="解决 sass 导致编译出错问题"></a>解决 sass 导致编译出错问题</h3><p>这个问题也依旧是脚手架带来的问题，解决方式就是安装几个插件，执行命令如下：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">npm install sass-loader node-sass</span><br></pre></td></tr></table></figure>
+<p>PS：可能会有下述 <code>warn</code></p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">npm install eslint@^(版本号)  <span class="comment">//（注意，这里是当你出现对应warn才执行）</span></span><br></pre></td></tr></table></figure>
+<p>我的是这种警告，因此依葫芦画瓢，执行下述命令<br><img src= "/img/loading.gif" data-lazy-src="https://img-blog.csdnimg.cn/20200408162852228.png" alt=""></p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">npm install sass@^<span class="number">1.3</span><span class="number">.0</span> fibers@&gt;= <span class="number">3.1</span><span class="number">.0</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="辅助工具安装"><a href="#辅助工具安装" class="headerlink" title="辅助工具安装"></a>辅助工具安装</h3><ul>
+<li>MongoDB</li>
+<li>redis</li>
+<li>Robo 3T</li>
+</ul>
+<p>（上文基础部分有介绍安装教程，可以往回看一看对应模块 ↑）</p>
+<h2 id="远程仓库常用指令（整理）"><a href="#远程仓库常用指令（整理）" class="headerlink" title="远程仓库常用指令（整理）"></a>远程仓库常用指令（整理）</h2><ul>
+<li><p>查看分支：<code>git branch</code></p>
+</li>
+<li><p>查看项目的分支们(包括本地和远程) <code>git branch -a</code></p>
+</li>
+<li><p>创建分支：<code>git branch &lt;name&gt;</code></p>
+</li>
+<li><p>切换分支：<code>git checkout &lt;name&gt;</code></p>
+</li>
+<li><p>创建+切换分支：<code>git checkout -b &lt;name&gt;</code></p>
+</li>
+<li><p>合并某分支到当前分支：<code>git merge &lt;name&gt;</code></p>
+</li>
+<li><p>提交 git commit -m ‘简介’</p>
+</li>
+<li><p>git push -u origin master</p>
+</li>
+</ul>
+<h2 id="首页开发"><a href="#首页开发" class="headerlink" title="首页开发"></a>首页开发</h2><h3 id="需求分析"><a href="#需求分析" class="headerlink" title="需求分析"></a>需求分析</h3><ul>
+<li>模板设计（解决复用问题）</li>
+</ul>
+<p><img src= "/img/loading.gif" data-lazy-src="https://img-blog.csdnimg.cn/2020040817250239.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MjQyOTcxOA==,size_16,color_FFFFFF,t_70" alt=""></p>
+<ul>
+<li>组件设计（如何拆分组件）</li>
+</ul>
+<p><img src= "/img/loading.gif" data-lazy-src="https://img-blog.csdnimg.cn/20200408174830905.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MjQyOTcxOA==,size_16,color_FFFFFF,t_70" alt=""><br><strong>如何节省网络请求？</strong></p>
+<p>上述流程图共进行了两次请求，另外，异步获取数据时，还会有<code>闪一下</code>，影响用户体验，同时浪费一次网络请求。解决办法就是当浏览器去请求服务器的时候，当浏览器去请求文档的时候，服务端 <code>ip</code>已经知道了，那个时候就可以拿到对应的城市，立即返回数据给浏览器。做法就是通过 <code>vuex</code> 来同步状态，然后通过 <code>SSR</code> 异步请求就能得到数据。</p>
+<p><img src= "/img/loading.gif" data-lazy-src="https://img-blog.csdnimg.cn/2020040818365254.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MjQyOTcxOA==,size_16,color_FFFFFF,t_70" alt=""><br>类似于上文流程图，也是可以通过 <code>vuex</code> 来做<br><img src= "/img/loading.gif" data-lazy-src="https://img-blog.csdnimg.cn/20200408183829795.png" alt=""><br>属于静态模块，不需要我们异步获取数据，直接用 <code>SSR</code> 下发一下就ok。</p>
+<ul>
+<li>数据结构设计（依赖于数据和组件）</li>
+</ul>
+<p><img src= "/img/loading.gif" data-lazy-src="https://img-blog.csdnimg.cn/20200409171816616.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MjQyOTcxOA==,size_16,color_FFFFFF,t_70" alt=""><br><code>pois表</code>  <strong>城市推荐数据库</strong><br><img src= "/img/loading.gif" data-lazy-src="https://img-blog.csdnimg.cn/20200409171908774.png" alt=""></p>
+<ul>
+<li>接口设计（与数据结构相对应）</li>
+</ul>
+<p><img src= "/img/loading.gif" data-lazy-src="https://img-blog.csdnimg.cn/20200409172047435.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MjQyOTcxOA==,size_16,color_FFFFFF,t_70" alt=""></p>
+<h3 id="首页开发Header-城市定位服务设计"><a href="#首页开发Header-城市定位服务设计" class="headerlink" title="首页开发Header-城市定位服务设计"></a>首页开发Header-城市定位服务设计</h3><p>根据 <code>Header</code> 布局情况来看的话，我们在<code>components</code>文件夹下创建如下几个文件夹和文件（水印遮住的是 <code>README</code>）</p>
+<p><img src= "/img/loading.gif" data-lazy-src="https://img-blog.csdnimg.cn/20200408192534453.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MjQyOTcxOA==,size_16,color_FFFFFF,t_70" alt=""></p>
+<p>导入css，然后打开 <code>nuxt.config.js</code> 进行配置<br><img src= "/img/loading.gif" data-lazy-src="https://img-blog.csdnimg.cn/20200408191205311.png" alt=""></p>
+<h2 id="项目开发可能遇到问题"><a href="#项目开发可能遇到问题" class="headerlink" title="项目开发可能遇到问题"></a>项目开发可能遇到问题</h2><hr/>
+
+<p><strong><font color=red>重要提醒！</font></strong></p>
+<p>本篇文章能详细概述的地方有限，所以下文将会以讲重点部分为主，其余部分请参考本参考源码，已经开放，开发过程中按照分支进行开发，然后合并到 <code>master</code> 分支</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/Chocolate1999/Vue-family-bucket-SSR-Koa2-full-stack-development-from-Meituan">仓库の传送门（戳一戳）</a></p>
+<p>收藏 <code>star</code> 一波，✿✿ヽ(°▽°)ノ✿</p>
+<h3 id="关于项目中SMTP服务功能配置问题"><a href="#关于项目中SMTP服务功能配置问题" class="headerlink" title="关于项目中SMTP服务功能配置问题"></a>关于项目中SMTP服务功能配置问题</h3><p>如下图，所示，我们首先登陆自己的QQ，打开邮箱，然后去打开下面两项服务<br><img src= "/img/loading.gif" data-lazy-src="https://img-blog.csdnimg.cn/20200409181256509.png" alt=""><br>在  <code>server/dbs/config.js</code> 文件内更改为你自己的授权密钥和邮箱即可<br><img src= "/img/loading.gif" data-lazy-src="https://img-blog.csdnimg.cn/20200409182212470.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MjQyOTcxOA==,size_16,color_FFFFFF,t_70" alt=""></p>
+<p><strong>引入 mongoose</strong></p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">npm install mongoose</span><br></pre></td></tr></table></figure>
+<p>配置 <code>users</code> 接口</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">npm install koa-router koa-redis nodemailer</span><br></pre></td></tr></table></figure>
+<p>配置 <code>axios</code></p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">npm install axios</span><br></pre></td></tr></table></figure>
+<p>配置 <code>passport</code></p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">npm install koa-passport passport-local</span><br></pre></td></tr></table></figure>
+<h3 id="关于项目中登录注册接口问题"><a href="#关于项目中登录注册接口问题" class="headerlink" title="关于项目中登录注册接口问题"></a>关于项目中登录注册接口问题</h3><p><code>passport</code> 包内有 <code>isAuthenticated()</code>方法，因此在文档源码中没有定义过。</p>
+<p><code>passport</code>会把用户的信息对象放到 <code>session</code> 对象里面去，也就是 <code>passport</code> 会存储在 <code>session</code> 中，例如如下，如果是登录状态的话，那么session会有 <code>passport</code>，而 <code>passport</code> 会有 <code>user</code></p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"> <span class="comment">//判断是否是登录状态</span></span><br><span class="line"><span class="keyword">if</span> (ctx.isAuthenticated()) &#123;</span><br><span class="line">  <span class="keyword">const</span> &#123;username, email&#125; = ctx.session.passport.user</span><br><span class="line">  ctx.body=&#123;</span><br><span class="line">    user:username,</span><br><span class="line">    email</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>users.js</li>
+</ul>
+<h3 id="server文件夹-index-js文件中-加载相关包"><a href="#server文件夹-index-js文件中-加载相关包" class="headerlink" title="server文件夹 index.js文件中 加载相关包"></a>server文件夹 index.js文件中 加载相关包</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> mongoose <span class="keyword">from</span> <span class="string">&#x27;mongoose&#x27;</span></span><br><span class="line"><span class="keyword">import</span> bodyParser <span class="keyword">from</span> <span class="string">&#x27;koa-bodyparser&#x27;</span></span><br><span class="line"><span class="keyword">import</span> session <span class="keyword">from</span> <span class="string">&#x27;koa-generic-session&#x27;</span></span><br><span class="line"><span class="keyword">import</span> Redis <span class="keyword">from</span> <span class="string">&#x27;koa-redis&#x27;</span></span><br><span class="line"><span class="keyword">import</span> json <span class="keyword">from</span> <span class="string">&#x27;koa-json&#x27;</span></span><br><span class="line"><span class="keyword">import</span> dbConfig <span class="keyword">from</span> <span class="string">&#x27;./dbs/config&#x27;</span></span><br><span class="line"><span class="keyword">import</span> passport <span class="keyword">from</span> <span class="string">&#x27;./interface/utils/passport&#x27;</span></span><br><span class="line"><span class="keyword">import</span> users <span class="keyword">from</span> <span class="string">&#x27;./interface/users&#x27;</span></span><br><span class="line"><span class="keyword">import</span> geo <span class="keyword">from</span> <span class="string">&#x27;./interface/geo&#x27;</span></span><br><span class="line"><span class="keyword">import</span> search <span class="keyword">from</span> <span class="string">&#x27;./interface/search&#x27;</span></span><br><span class="line"><span class="keyword">import</span> categroy <span class="keyword">from</span> <span class="string">&#x27;./interface/categroy&#x27;</span></span><br><span class="line"><span class="keyword">import</span> cart <span class="keyword">from</span> <span class="string">&#x27;./interface/cart&#x27;</span></span><br></pre></td></tr></table></figure>
+<p>加载指令：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">npm install mongoose koa-bodyparser koa-generic-session koa-redis koa-json</span><br></pre></td></tr></table></figure>
+<h3 id="Cannot-read-property-‘post’-of-undefined-问题解决"><a href="#Cannot-read-property-‘post’-of-undefined-问题解决" class="headerlink" title="Cannot read property ‘post’ of undefined 问题解决"></a>Cannot read property ‘post’ of undefined 问题解决</h3><p>注册那一个模块那里，我一点发送验证码，然后就报了这个错误，一开始以为接口写错了，还测试了一下，原来是因为 <code>axios</code> 没有在 <code>nuxt</code> 脚手架中配置</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">Cannot read property <span class="string">&#x27;name&#x27;</span> <span class="keyword">of</span> <span class="literal">undefined</span></span><br></pre></td></tr></table></figure>
+
+<p><code>nuxt.config.js</code> 文件中配置如下：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  modules: [</span><br><span class="line">    <span class="string">&#x27;@nuxtjs/axios&#x27;</span>,</span><br><span class="line">  ],</span><br><span class="line"></span><br><span class="line">  axios: &#123;</span><br><span class="line">    <span class="comment">// proxyHeaders: false</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>解决之后，发送验证码，如下结果，有邮件发送过来 ✿✿ヽ(°▽°)ノ✿<br><img src= "/img/loading.gif" data-lazy-src="https://img-blog.csdnimg.cn/20200410101314585.png" alt=""></p>
+<h3 id="关于-win10-redis-报错-Permission-denied"><a href="#关于-win10-redis-报错-Permission-denied" class="headerlink" title="关于 win10 redis 报错 Permission denied"></a>关于 win10 redis 报错 Permission denied</h3><p>同样也是注册页面，当我们注册后，点击同意协议并注册，发现无法跳转到登录界面，而提示 <code>已注册</code> ，看了半天，提示服务错误，于是一开打redis命令窗，报了这个错误，原来是默认设置了<strong>只可读不可写</strong>，按如下方式增加权限，解决了问题 ✿✿ヽ(°▽°)ノ✿</p>
+<p>解决：去Redis的rdb文件查看文件属性，增加写入权限<br><img src= "/img/loading.gif" data-lazy-src="https://img-blog.csdnimg.cn/20200410111551414.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MjQyOTcxOA==,size_16,color_FFFFFF,t_70" alt=""><br><a target="_blank" rel="noopener" href="https://blog.csdn.net/u010049198/article/details/89715009">参考：Redis在Windows下的坑</a></p>
+<h3 id="关于win10-mongodb-导入-bat文件问题"><a href="#关于win10-mongodb-导入-bat文件问题" class="headerlink" title="关于win10 mongodb 导入.bat文件问题"></a>关于win10 mongodb 导入.bat文件问题</h3><p>网上说用如下指令，但是我还是没有导入成功，说是不存在这指令，但之前数据库都导入了 <code>users</code></p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">mongoimport -d student -c areas areas.dat</span><br></pre></td></tr></table></figure>
+<p>于是，我就打开了 <code>Studio 3T</code> 来试着导入，还算是成功了吧</p>
+<p><img src= "/img/loading.gif" data-lazy-src="https://img-blog.csdnimg.cn/20200410115105370.png" alt=""><br>我的做法是直接在左边那个 <code>Collections</code> 文件夹直接右键 选择 <code>Add</code> 操作，然后导入 <code>.dat</code>文件，不过导完之后会有后缀出现，于是我就重命名了一下。虽然看起来有点傻傻的做法，但也算是解决了吧 ✿✿ヽ(°▽°)ノ✿<br><img src= "/img/loading.gif" data-lazy-src="https://img-blog.csdnimg.cn/20200410115134385.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MjQyOTcxOA==,size_16,color_FFFFFF,t_70" alt=""></p>
+<h3 id="关于-geo服务-接口签名"><a href="#关于-geo服务-接口签名" class="headerlink" title="关于 geo服务 接口签名"></a>关于 geo服务 接口签名</h3><p><a target="_blank" rel="noopener" href="http://cp-tools.cn/sign">http://cp-tools.cn/sign</a></p>
+<h3 id="关于定位服务及切换城市-geo-bug解决"><a href="#关于定位服务及切换城市-geo-bug解决" class="headerlink" title="关于定位服务及切换城市 geo bug解决"></a>关于定位服务及切换城市 geo bug解决</h3><p>在城市定位  <code>geo</code> 分支那里，报了如下两个错误，可让我焦头烂额啊，终于，找到了解决办法，特来写此模块，记录一下 ✿✿ヽ(°▽°)ノ✿</p>
+<p><font color=red>① 报错Classic mode for store/ is deprecated and will be removed in Nuxt 3.</font></p>
+<p><font color=red>② Error occurred when calling nuxtServerInit:  socket hang up</font></p>
+<p>对<strong>第一个问题</strong>出现这种错误的原因是：nuxt3版本中已经移除了对原始vuex这种编程，出现这种错误的代码如下：</p>
+<p>解决的办法如下： store 目录下的每个 .js 文件会被转换成为状态树指定命名的子模块 （当然，index 是根模块）。</p>
+<p>（以下代码亲测有效，直接覆盖你的代码即可）</p>
+<p>首先是目录结构修改，最新版的已经不需要另外加一个 <code>models</code> 文件夹了。</p>
+<p><img src= "/img/loading.gif" data-lazy-src="https://img-blog.csdnimg.cn/20200410192219410.png" alt=""></p>
+<p><code>index.js</code> 文件：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> actions = &#123;</span><br><span class="line">  <span class="keyword">async</span> nuxtServerInit(&#123;</span><br><span class="line">    commit</span><br><span class="line">  &#125;,&#123;req,app&#125;) &#123;</span><br><span class="line">    <span class="keyword">const</span> &#123;status,<span class="attr">data</span>: &#123;province,city&#125;&#125; = <span class="keyword">await</span> app.$axios.get(<span class="string">&#x27;/geo/getPosition&#x27;</span>)</span><br><span class="line">    commit(<span class="string">&#x27;geo/setPosition&#x27;</span>,status===<span class="number">200</span>?&#123;city,province&#125;:&#123;<span class="attr">city</span>:<span class="string">&#x27;&#x27;</span>,<span class="attr">province</span>:<span class="string">&#x27;&#x27;</span>&#125;)      </span><br><span class="line">    <span class="keyword">const</span> &#123;<span class="attr">status</span>:status2, <span class="attr">data</span>: &#123;menu&#125;&#125; = <span class="keyword">await</span> app.$axios.get(<span class="string">&#x27;/geo/menu&#x27;</span>)</span><br><span class="line">    commit(<span class="string">&#x27;home/setMenu&#x27;</span>,status2===<span class="number">200</span>?menu:[])</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>geo.js</code> 文件无需修改</p>
+<p>对<strong>第二个问题</strong>，多半是因为你写好的 <code>geo</code> 相关接口没有在<code>serve/index.js</code>中进行导入和配置使用（我就是因为这个）</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> geo <span class="keyword">from</span> <span class="string">&#x27;./utils/geo&#x27;</span></span><br><span class="line">app.use(geo.routes()).use(geo.allowedMethods())</span><br></pre></td></tr></table></figure>
+<p>具体导入位置如下：</p>
+<p><img src= "/img/loading.gif" data-lazy-src="https://img-blog.csdnimg.cn/20200410192529985.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MjQyOTcxOA==,size_16,color_FFFFFF,t_70" alt=""></p>
+<p><img src= "/img/loading.gif" data-lazy-src="https://img-blog.csdnimg.cn/20200410192546969.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MjQyOTcxOA==,size_16,color_FFFFFF,t_70" alt=""></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/Umbrella_Um/article/details/99711310">参考：美团项目 — 定位服务及切换城市5</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_44638823/article/details/103546428?depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-2&utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-2">参考：nuxtjs中使用SSR开发关于前端vuex请求后台的问题</a></p>
+<h3 id="关于搜索框请求次数问题"><a href="#关于搜索框请求次数问题" class="headerlink" title="关于搜索框请求次数问题"></a>关于搜索框请求次数问题</h3><p>我们当然不能没输入一个字符，就请求一次接口，因此我们需要弄一个延时函数</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">npm install lodash</span><br></pre></td></tr></table></figure>
+<p>引入库</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> _ <span class="keyword">from</span> <span class="string">&#x27;lodash&#x27;</span></span><br></pre></td></tr></table></figure>
+<h3 id="关于切换城市模块优化与实现"><a href="#关于切换城市模块优化与实现" class="headerlink" title="关于切换城市模块优化与实现"></a>关于切换城市模块优化与实现</h3><p>首先明确一载入切换城市界面，哪个是要进行请求的，那就是省份（第一级），此时可以使用ssr进行服务端渲染，页面载入后也跟着进行载入，但这里就直接使用vue中的Mouted生命函数完成这里的axios请求 ↓</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">mounted: <span class="keyword">async</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> self = <span class="built_in">this</span>;</span><br><span class="line">    <span class="keyword">let</span> &#123;</span><br><span class="line">      status,</span><br><span class="line">      data: &#123; province &#125;</span><br><span class="line">    &#125; = <span class="keyword">await</span> self.$axios.get(<span class="string">&quot;/geo/province&quot;</span>);</span><br><span class="line">    <span class="keyword">if</span> (status === <span class="number">200</span>) &#123;</span><br><span class="line">      self.province = province.map(<span class="function"><span class="params">item</span> =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> &#123;</span><br><span class="line">          value: item.id,</span><br><span class="line">          label: item.name</span><br><span class="line">        &#125;;</span><br><span class="line">      &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<p>联动逻辑，使用watch监听用户选择了什么省份</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">//监听pvalue值，当省份发生改变的时候，可选城市也要跟着改变（联动）</span></span><br><span class="line">watch:&#123;</span><br><span class="line">  pvalue:<span class="keyword">async</span> <span class="function"><span class="keyword">function</span>(<span class="params">newPvalue</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">let</span> self=<span class="built_in">this</span>;</span><br><span class="line">    <span class="keyword">let</span> &#123;status,<span class="attr">data</span>:&#123;city&#125;&#125;=<span class="keyword">await</span> self.$axios.get(<span class="string">`/geo/province/<span class="subst">$&#123;newPvalue&#125;</span>`</span>)</span><br><span class="line">    <span class="keyword">if</span>(status===<span class="number">200</span>)&#123;</span><br><span class="line">      self.city=city.map(<span class="function"><span class="params">item</span>=&gt;</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> &#123;</span><br><span class="line">          value:item.id,</span><br><span class="line">          label:item.name</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;)</span><br><span class="line">      self.cvalue=<span class="string">&#x27;&#x27;</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+<p>注意select下拉框的设计，如果你不设置 <code>label</code> 显示的还是 <code>value</code> 的值，但是如果你设置了 <code>label</code> 那输入框显示的就是 <code>label</code> 的值，但是你 <code>v-model</code> 拿的还是你 <code>value</code> 的值，所以在省份中复制也是将 <code>id</code> 赋值给 <code>value</code> 的，所以参数正确！<br>会二级联动，三级联动还会难吗？毕竟现在你只需要重点思考逻辑上的代码，而 <code>DOM</code> 结构E-UI已经随随便便完成了，只剩下你关联他们的代码而已</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/Umbrella_Um/article/details/100191306">参考：美团项目 — 切换城市 7</a></p>
+<h2 id="通过项目挖掘知识点（整理）"><a href="#通过项目挖掘知识点（整理）" class="headerlink" title="通过项目挖掘知识点（整理）"></a>通过项目挖掘知识点（整理）</h2><h3 id="koa2中的ctx是什么？"><a href="#koa2中的ctx是什么？" class="headerlink" title="koa2中的ctx是什么？"></a>koa2中的ctx是什么？</h3><p>为了试图搞明白，用console.log将它输出</p>
+<figure class="highlight objectivec"><table><tr><td class="code"><pre><span class="line">&#123; request:</span><br><span class="line">   &#123; method: <span class="string">&#x27;GET&#x27;</span>,</span><br><span class="line">     url: <span class="string">&#x27;/&#x27;</span>,</span><br><span class="line">     header:</span><br><span class="line">      &#123; host: <span class="string">&#x27;localhost:3000&#x27;</span>,</span><br><span class="line">        connection: <span class="string">&#x27;keep-alive&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;cache-control&#x27;</span>: <span class="string">&#x27;max-age=0&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;upgrade-insecure-requests&#x27;</span>: <span class="string">&#x27;1&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;user-agent&#x27;</span>: <span class="string">&#x27;Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36&#x27;</span>,</span><br><span class="line">        accept: <span class="string">&#x27;text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;accept-encoding&#x27;</span>: <span class="string">&#x27;gzip, deflate, sdch, br&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;accept-language&#x27;</span>: <span class="string">&#x27;zh-CN,zh;q=0.8&#x27;</span> &#125; &#125;,</span><br><span class="line">  response:</span><br><span class="line">   &#123; status: <span class="number">200</span>,</span><br><span class="line">     message: <span class="string">&#x27;OK&#x27;</span>,</span><br><span class="line">     header:</span><br><span class="line">      &#123; <span class="string">&#x27;content-type&#x27;</span>: <span class="string">&#x27;text/plain; charset=utf-8&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;content-length&#x27;</span>: <span class="string">&#x27;25&#x27;</span> &#125; &#125;,</span><br><span class="line">  app: &#123; subdomainOffset: <span class="number">2</span>, proxy: <span class="literal">false</span>, env: <span class="string">&#x27;development&#x27;</span> &#125;,</span><br><span class="line">  originalUrl: <span class="string">&#x27;/&#x27;</span>,</span><br><span class="line">  req: <span class="string">&#x27;&lt;original node req&gt;&#x27;</span>,</span><br><span class="line">  res: <span class="string">&#x27;&lt;original node res&gt;&#x27;</span>,</span><br><span class="line">  socket: <span class="string">&#x27;&lt;original node socket&gt;&#x27;</span> </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>可见它主要包括 <code>request</code> 和  <code>response</code> 两部分。</p>
+<blockquote>
+<div>ctx是context的缩写中文一般叫成上下文，这个在所有语言里都有的名词，可以理解为上(request)下(response)沟通的环境，所以koa中把他们两都封装进了ctx对象，koa官方文档里的解释是为了调用方便，ctx.req=ctx.request,ctx.res=ctx.response，类似linux系统中的软连接？最终执行还是request和response对象
+</blockquote>
+<blockquote>
+<div>body是http协议中的响应体，header是指响应头ctx.body = ctx.res.body = ctx.response.body</div>
+</blockquote>
+<p>Koa 提供一个 Context 对象，表示一次对话的上下文（包括 HTTP 请求和 HTTP 回复）。通过加工这个对象，就可以控制返回给用户的内容。</p>
+<p><code>Context.response.body</code> 属性就是发送给用户的内容。</p>
+<figure class="highlight objectivec"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> Koa = require(<span class="string">&#x27;koa&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> app = new Koa();</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> main = ctx =&gt; &#123;</span><br><span class="line">  ctx.response.body = <span class="string">&#x27;Hello World&#x27;</span>;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">app.use(main);</span><br><span class="line">app.listen(<span class="number">3000</span>);</span><br></pre></td></tr></table></figure>
+<p>上面代码中，main函数用来设置 <code>ctx.response.body</code> 。然后，使用 <code>app.use</code> 方法加载main函数。</p>
+<p>你可能已经猜到了，ctx.response代表 HTTP Response。同样地，ctx.request代表 HTTP Request。</p>
+<p>运行这个 demo，访问 <a href=" http://127.0.0.1:3000">http://127.0.0.1:3000 </a>，现在就可以看到”Hello World”了。</p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/lfri/p/11936231.html">参考：koa2中的ctx是什么？</a></p>
+<h3 id="koa2中-query-和-querystring"><a href="#koa2中-query-和-querystring" class="headerlink" title="koa2中 query 和 querystring"></a>koa2中 query 和 querystring</h3><p>在 koa 中，GET请求获取请求数据request对象中的 query 方法和 querystring 方法， query方法返回的是格式化好的参数，querystring 方法返回的是请求字符串。</p>
+<p><strong>koa2如何获取get方式的路由参数，比如xxx？name=123 获取name值</strong></p>
+<figure class="highlight objectivec"><table><tr><td class="code"><pre><span class="line">ctx.request.query</span><br><span class="line"><span class="comment">// =&gt; &#123;name: &#x27;123&#x27;&#125;</span></span><br><span class="line">ctx.query</span><br><span class="line"><span class="comment">// =&gt; &#123;name: &#x27;123&#x27;&#125;</span></span><br></pre></td></tr></table></figure>
+<p><code>ctx.request</code>  是 <code>Koa</code> 请求对象。可以通过 <code>querystring</code>  获取请求路径中的 <code>query</code> 字符串，通过 <code>query</code> 获取格式化好的参数。<br><code>ctx.query</code> 是 <code>route.query</code> 的别名。</p>
+<p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/a37fd499f0c1">阅读过：nuxt - nuxtServerInit &amp; 页面渲染前的store处理 &amp; context</a></p>
+<h3 id="koa2-使用passport权限认证中间件"><a href="#koa2-使用passport权限认证中间件" class="headerlink" title="koa2 使用passport权限认证中间件"></a>koa2 使用passport权限认证中间件</h3><p><a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000011557953">参考：koa2 使用passport权限认证中间件</a></p>
+<h3 id="序列化和反序列化"><a href="#序列化和反序列化" class="headerlink" title="序列化和反序列化"></a>序列化和反序列化</h3><p><a target="_blank" rel="noopener" href="http://www.imooc.com/wenda/detail/591712">更多内容参考：了解护照序列化反序列化</a></p>
+<p>故名思议就是将结构化的对象转换为字节序列，反之就叫做反序列化。</p>
+<p><strong>为什么要序列化和反序列化？</strong></p>
+<p>内存当中的对象是结构化的，当你需要将这个对象在网络当中传输的时候，或者要保存到文件或者数据库当中的时候，你就需要将它序列化成字节流，便于处理。</p>
+<p>而反过来，传输过去之后，或者从文件和数据库里读取出来的时候，又要重新构建恢复出原来的对象。</p>
+<p>类比就是，比如我们打电话，电线不能直接传声音，需要把声音转换为电流，过去再把电流转换为声音。</p>
+<h3 id="为什么utils-axios-js-要创建一个实例"><a href="#为什么utils-axios-js-要创建一个实例" class="headerlink" title="为什么utils/axios.js 要创建一个实例"></a>为什么utils/axios.js 要创建一个实例</h3><p>以下内容参考： <a target="_blank" rel="noopener" href="https://zh.nuxtjs.org/guide/async-data">nuxt.js 官方中文文档</a></p>
+<p>如果您的项目中直接使用了 <code>node_modules</code> 中的 <code>axios</code> ，并且使用 <code>axios.interceptors</code> 添加拦截器对请求或响应数据进行了处理，确保使用 <code>axios.create</code> 创建实例后再使用。否则多次刷新页面请求服务器，服务端渲染会重复添加拦截器，导致数据处理错误。</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line">import axios from &#x27;axios&#x27;</span><br><span class="line"><span class="keyword">const</span> myaxios = axios.create(&#123;</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">&#125;)</span><br><span class="line">myaxios.interceptors.response.use(function (response) &#123;</span><br><span class="line">  <span class="keyword">return</span> response.data</span><br><span class="line">&#125;, function (error) &#123;</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h2 id="结尾"><a href="#结尾" class="headerlink" title="结尾"></a>结尾</h2><hr/>
+
+<p><font color="Tomato"><strong>如若本文有瑕疵需修改的地方，请提出来，谢谢您的贡献！</strong></font></p>
+<p><font color=chocolate>欢迎关注微信公众号：小狮子前端Vue</font></p>
+<p>谢谢您的支持！✿✿ヽ(°▽°)ノ✿</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">一百个Chocolate</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://yangchaoyi.vip/posts/35725/">https://yangchaoyi.vip/posts/35725/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://yangchaoyi.vip" target="_blank">超逸の博客</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E9%A1%B9%E7%9B%AE/">项目</a></div><div class="post_share"><div class="social-share" data-image="https://cdn.jsdelivr.net/gh/chocolate1999/cdn/img/20200526104803.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/posts/20210324/"><img class="prev-cover" data-lazy-src="https://cdn.jsdelivr.net/gh/chocolate1999/cdn/img/20210324210957.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">腾讯云 CODING 2021  【校招&amp;社招】春招内推开启，大家快来投递～</div></div></a></div><div class="next-post pull-right"><a href="/posts/520520/"><img class="next-cover" data-lazy-src="https://cdn.jsdelivr.net/gh/chocolate1999/cdn/img/20200907094731.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">【源码开放】Hexo+Github 博客butterfly 和 matery 主题 搭建完全教程【整理】</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span> 相关推荐</span></div><div class="relatedPosts-list"><div><a href="/posts/2020704/" title="【项目总结文档】Vue全家桶开发电商管理系统项目"><img class="cover" data-lazy-src="https://cdn.jsdelivr.net/gh/chocolate1999/cdn/img/20200704214120.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-05-07</div><div class="title">【项目总结文档】Vue全家桶开发电商管理系统项目</div></div></a></div><div><a href="/posts/2020709/" title="【后台API接口文档】Vue全家桶开发电商管理系统"><img class="cover" data-lazy-src="https://cdn.jsdelivr.net/gh/chocolate1999/cdn/img/20200708170355.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-05-07</div><div class="title">【后台API接口文档】Vue全家桶开发电商管理系统</div></div></a></div><div><a href="/posts/34924/" title="2020 零基础到快速开发  Vue全家桶开发电商管理系统（Element-UI）【目录】"><img class="cover" data-lazy-src="https://cdn.jsdelivr.net/gh/chocolate1999/cdn/img/20200526110732.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-05-07</div><div class="title">2020 零基础到快速开发  Vue全家桶开发电商管理系统（Element-UI）【目录】</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-info-avatar is-center"><img class="avatar-img" data-lazy-src="/img/Chocolate.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-info__name">一百个Chocolate</div><div class="author-info__description">不是只会写业务代码的前端攻城狮！</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">62</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">标签</div><div class="length-num">30</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">分类</div><div class="length-num">8</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/Chocolate1999"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://chocolate.blog.csdn.net/" target="_blank" title=""><i class="iconfont icon-csdn"></i></a><a class="social-icon" href="https://juejin.im/user/5ed1c55be51d457889261840/posts" target="_blank" title=""><i class="iconfont icon-juejin"></i></a><a class="social-icon" href="https://github.com/Chocolate1999" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="https://space.bilibili.com/351534170" target="_blank" title=""><i class="iconfont icon-bilibili1"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>小狮子初心</span></div><div class="announcement_content">最近收到了很多小伙伴的关注，在此非常感谢各位的支持。<br/>Chocolate 开通了个人公众号，在这里分享我的大厂面试经历，租房攻略，计算机领域那些事儿。<br/>希望小伙伴们能够喜欢我的文章，这里是小狮子前端，保持狮子座的热情带给你学习的动力，愿我们成为最好的自己~<br/><img src="https://cdn.jsdelivr.net/gh/chocolate1999/cdn/img/20201202223856.jpg"> <br/>QQ交流群：666151691</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%86%99%E5%9C%A8%E5%BC%80%E5%A4%B4"><span class="toc-number">1.</span> <span class="toc-text">写在开头</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Vue%E5%9F%BA%E7%A1%80"><span class="toc-number">2.</span> <span class="toc-text">Vue基础</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8C%87%E4%BB%A4"><span class="toc-number">2.1.</span> <span class="toc-text">自定义指令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%84%E4%BB%B6"><span class="toc-number">2.2.</span> <span class="toc-text">组件</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Vuex%E5%9F%BA%E7%A1%80"><span class="toc-number">3.</span> <span class="toc-text">Vuex基础</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Koa2%E5%9F%BA%E7%A1%80"><span class="toc-number">4.</span> <span class="toc-text">Koa2基础</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#koa-generator"><span class="toc-number">4.1.</span> <span class="toc-text">koa-generator</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Koa2%E4%B8%AD%E9%97%B4%E4%BB%B6"><span class="toc-number">5.</span> <span class="toc-text">Koa2中间件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#mongoose%E5%9F%BA%E7%A1%80"><span class="toc-number">6.</span> <span class="toc-text">mongoose基础</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#mongodb%E6%A6%82%E5%BF%B5-amp-%E5%AE%89%E8%A3%85"><span class="toc-number">6.1.</span> <span class="toc-text">mongodb概念&amp;安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%BE%E5%BD%A2%E7%95%8C%E9%9D%A2%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7-Robo3T-%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8"><span class="toc-number">6.2.</span> <span class="toc-text">图形界面管理工具 Robo3T 安装与使用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#mongoose-%E4%B8%AD%E6%96%87%E6%96%87%E6%A1%A3"><span class="toc-number">6.3.</span> <span class="toc-text">mongoose 中文文档</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%9E%E6%8E%A5%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-number">6.4.</span> <span class="toc-text">连接数据库</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Redis%E5%9F%BA%E7%A1%80"><span class="toc-number">7.</span> <span class="toc-text">Redis基础</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#cookie-%E5%92%8C-session-%E5%BC%95%E5%85%A5"><span class="toc-number">7.1.</span> <span class="toc-text">cookie 和 session 引入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#redis%E6%A6%82%E5%BF%B5-amp-%E5%AE%89%E8%A3%85"><span class="toc-number">7.2.</span> <span class="toc-text">redis概念&amp;安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%90%AF%E5%8A%A8-redis-%E6%9C%8D%E5%8A%A1"><span class="toc-number">7.3.</span> <span class="toc-text">启动 redis 服务</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Nuxt-js%E5%9F%BA%E7%A1%80"><span class="toc-number">8.</span> <span class="toc-text">Nuxt.js基础</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Nuxt-js%E5%B7%A5%E4%BD%9C%E6%B5%81"><span class="toc-number">8.1.</span> <span class="toc-text">Nuxt.js工作流</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Nuxt-js-%E5%AE%89%E8%A3%85"><span class="toc-number">8.2.</span> <span class="toc-text">Nuxt.js 安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9F%A5%E8%AF%86%E6%8B%93%E5%B1%95"><span class="toc-number">8.3.</span> <span class="toc-text">知识拓展</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A1%B9%E7%9B%AE%E6%90%AD%E5%BB%BA%E5%BC%80%E5%A7%8B"><span class="toc-number">9.</span> <span class="toc-text">项目搭建开始</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE%E7%8E%AF%E5%A2%83"><span class="toc-number">10.</span> <span class="toc-text">配置环境</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E9%A1%B9%E7%9B%AE"><span class="toc-number">10.1.</span> <span class="toc-text">创建项目</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A2%9E%E5%8A%A0-babel-node-%E5%A4%84%E7%90%86%EF%BC%88%E4%BD%BF%E7%94%A8ES6%E7%9A%84import%E6%8C%87%E4%BB%A4%E9%97%AE%E9%A2%98%EF%BC%89"><span class="toc-number">10.2.</span> <span class="toc-text">增加 babel-node 处理（使用ES6的import指令问题）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%A3%E5%86%B3-sass-%E5%AF%BC%E8%87%B4%E7%BC%96%E8%AF%91%E5%87%BA%E9%94%99%E9%97%AE%E9%A2%98"><span class="toc-number">10.3.</span> <span class="toc-text">解决 sass 导致编译出错问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BE%85%E5%8A%A9%E5%B7%A5%E5%85%B7%E5%AE%89%E8%A3%85"><span class="toc-number">10.4.</span> <span class="toc-text">辅助工具安装</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4%EF%BC%88%E6%95%B4%E7%90%86%EF%BC%89"><span class="toc-number">11.</span> <span class="toc-text">远程仓库常用指令（整理）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A6%96%E9%A1%B5%E5%BC%80%E5%8F%91"><span class="toc-number">12.</span> <span class="toc-text">首页开发</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9C%80%E6%B1%82%E5%88%86%E6%9E%90"><span class="toc-number">12.1.</span> <span class="toc-text">需求分析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A6%96%E9%A1%B5%E5%BC%80%E5%8F%91Header-%E5%9F%8E%E5%B8%82%E5%AE%9A%E4%BD%8D%E6%9C%8D%E5%8A%A1%E8%AE%BE%E8%AE%A1"><span class="toc-number">12.2.</span> <span class="toc-text">首页开发Header-城市定位服务设计</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%91%E5%8F%AF%E8%83%BD%E9%81%87%E5%88%B0%E9%97%AE%E9%A2%98"><span class="toc-number">13.</span> <span class="toc-text">项目开发可能遇到问题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B3%E4%BA%8E%E9%A1%B9%E7%9B%AE%E4%B8%ADSMTP%E6%9C%8D%E5%8A%A1%E5%8A%9F%E8%83%BD%E9%85%8D%E7%BD%AE%E9%97%AE%E9%A2%98"><span class="toc-number">13.1.</span> <span class="toc-text">关于项目中SMTP服务功能配置问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B3%E4%BA%8E%E9%A1%B9%E7%9B%AE%E4%B8%AD%E7%99%BB%E5%BD%95%E6%B3%A8%E5%86%8C%E6%8E%A5%E5%8F%A3%E9%97%AE%E9%A2%98"><span class="toc-number">13.2.</span> <span class="toc-text">关于项目中登录注册接口问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#server%E6%96%87%E4%BB%B6%E5%A4%B9-index-js%E6%96%87%E4%BB%B6%E4%B8%AD-%E5%8A%A0%E8%BD%BD%E7%9B%B8%E5%85%B3%E5%8C%85"><span class="toc-number">13.3.</span> <span class="toc-text">server文件夹 index.js文件中 加载相关包</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Cannot-read-property-%E2%80%98post%E2%80%99-of-undefined-%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3"><span class="toc-number">13.4.</span> <span class="toc-text">Cannot read property ‘post’ of undefined 问题解决</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B3%E4%BA%8E-win10-redis-%E6%8A%A5%E9%94%99-Permission-denied"><span class="toc-number">13.5.</span> <span class="toc-text">关于 win10 redis 报错 Permission denied</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B3%E4%BA%8Ewin10-mongodb-%E5%AF%BC%E5%85%A5-bat%E6%96%87%E4%BB%B6%E9%97%AE%E9%A2%98"><span class="toc-number">13.6.</span> <span class="toc-text">关于win10 mongodb 导入.bat文件问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B3%E4%BA%8E-geo%E6%9C%8D%E5%8A%A1-%E6%8E%A5%E5%8F%A3%E7%AD%BE%E5%90%8D"><span class="toc-number">13.7.</span> <span class="toc-text">关于 geo服务 接口签名</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B3%E4%BA%8E%E5%AE%9A%E4%BD%8D%E6%9C%8D%E5%8A%A1%E5%8F%8A%E5%88%87%E6%8D%A2%E5%9F%8E%E5%B8%82-geo-bug%E8%A7%A3%E5%86%B3"><span class="toc-number">13.8.</span> <span class="toc-text">关于定位服务及切换城市 geo bug解决</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B3%E4%BA%8E%E6%90%9C%E7%B4%A2%E6%A1%86%E8%AF%B7%E6%B1%82%E6%AC%A1%E6%95%B0%E9%97%AE%E9%A2%98"><span class="toc-number">13.9.</span> <span class="toc-text">关于搜索框请求次数问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B3%E4%BA%8E%E5%88%87%E6%8D%A2%E5%9F%8E%E5%B8%82%E6%A8%A1%E5%9D%97%E4%BC%98%E5%8C%96%E4%B8%8E%E5%AE%9E%E7%8E%B0"><span class="toc-number">13.10.</span> <span class="toc-text">关于切换城市模块优化与实现</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%9A%E8%BF%87%E9%A1%B9%E7%9B%AE%E6%8C%96%E6%8E%98%E7%9F%A5%E8%AF%86%E7%82%B9%EF%BC%88%E6%95%B4%E7%90%86%EF%BC%89"><span class="toc-number">14.</span> <span class="toc-text">通过项目挖掘知识点（整理）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#koa2%E4%B8%AD%E7%9A%84ctx%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-number">14.1.</span> <span class="toc-text">koa2中的ctx是什么？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#koa2%E4%B8%AD-query-%E5%92%8C-querystring"><span class="toc-number">14.2.</span> <span class="toc-text">koa2中 query 和 querystring</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#koa2-%E4%BD%BF%E7%94%A8passport%E6%9D%83%E9%99%90%E8%AE%A4%E8%AF%81%E4%B8%AD%E9%97%B4%E4%BB%B6"><span class="toc-number">14.3.</span> <span class="toc-text">koa2 使用passport权限认证中间件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BA%8F%E5%88%97%E5%8C%96%E5%92%8C%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96"><span class="toc-number">14.4.</span> <span class="toc-text">序列化和反序列化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88utils-axios-js-%E8%A6%81%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AA%E5%AE%9E%E4%BE%8B"><span class="toc-number">14.5.</span> <span class="toc-text">为什么utils&#x2F;axios.js 要创建一个实例</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%93%E5%B0%BE"><span class="toc-number">15.</span> <span class="toc-text">结尾</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/posts/20210506/" title="时隔两个月，来一份总结【文末彩蛋】"><img data-lazy-src="https://cdn.jsdelivr.net/gh/chocolate1999/cdn/img/20210506215206.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="时隔两个月，来一份总结【文末彩蛋】"/></a><div class="content"><a class="title" href="/posts/20210506/" title="时隔两个月，来一份总结【文末彩蛋】">时隔两个月，来一份总结【文末彩蛋】</a><time datetime="2021-05-07T14:38:41.474Z" title="发表于 2021-05-07 22:38:41">2021-05-07</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/50975/" title="15个前端攻城狮必备的学习网站 | 你知道几个？（附视频介绍）"><img data-lazy-src="https://cdn.jsdelivr.net/gh/chocolate1999/cdn/img/20200610155519.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="15个前端攻城狮必备的学习网站 | 你知道几个？（附视频介绍）"/></a><div class="content"><a class="title" href="/posts/50975/" title="15个前端攻城狮必备的学习网站 | 你知道几个？（附视频介绍）">15个前端攻城狮必备的学习网站 | 你知道几个？（附视频介绍）</a><time datetime="2021-05-07T13:48:39.367Z" title="发表于 2021-05-07 21:48:39">2021-05-07</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/20541/" title="前端知识梳理之webpack篇"><img data-lazy-src="https://cdn.jsdelivr.net/gh/chocolate1999/cdn/img/20200914094504.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="前端知识梳理之webpack篇"/></a><div class="content"><a class="title" href="/posts/20541/" title="前端知识梳理之webpack篇">前端知识梳理之webpack篇</a><time datetime="2021-05-07T13:48:39.366Z" title="发表于 2021-05-07 21:48:39">2021-05-07</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/20201009/" title="某跳动面试官：说说微信扫码登录背后的实现原理？"><img data-lazy-src="https://cdn.jsdelivr.net/gh/chocolate1999/cdn/img/20201009202845.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="某跳动面试官：说说微信扫码登录背后的实现原理？"/></a><div class="content"><a class="title" href="/posts/20201009/" title="某跳动面试官：说说微信扫码登录背后的实现原理？">某跳动面试官：说说微信扫码登录背后的实现原理？</a><time datetime="2021-05-07T13:48:39.366Z" title="发表于 2021-05-07 21:48:39">2021-05-07</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/205511/" title="前端知识梳理之Vue篇"><img data-lazy-src="https://cdn.jsdelivr.net/gh/chocolate1999/cdn/img/20200911085935.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="前端知识梳理之Vue篇"/></a><div class="content"><a class="title" href="/posts/205511/" title="前端知识梳理之Vue篇">前端知识梳理之Vue篇</a><time datetime="2021-05-07T13:48:39.365Z" title="发表于 2021-05-07 21:48:39">2021-05-07</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2019 - 2021  <i id="heartbeat" class="fa fas fa-heartbeat"></i> 一百个Chocolate</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text"><p><a style="margin-inline:5px" target="_blank" href="https://hexo.io/"><img src="https://img.shields.io/badge/Frame-Hexo-blue?style=flat&logo=hexo" title="博客框架为Hexo"></a><a style="margin-inline:5px" target="_blank" href="https://butterfly.js.org/"><img src="https://img.shields.io/badge/Theme-Butterfly-6513df?style=flat&logo=bitdefender" title="主题采用butterfly"></a><a style="margin-inline:5px" target="_blank" href="https://www.jsdelivr.com/"><img src="https://img.shields.io/badge/CDN-jsDelivr-orange?style=flat&logo=jsDelivr" title="本站使用JsDelivr为静态资源提供CDN加速"></a><a style="margin-inline:5px" target="_blank" href="https://vercel.com/ "><img src="https://img.shields.io/badge/Hosted-Vervel-brightgreen?style=flat&logo=Vercel" title="本站采用双线部署，默认线路托管于Vercel"></a><a style="margin-inline:5px" target="_blank" href="https://vercel.com/ "><img src="https://img.shields.io/badge/Hosted-Coding-0cedbe?style=flat&logo=Codio" title="本站采用双线部署，联通线路托管于Coding"></a><a style="margin-inline:5px" target="_blank" href="https://github.com/"><img src="https://img.shields.io/badge/Source-Github-d021d6?style=flat&logo=GitHub" title="本站项目由Gtihub托管"></a><a style="margin-inline:5px" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img src="https://img.shields.io/badge/Copyright-BY--NC--SA%204.0-d42328?style=flat&logo=Claris" title="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可"></a></p></div><div class="icp"><a target="_blank" rel="noopener" href="http://www.beian.miit.gov.cn/"><img class="icp-icon" src="/img/icp.png"/><span>湘ICP备20002952号</span></a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="font-plus" type="button" title="放大字体"><i class="fas fa-plus"></i></button><button id="font-minus" type="button" title="缩小字体"><i class="fas fa-minus"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="chat_btn" type="button" title="rightside.chat_btn"><i class="fas fa-sms"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div></div><hr/><div id="local-search-results"></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/vue@2.6.11"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><script src="/js/search/local-search.js"></script><script async="async">var preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',preloader.endLoading())
+setTimeout(function(){preloader.endLoading();}, 5000);</script><div class="js-pjax"></div><script src="https://cdn.jsdelivr.net/gh/sviptzk/StaticFile_HEXO@master/xkTool/v3.1.1/xkTool.js"></script><script defer src="https://cdn.jsdelivr.net/npm/hexo-theme-volantis@latest/source/js/issues.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = [
+  'title',
+  '#config-diff',
+  '#body-wrap',
+  '#rightside-config-hide',
+  '#rightside-config-show',
+  '.js-pjax'
+]
+
+if (false) {
+  pjaxSelectors.unshift('meta[property="og:image"]', 'meta[property="og:title"]', 'meta[property="og:url"]')
+}
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  if (typeof gtag === 'function') {
+    gtag('config', '', {'page_path': window.location.pathname});
+  }
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // Analytics
+  if (false) {
+    MtaH5.pgv()
+  }
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+
+  typeof preloader === 'object' && preloader.endLoading()
+})
+
+
+document.addEventListener('pjax:send', function () {
+  typeof preloader === 'object' && preloader.initLoading()
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

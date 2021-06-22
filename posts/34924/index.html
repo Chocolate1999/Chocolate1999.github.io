@@ -1,0 +1,298 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>2020 零基础到快速开发  Vue全家桶开发电商管理系统（Element-UI）【目录】 | 超逸の博客</title><meta name="keywords" content="前端，电商，Element-UI，全家桶"><meta name="author" content="一百个Chocolate"><meta name="copyright" content="一百个Chocolate"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="引言又是一个寒假，曾经一个学霸说过：寒假是用来反超的！，所以这个寒假来和我一起学习Vue把，我会把我做的全部整合在这一个目录当中，算是给自己一个学习记录，也方便读者进行查阅。我的项目其实在1月24日正好过除夕的那天完成了，大约是10天左右的时间，边记录边做项目，后面发现我这个专栏访问量达到了5w，还是有一点人气的，休息三天后，今晚打算来一个总结吧，见证一个从一个不认识Vue是什么的小白到如何快速开">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2020 零基础到快速开发  Vue全家桶开发电商管理系统（Element-UI）【目录】">
+<meta property="og:url" content="https://yangchaoyi.vip/posts/34924/index.html">
+<meta property="og:site_name" content="超逸の博客">
+<meta property="og:description" content="引言又是一个寒假，曾经一个学霸说过：寒假是用来反超的！，所以这个寒假来和我一起学习Vue把，我会把我做的全部整合在这一个目录当中，算是给自己一个学习记录，也方便读者进行查阅。我的项目其实在1月24日正好过除夕的那天完成了，大约是10天左右的时间，边记录边做项目，后面发现我这个专栏访问量达到了5w，还是有一点人气的，休息三天后，今晚打算来一个总结吧，见证一个从一个不认识Vue是什么的小白到如何快速开">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/chocolate1999/cdn/img/20200526110732.jpg">
+<meta property="article:published_time" content="2021-05-07T13:48:39.300Z">
+<meta property="article:modified_time" content="2021-05-07T13:48:39.301Z">
+<meta property="article:author" content="一百个Chocolate">
+<meta property="article:tag" content="项目">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/chocolate1999/cdn/img/20200526110732.jpg"><link rel="shortcut icon" href="/img/favicon.ico"><link rel="canonical" href="https://yangchaoyi.vip/posts/34924/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  noticeOutdate: {"limitDay":500,"position":"top","messagePrev":"It has been","messageNext":"days since the last update, the content of the article may be outdated."},
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#121212","position":"bottom-left"},
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isanchor: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = { 
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2021-05-07 21:48:39'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const now = new Date()
+          const hour = now.getHours()
+          const isNight = hour <= 6 || hour >= 18
+          if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
+          else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const fontSizeVal = saveToLocal.get('global-font-size')
+    if (fontSizeVal !== undefined) {
+      document.documentElement.style.setProperty('--global-font-size', fontSizeVal + 'px')
+    }
+    })(window)</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/l-lin/font-awesome-animation/dist/font-awesome-animation.min.css"  media="defer" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/sviptzk/HexoStaticFile@master/Hexo/css/flink.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/sviptzk/HexoStaticFile@master/Hexo/css/iconfont.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Rr210/Lantern@2.4/dl.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/HCLonely/images@master/others/heartbeat.min.css"><meta name="generator" content="Hexo 5.3.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="wizard-scene"><div class="wizard-objects"><div class="wizard-square"></div><div class="wizard-circle"></div><div class="wizard-triangle"></div></div><div class="wizard"><div class="wizard-body"></div><div class="wizard-right-arm"><div class="wizard-right-hand"></div></div><div class="wizard-left-arm"><div class="wizard-left-hand"></div></div><div class="wizard-head"><div class="wizard-beard"></div><div class="wizard-face"><div class="wizard-adds"></div></div><div class="wizard-hat"><div class="wizard-hat-of-the-hat"></div><div class="wizard-four-point-star --first"></div><div class="wizard-four-point-star --second"></div><div class="wizard-four-point-star --third"></div></div></div></div></div></div><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" data-lazy-src="/img/Chocolate.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">62</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">30</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">8</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-book"></i><span> 文章</span><i class="fas fa-chevron-down expand hide"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> 时间轴</span></a></li><li><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></li><li><a class="site-page" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> 分类</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 娱乐</span><i class="fas fa-chevron-down expand hide"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/bangumis/"><i class="fa-fw fab fa-youtube"></i><span> 番剧</span></a></li><li><a class="site-page" href="/movies/"><i class="fa-fw fa fa-film"></i><span> 电影</span></a></li><li><a class="site-page" href="/books/"><i class="fa-fw fas fa-book"></i><span> 书单</span></a></li><li><a class="site-page" href="/music/"><i class="fa-fw fa fa-music"></i><span> 音乐</span></a></li><li><a class="site-page" href="/"><i class="fa-fw fas fa-gamepad"></i><span> 游戏</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fa fa-heartbeat"></i><span> 清单</span><i class="fas fa-chevron-down expand hide"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/gallery/"><i class="fa-fw far fa-image"></i><span> 相册</span></a></li><li><a class="site-page" href="/home/"><i class="fa-fw fab fa-phoenix-framework"></i><span> 主页</span></a></li><li><a class="site-page" href="/sponsorWall/"><i class="fa-fw fas fa-money-check-alt"></i><span> 赞助墙</span></a></li><li><a class="site-page" href="/box/"><i class="fa-fw fas fa-th-large"></i><span> 聚宝盒</span></a></li></ul></div><div class="menus_item"><a class="site-page" target="_blank" rel="noopener" href="https://hearling.github.io/"><i class="fa-fw fas fa-book"></i><span> HearLingの博客</span></a></div><div class="menus_item"><a class="site-page" href="/talk/"><i class="fa-fw fas fa-coffee"></i><span> 说说</span></a></div><div class="menus_item"><a class="site-page" href="/contact/"><i class="fa-fw far fa-comments"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 关于</span><i class="fas fa-chevron-down expand hide"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/about/"><i class="fa-fw fa fa-heart"></i><span> 关于我</span></a></li><li><a class="site-page" target="_blank" rel="noopener" href="https://yangchaoyi.avosapps.us/"><i class="fa-fw fas fa-box"></i><span> Valine评论后台</span></a></li><li><a class="site-page" target="_blank" rel="noopener" href="https://console.leancloud.app/applist.html#/apps"><i class="fa-fw fas fa-box"></i><span> LeanCloud应用</span></a></li></ul></div></div></div></div><div class="post" id="body-wrap"><header class="not-top-img" id="page-header"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">超逸の博客</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-book"></i><span> 文章</span><i class="fas fa-chevron-down expand hide"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> 时间轴</span></a></li><li><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></li><li><a class="site-page" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> 分类</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 娱乐</span><i class="fas fa-chevron-down expand hide"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/bangumis/"><i class="fa-fw fab fa-youtube"></i><span> 番剧</span></a></li><li><a class="site-page" href="/movies/"><i class="fa-fw fa fa-film"></i><span> 电影</span></a></li><li><a class="site-page" href="/books/"><i class="fa-fw fas fa-book"></i><span> 书单</span></a></li><li><a class="site-page" href="/music/"><i class="fa-fw fa fa-music"></i><span> 音乐</span></a></li><li><a class="site-page" href="/"><i class="fa-fw fas fa-gamepad"></i><span> 游戏</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fa fa-heartbeat"></i><span> 清单</span><i class="fas fa-chevron-down expand hide"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/gallery/"><i class="fa-fw far fa-image"></i><span> 相册</span></a></li><li><a class="site-page" href="/home/"><i class="fa-fw fab fa-phoenix-framework"></i><span> 主页</span></a></li><li><a class="site-page" href="/sponsorWall/"><i class="fa-fw fas fa-money-check-alt"></i><span> 赞助墙</span></a></li><li><a class="site-page" href="/box/"><i class="fa-fw fas fa-th-large"></i><span> 聚宝盒</span></a></li></ul></div><div class="menus_item"><a class="site-page" target="_blank" rel="noopener" href="https://hearling.github.io/"><i class="fa-fw fas fa-book"></i><span> HearLingの博客</span></a></div><div class="menus_item"><a class="site-page" href="/talk/"><i class="fa-fw fas fa-coffee"></i><span> 说说</span></a></div><div class="menus_item"><a class="site-page" href="/contact/"><i class="fa-fw far fa-comments"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 关于</span><i class="fas fa-chevron-down expand hide"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/about/"><i class="fa-fw fa fa-heart"></i><span> 关于我</span></a></li><li><a class="site-page" target="_blank" rel="noopener" href="https://yangchaoyi.avosapps.us/"><i class="fa-fw fas fa-box"></i><span> Valine评论后台</span></a></li><li><a class="site-page" target="_blank" rel="noopener" href="https://console.leancloud.app/applist.html#/apps"><i class="fa-fw fas fa-box"></i><span> LeanCloud应用</span></a></li></ul></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav></header><main class="layout" id="content-inner"><div id="post"><div id="post-info"><h1 class="post-title">2020 零基础到快速开发  Vue全家桶开发电商管理系统（Element-UI）【目录】</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-05-07T13:48:39.300Z" title="发表于 2021-05-07 21:48:39">2021-05-07</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2021-05-07T13:48:39.301Z" title="更新于 2021-05-07 21:48:39">2021-05-07</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E9%A1%B9%E7%9B%AE/">项目</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">1.2k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>3分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div><div class="top-img gist" style="background-image: url(/false)"></div><article class="post-content" id="article-container"><h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><p>又是一个寒假，曾经一个学霸说过：<code>寒假是用来反超的！</code>，所以这个寒假来和我一起学习Vue把，我会把我做的全部整合在这一个目录当中，算是给自己一个学习记录，也方便读者进行查阅。我的项目其实在1月24日正好过除夕的那天完成了，大约是10天左右的时间，边记录边做项目，后面发现我这个专栏访问量达到了5w，还是有一点人气的，休息三天后，今晚打算来一个总结吧，见证一个从一个不认识Vue是什么的小白到如何快速开发的成长吧~</p>
+<p><font color=red>项目源码我放在码云上保管了,具体地址如下，可进行二次开发:</font><br><a target="_blank" rel="noopener" href="https://gitee.com/Chocolate666/vue_shop/tree/master">https://gitee.com/Chocolate666/vue_shop/tree/master</a></p>
+<h2 id="电商后台管理系统的技术选型"><a href="#电商后台管理系统的技术选型" class="headerlink" title="电商后台管理系统的技术选型"></a>电商后台管理系统的技术选型</h2><p>① 前端项目技术栈：</p>
+<ul>
+<li>Vue</li>
+<li>Vue-router</li>
+<li>Element-UI</li>
+<li>Axios</li>
+<li>Echarts</li>
+</ul>
+<p>② 后端项目</p>
+<ul>
+<li>Node.js</li>
+<li>Express</li>
+<li>Jwt</li>
+<li>Mysql</li>
+<li>Sequelize</li>
+</ul>
+<h2 id="快速入门篇"><a href="#快速入门篇" class="headerlink" title="快速入门篇"></a>快速入门篇</h2><blockquote>
+<p>本篇主要是给刚入门Vue的来学习的，里面有一些简单实例，比如记事本，所处城市天气查询，音乐播放配mv等，同时还解决了学习时遇到的问题，学会下面的内容可以算是入门了</p>
+</blockquote>
+<ol>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_42429718/article/details/103952917">2020 零基础 Vue快速入门 Vue基础篇 【详细】</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_42429718/article/details/103957276">2020 零基础 Vue快速入门 Vue指令 本地应用篇【整理】</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_42429718/article/details/103964103">2020 零基础 Vue快速入门 教开发一个记事本（激发编程乐趣）【整理+源码】</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_42429718/article/details/103969483">2020 零基础 Vue快速入门 Vue2.0使用ES6语法的箭头函数=&gt; 对this作用域的理解 【整理】</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_42429718/article/details/103969923">2020 零基础 Vue快速入门 Vue项目中引入外部css以及js文件的方法 【整理】</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_42429718/article/details/103967761">2020 零基础 Vue快速入门 网络应用 axios+Vue【整理】</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_42429718/article/details/103972240">2020 零基础 Vue快速入门 教开发天气查询网页—天知道（激发编程乐趣）【整理+源码】</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_42429718/article/details/103974082">2020 零基础 Vue综合应用 教开发音乐播放器—悦听（激发编程乐趣）【整理+源码】</a></li>
+</ol>
+<h2 id="电商管理系统开发（百科全书）"><a href="#电商管理系统开发（百科全书）" class="headerlink" title="电商管理系统开发（百科全书）"></a>电商管理系统开发（百科全书）</h2><ol>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_42429718/article/details/103983409">2020 零基础到快速开发 Vue全家桶开发电商管理系统（Element-UI）项目概述篇</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_42429718/article/details/103983723">2020 零基础到快速开发 Vue全家桶开发电商管理系统（Element-UI）项目初始化篇</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_42429718/article/details/103990497">2020 零基础到快速开发 Vue全家桶开发电商管理系统（Element-UI）使用码云托管项目篇</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_42429718/article/details/103995613">2020 零基础到快速开发 Vue全家桶开发电商管理系统（Element-UI）配置MySQL</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_42429718/article/details/103996682">2020 零基础到快速开发 Vue全家桶开发电商管理系统（Element-UI）登录退出功能实现</a></li>
+<li><a  target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_42429718/article/details/104012018">2020 零基础到快速开发 Vue全家桶开发电商管理系统（Element-UI）主页布局开发</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_42429718/article/details/104018448">2020 零基础到快速开发 Vue全家桶开发电商管理系统（Element-UI）用户列表开发</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_42429718/article/details/104023786">2020 零基础到快速开发 Vue全家桶开发电商管理系统（Element-UI）【添加用户】</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_42429718/article/details/104024379">2020 零基础到快速开发 Vue全家桶开发电商管理系统（Element-UI）【修改用户】</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_42429718/article/details/104031033">2020 零基础到快速开发 Vue全家桶开发电商管理系统（Element-UI）【删除用户】</a> </li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_42429718/article/details/104031835">2020 零基础到快速开发 Vue全家桶开发电商管理系统（Element-UI）【权限列表】</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_42429718/article/details/104033075">2020 零基础到快速开发 Vue全家桶开发电商管理系统（Element-UI）【角色列表】</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_42429718/article/details/104044038">2020 零基础到快速开发 Vue全家桶开发电商管理系统（Element-UI）【分配权限】</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_42429718/article/details/104044630">2020 零基础到快速开发 Vue全家桶开发电商管理系统（Element-UI）【分配角色】</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_42429718/article/details/104045709">2020 零基础到快速开发 Vue全家桶开发电商管理系统（Element-UI）商品分类篇</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_42429718/article/details/104056728">2020 零基础到快速开发 Vue全家桶开发电商管理系统（Element-UI）分类参数篇</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_42429718/article/details/104063899">2020 零基础到快速开发 Vue全家桶开发电商管理系统（Element-UI）商品列表篇</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_42429718/article/details/104077321">2020 零基础到快速开发 Vue全家桶开发电商管理系统（Element-UI）订单管理篇</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_42429718/article/details/104078211">2020 零基础到快速开发 Vue全家桶开发电商管理系统（Element-UI）数据统计篇</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_42429718/article/details/104079409">2020 Vue零基础 基于Element-UI开发 （全）项目优化与部署上线（npm，基于vue ui） 上篇</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_42429718/article/details/104079909">2020 Vue零基础 基于Element-UI开发 （全）项目优化与部署上线（npm，基于vue ui） 下篇</a></li>
+</ol>
+<h2 id="结束语"><a href="#结束语" class="headerlink" title="结束语"></a>结束语</h2><hr>
+
+<p><strong><font color=DeepPink>最后，看完本篇博客后，觉得挺有帮助的话，可以继续查看专栏其它内容嗷，一起来学习Vue吧~</font></strong><br><img src= "/img/loading.gif" data-lazy-src="https://img-blog.csdnimg.cn/2020011511203890.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MjQyOTcxOA==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<h4 id="点击进入Vue❤学习专栏"><a href="#点击进入Vue❤学习专栏" class="headerlink" title=" 点击进入Vue❤学习专栏~"></a><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_42429718/category_9656024.html"> 点击进入Vue❤学习专栏~</a></h4></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">一百个Chocolate</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://yangchaoyi.vip/posts/34924/">https://yangchaoyi.vip/posts/34924/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://yangchaoyi.vip" target="_blank">超逸の博客</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E9%A1%B9%E7%9B%AE/">项目</a></div><div class="post_share"><div class="social-share" data-image="https://cdn.jsdelivr.net/gh/chocolate1999/cdn/img/20200526110732.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/posts/2020709/"><img class="prev-cover" data-lazy-src="https://cdn.jsdelivr.net/gh/chocolate1999/cdn/img/20200708170355.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">【后台API接口文档】Vue全家桶开发电商管理系统</div></div></a></div><div class="next-post pull-right"><a href="/posts/20200902/"><img class="next-cover" data-lazy-src="https://cdn.jsdelivr.net/gh/chocolate1999/cdn/img/20200902104534.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">「秋招清单」2020 秋招前端の投递清单 时间计划汇总</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span> 相关推荐</span></div><div class="relatedPosts-list"><div><a href="/posts/35725/" title="【Vue全家桶+SSR+Koa2全栈开发】项目搭建过程  整合  学习目录（持续更新中）"><img class="cover" data-lazy-src="https://cdn.jsdelivr.net/gh/chocolate1999/cdn/img/20200526104803.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-05-07</div><div class="title">【Vue全家桶+SSR+Koa2全栈开发】项目搭建过程  整合  学习目录（持续更新中）</div></div></a></div><div><a href="/posts/2020704/" title="【项目总结文档】Vue全家桶开发电商管理系统项目"><img class="cover" data-lazy-src="https://cdn.jsdelivr.net/gh/chocolate1999/cdn/img/20200704214120.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-05-07</div><div class="title">【项目总结文档】Vue全家桶开发电商管理系统项目</div></div></a></div><div><a href="/posts/2020709/" title="【后台API接口文档】Vue全家桶开发电商管理系统"><img class="cover" data-lazy-src="https://cdn.jsdelivr.net/gh/chocolate1999/cdn/img/20200708170355.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-05-07</div><div class="title">【后台API接口文档】Vue全家桶开发电商管理系统</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-info-avatar is-center"><img class="avatar-img" data-lazy-src="/img/Chocolate.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-info__name">一百个Chocolate</div><div class="author-info__description">不是只会写业务代码的前端攻城狮！</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">62</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">标签</div><div class="length-num">30</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">分类</div><div class="length-num">8</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/Chocolate1999"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://chocolate.blog.csdn.net/" target="_blank" title=""><i class="iconfont icon-csdn"></i></a><a class="social-icon" href="https://juejin.im/user/5ed1c55be51d457889261840/posts" target="_blank" title=""><i class="iconfont icon-juejin"></i></a><a class="social-icon" href="https://github.com/Chocolate1999" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="https://space.bilibili.com/351534170" target="_blank" title=""><i class="iconfont icon-bilibili1"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>小狮子初心</span></div><div class="announcement_content">最近收到了很多小伙伴的关注，在此非常感谢各位的支持。<br/>Chocolate 开通了个人公众号，在这里分享我的大厂面试经历，租房攻略，计算机领域那些事儿。<br/>希望小伙伴们能够喜欢我的文章，这里是小狮子前端，保持狮子座的热情带给你学习的动力，愿我们成为最好的自己~<br/><img src="https://cdn.jsdelivr.net/gh/chocolate1999/cdn/img/20201202223856.jpg"> <br/>QQ交流群：666151691</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%95%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">引言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%B5%E5%95%86%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%E7%9A%84%E6%8A%80%E6%9C%AF%E9%80%89%E5%9E%8B"><span class="toc-number">2.</span> <span class="toc-text">电商后台管理系统的技术选型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8%E7%AF%87"><span class="toc-number">3.</span> <span class="toc-text">快速入门篇</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%B5%E5%95%86%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%E5%BC%80%E5%8F%91%EF%BC%88%E7%99%BE%E7%A7%91%E5%85%A8%E4%B9%A6%EF%BC%89"><span class="toc-number">4.</span> <span class="toc-text">电商管理系统开发（百科全书）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%93%E6%9D%9F%E8%AF%AD"><span class="toc-number">5.</span> <span class="toc-text">结束语</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%82%B9%E5%87%BB%E8%BF%9B%E5%85%A5Vue%E2%9D%A4%E5%AD%A6%E4%B9%A0%E4%B8%93%E6%A0%8F"><span class="toc-number">5.0.1.</span> <span class="toc-text"> 点击进入Vue❤学习专栏~</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/posts/20210506/" title="时隔两个月，来一份总结【文末彩蛋】"><img data-lazy-src="https://cdn.jsdelivr.net/gh/chocolate1999/cdn/img/20210506215206.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="时隔两个月，来一份总结【文末彩蛋】"/></a><div class="content"><a class="title" href="/posts/20210506/" title="时隔两个月，来一份总结【文末彩蛋】">时隔两个月，来一份总结【文末彩蛋】</a><time datetime="2021-05-07T14:38:41.474Z" title="发表于 2021-05-07 22:38:41">2021-05-07</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/50975/" title="15个前端攻城狮必备的学习网站 | 你知道几个？（附视频介绍）"><img data-lazy-src="https://cdn.jsdelivr.net/gh/chocolate1999/cdn/img/20200610155519.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="15个前端攻城狮必备的学习网站 | 你知道几个？（附视频介绍）"/></a><div class="content"><a class="title" href="/posts/50975/" title="15个前端攻城狮必备的学习网站 | 你知道几个？（附视频介绍）">15个前端攻城狮必备的学习网站 | 你知道几个？（附视频介绍）</a><time datetime="2021-05-07T13:48:39.367Z" title="发表于 2021-05-07 21:48:39">2021-05-07</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/20541/" title="前端知识梳理之webpack篇"><img data-lazy-src="https://cdn.jsdelivr.net/gh/chocolate1999/cdn/img/20200914094504.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="前端知识梳理之webpack篇"/></a><div class="content"><a class="title" href="/posts/20541/" title="前端知识梳理之webpack篇">前端知识梳理之webpack篇</a><time datetime="2021-05-07T13:48:39.366Z" title="发表于 2021-05-07 21:48:39">2021-05-07</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/20201009/" title="某跳动面试官：说说微信扫码登录背后的实现原理？"><img data-lazy-src="https://cdn.jsdelivr.net/gh/chocolate1999/cdn/img/20201009202845.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="某跳动面试官：说说微信扫码登录背后的实现原理？"/></a><div class="content"><a class="title" href="/posts/20201009/" title="某跳动面试官：说说微信扫码登录背后的实现原理？">某跳动面试官：说说微信扫码登录背后的实现原理？</a><time datetime="2021-05-07T13:48:39.366Z" title="发表于 2021-05-07 21:48:39">2021-05-07</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/205511/" title="前端知识梳理之Vue篇"><img data-lazy-src="https://cdn.jsdelivr.net/gh/chocolate1999/cdn/img/20200911085935.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="前端知识梳理之Vue篇"/></a><div class="content"><a class="title" href="/posts/205511/" title="前端知识梳理之Vue篇">前端知识梳理之Vue篇</a><time datetime="2021-05-07T13:48:39.365Z" title="发表于 2021-05-07 21:48:39">2021-05-07</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2019 - 2021  <i id="heartbeat" class="fa fas fa-heartbeat"></i> 一百个Chocolate</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text"><p><a style="margin-inline:5px" target="_blank" href="https://hexo.io/"><img src="https://img.shields.io/badge/Frame-Hexo-blue?style=flat&logo=hexo" title="博客框架为Hexo"></a><a style="margin-inline:5px" target="_blank" href="https://butterfly.js.org/"><img src="https://img.shields.io/badge/Theme-Butterfly-6513df?style=flat&logo=bitdefender" title="主题采用butterfly"></a><a style="margin-inline:5px" target="_blank" href="https://www.jsdelivr.com/"><img src="https://img.shields.io/badge/CDN-jsDelivr-orange?style=flat&logo=jsDelivr" title="本站使用JsDelivr为静态资源提供CDN加速"></a><a style="margin-inline:5px" target="_blank" href="https://vercel.com/ "><img src="https://img.shields.io/badge/Hosted-Vervel-brightgreen?style=flat&logo=Vercel" title="本站采用双线部署，默认线路托管于Vercel"></a><a style="margin-inline:5px" target="_blank" href="https://vercel.com/ "><img src="https://img.shields.io/badge/Hosted-Coding-0cedbe?style=flat&logo=Codio" title="本站采用双线部署，联通线路托管于Coding"></a><a style="margin-inline:5px" target="_blank" href="https://github.com/"><img src="https://img.shields.io/badge/Source-Github-d021d6?style=flat&logo=GitHub" title="本站项目由Gtihub托管"></a><a style="margin-inline:5px" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img src="https://img.shields.io/badge/Copyright-BY--NC--SA%204.0-d42328?style=flat&logo=Claris" title="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可"></a></p></div><div class="icp"><a target="_blank" rel="noopener" href="http://www.beian.miit.gov.cn/"><img class="icp-icon" src="/img/icp.png"/><span>湘ICP备20002952号</span></a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="font-plus" type="button" title="放大字体"><i class="fas fa-plus"></i></button><button id="font-minus" type="button" title="缩小字体"><i class="fas fa-minus"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="chat_btn" type="button" title="rightside.chat_btn"><i class="fas fa-sms"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div></div><hr/><div id="local-search-results"></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/vue@2.6.11"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><script src="/js/search/local-search.js"></script><script async="async">var preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',preloader.endLoading())
+setTimeout(function(){preloader.endLoading();}, 5000);</script><div class="js-pjax"></div><script src="https://cdn.jsdelivr.net/gh/sviptzk/StaticFile_HEXO@master/xkTool/v3.1.1/xkTool.js"></script><script defer src="https://cdn.jsdelivr.net/npm/hexo-theme-volantis@latest/source/js/issues.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = [
+  'title',
+  '#config-diff',
+  '#body-wrap',
+  '#rightside-config-hide',
+  '#rightside-config-show',
+  '.js-pjax'
+]
+
+if (false) {
+  pjaxSelectors.unshift('meta[property="og:image"]', 'meta[property="og:title"]', 'meta[property="og:url"]')
+}
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  if (typeof gtag === 'function') {
+    gtag('config', '', {'page_path': window.location.pathname});
+  }
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // Analytics
+  if (false) {
+    MtaH5.pgv()
+  }
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+
+  typeof preloader === 'object' && preloader.endLoading()
+})
+
+
+document.addEventListener('pjax:send', function () {
+  typeof preloader === 'object' && preloader.initLoading()
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

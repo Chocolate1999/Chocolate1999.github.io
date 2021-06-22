@@ -1,0 +1,679 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>「JavaScript灵魂之问」前端知识梳理之 JS 篇（上篇） | 超逸の博客</title><meta name="keywords" content="JS，面试，知识梳理，前端"><meta name="author" content="一百个Chocolate"><meta name="copyright" content="一百个Chocolate"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="基础typeof 知多少前置知识： typeof 判断数据类型会输出如下这些： number string boolean object undefined function 需要注意的： console.log(typeof(null)) &#x2F;&#x2F; objectconsole.log(typeof(undefined)) &#x2F;&#x2F; undefined 开门见山，下面输出会是什么？ console.log">
+<meta property="og:type" content="article">
+<meta property="og:title" content="「JavaScript灵魂之问」前端知识梳理之 JS 篇（上篇）">
+<meta property="og:url" content="https://yangchaoyi.vip/posts/2020916/index.html">
+<meta property="og:site_name" content="超逸の博客">
+<meta property="og:description" content="基础typeof 知多少前置知识： typeof 判断数据类型会输出如下这些： number string boolean object undefined function 需要注意的： console.log(typeof(null)) &#x2F;&#x2F; objectconsole.log(typeof(undefined)) &#x2F;&#x2F; undefined 开门见山，下面输出会是什么？ console.log">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/chocolate1999/cdn/img/20200916141332.png">
+<meta property="article:published_time" content="2021-05-07T13:48:39.356Z">
+<meta property="article:modified_time" content="2021-05-07T13:48:39.356Z">
+<meta property="article:author" content="一百个Chocolate">
+<meta property="article:tag" content="前端">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/chocolate1999/cdn/img/20200916141332.png"><link rel="shortcut icon" href="/img/favicon.ico"><link rel="canonical" href="https://yangchaoyi.vip/posts/2020916/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  noticeOutdate: {"limitDay":500,"position":"top","messagePrev":"It has been","messageNext":"days since the last update, the content of the article may be outdated."},
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#121212","position":"bottom-left"},
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isanchor: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = { 
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2021-05-07 21:48:39'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const now = new Date()
+          const hour = now.getHours()
+          const isNight = hour <= 6 || hour >= 18
+          if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
+          else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const fontSizeVal = saveToLocal.get('global-font-size')
+    if (fontSizeVal !== undefined) {
+      document.documentElement.style.setProperty('--global-font-size', fontSizeVal + 'px')
+    }
+    })(window)</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/l-lin/font-awesome-animation/dist/font-awesome-animation.min.css"  media="defer" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/sviptzk/HexoStaticFile@master/Hexo/css/flink.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/sviptzk/HexoStaticFile@master/Hexo/css/iconfont.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Rr210/Lantern@2.4/dl.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/HCLonely/images@master/others/heartbeat.min.css"><meta name="generator" content="Hexo 5.3.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="wizard-scene"><div class="wizard-objects"><div class="wizard-square"></div><div class="wizard-circle"></div><div class="wizard-triangle"></div></div><div class="wizard"><div class="wizard-body"></div><div class="wizard-right-arm"><div class="wizard-right-hand"></div></div><div class="wizard-left-arm"><div class="wizard-left-hand"></div></div><div class="wizard-head"><div class="wizard-beard"></div><div class="wizard-face"><div class="wizard-adds"></div></div><div class="wizard-hat"><div class="wizard-hat-of-the-hat"></div><div class="wizard-four-point-star --first"></div><div class="wizard-four-point-star --second"></div><div class="wizard-four-point-star --third"></div></div></div></div></div></div><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" data-lazy-src="/img/Chocolate.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">62</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">30</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">8</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-book"></i><span> 文章</span><i class="fas fa-chevron-down expand hide"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> 时间轴</span></a></li><li><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></li><li><a class="site-page" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> 分类</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 娱乐</span><i class="fas fa-chevron-down expand hide"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/bangumis/"><i class="fa-fw fab fa-youtube"></i><span> 番剧</span></a></li><li><a class="site-page" href="/movies/"><i class="fa-fw fa fa-film"></i><span> 电影</span></a></li><li><a class="site-page" href="/books/"><i class="fa-fw fas fa-book"></i><span> 书单</span></a></li><li><a class="site-page" href="/music/"><i class="fa-fw fa fa-music"></i><span> 音乐</span></a></li><li><a class="site-page" href="/"><i class="fa-fw fas fa-gamepad"></i><span> 游戏</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fa fa-heartbeat"></i><span> 清单</span><i class="fas fa-chevron-down expand hide"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/gallery/"><i class="fa-fw far fa-image"></i><span> 相册</span></a></li><li><a class="site-page" href="/home/"><i class="fa-fw fab fa-phoenix-framework"></i><span> 主页</span></a></li><li><a class="site-page" href="/sponsorWall/"><i class="fa-fw fas fa-money-check-alt"></i><span> 赞助墙</span></a></li><li><a class="site-page" href="/box/"><i class="fa-fw fas fa-th-large"></i><span> 聚宝盒</span></a></li></ul></div><div class="menus_item"><a class="site-page" target="_blank" rel="noopener" href="https://hearling.github.io/"><i class="fa-fw fas fa-book"></i><span> HearLingの博客</span></a></div><div class="menus_item"><a class="site-page" href="/talk/"><i class="fa-fw fas fa-coffee"></i><span> 说说</span></a></div><div class="menus_item"><a class="site-page" href="/contact/"><i class="fa-fw far fa-comments"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 关于</span><i class="fas fa-chevron-down expand hide"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/about/"><i class="fa-fw fa fa-heart"></i><span> 关于我</span></a></li><li><a class="site-page" target="_blank" rel="noopener" href="https://yangchaoyi.avosapps.us/"><i class="fa-fw fas fa-box"></i><span> Valine评论后台</span></a></li><li><a class="site-page" target="_blank" rel="noopener" href="https://console.leancloud.app/applist.html#/apps"><i class="fa-fw fas fa-box"></i><span> LeanCloud应用</span></a></li></ul></div></div></div></div><div class="post" id="body-wrap"><header class="not-top-img" id="page-header"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">超逸の博客</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-book"></i><span> 文章</span><i class="fas fa-chevron-down expand hide"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> 时间轴</span></a></li><li><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></li><li><a class="site-page" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> 分类</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 娱乐</span><i class="fas fa-chevron-down expand hide"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/bangumis/"><i class="fa-fw fab fa-youtube"></i><span> 番剧</span></a></li><li><a class="site-page" href="/movies/"><i class="fa-fw fa fa-film"></i><span> 电影</span></a></li><li><a class="site-page" href="/books/"><i class="fa-fw fas fa-book"></i><span> 书单</span></a></li><li><a class="site-page" href="/music/"><i class="fa-fw fa fa-music"></i><span> 音乐</span></a></li><li><a class="site-page" href="/"><i class="fa-fw fas fa-gamepad"></i><span> 游戏</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fa fa-heartbeat"></i><span> 清单</span><i class="fas fa-chevron-down expand hide"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/gallery/"><i class="fa-fw far fa-image"></i><span> 相册</span></a></li><li><a class="site-page" href="/home/"><i class="fa-fw fab fa-phoenix-framework"></i><span> 主页</span></a></li><li><a class="site-page" href="/sponsorWall/"><i class="fa-fw fas fa-money-check-alt"></i><span> 赞助墙</span></a></li><li><a class="site-page" href="/box/"><i class="fa-fw fas fa-th-large"></i><span> 聚宝盒</span></a></li></ul></div><div class="menus_item"><a class="site-page" target="_blank" rel="noopener" href="https://hearling.github.io/"><i class="fa-fw fas fa-book"></i><span> HearLingの博客</span></a></div><div class="menus_item"><a class="site-page" href="/talk/"><i class="fa-fw fas fa-coffee"></i><span> 说说</span></a></div><div class="menus_item"><a class="site-page" href="/contact/"><i class="fa-fw far fa-comments"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 关于</span><i class="fas fa-chevron-down expand hide"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/about/"><i class="fa-fw fa fa-heart"></i><span> 关于我</span></a></li><li><a class="site-page" target="_blank" rel="noopener" href="https://yangchaoyi.avosapps.us/"><i class="fa-fw fas fa-box"></i><span> Valine评论后台</span></a></li><li><a class="site-page" target="_blank" rel="noopener" href="https://console.leancloud.app/applist.html#/apps"><i class="fa-fw fas fa-box"></i><span> LeanCloud应用</span></a></li></ul></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav></header><main class="layout" id="content-inner"><div id="post"><div id="post-info"><h1 class="post-title">「JavaScript灵魂之问」前端知识梳理之 JS 篇（上篇）</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-05-07T13:48:39.356Z" title="发表于 2021-05-07 21:48:39">2021-05-07</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2021-05-07T13:48:39.356Z" title="更新于 2021-05-07 21:48:39">2021-05-07</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">7.5k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>29分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div><div class="top-img gist" style="background-image: url(/false)"></div><article class="post-content" id="article-container"><h2 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h2><h3 id="typeof-知多少"><a href="#typeof-知多少" class="headerlink" title="typeof 知多少"></a>typeof 知多少</h3><p>前置知识：</p>
+<p><code>typeof</code> 判断数据类型会输出如下这些：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">number string boolean object <span class="literal">undefined</span> <span class="function"><span class="keyword">function</span></span></span><br></pre></td></tr></table></figure>
+<p>需要注意的：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span>(<span class="literal">null</span>)) <span class="comment">// object</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span>(<span class="literal">undefined</span>)) <span class="comment">// undefined</span></span><br></pre></td></tr></table></figure>
+<p>开门见山，下面输出会是什么？</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span>(<span class="number">1</span> -<span class="string">&#x27;1&#x27;</span>))</span><br></pre></td></tr></table></figure>
+<div class="hide-block"><button type="button" class="hide-button button--animated" style="">查看答案
+    </button><div class="hide-content"><p><code>number</code>，你有没有中招呢？</p>
+</div></div>
+
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span>(<span class="string">&#x27;1&#x27;</span> -<span class="string">&#x27;1&#x27;</span>))</span><br></pre></td></tr></table></figure>
+<div class="hide-block"><button type="button" class="hide-button button--animated" style="">查看答案
+    </button><div class="hide-content"><p>还是<code>number</code>，诶？怎么肥事？为啥不是 <code>string</code> 呢？</p>
+</div></div>
+
+<p>上面两个题，答的怎么样呢？后续讲解显示/隐式类型转换时会给大家解答，接着继续 GO！</p>
+<p>下面代码会是怎样的结果？</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(a)</span><br></pre></td></tr></table></figure>
+<div class="hide-block"><button type="button" class="hide-button button--animated" style="">查看答案
+    </button><div class="hide-content"><p>可能你会说输出 <code>undefined</code>，但你又入坑了…答案是会<strong>报错</strong>。</p>
+<p><img src= "/img/loading.gif" data-lazy-src="https://img-blog.csdnimg.cn/2020091322404744.png#pic_center" alt=""></p>
+</div></div>
+
+
+<p>好的，接下来继续，我再来变一下，下面又会输出什么？还是会报错吗？</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span>(a))</span><br></pre></td></tr></table></figure>
+<div class="hide-block"><button type="button" class="hide-button button--animated" style="">查看答案
+    </button><div class="hide-content"><p>答案是 <code>undefined</code> ，又中招了？ 这里 <code>a</code> 没声明，判断类型当然是 <code>undefined</code>呐！</p>
+</div></div>
+
+<p>go on ! 那么下面这个代码我先提示一下，有坑，接上一题，我们得到了 <code>undefined</code>，下面这题我们又套了一层 <code>typeof</code> ，按照开头提到的注意点，会是 <code>undefined</code>吗？</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span>(<span class="keyword">typeof</span>(a)))</span><br></pre></td></tr></table></figure>
+<div class="hide-block"><button type="button" class="hide-button button--animated" style="">查看答案
+    </button><div class="hide-content"><p>答案是 <code>string</code>，在下一题进行解释。</p>
+</div></div>
+
+
+<p>下一题，这个应该是输出？</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span>(<span class="keyword">typeof</span>(<span class="number">123</span>)))</span><br></pre></td></tr></table></figure>
+<div class="hide-block"><button type="button" class="hide-button button--animated" style="">查看答案
+    </button><div class="hide-content"><p>答案还是 <code>string</code>（这里要解释了，不然就要哭了┭┮﹏┭┮），原因是 <code>typeof</code> 判断数据类型时，会返回字符串形式的类型，例如上上题的<code>typeof(typeof(a))</code>，里面会返回一个 <code>&#39;undefined&#39;</code>这样的结果，而 <code>typeof(typeof(123))</code> 里面会返回一个<code>&#39;number&#39;</code>。因此我们再次 <code>typeof</code> 时，就会返回 <code>string</code> 类型。（恍然大悟，给自己鼓个掌~）</p>
+</div></div>
+
+
+<h3 id="显示、隐式类型转换"><a href="#显示、隐式类型转换" class="headerlink" title="显示、隐式类型转换"></a>显示、隐式类型转换</h3><h4 id="显示转换"><a href="#显示转换" class="headerlink" title="显示转换"></a>显示转换</h4><p>搞简单点，先来看看显示转换吧：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> a = <span class="string">&#x27;123&#x27;</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span>(<span class="built_in">Number</span>(a)) + <span class="string">&#x27;-&#x27;</span> + <span class="built_in">Number</span>(a))</span><br></pre></td></tr></table></figure>
+<p>显然会输出数字 <code>123</code></p>
+<p>我们把 <code>a</code> 改成 字符串 <code>&#39;true&#39;</code>，又会输出什么呢？</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> a = <span class="string">&#x27;true&#x27;</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span>(<span class="built_in">Number</span>(a)) + <span class="string">&#x27;-&#x27;</span> + <span class="built_in">Number</span>(a))</span><br></pre></td></tr></table></figure>
+<p>此时会输出 <code>NaN</code>，如果把 a 改成 <code>true</code>，就会输出数字 <code>1</code>（即改成下述代码）。</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> a = <span class="literal">true</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span>(<span class="built_in">Number</span>(a)) + <span class="string">&#x27;-&#x27;</span> + <span class="built_in">Number</span>(a))</span><br></pre></td></tr></table></figure>
+<p>继续，来点特殊一点的东西：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> a = <span class="literal">null</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span>(<span class="built_in">Number</span>(a)) + <span class="string">&#x27;-&#x27;</span> + <span class="built_in">Number</span>(a))</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> a = <span class="literal">undefined</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span>(<span class="built_in">Number</span>(a)) + <span class="string">&#x27;-&#x27;</span> + <span class="built_in">Number</span>(a))</span><br></pre></td></tr></table></figure>
+<div class="hide-block"><button type="button" class="hide-button button--animated" style="">查看答案
+    </button><div class="hide-content"><p>对于 <code>null</code>，结果会输出数字 <code>0</code><br>对于 <code>undefined</code>，结果会输出 <code>NaN</code></p>
+</div></div>
+
+<p>下面给出一些其他例子，小伙伴们可以好好消化一下。</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="string">&#x27;a&#x27;</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span>(<span class="built_in">Number</span>(a)) + <span class="string">&#x27;-&#x27;</span> + <span class="built_in">Number</span>(a)) <span class="comment">// number-NaN</span></span><br><span class="line"><span class="keyword">var</span> a = <span class="string">&#x27;1a&#x27;</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span>(<span class="built_in">Number</span>(a)) + <span class="string">&#x27;-&#x27;</span> + <span class="built_in">Number</span>(a))<span class="comment">// number-NaN</span></span><br><span class="line"><span class="keyword">var</span> a = <span class="number">3.14</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span>(<span class="built_in">Number</span>(a)) + <span class="string">&#x27;-&#x27;</span> + <span class="built_in">Number</span>(a))<span class="comment">// number-3.14</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span>(<span class="literal">NaN</span>)) <span class="comment">// number</span></span><br></pre></td></tr></table></figure>
+<p>接下来，我们一起来探讨一下 <code>parseInt</code>：</p>
+<p>还是先来个简单的热热身，我们知道 <code>parseInt</code>会将数字转换成整形，例如：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> a = <span class="string">&#x27;123&#x27;</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span>(<span class="built_in">parseInt</span>(a)) + <span class="string">&#x27;-&#x27;</span> + <span class="built_in">parseInt</span>(a)) <span class="comment">//number-123</span></span><br></pre></td></tr></table></figure>
+<p>那么，对于下面这个情况呢？</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> a = <span class="literal">true</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span>(<span class="built_in">parseInt</span>(a)) + <span class="string">&#x27;-&#x27;</span> + <span class="built_in">parseInt</span>(a))</span><br></pre></td></tr></table></figure>
+<div class="hide-block"><button type="button" class="hide-button button--animated" style="">查看答案
+    </button><div class="hide-content"><p>答案是 <code>number-NaN</code>，因为 <code>parseInt</code>不会对非数字进行取整操作。</p>
+<p>对于 <code>true</code>、<code>false</code>、<code>undefined</code>、<code>null</code>、<code>NaN</code> 都会输出 <code>NaN</code>。如果是小数，不会四舍五入，而是直接舍弃小数点后的位数。</p>
+</div></div>
+
+<p><strong>parseInt()更多用法：</strong></p>
+<p><code>parseInt()</code> 函数可解析一个字符串，并返回一个整数。</p>
+<table>
+<thead>
+<tr>
+<th align="center">参数</th>
+<th align="center">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">string</td>
+<td align="center">必需。要被解析的字符串。</td>
+</tr>
+<tr>
+<td align="center">radix</td>
+<td align="center">可选。表示要解析的数字的基数。该值介于 2 ~ 36 之间。如果省略该参数或其值为 0，则数字将以 10 为基础来解析。如果它以 “0x” 或 “0X” 开头，将以 16 为基数。如果该参数小于 2 或者大于 36，则 parseInt() 将返回 NaN。</td>
+</tr>
+</tbody></table>
+<p>直接看下面例子，应该就能明白了</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">parseInt</span>(<span class="string">&quot;10&quot;</span>);			<span class="comment">//返回 10</span></span><br><span class="line"><span class="built_in">parseInt</span>(<span class="string">&quot;19&quot;</span>,<span class="number">10</span>);		<span class="comment">//返回 19 (10+9)</span></span><br><span class="line"><span class="built_in">parseInt</span>(<span class="string">&quot;11&quot;</span>,<span class="number">2</span>);		<span class="comment">//返回 3 (2+1)</span></span><br><span class="line"><span class="built_in">parseInt</span>(<span class="string">&quot;17&quot;</span>,<span class="number">8</span>);		<span class="comment">//返回 15 (8+7)</span></span><br><span class="line"><span class="built_in">parseInt</span>(<span class="string">&quot;1f&quot;</span>,<span class="number">16</span>);		<span class="comment">//返回 31 (16+15)</span></span><br><span class="line"><span class="built_in">parseInt</span>(<span class="string">&quot;010&quot;</span>);		<span class="comment">//未定：返回 10 或 8</span></span><br></pre></td></tr></table></figure>
+<p>最后，再来两个输出，结束我们的 <code>parseInt</code> 的介绍</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="built_in">parseInt</span>(<span class="string">&#x27;abc123&#x27;</span>)) <span class="comment">// NaN</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">parseInt</span>(<span class="string">&#x27;123abc456&#x27;</span>)) <span class="comment">// 123</span></span><br></pre></td></tr></table></figure>
+<p><strong>parseFloat()用法（保留小数位数）：</strong></p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="built_in">parseFloat</span>(<span class="string">&#x27;3.1415926&#x27;</span>).toFixed(<span class="number">2</span>)) <span class="comment">// 3.14</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">parseFloat</span>(<span class="string">&#x27;3.1415926&#x27;</span>).toFixed(<span class="number">4</span>)) <span class="comment">// 3.1416</span></span><br></pre></td></tr></table></figure>
+<hr/>
+
+<p>上述我们进行了字符串到整数的转换，下面我们介绍整数到字符串的转换：</p>
+<p>由于还算比较简单，这里我就直接上代码了。</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> str = <span class="number">123</span> + <span class="string">&#x27;&#x27;</span></span><br><span class="line"><span class="keyword">let</span> str1 = <span class="number">123</span></span><br><span class="line">str1 = str1.toString()</span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span>(str)) <span class="comment">//string</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span>(str1)) <span class="comment">// string</span></span><br></pre></td></tr></table></figure>
+<p>比较特殊的是，下面会报错，因为 <code>null</code> 和 <code>undefined</code> 会报错。</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> str = <span class="literal">null</span></span><br><span class="line"><span class="keyword">let</span> str1 = <span class="literal">undefined</span></span><br><span class="line">str = str.toString()</span><br><span class="line">str1 = str1.toString()</span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span>(str)) <span class="comment">// error</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span>(str1)) <span class="comment">// error</span></span><br></pre></td></tr></table></figure>
+<p>另外， <code>toString()</code>也能传一个基数，可以进行进制转换。</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> num = <span class="number">10</span></span><br><span class="line"><span class="built_in">console</span>.log(num.toString(<span class="number">2</span>)) <span class="comment">// 1010</span></span><br></pre></td></tr></table></figure>
+<hr/>
+
+<p>接下来，我们探讨一下 <code>Boolean</code>，直接看下面几个输出就好了，记住下面几个 <code>false</code>就行，其它就为 <code>true</code> 了。</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Boolean</span>(<span class="number">1</span>)) <span class="comment">// true</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Boolean</span>(<span class="literal">null</span>)) <span class="comment">// false</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Boolean</span>(<span class="literal">undefined</span>)) <span class="comment">// false</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Boolean</span>(<span class="literal">NaN</span>)) <span class="comment">// false</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Boolean</span>(<span class="string">&quot;&quot;</span>)) <span class="comment">// false</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Boolean</span>(<span class="number">0</span>)) <span class="comment">// false</span></span><br></pre></td></tr></table></figure>
+<h4 id="隐式转换"><a href="#隐式转换" class="headerlink" title="隐式转换"></a>隐式转换</h4><p>开门见山，还是先看一道题，注意隐式转换标题！</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> a = <span class="string">&#x27;123&#x27;</span></span><br><span class="line">a++</span><br><span class="line"><span class="built_in">console</span>.log(a)</span><br></pre></td></tr></table></figure>
+<div class="hide-block"><button type="button" class="hide-button button--animated" style="">查看答案
+    </button><div class="hide-content"><p>答案是 <code>124</code>，因为看到 <code>a++</code> 操作，会有一个 <code>Number(a)</code> 的操作，然后数字自加，得到 <code>124</code>。</p>
+</div></div>
+
+<p>再来看一道吧：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> a = <span class="string">&#x27;a&#x27;</span> + <span class="number">1</span></span><br><span class="line"><span class="built_in">console</span>.log(a) </span><br></pre></td></tr></table></figure>
+<div class="hide-block"><button type="button" class="hide-button button--animated" style="">查看答案
+    </button><div class="hide-content"><p>答案是 <code>a1</code>，这应该好理解，此时将 <code>1</code> 进行 <code>String(1)</code> 的操作，然后进行字符串拼接。</p>
+</div></div>
+
+<p>接下来，再给几个样例，小伙伴们看一看就好了。<code>(*^▽^*)</code></p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> a = <span class="string">&#x27;3&#x27;</span> &gt; <span class="number">2</span></span><br><span class="line"><span class="built_in">console</span>.log(a) <span class="comment">// true</span></span><br><span class="line"><span class="keyword">let</span> a = <span class="number">1</span> == <span class="string">&#x27;1&#x27;</span></span><br><span class="line"><span class="built_in">console</span>.log(a) <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+<p>下面来一道经典题，会输出什么？</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> a = <span class="number">1</span> === <span class="string">&#x27;1&#x27;</span></span><br><span class="line"><span class="built_in">console</span>.log(a)</span><br></pre></td></tr></table></figure>
+<div class="hide-block"><button type="button" class="hide-button button--animated" style="">查看答案
+    </button><div class="hide-content"><p>答案是 <code>false</code>，因为 <code>===</code>是全等于，不会进行隐式转换，而上面 <code>==</code> 是会进行隐式转换的。</p>
+</div></div>
+
+<p>继续，会输出什么？</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> a = <span class="literal">NaN</span> == <span class="literal">NaN</span></span><br><span class="line"><span class="built_in">console</span>.log(a)</span><br></pre></td></tr></table></figure>
+<div class="hide-block"><button type="button" class="hide-button button--animated" style="">查看答案
+    </button><div class="hide-content"><p>答案是 <code>false</code>，因为和谁都不相等，连自己也不相等。</p>
+</div></div>
+<p>继续，会输出什么？难倒你为止！</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> a = <span class="number">4</span> &gt; <span class="number">3</span> &gt; <span class="number">2</span> </span><br><span class="line"><span class="keyword">let</span> b = <span class="number">2</span> &gt; <span class="number">1</span> == <span class="number">1</span>  </span><br><span class="line"><span class="built_in">console</span>.log(a,b)</span><br></pre></td></tr></table></figure>
+<div class="hide-block"><button type="button" class="hide-button button--animated" style="">查看答案
+    </button><div class="hide-content"><p>答案是 <code>false</code> 和 <code>true</code> ，因为 <code>4 &gt; 3</code> 会返回 <code>true</code> ，然后再隐式转换为 <code>1</code>，下面类似。</p>
+</div></div>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> a = <span class="literal">undefined</span> &gt; <span class="number">0</span> </span><br><span class="line"><span class="keyword">let</span> b = <span class="literal">undefined</span> == <span class="number">0</span></span><br><span class="line"><span class="keyword">let</span> c = <span class="literal">undefined</span> &lt; <span class="number">0</span></span><br><span class="line"><span class="keyword">let</span> d = <span class="literal">undefined</span> == <span class="literal">undefined</span></span><br><span class="line"><span class="keyword">let</span> e = <span class="literal">undefined</span> == <span class="literal">null</span></span><br><span class="line"><span class="keyword">let</span> f = <span class="literal">null</span> &gt; <span class="number">0</span></span><br><span class="line"><span class="keyword">let</span> g = <span class="literal">null</span> == <span class="number">0</span></span><br><span class="line"><span class="keyword">let</span> h = <span class="literal">null</span> &lt; <span class="number">0</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(a,b,c,d,e,f,g,h)</span><br></pre></td></tr></table></figure>
+<div class="hide-block"><button type="button" class="hide-button button--animated" style="">查看答案
+    </button><div class="hide-content"><p>答案是 <code>false false false true true false false false</code>，因为 <code>null</code> 和 <code>undefined</code> 只和它们比才相等。</p>
+</div></div>
+
+<p><strong>补充：</strong></p>
+<p>显示转换那里，我们介绍了字符串转整数的几种方式，还例举了很多题目，现在再补充一个：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> a = <span class="string">&#x27;123&#x27;</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span>(+ a) + <span class="string">&#x27;-&#x27;</span> + +a) <span class="comment">// number-123</span></span><br></pre></td></tr></table></figure>
+<p>有了前面转换知识了，那就看看下面会输出什么吧</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> a = <span class="literal">NaN</span></span><br><span class="line"><span class="keyword">let</span> b = <span class="string">&#x27;123&#x27;</span></span><br><span class="line"><span class="keyword">let</span> c = <span class="string">&#x27;a&#x27;</span></span><br><span class="line"><span class="keyword">let</span> d = <span class="literal">null</span></span><br><span class="line"><span class="keyword">let</span> e = <span class="literal">undefined</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">isNaN</span>(a))</span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">isNaN</span>(b))</span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">isNaN</span>(c))</span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">isNaN</span>(d))</span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">isNaN</span>(e))</span><br></pre></td></tr></table></figure>
+<div class="hide-block"><button type="button" class="hide-button button--animated" style="">查看答案
+    </button><div class="hide-content"><p>答案</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="literal">true</span></span><br><span class="line"><span class="literal">false</span></span><br><span class="line"><span class="literal">true</span></span><br><span class="line"><span class="literal">false</span></span><br><span class="line"><span class="literal">true</span></span><br></pre></td></tr></table></figure></div></div>
+
+
+<p>最后的最后，我们回到开头让你想不明白的问题，现在再来做一下吧</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span>(<span class="number">1</span> -<span class="string">&#x27;1&#x27;</span>))</span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span>(<span class="string">&#x27;1&#x27;</span> - <span class="string">&#x27;1&#x27;</span>))</span><br></pre></td></tr></table></figure>
+<div class="hide-block"><button type="button" class="hide-button button--animated" style="">查看答案
+    </button><div class="hide-content"><p>答案都是 <code>number</code>，不解释了哈</p>
+</div></div>
+
+
+<hr/>
+
+
+<h2 id="函数基础"><a href="#函数基础" class="headerlink" title="函数基础"></a>函数基础</h2><h3 id="函数种类、字面量"><a href="#函数种类、字面量" class="headerlink" title="函数种类、字面量"></a>函数种类、字面量</h3><p>开门见山，下面代码会输出什么，不知道小伙伴平常有咩有想过这类问题</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> test = <span class="function"><span class="keyword">function</span> <span class="title">test1</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> a = <span class="number">1</span>;</span><br><span class="line">  <span class="built_in">console</span>.log(a);</span><br><span class="line">&#125;</span><br><span class="line">test()</span><br><span class="line">test1()</span><br></pre></td></tr></table></figure>
+<div class="hide-block"><button type="button" class="hide-button button--animated" style="">查看答案
+    </button><div class="hide-content"><p>答案是 <code>1</code> 和 <code>报错</code>，报错信息如下：</p>
+<p><img src= "/img/loading.gif" data-lazy-src="https://img-blog.csdnimg.cn/20200914140339661.png#pic_center" alt=""><br>这是为什么呢？实际上，我们申明了一个变量 <code>test</code>，把这个函数 <code>test1</code>赋给它的时候，就已经把这个变量赋予了<strong>函数</strong>的功能，调用 <code>test()</code>方法当然能够正常运行，输出 <code>1</code>。而对于表达式赋值，会自动忽略后面的函数名称，也就是说写与不写并不影响 <code>test()</code>方法的执行。不信，看看下面代码会输出什么？</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> test = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> a = <span class="number">1</span>;</span><br><span class="line">  <span class="built_in">console</span>.log(a);</span><br><span class="line">&#125;</span><br><span class="line">test() <span class="comment">// 1</span></span><br></pre></td></tr></table></figure>
+<p>那这样，是不是说 <code>test1</code>完全没作用了，那写着干嘛，还多几个字符。<strong>当然不是！</strong>，<code>test1</code>在函数体内部是可见的，而在外部却不可见，通过这样，我们就可以实现<strong>递归操作</strong></p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> test = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> a = <span class="number">1</span>;</span><br><span class="line">  <span class="built_in">console</span>.log(a);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>而对于上述代码，后面函数体没有名字，我们称之为 <strong>匿名函数</strong>，是不是有点印象了，原来就是这东西，哟西~</p>
+<p>而通过这种方式赋值的表达式，我们称之为 <strong>匿名函数表达式</strong>，也称为 <strong>函数字面量</strong>，这些专有名词一出来，瞬间觉得有点逼格了有没有！</p>
+<p>字面量这种东西，简单来说就是数据，例如下述，有<code>数字字面量，字符串字面量，数组字面量</code>等等。简单理解就是，对于赋值的过程，右边的数据就是字面量。</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">10</span></span><br><span class="line"><span class="keyword">var</span> b = <span class="string">&#x27;111&#x27;</span></span><br><span class="line"><span class="keyword">var</span> c = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</span><br></pre></td></tr></table></figure></div></div>
+
+<h3 id="形参实参映射"><a href="#形参实参映射" class="headerlink" title="形参实参映射"></a>形参实参映射</h3><p>补充：如何获取形参和实参对应的长度？</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span> (<span class="params">a,b</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(test.length)  <span class="comment">// 形参的长度 2</span></span><br><span class="line">  <span class="built_in">console</span>.log(<span class="built_in">arguments</span>.length) <span class="comment">// 实参的长度 3</span></span><br><span class="line">&#125;</span><br><span class="line">test(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>)</span><br></pre></td></tr></table></figure>
+<p>我想小伙伴们应该清楚实参和形参是什么玩意，但是我们可以更改实参的值吗？例如下述代码，会输出什么呢？</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params">a, b</span>) </span>&#123;</span><br><span class="line">  a =<span class="number">3</span>;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="built_in">arguments</span>[<span class="number">0</span>]);</span><br><span class="line">&#125;</span><br><span class="line">test(<span class="number">1</span>,<span class="number">2</span>);</span><br></pre></td></tr></table></figure>
+<div class="hide-block"><button type="button" class="hide-button button--animated" style="">查看答案
+    </button><div class="hide-content"><p>答案是 <code>3</code>，我们可以修改实参的值。</p>
+</div></div>
+
+<p>刚刚那题只是简单热个身，继续下一题吧，我们可以改变 <code>b</code> 的值吗？（提示：注意我并没有传对应实参哦~）</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params">a, b</span>) </span>&#123;</span><br><span class="line">  b = <span class="number">3</span>;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="built_in">arguments</span>[<span class="number">1</span>]);</span><br><span class="line">&#125;</span><br><span class="line">test(<span class="number">1</span>);</span><br></pre></td></tr></table></figure>
+<div class="hide-block"><button type="button" class="hide-button button--animated" style="">查看答案
+    </button><div class="hide-content"><p>答案是 <code>undefined</code>，因此对于上一题表述，要修改一下：对于实参传递过来确定的值，我们是可以进行修改的，而如果实参并没有传递值过来，我们是不能进行修改的。这就是<strong>形参和实参的映射关系</strong>。</p>
+<p>简单解释一下<strong>形参和实参的映射关系</strong>，其实<strong>实参</strong>和<strong>形参</strong>不能说是一类的，看上述代码，我们可以通过 <code>arguments</code> 来获取我们的实参，可以看做是一个数组里面的某一项值，而数组是存放<strong>堆内存</strong>的，而对应我们形参其实是存放在<strong>栈内存</strong>的，它们之间会有一个映射关系，并且是一对一对应的，上述我们实参没有对<code>b</code>进行赋值，尽管修改了形参，但改变不了我们的 <code>arguments[1]</code> 就是这个道理。（没有建立一对一映射关系）。</p>
+</div></div>
+<h2 id="让人费解的-GO-和-AO"><a href="#让人费解的-GO-和-AO" class="headerlink" title="让人费解的 GO 和 AO"></a>让人费解的 GO 和 AO</h2><h3 id="作用域引入"><a href="#作用域引入" class="headerlink" title="作用域引入"></a>作用域引入</h3><p>再来一道引申题，为后续内容做铺垫。下面 <code>a b c</code> 分别会输出什么？</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">a = <span class="number">1</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test1</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> b = <span class="number">2</span>;</span><br><span class="line">  <span class="built_in">console</span>.log(a)  <span class="comment">// </span></span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">test2</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> c = <span class="number">3</span></span><br><span class="line">    <span class="built_in">console</span>.log(b); <span class="comment">// </span></span><br><span class="line">  &#125;</span><br><span class="line">  test2();</span><br><span class="line">  <span class="built_in">console</span>.log(c); <span class="comment">// </span></span><br><span class="line">&#125;</span><br><span class="line">test1();</span><br></pre></td></tr></table></figure>
+<div class="hide-block"><button type="button" class="hide-button button--animated" style="">查看答案
+    </button><div class="hide-content"><p>答案是 <code>1 2 报错</code>，这就牵扯到 <code>scope</code> 问题了，简单理解就是函数内部能访问外面的变量，而函数外面却不能访问内部的变量，也就是<strong>闭包</strong>问题。（这个后文会提到）</p>
+</div></div>
+<h3 id="函数默认参数"><a href="#函数默认参数" class="headerlink" title="函数默认参数"></a>函数默认参数</h3><p>如果实参没有赋值，那么形参怎样设置默认参数呢？说到默认参数，我想你应该会想到如下代码：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params">a = <span class="number">1</span>, b = <span class="number">1</span></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(a)</span><br><span class="line">  <span class="built_in">console</span>.log(b)</span><br><span class="line">&#125;</span><br><span class="line">test() <span class="comment">// 1 1</span></span><br></pre></td></tr></table></figure>
+<p>好的，上述问题算是开胃小菜，我们继续，我如果给 <code>a</code> 设定默认值，而 <code>b</code> 通过实参传递过来呢？可以实现吗？之前没有传参的话，不是默认打印 <code>undefined</code>吗，那我现在给 <code>a</code> 传递一个 <code>undefined</code>，是不是就会定为默认值。</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params">a = <span class="number">1</span>, b</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(a)</span><br><span class="line">  <span class="built_in">console</span>.log(b)</span><br><span class="line">&#125;</span><br><span class="line">test(<span class="literal">undefined</span>, <span class="number">2</span>)</span><br></pre></td></tr></table></figure>
+<div class="hide-block"><button type="button" class="hide-button button--animated" style="">查看答案
+    </button><div class="hide-content"><p>答案是可以的，上述代码输出结果为 <code>1 2</code>。简单解释一下，在之前我们将了形参实参是有一个映射关系，对于堆内存 <code>arguments</code> 里面，如果给了 <code>undefined</code>，那么就会去栈内存形参里面找，如果不为 <code>undefined</code>，则会设置形参的默认值。（其实这是 <code>es6</code> 的语法了）</p>
+<p>那么，可以用<code>es5</code>的方式实现一下吗？（当然可以，见代码）</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params">a, b</span>) </span>&#123;</span><br><span class="line">  a = <span class="built_in">arguments</span>[<span class="number">0</span>] || <span class="number">1</span></span><br><span class="line">  b = <span class="built_in">arguments</span>[<span class="number">1</span>] || <span class="number">1</span></span><br><span class="line">  <span class="built_in">console</span>.log(a)</span><br><span class="line">  <span class="built_in">console</span>.log(b)</span><br><span class="line">&#125;</span><br><span class="line">test(<span class="literal">undefined</span>, <span class="number">2</span>)</span><br></pre></td></tr></table></figure></div></div>
+<h3 id="预编译"><a href="#预编译" class="headerlink" title="预编译"></a>预编译</h3><p>预编译总结一下就是如下几点：</p>
+<ul>
+<li>检查通篇的语法错误</li>
+<li>解释一行，执行一行</li>
+</ul>
+<p>下面这两段代码，熟悉的同学一下就明白了，<strong>面试常考</strong>的经典题！</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">test()</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="number">1</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(a);</span><br><span class="line"><span class="keyword">var</span> a = <span class="number">1</span>;</span><br></pre></td></tr></table></figure>
+<p>这就扯到了函数声明提升和变量提升相关的问题了。这里总结整理一下：</p>
+<p><strong>函数声明会进行整体的提升，而变量只有声明进行了提升，赋值不会提升</strong></p>
+<p>关于变量那块，举例下面代码，其实是有两个步骤：第一，进行变量声明 <code>var a;</code> 第二，进行赋值操作，<code>a = 1;</code></p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">1</span>;</span><br></pre></td></tr></table></figure>
+<p>好了，这里我就认为你已经理解了提升相关的知识了，我们来看一道题吧：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(a)</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">a</span>(<span class="params">a</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> a = <span class="number">10</span>;</span><br><span class="line">  <span class="keyword">var</span> a = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> a = <span class="number">1</span>;</span><br></pre></td></tr></table></figure>
+<div class="hide-block"><button type="button" class="hide-button button--animated" style="">查看答案
+    </button><div class="hide-content"><p>答案是<code>[Function: a]</code> （即函数 <code>a</code>），这里可能一下也想不明白，我们先来讲一下知识，再来解决这个问题吧。</p>
+<p>讲解暗示全局变量 <code>imply golbal variable</code></p>
+<p>下面代码会输出 <code>1</code>，比较简单，就直接说答案了。实际上这里就暗示全局变量了，因为全局有一个 <code>window</code>对象 ，下面代码也可以这样表示 <code>window.a = 1</code>，所有权归 <code>window</code>。</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">a = <span class="number">1</span>;</span><br><span class="line"><span class="built_in">console</span>.log(a);</span><br></pre></td></tr></table></figure>
+<p>这又让我想到了下述代码，<code>b</code> 能打印出来吗？还是会报错？</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> a = b = <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line">test();</span><br><span class="line"><span class="built_in">console</span>.log(b)</span><br></pre></td></tr></table></figure>
+<p>答案是 <code>1</code>，能打印出来 <code>b</code>，这种写法就是经典的<strong>变量泄露</strong>问题。而 <code>a</code>没办法打印，因为它是<code>test</code>函数的局部变量，相当于闭包内的变量，外层没办法访问闭包内的变量。</p>
+</div></div>
+
+<p>继续，这次加大一点难度。下面代码又分别输出什么呢？</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params">a</span>)</span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(a);</span><br><span class="line">  <span class="keyword">var</span> a = <span class="number">1</span>;</span><br><span class="line">  <span class="built_in">console</span>.log(a);</span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">a</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line">  <span class="built_in">console</span>.log(a);</span><br><span class="line">  <span class="keyword">var</span> b = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;</span><br><span class="line">  <span class="built_in">console</span>.log(b)</span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">d</span>(<span class="params"></span>)</span>&#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line">test(<span class="number">2</span>);</span><br></pre></td></tr></table></figure>
+<div class="hide-block"><button type="button" class="hide-button button--animated" style="">查看答案
+    </button><div class="hide-content"><p>放答案之前，先总结一下知识点，函数在执行之前，会生成一个 <code>AO</code>（<code>activation object</code>，也称为<strong>活动对象</strong>或者<strong>函数上下文</strong>）这个<code>AO</code>会按照如下形式创建：</p>
+<ul>
+<li>第一步：寻找函数里的形参和变量声明</li>
+<li>第二步：将实参的参数值赋值给形参</li>
+<li>第三步：寻找函数声明，然后赋值函数体</li>
+<li>第四步：执行</li>
+</ul>
+<p>下述代码是预编译（即函数执行之前<code>AO</code>对象的结果）：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">AO = &#123;</span><br><span class="line"> a: <span class="literal">undefined</span> -&gt; <span class="number">2</span> -&gt; <span class="function"><span class="keyword">function</span> <span class="title">a</span>(<span class="params"></span>) (<span class="params"></span>)</span></span><br><span class="line"><span class="function"> <span class="title">b</span>: <span class="title">undefined</span></span></span><br><span class="line"><span class="function"> <span class="title">d</span>: <span class="function"><span class="keyword">function</span> <span class="title">d</span>(<span class="params"></span>) </span>&#123;&#125;</span></span><br><span class="line"><span class="function">&#125;</span></span><br></pre></td></tr></table></figure>
+<p>下述代码是执行函数之后<code>AO</code>对象的结果：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">AO = &#123;</span><br><span class="line"> a: <span class="literal">undefined</span> -&gt; <span class="number">2</span> -&gt; <span class="function"><span class="keyword">function</span> <span class="title">a</span>(<span class="params"></span>) (<span class="params"></span>) -&gt; 1</span></span><br><span class="line"><span class="function"> <span class="title">b</span>: <span class="title">undefined</span> -&gt; <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;&#125;</span></span><br><span class="line"><span class="function"> <span class="title">d</span>: <span class="function"><span class="keyword">function</span> <span class="title">d</span>(<span class="params"></span>) </span>&#123;&#125;</span></span><br><span class="line"><span class="function">&#125;</span></span><br></pre></td></tr></table></figure>
+<p>直接看着上述执行完后的<code>AO</code>，对于第一个输出，由与在赋值 <code>a</code> 为 <code>1</code> 之前，所以我们直接打印 <code>Function: a</code>，对于第二个输出，对 <code>a</code> 变量进行了赋值为 <code>1</code> 的操作，所以取 <code>AO</code> 对象中的最后一个 <code>1</code>，打印 1，对于第三个输出，没有其它赋值操作了，直接输出 1 ，对于 <code>b</code>，输出 <code>Function: b</code>，这个不需要太多解释。</p>
+<p>最后，给出例题的答案：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">[<span class="built_in">Function</span>: a]</span><br><span class="line"><span class="number">1</span></span><br><span class="line"><span class="number">1</span></span><br><span class="line">[<span class="built_in">Function</span>: b]</span><br></pre></td></tr></table></figure></div></div>
+
+<p>下面来一道例题，巩固一下，小伙伴们可以自己拿过去做一遍。</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params">a,b</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(a); <span class="comment">// 1</span></span><br><span class="line">  c = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">var</span> c;</span><br><span class="line">  a = <span class="number">5</span>;</span><br><span class="line">  b = <span class="number">6</span>;</span><br><span class="line">  <span class="built_in">console</span>.log(b); <span class="comment">// 6</span></span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">b</span>(<span class="params"></span>)</span>&#123;&#125;</span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">d</span>(<span class="params"></span>)</span>&#123;&#125;</span><br><span class="line">  <span class="built_in">console</span>.log(b) <span class="comment">// 6</span></span><br><span class="line">&#125;</span><br><span class="line">test(<span class="number">1</span>)</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">AO = &#123;</span></span><br><span class="line"><span class="comment">  a: undefined -&gt; 1 -&gt; 5</span></span><br><span class="line"><span class="comment">  b: undefined -&gt; function b()&#123;&#125; -&gt; 6</span></span><br><span class="line"><span class="comment">  c: undefined -&gt; 0</span></span><br><span class="line"><span class="comment">  d: function d()&#123;&#125;</span></span><br><span class="line"><span class="comment">&#125;</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+<hr/>
+
+<p>接下来，换类型了哈，下面会输出什么呢？</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">1</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">a</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="number">2</span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(a)</span><br></pre></td></tr></table></figure>
+<div class="hide-block"><button type="button" class="hide-button button--animated" style="">查看答案
+    </button><div class="hide-content"><p>答案是 <code>1</code>，不用过多解释。</p>
+<p>举上述例子是为了引出下文，因为这已经不是函数内部的问题了，是<strong>全局</strong>的问题了。<code>JS</code>执行之前，会产生一个叫做 <code>GO</code> 的东西，也称为 <code>global object</code>（全局上下文），也会按照如下步骤进行创建：</p>
+<ul>
+<li>第一步：寻找变量声明</li>
+<li>第二步：寻找函数声明</li>
+<li>第三部：执行</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">GO = &#123;</span><br><span class="line">	a: <span class="literal">undefined</span> -&gt; <span class="function"><span class="keyword">function</span> <span class="title">a</span>(<span class="params"></span>) </span>&#123;&#125; -&gt; <span class="number">1</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>所以，答案为 <code>1</code>。实际 <code>GO</code>，就是 <code>window</code>，<code>window</code>存储过程就是这样的！</p>
+</div></div>
+
+<p>好的，继续下一题，又会输出什么？</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(a,b)</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">a</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line"><span class="keyword">var</span> b = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;&#125;</span><br></pre></td></tr></table></figure>
+<div class="hide-block"><button type="button" class="hide-button button--animated" style="">查看答案
+    </button><div class="hide-content"><p>答案是 <code>[Function: a] undefined</code>，这个答案也许和你想的完全相反，有没有？按照 <code>GO</code>来解决这道题吧！</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">GO = &#123;</span><br><span class="line">	a: <span class="literal">undefined</span> -&gt; <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line">	b: <span class="literal">undefined</span> </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这是因为在 <code>console.log(a,b)</code>在 <code>var b = function() {}</code>之前，此时还没有对 <code>b</code> 变量进行赋值，而 <code>a</code>通过函数声明整体提升，会输出 <code>funtion a() {}</code>，如果上述代码改成如下代码 <code>b</code>变量就会有对应值啦。</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> b = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line"><span class="built_in">console</span>.log(a,b)</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">a</span>(<span class="params"></span>) </span>&#123;&#125;</span><br></pre></td></tr></table></figure></div></div>
+<hr/>
+
+<p>回到我们开头的一道题，现在解决它应该没问题了，会输出什么呢？</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(a)</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">a</span>(<span class="params">a</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> a = <span class="number">10</span>;</span><br><span class="line">  <span class="keyword">var</span> a = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> a = <span class="number">1</span>;</span><br></pre></td></tr></table></figure>
+<p>由于并没有执行函数，我们不用 <code>AO</code>，改用 <code>GO</code>，这道题其实和上一道题差不多，因为我们 <code>console.log(a)</code> 在赋值操作之前，因此我们不会有 <code>1</code>的结果，所以我们会打印 <code>function a()&#123;&#125;</code></p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">GO = &#123;</span><br><span class="line">  a: <span class="literal">undefined</span> -&gt; <span class="function"><span class="keyword">function</span> <span class="title">a</span>(<span class="params"></span>)</span>&#123;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>加大难度，看这一题，结合上述所说 <code>AO</code> 和 <code>GO</code> 来做，试一试！</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> b = <span class="number">3</span>;</span><br><span class="line"><span class="built_in">console</span>.log(a);</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">a</span>(<span class="params">a</span>)</span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(a);</span><br><span class="line">  <span class="keyword">var</span> a = <span class="number">2</span>;</span><br><span class="line">  <span class="built_in">console</span>.log(a);</span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">a</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> b = <span class="number">5</span>;</span><br><span class="line">    <span class="built_in">console</span>.log(b);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">a(<span class="number">1</span>);</span><br></pre></td></tr></table></figure>
+<div class="hide-block"><button type="button" class="hide-button button--animated" style="">查看答案
+    </button><div class="hide-content"><p>答案：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">[<span class="built_in">Function</span>: a]</span><br><span class="line">[<span class="built_in">Function</span>: a]</span><br><span class="line"><span class="number">2</span></span><br><span class="line"><span class="number">5</span></span><br></pre></td></tr></table></figure>
+<p>我觉得能把这道题完整做出来， <code>AO</code> 和 <code>GO</code> 基本没啥问题了，现在来解释一波：</p>
+<p>直接上 <code>GO</code>、<code>AO</code>，后续不再过多解释了，如果还有不明白的小伙伴，建议往上再复习一遍，相信可以独立解决这道题的 <code>(*^▽^*)</code></p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">GO = &#123;</span><br><span class="line">  b: <span class="literal">undefined</span> -&gt; <span class="number">3</span></span><br><span class="line">  a: <span class="literal">undefined</span> -&gt; <span class="function"><span class="keyword">function</span> <span class="title">a</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line">AO = &#123;</span><br><span class="line">  a: <span class="literal">undefined</span> -&gt; <span class="number">1</span> -&gt; <span class="function"><span class="keyword">function</span> <span class="title">a</span>(<span class="params"></span>)</span>&#123;&#125; -&gt; <span class="number">2</span></span><br><span class="line">  b: <span class="literal">undefined</span> -&gt; <span class="number">5</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div></div>
+
+<p>不知道上一道题做的咋样，这道题我们找一点自信，看看会输出什么？</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">a = <span class="number">1</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(a); </span><br><span class="line">  a = <span class="number">2</span>;</span><br><span class="line">  <span class="built_in">console</span>.log(a); </span><br><span class="line">  <span class="keyword">var</span> a =<span class="number">3</span>;</span><br><span class="line">  <span class="built_in">console</span>.log(a);</span><br><span class="line">&#125;</span><br><span class="line">test();</span><br><span class="line"><span class="keyword">var</span> a;</span><br></pre></td></tr></table></figure>
+<div class="hide-block"><button type="button" class="hide-button button--animated" style="">查看答案
+    </button><div class="hide-content"><p>答案是 <code>undefined  2  3</code>，还是老规矩，直接上 <code>GO</code> 和 <code>AO</code></p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">GO = &#123;</span><br><span class="line">  a: <span class="literal">undefined</span> -&gt; <span class="number">1</span></span><br><span class="line">  test: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line">AO = &#123;</span><br><span class="line">  a: <span class="literal">undefined</span> -&gt; <span class="number">2</span> -&gt; <span class="number">3</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>此时，可能就有小部分长的比较帅的小伙伴就要问了，为啥我第一个 <code>a</code> 不是打印 <code>1</code>呢，<code>GO</code> 里面不是可以取嘛？ 确实，但是你漏掉了前提， <code>AO</code>里面此时存在变量 <code>a</code>，就不会去<code>GO</code>里面找了，<strong>这里容易掉坑，必须注意！</strong></p>
+</div></div>
+
+
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(b); </span><br><span class="line">  <span class="keyword">if</span>(a)&#123;</span><br><span class="line">    <span class="keyword">var</span> b = <span class="number">2</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  c = <span class="number">3</span>;</span><br><span class="line">  <span class="built_in">console</span>.log(c); </span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> a;</span><br><span class="line">test();</span><br><span class="line">a = <span class="number">1</span>;</span><br><span class="line"><span class="built_in">console</span>.log(a); </span><br></pre></td></tr></table></figure>
+<div class="hide-block"><button type="button" class="hide-button button--animated" style="">查看答案
+    </button><div class="hide-content"><p>答案： <code>undefined 3 1</code>，直接上 <code>GO</code> 和 <code>AO</code>，解释一个地方，为啥 <code>b</code> 要放在 <code>AO</code> 里面，因为 <code>js</code>在预编译时，不会管你什么条件执不执行，只看你是否进行了申明，简单来说，只要在函数内声明了，那么我们就放入 <code>AO</code>里面，否则放在全局的<code>GO</code>里面。</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">GO = &#123;</span><br><span class="line">  a: <span class="literal">undefined</span> -&gt; <span class="number">1</span></span><br><span class="line">  test: <span class="function"><span class="title">fucntion</span>(<span class="params"></span>)</span>&#123;...&#125;</span><br><span class="line">  c: <span class="literal">undefined</span> -&gt; <span class="number">3</span></span><br><span class="line">&#125;</span><br><span class="line">AO = &#123;</span><br><span class="line">  b: <span class="literal">undefined</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div></div>
+
+
+<p>最后，我们来几道题找点自信，结束这让人费解的 <code>GO</code> 和 <code>AO</code>吧，答案里我就只给 <code>GO</code> 和 <code>AO</code>啦，还不会方法的，建议多看上文内容，我就不作解释了。</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> a;</span><br><span class="line">  a = <span class="number">1</span>;</span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">a</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line">  <span class="keyword">var</span> a = <span class="number">2</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(test());</span><br></pre></td></tr></table></figure>
+<div class="hide-block"><button type="button" class="hide-button button--animated" style="">查看答案
+    </button><div class="hide-content"><p>答案： <code>[Function: a]</code> </p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">GO = &#123;</span><br><span class="line">  test: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;...&#125;</span><br><span class="line">&#125;</span><br><span class="line">AO = &#123;</span><br><span class="line">  a: <span class="literal">undefined</span> -&gt; <span class="function"><span class="keyword">function</span> <span class="title">a</span>(<span class="params"></span>)</span>&#123;&#125; -&gt; <span class="number">1</span> -&gt; <span class="number">2</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div></div>
+
+<p>继续，下一题：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  a = <span class="number">1</span>;</span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">a</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line">  <span class="keyword">var</span> a = <span class="number">2</span>;</span><br><span class="line">  <span class="keyword">return</span> a;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(test())</span><br></pre></td></tr></table></figure>
+<div class="hide-block"><button type="button" class="hide-button button--animated" style="">查看答案
+    </button><div class="hide-content"><p>答案： <code>2</code></p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">GO = &#123;</span><br><span class="line">  test: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;...&#125;</span><br><span class="line">&#125;</span><br><span class="line">AO = &#123;</span><br><span class="line">  a: <span class="literal">undefined</span> -&gt; <span class="function"><span class="keyword">function</span> <span class="title">a</span>(<span class="params"></span>)</span>&#123;&#125; -&gt; <span class="number">1</span> -&gt; <span class="number">2</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div></div>
+
+
+<p>加大难度，注意头发…</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">a = <span class="number">1</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params">e</span>)</span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">e</span>(<span class="params"></span>)</span>&#123;&#125;</span><br><span class="line">  <span class="built_in">arguments</span>[<span class="number">0</span>] = <span class="number">2</span>;</span><br><span class="line">  <span class="built_in">console</span>.log(e); </span><br><span class="line">  <span class="keyword">if</span>(a)&#123;</span><br><span class="line">    <span class="keyword">var</span> b = <span class="number">3</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">var</span> c;</span><br><span class="line">  a = <span class="number">4</span>;</span><br><span class="line">  <span class="keyword">var</span> a;</span><br><span class="line">  <span class="built_in">console</span>.log(b); </span><br><span class="line">  f = <span class="number">5</span>;</span><br><span class="line">  <span class="built_in">console</span>.log(c); </span><br><span class="line">  <span class="built_in">console</span>.log(a); </span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> a;</span><br><span class="line">test(<span class="number">1</span>);</span><br><span class="line"><span class="built_in">console</span>.log(a);</span><br><span class="line"><span class="built_in">console</span>.log(f);</span><br></pre></td></tr></table></figure>
+<div class="hide-block"><button type="button" class="hide-button button--animated" style="">查看答案
+    </button><div class="hide-content"><p>答案是 <code>2 undefined undefined  4 1 5</code></p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">GO = &#123;</span><br><span class="line">  a: <span class="literal">undefined</span> -&gt; <span class="number">1</span></span><br><span class="line">  test: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;...&#125;</span><br><span class="line">  f: <span class="literal">undefined</span> -&gt; <span class="number">5</span></span><br><span class="line">&#125;</span><br><span class="line">AO = &#123;</span><br><span class="line">  e: <span class="literal">undefined</span> -&gt; <span class="number">1</span> -&gt; <span class="function"><span class="keyword">function</span> <span class="title">e</span>(<span class="params"></span>)</span>&#123;&#125; -&gt; <span class="number">2</span></span><br><span class="line">  b: <span class="literal">undefined</span> </span><br><span class="line">  a: <span class="literal">undefined</span> -&gt; <span class="number">4</span></span><br><span class="line">  c: <span class="literal">undefined</span> </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div></div>
+
+<hr/>
+
+<p>下面来一点加餐，我想小伙伴们一定是不满足于上述 <strong>“简单”</strong> 的输出题的，下面来几道经典笔试题：</p>
+<p>第一题，下面会输出什么？</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="literal">false</span> + <span class="number">1</span>;</span><br><span class="line"><span class="built_in">console</span>.log(a);</span><br></pre></td></tr></table></figure>
+<div class="hide-block"><button type="button" class="hide-button button--animated" style="">查看答案
+    </button><div class="hide-content"><p>答案是 <code>1</code>，存在隐式类型转换。</p>
+</div></div>
+
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> b = <span class="literal">false</span> == <span class="number">1</span>;</span><br><span class="line"><span class="built_in">console</span>.log(b)</span><br></pre></td></tr></table></figure>
+<div class="hide-block"><button type="button" class="hide-button button--animated" style="">查看答案
+    </button><div class="hide-content"><p>答案是 <code>false</code>，存在隐式类型转换。</p>
+</div></div>
+
+<p>可能前两道题比较简单，看看下面这份代码吧：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span>(<span class="keyword">typeof</span>(a) &amp;&amp; (-<span class="literal">true</span>) + (+<span class="literal">undefined</span>) + <span class="string">&#x27;&#x27;</span>)&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="number">1</span>);</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="number">0</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<div class="hide-block"><button type="button" class="hide-button button--animated" style="">查看答案
+    </button><div class="hide-content"><p>答案是 <code>1</code>，也是存在隐式类型转换，并且结合了上文的知识，一道非常不错的题。</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(-<span class="literal">true</span>) <span class="comment">// -1</span></span><br><span class="line"><span class="built_in">console</span>.log(+<span class="literal">undefined</span>) <span class="comment">// NaN</span></span><br><span class="line"><span class="keyword">if</span>(<span class="keyword">typeof</span>(a) &amp;&amp; (-<span class="literal">true</span>) + (+<span class="literal">undefined</span>) + <span class="string">&#x27;&#x27;</span>)&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="number">1</span>);</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="number">0</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span>(-<span class="string">&#x27;123&#x27;</span>)) <span class="comment">// number</span></span><br><span class="line"><span class="built_in">console</span>.log((-<span class="literal">true</span>) + (+<span class="literal">undefined</span>) + <span class="string">&#x27;&#x27;</span>) <span class="comment">// NaN</span></span><br></pre></td></tr></table></figure></div></div>
+
+<p>上面那道题解决了的话，下面这道题就是小试牛刀了，看看会输出什么？</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span>(<span class="number">1</span>+<span class="number">5</span>*<span class="string">&#x27;3&#x27;</span> === <span class="number">16</span>)&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="number">1</span>);</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="number">0</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<div class="hide-block"><button type="button" class="hide-button button--animated" style="">查看答案
+    </button><div class="hide-content"><p>答案是 <code>1</code>，虽然 <code>===</code> 不能进行隐式转换，但是没说左边或右边单独不能进行隐式转换呐。</p>
+</div></div>
+
+
+
+<p>继续，</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(!!<span class="string">&#x27; &#x27;</span> + !!<span class="string">&#x27;&#x27;</span> - !!<span class="literal">false</span> || <span class="string">&#x27;未通过&#x27;</span>);</span><br></pre></td></tr></table></figure>
+<div class="hide-block"><button type="button" class="hide-button button--animated" style="">查看答案
+    </button><div class="hide-content"><p>答案：<code>1</code>，因为左边 <code>1+0-0</code> 得到 <code>0</code>，所以不会走右边。</p>
+</div></div>
+
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">window</span>.a || (<span class="built_in">window</span>.a = <span class="string">&#x27;1&#x27;</span>)</span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">window</span>.a)</span><br></pre></td></tr></table></figure>
+<div class="hide-block"><button type="button" class="hide-button button--animated" style="">查看答案
+    </button><div class="hide-content"><p>答案：<code>1</code>，因为这里有 <code>()</code>括号，优先级最高，首先会对 <code>window.a</code> 赋值 <code>1</code>，然后判断左边 <code>window.a</code>为真，直接走下面输出函数。 而如果说先走左边<code>window.a</code> 判断为 <code>false</code>，然后走右边进行赋值为 <code>1</code>，最后打印 <code>1</code>，这样回答的话就错啦，<strong>没有考虑括号优先级</strong>。</p>
+</div></div>
+
+
+<h2 id="作用域、作用域链"><a href="#作用域、作用域链" class="headerlink" title="作用域、作用域链"></a>作用域、作用域链</h2><p>有了上文 <code>AO</code> 和 <code>GO</code> 的知识，作用域和作用域链就好理解了。</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params">a,b</span>) </span>&#123;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(test.name) <span class="comment">// test</span></span><br><span class="line"><span class="built_in">console</span>.log(test.length) <span class="comment">// 2</span></span><br></pre></td></tr></table></figure>
+<p>从上述代码我们可以知道，函数也是一种对象类型，它也有一些属性，比如 <code>test.name</code>，<code>test.length</code>，<code>test.prototype</code>。而对象，有些属性是我们无法访问的，这些属性是<code>JS</code>引擎`内部固有的隐式属性。可以理解为内部的私有属性。引出  [ [scope] ] ，总结整理如下：</p>
+<ul>
+<li>函数创建时，生成的一个 <code>JS</code>内部的隐式属性</li>
+<li>函数存储作用域链的容器，作用域链存放的就是 <code>AO</code>（函数的执行期上下文）、<code>GO</code>（全局的执行期上下文），函数执行完成以后，<code>AO</code>是要销毁的，也就是说 <code>AO</code> 是一个<strong>即时</strong>的存储容器。</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1x441167iH?p=6">推荐观看视频：小野老师讲解作用域、作用域链</a></p>
+<p>总结一下关系：</p>
+<p>函数在被定义的时候，已经存在作用域了，已经形成作用域链了，已经创建了 <code>GO</code>，而当函数在执行的时候，才会生成自己的 <code>AO</code>。</p>
+<h2 id="闭包基础"><a href="#闭包基础" class="headerlink" title="闭包基础"></a>闭包基础</h2><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test1</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">test2</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> b = <span class="number">2</span>;</span><br><span class="line">    <span class="built_in">console</span>.log(a);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">var</span> a = <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">return</span> test2;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> c = <span class="number">3</span>;</span><br><span class="line"><span class="keyword">var</span> test3 = test1();</span><br><span class="line">test3();</span><br></pre></td></tr></table></figure>
+<p><img src= "/img/loading.gif" data-lazy-src="https://img-blog.csdnimg.cn/20200915151044651.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MjQyOTcxOA==,size_16,color_FFFFFF,t_70#pic_center" alt=""></p>
+<p><img src= "/img/loading.gif" data-lazy-src="https://img-blog.csdnimg.cn/20200915151130291.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MjQyOTcxOA==,size_16,color_FFFFFF,t_70#pic_center" alt=""></p>
+<p><img src= "/img/loading.gif" data-lazy-src="https://img-blog.csdnimg.cn/20200915151229453.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MjQyOTcxOA==,size_16,color_FFFFFF,t_70#pic_center" alt=""><br><img src= "/img/loading.gif" data-lazy-src="https://img-blog.csdnimg.cn/20200915151524730.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MjQyOTcxOA==,size_16,color_FFFFFF,t_70#pic_center" alt=""><br><img src= "/img/loading.gif" data-lazy-src="https://img-blog.csdnimg.cn/20200915151851765.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MjQyOTcxOA==,size_16,color_FFFFFF,t_70#pic_center" alt=""><br>总结如下：</p>
+<p>当内部函数被返回到外部并保存时，一定会产生闭包。闭包会产生原来的作用域链不释放，过度的闭包可能会导致内存泄露或者加载过慢。</p>
+<p>接着，我们来一道简单题，热个身吧，下面会输出什么，注意，这里我通过数组的方式，抛出了两个函数。</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="keyword">var</span> n = <span class="number">100</span>;</span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">add</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    n++;</span><br><span class="line">    <span class="built_in">console</span>.log(n);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">reduce</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    n--;</span><br><span class="line">    <span class="built_in">console</span>.log(n);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> [add,reduce];</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> arr = test();</span><br><span class="line">arr[<span class="number">0</span>]();</span><br><span class="line">arr[<span class="number">1</span>]();</span><br></pre></td></tr></table></figure>
+<div class="hide-block"><button type="button" class="hide-button button--animated" style="">查看答案
+    </button><div class="hide-content"><p>答案是 <code>101 100</code>，因为 <code>test</code>函数在执行的时候， <code>add</code> 和 <code>reduce</code> 函数已经被定义，此时作用域环境就是 <code>test</code>函数的 <code>AO</code>，而这个 <code>AO</code>里面就会创建一个 <code>n:100</code>，和对应函数，如下：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">test函数执行时：</span><br><span class="line">AO = &#123;</span><br><span class="line">	n: <span class="literal">undefined</span> -&gt;<span class="number">100</span></span><br><span class="line">	add : <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;...&#125;</span><br><span class="line">	reduce: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;...&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>当我们抛出 <code>add</code> 和 <code>reduce</code> 函数时，此时 <code>AO</code>并不会销毁。只是把线剪断了，因为 <code>add</code> 和 <code>reduce</code> 作用域链还连着的。都会一起返回出去，然后给到外部全局变量使用，当我们操作 <code>add</code>函数时，就能访问原本 <code>test</code>函数创建的 <code>AO</code>，将 <code>n++</code>得到 <code>101</code>，然后操作 <code>reduce</code> 函数将此时 <code>n=101</code>进行 <code>--</code>操作得到 <code>100</code>，就是我们的最终答案了。</p>
+</div></div>
+
+
+<hr/>
+
+<p>下面举一个比较好玩的例子，面包售卖进货管理系统。和上述代码思想一致，都是利用了闭包的思想。</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 面包售卖进货管理</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">breadMgr</span>(<span class="params">num</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">var</span> breadNum = num || <span class="number">10</span>;</span><br><span class="line">  <span class="comment">// 进货面包，每次进10个</span></span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">supply</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    breadNum += <span class="number">10</span>;</span><br><span class="line">    <span class="built_in">console</span>.log(breadNum);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 售卖面包，每次卖一个</span></span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">sale</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    breadNum--;</span><br><span class="line">    <span class="built_in">console</span>.log(breadNum);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> [supply,sale];</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> breadMgr = breadMgr(<span class="number">50</span>);</span><br><span class="line">breadMgr[<span class="number">0</span>]();</span><br><span class="line">breadMgr[<span class="number">1</span>]();</span><br><span class="line">breadMgr[<span class="number">1</span>]();</span><br><span class="line">breadMgr[<span class="number">1</span>]();</span><br></pre></td></tr></table></figure>
+<div class="hide-block"><button type="button" class="hide-button button--animated" style="">查看答案
+    </button><div class="hide-content"><p>答案是 <code>60 59 58 57</code>，就不多解释了，和上一题代码几乎一致。</p>
+</div></div>
+
+<p>同样，我们也可以通过对象的形式，一起抛出去，见下面例子：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sunSched</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="keyword">var</span> sunSched = <span class="string">&#x27;&#x27;</span>;</span><br><span class="line">  <span class="keyword">var</span> operation = &#123;</span><br><span class="line">    setSched: <span class="function"><span class="keyword">function</span>(<span class="params">thing</span>)</span>&#123;</span><br><span class="line">      sunSched = thing;</span><br><span class="line">    &#125;,</span><br><span class="line">    showSched: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">&quot;My Schedule on sunday is &quot;</span> + sunSched);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> operation;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> sunSched = sunSched();</span><br><span class="line">sunSched.setSched(<span class="string">&#x27;studying&#x27;</span>);</span><br><span class="line">sunSched.showSched(); <span class="comment">// My Schedule on sunday is studying</span></span><br></pre></td></tr></table></figure>
+<h2 id="立即执行函数"><a href="#立即执行函数" class="headerlink" title="立即执行函数"></a>立即执行函数</h2><p>观察如下代码，我们发现函数都是放在 <code>GO</code> 里的，它不会自动释放，也就是说放在 <code>GO</code>里的函数我们可以直接调用，不用重新定义新的函数，想调用随时调用。</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test1</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="number">1</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test2</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="number">2</span>);</span><br><span class="line">&#125;</span><br><span class="line">test2(); <span class="comment">// 2</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test3</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  test1(); <span class="comment">// 1</span></span><br><span class="line">&#125;</span><br><span class="line">test3();</span><br></pre></td></tr></table></figure>
+<p>在上述我们讨论了闭包，这一块我们来探讨立即执行函数，简单来说就是自动执行，执行完后立即释放。</p>
+<p><code>IIFE - immediately - invoked - function - expression</code></p>
+<p>立即执行函数有一个功能性的说法就是<strong>初始化函数</strong>。</p>
+<p>下面，我们简单看一个立即执行函数的例子吧，重点学习语法，下面规范也是 <code>W3C</code>建议：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params">a,b</span>)</span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(a+b);</span><br><span class="line">&#125;(<span class="number">1</span>,<span class="number">2</span>))</span><br></pre></td></tr></table></figure>
+<p>下面写法也是可以的，但不是 <code>W3C</code>建议的写法。</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">或者</span><br><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params">a,b</span>)</span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(a+b);</span><br><span class="line">&#125;)(<span class="number">1</span>,<span class="number">2</span>)</span><br></pre></td></tr></table></figure>
+<p>有的时候，我们想要拿到函数返回值，那么立即执行函数每次执行完都会立即释放，直接 <code>return</code>我们是拿不到的，该如何是好？</p>
+<p>原来，立即执行函数也是有返回值的，我们可以将 <code>return</code> 的结果直接返回给一个变量存起来，如下：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> res = (<span class="function"><span class="keyword">function</span>(<span class="params">a,b</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">return</span> a + b;</span><br><span class="line">&#125;(<span class="number">1</span>,<span class="number">2</span>))</span><br><span class="line"><span class="built_in">console</span>.log(res); <span class="comment">// 3</span></span><br></pre></td></tr></table></figure>
+<p>总结一下：<code>()</code>包括的内容相当于<strong>表达式</strong>。</p>
+<p>比较下面结果，思考一下：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> test1 = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="number">1</span>);</span><br><span class="line">&#125;()</span><br><span class="line"></span><br><span class="line">(<span class="function"><span class="keyword">function</span> (<span class="params">a,b</span>)</span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(a+b);</span><br><span class="line">&#125;(<span class="number">1</span>,<span class="number">2</span>))</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test3</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="number">3</span>);</span><br><span class="line">&#125;();</span><br></pre></td></tr></table></figure>
+<p>得到的结果：<strong>一定是表达式才能被执行符号执行</strong>。</p>
+<p>证明立即自执行函数执行完后立即释放：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> test = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="number">1</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(test); <span class="comment">// [Function: test]</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> test1 = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="number">1</span>);</span><br><span class="line">&#125;()</span><br><span class="line"><span class="built_in">console</span>.log(test1);</span><br></pre></td></tr></table></figure>
+<p>打印 <code>1 undefined</code> ，因为立即自执行函数执行完后，立即销毁，所以 <code>test1</code> 接收不到函数体。</p>
+<p>补充：函数声明变成表达式的方法： + - ! &amp;&amp; ||</p>
+<p>举个例子：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">+ <span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="number">1</span>);</span><br><span class="line">&#125;()</span><br></pre></td></tr></table></figure>
+<p>下面来一道经典面试题，将数组每一位都存放一个匿名函数，最后遍历执行时会打印什么？</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="keyword">var</span> arr = [];</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>;i&lt;<span class="number">10</span>;i++)&#123;</span><br><span class="line">    arr[i] = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">      <span class="built_in">console</span>.log(i);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> arr;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> myArr = test();</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>;i&lt;<span class="number">10</span>;i++)&#123;</span><br><span class="line">  myArr[i]();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<div class="hide-block"><button type="button" class="hide-button button--animated" style="">查看答案
+    </button><div class="hide-content"><p>答案是 <code>10个10</code> ，其实是在 <code>test</code> 函数里面返回了 <code>10</code> 个匿名函数，而这 <code>10</code>个函数还没有执行，和上文闭包基础讲的例题一样，形成了一个闭包。原本 <code>test</code> 的 <code>AO</code> 中是有变量 <code>i</code>的，经过for循环，使得变量 <code>i</code> 变为 10了，而<code>test</code>的 <code>AO</code>只是剪掉了，而那十个匿名函数的作用域链还连着的。所以后面我们一个个执行的时候，拿到的还是 <code>test</code>里面的 <code>AO</code>的 <code>i</code>值。</p>
+<p>那么，对于上述代码，如果想要打印<code>0-9</code>，要怎么做呢？ 根据当前标题，就可知道可以使用立即执行函数。</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</span><br><span class="line">    (<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="built_in">console</span>.log(i);</span><br><span class="line">    &#125;())</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">test();</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> arr = [];</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</span><br><span class="line">    (<span class="function"><span class="keyword">function</span> (<span class="params">j</span>) </span>&#123;</span><br><span class="line">      arr[j] = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(j);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;(i))</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> arr;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> myArr = test();</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</span><br><span class="line">  myArr[i]();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div></div>
+
+<p>接下来，再来一道面试题，看看会返回什么？</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> fn = (</span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">test1</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">test2</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&#x27;2&#x27;</span>;</span><br><span class="line">  &#125;</span><br><span class="line">)();</span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span>(fn));</span><br></pre></td></tr></table></figure>
+<div class="hide-block"><button type="button" class="hide-button button--animated" style="">查看答案
+    </button><div class="hide-content"><p>答案是返回 <code>string</code> ，因为括号里的逗号运算，会返回最后一个，如下，会返回 <code>2</code>。</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">console</span>.log((<span class="number">1</span>,<span class="number">2</span>)); <span class="comment">// 2</span></span><br></pre></td></tr></table></figure>
+<p>因此括号里面放两个函数，以逗号分隔，就会立即执行 <code>test2</code>，然后 <code>typeof</code> 之后，就会返回 <code>string</code>了。</p>
+</div></div>
+
+
+<p>继续，我们再来一道面试题：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">10</span>;</span><br><span class="line"><span class="keyword">if</span>(<span class="function"><span class="keyword">function</span> <span class="title">b</span>(<span class="params"></span>)</span>&#123;&#125;)&#123;</span><br><span class="line">  a += <span class="keyword">typeof</span>(b);</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(a);</span><br></pre></td></tr></table></figure>
+<div class="hide-block"><button type="button" class="hide-button button--animated" style="">查看答案
+    </button><div class="hide-content"><p>答案是  <code>10undefined</code> ，解释一下，首先 <code>if</code> 判断是要执行的，然后 <code>(function b(){})</code>这个，是不是就是一个表达式了，然后忽略名称， <code>function(){}</code>，到下面的时候函数 <code>b</code>已经不存在了都。</p>
+</div></div>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">一百个Chocolate</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://yangchaoyi.vip/posts/2020916/">https://yangchaoyi.vip/posts/2020916/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://yangchaoyi.vip" target="_blank">超逸の博客</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E5%89%8D%E7%AB%AF/">前端</a></div><div class="post_share"><div class="social-share" data-image="https://cdn.jsdelivr.net/gh/chocolate1999/cdn/img/20200916141332.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/posts/2020919/"><img class="prev-cover" data-lazy-src="https://cdn.jsdelivr.net/gh/chocolate1999/cdn/img/20200919100439.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">「JavaScript灵魂之问」前端知识梳理之 JS 篇（下篇）</div></div></a></div><div class="next-post pull-right"><a href="/posts/20201010/"><img class="next-cover" data-lazy-src="https://cdn.jsdelivr.net/gh/chocolate1999/cdn/img/20201010153950.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">某跳动面试官：请你设计一下ES6中 class 实现私有属性</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span> 相关推荐</span></div><div class="relatedPosts-list"><div><a href="/posts/20210101/" title="「星辰大海」❤前端面经汇总（面向腾讯学习）"><img class="cover" data-lazy-src="https://cdn.jsdelivr.net/gh/chocolate1999/cdn/img/20210104114749.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-05-07</div><div class="title">「星辰大海」❤前端面经汇总（面向腾讯学习）</div></div></a></div><div><a href="/posts/50975/" title="15个前端攻城狮必备的学习网站 | 你知道几个？（附视频介绍）"><img class="cover" data-lazy-src="https://cdn.jsdelivr.net/gh/chocolate1999/cdn/img/20200610155519.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-05-07</div><div class="title">15个前端攻城狮必备的学习网站 | 你知道几个？（附视频介绍）</div></div></a></div><div><a href="/posts/20541/" title="前端知识梳理之webpack篇"><img class="cover" data-lazy-src="https://cdn.jsdelivr.net/gh/chocolate1999/cdn/img/20200914094504.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-05-07</div><div class="title">前端知识梳理之webpack篇</div></div></a></div><div><a href="/posts/20201009/" title="某跳动面试官：说说微信扫码登录背后的实现原理？"><img class="cover" data-lazy-src="https://cdn.jsdelivr.net/gh/chocolate1999/cdn/img/20201009202845.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-05-07</div><div class="title">某跳动面试官：说说微信扫码登录背后的实现原理？</div></div></a></div><div><a href="/posts/205511/" title="前端知识梳理之Vue篇"><img class="cover" data-lazy-src="https://cdn.jsdelivr.net/gh/chocolate1999/cdn/img/20200911085935.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-05-07</div><div class="title">前端知识梳理之Vue篇</div></div></a></div><div><a href="/posts/20542/" title="前端知识梳理之HTML篇"><img class="cover" data-lazy-src="https://cdn.jsdelivr.net/gh/chocolate1999/cdn/img/20200913074030.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-05-07</div><div class="title">前端知识梳理之HTML篇</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-info-avatar is-center"><img class="avatar-img" data-lazy-src="/img/Chocolate.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-info__name">一百个Chocolate</div><div class="author-info__description">不是只会写业务代码的前端攻城狮！</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">62</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">标签</div><div class="length-num">30</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">分类</div><div class="length-num">8</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/Chocolate1999"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://chocolate.blog.csdn.net/" target="_blank" title=""><i class="iconfont icon-csdn"></i></a><a class="social-icon" href="https://juejin.im/user/5ed1c55be51d457889261840/posts" target="_blank" title=""><i class="iconfont icon-juejin"></i></a><a class="social-icon" href="https://github.com/Chocolate1999" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="https://space.bilibili.com/351534170" target="_blank" title=""><i class="iconfont icon-bilibili1"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>小狮子初心</span></div><div class="announcement_content">最近收到了很多小伙伴的关注，在此非常感谢各位的支持。<br/>Chocolate 开通了个人公众号，在这里分享我的大厂面试经历，租房攻略，计算机领域那些事儿。<br/>希望小伙伴们能够喜欢我的文章，这里是小狮子前端，保持狮子座的热情带给你学习的动力，愿我们成为最好的自己~<br/><img src="https://cdn.jsdelivr.net/gh/chocolate1999/cdn/img/20201202223856.jpg"> <br/>QQ交流群：666151691</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E7%A1%80"><span class="toc-number">1.</span> <span class="toc-text">基础</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#typeof-%E7%9F%A5%E5%A4%9A%E5%B0%91"><span class="toc-number">1.1.</span> <span class="toc-text">typeof 知多少</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%98%BE%E7%A4%BA%E3%80%81%E9%9A%90%E5%BC%8F%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2"><span class="toc-number">1.2.</span> <span class="toc-text">显示、隐式类型转换</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%98%BE%E7%A4%BA%E8%BD%AC%E6%8D%A2"><span class="toc-number">1.2.1.</span> <span class="toc-text">显示转换</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%9A%90%E5%BC%8F%E8%BD%AC%E6%8D%A2"><span class="toc-number">1.2.2.</span> <span class="toc-text">隐式转换</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%87%BD%E6%95%B0%E5%9F%BA%E7%A1%80"><span class="toc-number">2.</span> <span class="toc-text">函数基础</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%87%BD%E6%95%B0%E7%A7%8D%E7%B1%BB%E3%80%81%E5%AD%97%E9%9D%A2%E9%87%8F"><span class="toc-number">2.1.</span> <span class="toc-text">函数种类、字面量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BD%A2%E5%8F%82%E5%AE%9E%E5%8F%82%E6%98%A0%E5%B0%84"><span class="toc-number">2.2.</span> <span class="toc-text">形参实参映射</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%A9%E4%BA%BA%E8%B4%B9%E8%A7%A3%E7%9A%84-GO-%E5%92%8C-AO"><span class="toc-number">3.</span> <span class="toc-text">让人费解的 GO 和 AO</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%9C%E7%94%A8%E5%9F%9F%E5%BC%95%E5%85%A5"><span class="toc-number">3.1.</span> <span class="toc-text">作用域引入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%87%BD%E6%95%B0%E9%BB%98%E8%AE%A4%E5%8F%82%E6%95%B0"><span class="toc-number">3.2.</span> <span class="toc-text">函数默认参数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A2%84%E7%BC%96%E8%AF%91"><span class="toc-number">3.3.</span> <span class="toc-text">预编译</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%9C%E7%94%A8%E5%9F%9F%E3%80%81%E4%BD%9C%E7%94%A8%E5%9F%9F%E9%93%BE"><span class="toc-number">4.</span> <span class="toc-text">作用域、作用域链</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%97%AD%E5%8C%85%E5%9F%BA%E7%A1%80"><span class="toc-number">5.</span> <span class="toc-text">闭包基础</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AB%8B%E5%8D%B3%E6%89%A7%E8%A1%8C%E5%87%BD%E6%95%B0"><span class="toc-number">6.</span> <span class="toc-text">立即执行函数</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/posts/20210506/" title="时隔两个月，来一份总结【文末彩蛋】"><img data-lazy-src="https://cdn.jsdelivr.net/gh/chocolate1999/cdn/img/20210506215206.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="时隔两个月，来一份总结【文末彩蛋】"/></a><div class="content"><a class="title" href="/posts/20210506/" title="时隔两个月，来一份总结【文末彩蛋】">时隔两个月，来一份总结【文末彩蛋】</a><time datetime="2021-05-07T14:38:41.474Z" title="发表于 2021-05-07 22:38:41">2021-05-07</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/50975/" title="15个前端攻城狮必备的学习网站 | 你知道几个？（附视频介绍）"><img data-lazy-src="https://cdn.jsdelivr.net/gh/chocolate1999/cdn/img/20200610155519.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="15个前端攻城狮必备的学习网站 | 你知道几个？（附视频介绍）"/></a><div class="content"><a class="title" href="/posts/50975/" title="15个前端攻城狮必备的学习网站 | 你知道几个？（附视频介绍）">15个前端攻城狮必备的学习网站 | 你知道几个？（附视频介绍）</a><time datetime="2021-05-07T13:48:39.367Z" title="发表于 2021-05-07 21:48:39">2021-05-07</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/20541/" title="前端知识梳理之webpack篇"><img data-lazy-src="https://cdn.jsdelivr.net/gh/chocolate1999/cdn/img/20200914094504.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="前端知识梳理之webpack篇"/></a><div class="content"><a class="title" href="/posts/20541/" title="前端知识梳理之webpack篇">前端知识梳理之webpack篇</a><time datetime="2021-05-07T13:48:39.366Z" title="发表于 2021-05-07 21:48:39">2021-05-07</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/20201009/" title="某跳动面试官：说说微信扫码登录背后的实现原理？"><img data-lazy-src="https://cdn.jsdelivr.net/gh/chocolate1999/cdn/img/20201009202845.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="某跳动面试官：说说微信扫码登录背后的实现原理？"/></a><div class="content"><a class="title" href="/posts/20201009/" title="某跳动面试官：说说微信扫码登录背后的实现原理？">某跳动面试官：说说微信扫码登录背后的实现原理？</a><time datetime="2021-05-07T13:48:39.366Z" title="发表于 2021-05-07 21:48:39">2021-05-07</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/205511/" title="前端知识梳理之Vue篇"><img data-lazy-src="https://cdn.jsdelivr.net/gh/chocolate1999/cdn/img/20200911085935.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="前端知识梳理之Vue篇"/></a><div class="content"><a class="title" href="/posts/205511/" title="前端知识梳理之Vue篇">前端知识梳理之Vue篇</a><time datetime="2021-05-07T13:48:39.365Z" title="发表于 2021-05-07 21:48:39">2021-05-07</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2019 - 2021  <i id="heartbeat" class="fa fas fa-heartbeat"></i> 一百个Chocolate</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text"><p><a style="margin-inline:5px" target="_blank" href="https://hexo.io/"><img src="https://img.shields.io/badge/Frame-Hexo-blue?style=flat&logo=hexo" title="博客框架为Hexo"></a><a style="margin-inline:5px" target="_blank" href="https://butterfly.js.org/"><img src="https://img.shields.io/badge/Theme-Butterfly-6513df?style=flat&logo=bitdefender" title="主题采用butterfly"></a><a style="margin-inline:5px" target="_blank" href="https://www.jsdelivr.com/"><img src="https://img.shields.io/badge/CDN-jsDelivr-orange?style=flat&logo=jsDelivr" title="本站使用JsDelivr为静态资源提供CDN加速"></a><a style="margin-inline:5px" target="_blank" href="https://vercel.com/ "><img src="https://img.shields.io/badge/Hosted-Vervel-brightgreen?style=flat&logo=Vercel" title="本站采用双线部署，默认线路托管于Vercel"></a><a style="margin-inline:5px" target="_blank" href="https://vercel.com/ "><img src="https://img.shields.io/badge/Hosted-Coding-0cedbe?style=flat&logo=Codio" title="本站采用双线部署，联通线路托管于Coding"></a><a style="margin-inline:5px" target="_blank" href="https://github.com/"><img src="https://img.shields.io/badge/Source-Github-d021d6?style=flat&logo=GitHub" title="本站项目由Gtihub托管"></a><a style="margin-inline:5px" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img src="https://img.shields.io/badge/Copyright-BY--NC--SA%204.0-d42328?style=flat&logo=Claris" title="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可"></a></p></div><div class="icp"><a target="_blank" rel="noopener" href="http://www.beian.miit.gov.cn/"><img class="icp-icon" src="/img/icp.png"/><span>湘ICP备20002952号</span></a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="font-plus" type="button" title="放大字体"><i class="fas fa-plus"></i></button><button id="font-minus" type="button" title="缩小字体"><i class="fas fa-minus"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="chat_btn" type="button" title="rightside.chat_btn"><i class="fas fa-sms"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div></div><hr/><div id="local-search-results"></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/vue@2.6.11"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><script src="/js/search/local-search.js"></script><script async="async">var preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',preloader.endLoading())
+setTimeout(function(){preloader.endLoading();}, 5000);</script><div class="js-pjax"></div><script src="https://cdn.jsdelivr.net/gh/sviptzk/StaticFile_HEXO@master/xkTool/v3.1.1/xkTool.js"></script><script defer src="https://cdn.jsdelivr.net/npm/hexo-theme-volantis@latest/source/js/issues.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = [
+  'title',
+  '#config-diff',
+  '#body-wrap',
+  '#rightside-config-hide',
+  '#rightside-config-show',
+  '.js-pjax'
+]
+
+if (false) {
+  pjaxSelectors.unshift('meta[property="og:image"]', 'meta[property="og:title"]', 'meta[property="og:url"]')
+}
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  if (typeof gtag === 'function') {
+    gtag('config', '', {'page_path': window.location.pathname});
+  }
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // Analytics
+  if (false) {
+    MtaH5.pgv()
+  }
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+
+  typeof preloader === 'object' && preloader.endLoading()
+})
+
+
+document.addEventListener('pjax:send', function () {
+  typeof preloader === 'object' && preloader.initLoading()
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

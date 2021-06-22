@@ -1,0 +1,2246 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>【后台API接口文档】Vue全家桶开发电商管理系统 | 超逸の博客</title><meta name="keywords" content="项目，知识梳理，前端，接口文档"><meta name="author" content="一百个Chocolate"><meta name="copyright" content="一百个Chocolate"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="1. 电商管理后台 API 接口文档1.1. API V1 接口说明 接口基准地址：http:&#x2F;&#x2F;127.0.0.1:8888&#x2F;api&#x2F;private&#x2F;v1&#x2F; 服务端已开启 CORS 跨域支持 API V1 认证统一使用 Token 认证 需要授权的 API ，必须在请求头中使用 Authorization 字段提供 token 令牌 使用 HTTP Status Code 标识状态 数据返回格式">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【后台API接口文档】Vue全家桶开发电商管理系统">
+<meta property="og:url" content="https://yangchaoyi.vip/posts/2020709/index.html">
+<meta property="og:site_name" content="超逸の博客">
+<meta property="og:description" content="1. 电商管理后台 API 接口文档1.1. API V1 接口说明 接口基准地址：http:&#x2F;&#x2F;127.0.0.1:8888&#x2F;api&#x2F;private&#x2F;v1&#x2F; 服务端已开启 CORS 跨域支持 API V1 认证统一使用 Token 认证 需要授权的 API ，必须在请求头中使用 Authorization 字段提供 token 令牌 使用 HTTP Status Code 标识状态 数据返回格式">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/chocolate1999/cdn/img/20200708170355.png">
+<meta property="article:published_time" content="2021-05-07T13:48:39.302Z">
+<meta property="article:modified_time" content="2021-05-07T13:48:39.302Z">
+<meta property="article:author" content="一百个Chocolate">
+<meta property="article:tag" content="项目">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/chocolate1999/cdn/img/20200708170355.png"><link rel="shortcut icon" href="/img/favicon.ico"><link rel="canonical" href="https://yangchaoyi.vip/posts/2020709/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  noticeOutdate: {"limitDay":500,"position":"top","messagePrev":"It has been","messageNext":"days since the last update, the content of the article may be outdated."},
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#121212","position":"bottom-left"},
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isanchor: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = { 
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2021-05-07 21:48:39'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const now = new Date()
+          const hour = now.getHours()
+          const isNight = hour <= 6 || hour >= 18
+          if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
+          else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const fontSizeVal = saveToLocal.get('global-font-size')
+    if (fontSizeVal !== undefined) {
+      document.documentElement.style.setProperty('--global-font-size', fontSizeVal + 'px')
+    }
+    })(window)</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/l-lin/font-awesome-animation/dist/font-awesome-animation.min.css"  media="defer" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/sviptzk/HexoStaticFile@master/Hexo/css/flink.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/sviptzk/HexoStaticFile@master/Hexo/css/iconfont.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Rr210/Lantern@2.4/dl.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/HCLonely/images@master/others/heartbeat.min.css"><meta name="generator" content="Hexo 5.3.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="wizard-scene"><div class="wizard-objects"><div class="wizard-square"></div><div class="wizard-circle"></div><div class="wizard-triangle"></div></div><div class="wizard"><div class="wizard-body"></div><div class="wizard-right-arm"><div class="wizard-right-hand"></div></div><div class="wizard-left-arm"><div class="wizard-left-hand"></div></div><div class="wizard-head"><div class="wizard-beard"></div><div class="wizard-face"><div class="wizard-adds"></div></div><div class="wizard-hat"><div class="wizard-hat-of-the-hat"></div><div class="wizard-four-point-star --first"></div><div class="wizard-four-point-star --second"></div><div class="wizard-four-point-star --third"></div></div></div></div></div></div><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" data-lazy-src="/img/Chocolate.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">62</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">30</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">8</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-book"></i><span> 文章</span><i class="fas fa-chevron-down expand hide"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> 时间轴</span></a></li><li><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></li><li><a class="site-page" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> 分类</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 娱乐</span><i class="fas fa-chevron-down expand hide"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/bangumis/"><i class="fa-fw fab fa-youtube"></i><span> 番剧</span></a></li><li><a class="site-page" href="/movies/"><i class="fa-fw fa fa-film"></i><span> 电影</span></a></li><li><a class="site-page" href="/books/"><i class="fa-fw fas fa-book"></i><span> 书单</span></a></li><li><a class="site-page" href="/music/"><i class="fa-fw fa fa-music"></i><span> 音乐</span></a></li><li><a class="site-page" href="/"><i class="fa-fw fas fa-gamepad"></i><span> 游戏</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fa fa-heartbeat"></i><span> 清单</span><i class="fas fa-chevron-down expand hide"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/gallery/"><i class="fa-fw far fa-image"></i><span> 相册</span></a></li><li><a class="site-page" href="/home/"><i class="fa-fw fab fa-phoenix-framework"></i><span> 主页</span></a></li><li><a class="site-page" href="/sponsorWall/"><i class="fa-fw fas fa-money-check-alt"></i><span> 赞助墙</span></a></li><li><a class="site-page" href="/box/"><i class="fa-fw fas fa-th-large"></i><span> 聚宝盒</span></a></li></ul></div><div class="menus_item"><a class="site-page" target="_blank" rel="noopener" href="https://hearling.github.io/"><i class="fa-fw fas fa-book"></i><span> HearLingの博客</span></a></div><div class="menus_item"><a class="site-page" href="/talk/"><i class="fa-fw fas fa-coffee"></i><span> 说说</span></a></div><div class="menus_item"><a class="site-page" href="/contact/"><i class="fa-fw far fa-comments"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 关于</span><i class="fas fa-chevron-down expand hide"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/about/"><i class="fa-fw fa fa-heart"></i><span> 关于我</span></a></li><li><a class="site-page" target="_blank" rel="noopener" href="https://yangchaoyi.avosapps.us/"><i class="fa-fw fas fa-box"></i><span> Valine评论后台</span></a></li><li><a class="site-page" target="_blank" rel="noopener" href="https://console.leancloud.app/applist.html#/apps"><i class="fa-fw fas fa-box"></i><span> LeanCloud应用</span></a></li></ul></div></div></div></div><div class="post" id="body-wrap"><header class="not-top-img" id="page-header"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">超逸の博客</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-book"></i><span> 文章</span><i class="fas fa-chevron-down expand hide"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> 时间轴</span></a></li><li><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></li><li><a class="site-page" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> 分类</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 娱乐</span><i class="fas fa-chevron-down expand hide"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/bangumis/"><i class="fa-fw fab fa-youtube"></i><span> 番剧</span></a></li><li><a class="site-page" href="/movies/"><i class="fa-fw fa fa-film"></i><span> 电影</span></a></li><li><a class="site-page" href="/books/"><i class="fa-fw fas fa-book"></i><span> 书单</span></a></li><li><a class="site-page" href="/music/"><i class="fa-fw fa fa-music"></i><span> 音乐</span></a></li><li><a class="site-page" href="/"><i class="fa-fw fas fa-gamepad"></i><span> 游戏</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fa fa-heartbeat"></i><span> 清单</span><i class="fas fa-chevron-down expand hide"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/gallery/"><i class="fa-fw far fa-image"></i><span> 相册</span></a></li><li><a class="site-page" href="/home/"><i class="fa-fw fab fa-phoenix-framework"></i><span> 主页</span></a></li><li><a class="site-page" href="/sponsorWall/"><i class="fa-fw fas fa-money-check-alt"></i><span> 赞助墙</span></a></li><li><a class="site-page" href="/box/"><i class="fa-fw fas fa-th-large"></i><span> 聚宝盒</span></a></li></ul></div><div class="menus_item"><a class="site-page" target="_blank" rel="noopener" href="https://hearling.github.io/"><i class="fa-fw fas fa-book"></i><span> HearLingの博客</span></a></div><div class="menus_item"><a class="site-page" href="/talk/"><i class="fa-fw fas fa-coffee"></i><span> 说说</span></a></div><div class="menus_item"><a class="site-page" href="/contact/"><i class="fa-fw far fa-comments"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 关于</span><i class="fas fa-chevron-down expand hide"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/about/"><i class="fa-fw fa fa-heart"></i><span> 关于我</span></a></li><li><a class="site-page" target="_blank" rel="noopener" href="https://yangchaoyi.avosapps.us/"><i class="fa-fw fas fa-box"></i><span> Valine评论后台</span></a></li><li><a class="site-page" target="_blank" rel="noopener" href="https://console.leancloud.app/applist.html#/apps"><i class="fa-fw fas fa-box"></i><span> LeanCloud应用</span></a></li></ul></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav></header><main class="layout" id="content-inner"><div id="post"><div id="post-info"><h1 class="post-title">【后台API接口文档】Vue全家桶开发电商管理系统</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-05-07T13:48:39.302Z" title="发表于 2021-05-07 21:48:39">2021-05-07</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2021-05-07T13:48:39.302Z" title="更新于 2021-05-07 21:48:39">2021-05-07</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E9%A1%B9%E7%9B%AE/">项目</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">8.6k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>39分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div><div class="top-img gist" style="background-image: url(/false)"></div><article class="post-content" id="article-container"><h1 id="1-电商管理后台-API-接口文档"><a href="#1-电商管理后台-API-接口文档" class="headerlink" title="1. 电商管理后台 API 接口文档"></a>1. 电商管理后台 API 接口文档</h1><h2 id="1-1-API-V1-接口说明"><a href="#1-1-API-V1-接口说明" class="headerlink" title="1.1. API V1 接口说明"></a>1.1. API V1 接口说明</h2><ul>
+<li>接口基准地址：<code>http://127.0.0.1:8888/api/private/v1/</code></li>
+<li>服务端已开启 CORS 跨域支持</li>
+<li>API V1 认证统一使用 Token 认证</li>
+<li>需要授权的 API ，必须在请求头中使用 <code>Authorization</code> 字段提供 <code>token</code> 令牌</li>
+<li>使用 HTTP Status Code 标识状态</li>
+<li>数据返回格式统一使用 JSON</li>
+</ul>
+<h3 id="1-1-1-支持的请求方法"><a href="#1-1-1-支持的请求方法" class="headerlink" title="1.1.1. 支持的请求方法"></a>1.1.1. 支持的请求方法</h3><ul>
+<li>GET（SELECT）：从服务器取出资源（一项或多项）。</li>
+<li>POST（CREATE）：在服务器新建一个资源。</li>
+<li>PUT（UPDATE）：在服务器更新资源（客户端提供改变后的完整资源）。</li>
+<li>PATCH（UPDATE）：在服务器更新资源（客户端提供改变的属性）。</li>
+<li>DELETE（DELETE）：从服务器删除资源。</li>
+<li>HEAD：获取资源的元数据。</li>
+<li>OPTIONS：获取信息，关于资源的哪些属性是客户端可以改变的。</li>
+</ul>
+<h3 id="1-1-2-通用返回状态说明"><a href="#1-1-2-通用返回状态说明" class="headerlink" title="1.1.2. 通用返回状态说明"></a>1.1.2. 通用返回状态说明</h3><table>
+<thead>
+<tr>
+<th><em>状态码</em></th>
+<th><em>含义</em></th>
+<th><em>说明</em></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>200</td>
+<td>OK</td>
+<td>请求成功</td>
+</tr>
+<tr>
+<td>201</td>
+<td>CREATED</td>
+<td>创建成功</td>
+</tr>
+<tr>
+<td>204</td>
+<td>DELETED</td>
+<td>删除成功</td>
+</tr>
+<tr>
+<td>400</td>
+<td>BAD REQUEST</td>
+<td>请求的地址不存在或者包含不支持的参数</td>
+</tr>
+<tr>
+<td>401</td>
+<td>UNAUTHORIZED</td>
+<td>未授权</td>
+</tr>
+<tr>
+<td>403</td>
+<td>FORBIDDEN</td>
+<td>被禁止访问</td>
+</tr>
+<tr>
+<td>404</td>
+<td>NOT FOUND</td>
+<td>请求的资源不存在</td>
+</tr>
+<tr>
+<td>422</td>
+<td>Unprocesable entity</td>
+<td>[POST/PUT/PATCH] 当创建一个对象时，发生一个验证错误</td>
+</tr>
+<tr>
+<td>500</td>
+<td>INTERNAL SERVER ERROR</td>
+<td>内部错误</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="1-2-登录"><a href="#1-2-登录" class="headerlink" title="1.2. 登录"></a>1.2. 登录</h2><h3 id="1-2-1-登录验证接口"><a href="#1-2-1-登录验证接口" class="headerlink" title="1.2.1. 登录验证接口"></a>1.2.1. 登录验证接口</h3><ul>
+<li>请求路径：login</li>
+<li>请求方法：post</li>
+<li>请求参数</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>参数说明</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>username</td>
+<td>用户名</td>
+<td>不能为空</td>
+</tr>
+<tr>
+<td>password</td>
+<td>密码</td>
+<td>不能为空</td>
+</tr>
+</tbody></table>
+<ul>
+<li>响应参数</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>参数说明</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>id</td>
+<td>用户 ID</td>
+<td></td>
+</tr>
+<tr>
+<td>rid</td>
+<td>用户角色 ID</td>
+<td></td>
+</tr>
+<tr>
+<td>username</td>
+<td>用户名</td>
+<td></td>
+</tr>
+<tr>
+<td>mobile</td>
+<td>手机号</td>
+<td></td>
+</tr>
+<tr>
+<td>email</td>
+<td>邮箱</td>
+<td></td>
+</tr>
+<tr>
+<td>token</td>
+<td>令牌</td>
+<td>基于 jwt 的令牌</td>
+</tr>
+</tbody></table>
+<ul>
+<li>响应数据</li>
+</ul>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">&quot;data&quot;</span>: &#123;</span><br><span class="line">        <span class="attr">&quot;id&quot;</span>: <span class="number">500</span>,</span><br><span class="line">        <span class="attr">&quot;rid&quot;</span>: <span class="number">0</span>,</span><br><span class="line">        <span class="attr">&quot;username&quot;</span>: <span class="string">&quot;admin&quot;</span>,</span><br><span class="line">        <span class="attr">&quot;mobile&quot;</span>: <span class="string">&quot;123&quot;</span>,</span><br><span class="line">        <span class="attr">&quot;email&quot;</span>: <span class="string">&quot;123@qq.com&quot;</span>,</span><br><span class="line">        <span class="attr">&quot;token&quot;</span>: <span class="string">&quot;Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjUwMCwicmlkIjowLCJpYXQiOjE1MTI1NDQyOTksImV4cCI6MTUxMjYzMDY5OX0.eGrsrvwHm-tPsO9r_pxHIQ5i5L1kX9RX444uwnRGaIM&quot;</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">&quot;meta&quot;</span>: &#123;</span><br><span class="line">        <span class="attr">&quot;msg&quot;</span>: <span class="string">&quot;登录成功&quot;</span>,</span><br><span class="line">        <span class="attr">&quot;status&quot;</span>: <span class="number">200</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="1-3-用户管理"><a href="#1-3-用户管理" class="headerlink" title="1.3. 用户管理"></a>1.3. 用户管理</h2><h3 id="1-3-1-用户数据列表"><a href="#1-3-1-用户数据列表" class="headerlink" title="1.3.1. 用户数据列表"></a>1.3.1. 用户数据列表</h3><ul>
+<li>请求路径：users</li>
+<li>请求方法：get</li>
+<li>请求参数</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>参数说明</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>query</td>
+<td>查询参数</td>
+<td>可以为空</td>
+</tr>
+<tr>
+<td>pagenum</td>
+<td>当前页码</td>
+<td>不能为空</td>
+</tr>
+<tr>
+<td>pagesize</td>
+<td>每页显示条数</td>
+<td>不能为空</td>
+</tr>
+</tbody></table>
+<ul>
+<li>响应参数</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>参数说明</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>total</td>
+<td>总记录数</td>
+<td></td>
+</tr>
+<tr>
+<td>pagenum</td>
+<td>当前页码</td>
+<td></td>
+</tr>
+<tr>
+<td>users</td>
+<td>用户数据集合</td>
+<td></td>
+</tr>
+</tbody></table>
+<ul>
+<li>响应数据</li>
+</ul>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">&quot;data&quot;</span>: &#123;</span><br><span class="line">        <span class="attr">&quot;total&quot;</span>: <span class="number">5</span>,</span><br><span class="line">        <span class="attr">&quot;pagenum&quot;</span>: <span class="number">1</span>,</span><br><span class="line">        <span class="attr">&quot;users&quot;</span>: [</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="attr">&quot;id&quot;</span>: <span class="number">25</span>,</span><br><span class="line">                <span class="attr">&quot;username&quot;</span>: <span class="string">&quot;tige117&quot;</span>,</span><br><span class="line">                <span class="attr">&quot;mobile&quot;</span>: <span class="string">&quot;18616358651&quot;</span>,</span><br><span class="line">                <span class="attr">&quot;type&quot;</span>: <span class="number">1</span>,</span><br><span class="line">                <span class="attr">&quot;email&quot;</span>: <span class="string">&quot;tige112@163.com&quot;</span>,</span><br><span class="line">                <span class="attr">&quot;create_time&quot;</span>: <span class="string">&quot;2017-11-09T20:36:26.000Z&quot;</span>,</span><br><span class="line">                <span class="attr">&quot;mg_state&quot;</span>: <span class="literal">true</span>, <span class="comment">// 当前用户的状态</span></span><br><span class="line">                <span class="attr">&quot;role_name&quot;</span>: <span class="string">&quot;炒鸡管理员&quot;</span></span><br><span class="line">            &#125;</span><br><span class="line">        ]</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">&quot;meta&quot;</span>: &#123;</span><br><span class="line">        <span class="attr">&quot;msg&quot;</span>: <span class="string">&quot;获取成功&quot;</span>,</span><br><span class="line">        <span class="attr">&quot;status&quot;</span>: <span class="number">200</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="1-3-2-添加用户"><a href="#1-3-2-添加用户" class="headerlink" title="1.3.2. 添加用户"></a>1.3.2. 添加用户</h3><ul>
+<li>请求路径：users</li>
+<li>请求方法：post</li>
+<li>请求参数</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>参数说明</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>username</td>
+<td>用户名称</td>
+<td>不能为空</td>
+</tr>
+<tr>
+<td>password</td>
+<td>用户密码</td>
+<td>不能为空</td>
+</tr>
+<tr>
+<td>email</td>
+<td>邮箱</td>
+<td>可以为空</td>
+</tr>
+<tr>
+<td>mobile</td>
+<td>手机号</td>
+<td>可以为空</td>
+</tr>
+</tbody></table>
+<ul>
+<li>响应参数</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>参数说明</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>id</td>
+<td>用户 ID</td>
+<td></td>
+</tr>
+<tr>
+<td>rid</td>
+<td>用户角色 ID</td>
+<td></td>
+</tr>
+<tr>
+<td>username</td>
+<td>用户名</td>
+<td></td>
+</tr>
+<tr>
+<td>mobile</td>
+<td>手机号</td>
+<td></td>
+</tr>
+<tr>
+<td>email</td>
+<td>邮箱</td>
+<td></td>
+</tr>
+</tbody></table>
+<ul>
+<li>响应数据</li>
+</ul>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">&quot;data&quot;</span>: &#123;</span><br><span class="line">        <span class="attr">&quot;id&quot;</span>: <span class="number">28</span>,</span><br><span class="line">        <span class="attr">&quot;username&quot;</span>: <span class="string">&quot;tige1200&quot;</span>,</span><br><span class="line">        <span class="attr">&quot;mobile&quot;</span>: <span class="string">&quot;test&quot;</span>,</span><br><span class="line">        <span class="attr">&quot;type&quot;</span>: <span class="number">1</span>,</span><br><span class="line">        <span class="attr">&quot;openid&quot;</span>: <span class="string">&quot;&quot;</span>,</span><br><span class="line">        <span class="attr">&quot;email&quot;</span>: <span class="string">&quot;test@test.com&quot;</span>,</span><br><span class="line">        <span class="attr">&quot;create_time&quot;</span>: <span class="string">&quot;2017-11-10T03:47:13.533Z&quot;</span>,</span><br><span class="line">        <span class="attr">&quot;modify_time&quot;</span>: <span class="literal">null</span>,</span><br><span class="line">        <span class="attr">&quot;is_delete&quot;</span>: <span class="literal">false</span>,</span><br><span class="line">        <span class="attr">&quot;is_active&quot;</span>: <span class="literal">false</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">&quot;meta&quot;</span>: &#123;</span><br><span class="line">        <span class="attr">&quot;msg&quot;</span>: <span class="string">&quot;用户创建成功&quot;</span>,</span><br><span class="line">        <span class="attr">&quot;status&quot;</span>: <span class="number">201</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="1-3-3-修改用户状态"><a href="#1-3-3-修改用户状态" class="headerlink" title="1.3.3. 修改用户状态"></a>1.3.3. 修改用户状态</h3><ul>
+<li>请求路径：users/:uId/state/:type</li>
+<li>请求方法：put</li>
+<li>请求参数</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>参数说明</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>uId</td>
+<td>用户 ID</td>
+<td>不能为空<code>携带在url中</code></td>
+</tr>
+<tr>
+<td>type</td>
+<td>用户状态</td>
+<td>不能为空<code>携带在url中</code>，值为 true 或者 false</td>
+</tr>
+</tbody></table>
+<ul>
+<li>响应数据</li>
+</ul>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">&quot;data&quot;</span>: &#123;</span><br><span class="line">    <span class="attr">&quot;id&quot;</span>: <span class="number">566</span>,</span><br><span class="line">    <span class="attr">&quot;rid&quot;</span>: <span class="number">30</span>,</span><br><span class="line">    <span class="attr">&quot;username&quot;</span>: <span class="string">&quot;admin&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;mobile&quot;</span>: <span class="string">&quot;123456&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;email&quot;</span>: <span class="string">&quot;bb@itcast.com&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;mg_state&quot;</span>: <span class="number">0</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">&quot;meta&quot;</span>: &#123;</span><br><span class="line">    <span class="attr">&quot;msg&quot;</span>: <span class="string">&quot;设置状态成功&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;status&quot;</span>: <span class="number">200</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="1-3-4-根据-ID-查询用户信息"><a href="#1-3-4-根据-ID-查询用户信息" class="headerlink" title="1.3.4. 根据 ID 查询用户信息"></a>1.3.4. 根据 ID 查询用户信息</h3><ul>
+<li>请求路径：users/:id</li>
+<li>请求方法：get</li>
+<li>请求参数</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>参数说明</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>id</td>
+<td>用户 ID</td>
+<td>不能为空<code>携带在url中</code></td>
+</tr>
+</tbody></table>
+<ul>
+<li>响应参数</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>参数说明</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>id</td>
+<td>用户 ID</td>
+<td></td>
+</tr>
+<tr>
+<td>role_id</td>
+<td>角色 ID</td>
+<td></td>
+</tr>
+<tr>
+<td>mobile</td>
+<td>手机号</td>
+<td></td>
+</tr>
+<tr>
+<td>email</td>
+<td>邮箱</td>
+<td></td>
+</tr>
+</tbody></table>
+<ul>
+<li>响应数据</li>
+</ul>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">&quot;data&quot;</span>: &#123;</span><br><span class="line">        <span class="attr">&quot;id&quot;</span>: <span class="number">503</span>,</span><br><span class="line">        <span class="attr">&quot;username&quot;</span>: <span class="string">&quot;admin3&quot;</span>,</span><br><span class="line">        <span class="attr">&quot;role_id&quot;</span>: <span class="number">0</span>,</span><br><span class="line">        <span class="attr">&quot;mobile&quot;</span>: <span class="string">&quot;00000&quot;</span>,</span><br><span class="line">        <span class="attr">&quot;email&quot;</span>: <span class="string">&quot;new@new.com&quot;</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">&quot;meta&quot;</span>: &#123;</span><br><span class="line">        <span class="attr">&quot;msg&quot;</span>: <span class="string">&quot;查询成功&quot;</span>,</span><br><span class="line">        <span class="attr">&quot;status&quot;</span>: <span class="number">200</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="1-3-5-编辑用户提交"><a href="#1-3-5-编辑用户提交" class="headerlink" title="1.3.5. 编辑用户提交"></a>1.3.5. 编辑用户提交</h3><ul>
+<li>请求路径：users/:id</li>
+<li>请求方法：put</li>
+<li>请求参数</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>参数说明</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>id</td>
+<td>用户 id</td>
+<td>不能为空 <code>参数是url参数:id</code></td>
+</tr>
+<tr>
+<td>email</td>
+<td>邮箱</td>
+<td>可以为空</td>
+</tr>
+<tr>
+<td>mobile</td>
+<td>手机号</td>
+<td>可以为空</td>
+</tr>
+</tbody></table>
+<ul>
+<li>响应参数</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>参数说明</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>id</td>
+<td>用户 ID</td>
+<td></td>
+</tr>
+<tr>
+<td>role_id</td>
+<td>角色 ID</td>
+<td></td>
+</tr>
+<tr>
+<td>mobile</td>
+<td>手机号</td>
+<td></td>
+</tr>
+<tr>
+<td>email</td>
+<td>邮箱</td>
+<td></td>
+</tr>
+</tbody></table>
+<ul>
+<li>响应数据</li>
+</ul>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="comment">/* 200表示成功，500表示失败 */</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="attr">&quot;data&quot;</span>: &#123;</span><br><span class="line">        <span class="attr">&quot;id&quot;</span>: <span class="number">503</span>,</span><br><span class="line">        <span class="attr">&quot;username&quot;</span>: <span class="string">&quot;admin3&quot;</span>,</span><br><span class="line">        <span class="attr">&quot;role_id&quot;</span>: <span class="number">0</span>,</span><br><span class="line">        <span class="attr">&quot;mobile&quot;</span>: <span class="string">&quot;111&quot;</span>,</span><br><span class="line">        <span class="attr">&quot;email&quot;</span>: <span class="string">&quot;123@123.com&quot;</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">&quot;meta&quot;</span>: &#123;</span><br><span class="line">        <span class="attr">&quot;msg&quot;</span>: <span class="string">&quot;更新成功&quot;</span>,</span><br><span class="line">        <span class="attr">&quot;status&quot;</span>: <span class="number">200</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="1-3-6-删除单个用户"><a href="#1-3-6-删除单个用户" class="headerlink" title="1.3.6. 删除单个用户"></a>1.3.6. 删除单个用户</h3><ul>
+<li>请求路径：users/:id</li>
+<li>请求方法：delete</li>
+<li>请求参数</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>参数说明</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>id</td>
+<td>用户 id</td>
+<td>不能为空<code>参数是url参数:id</code></td>
+</tr>
+</tbody></table>
+<ul>
+<li>响应参数</li>
+<li>响应数据</li>
+</ul>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">&quot;data&quot;</span>: <span class="literal">null</span>,</span><br><span class="line">    <span class="attr">&quot;meta&quot;</span>: &#123;</span><br><span class="line">        <span class="attr">&quot;msg&quot;</span>: <span class="string">&quot;删除成功&quot;</span>,</span><br><span class="line">        <span class="attr">&quot;status&quot;</span>: <span class="number">200</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="1-3-7-分配用户角色"><a href="#1-3-7-分配用户角色" class="headerlink" title="1.3.7. 分配用户角色"></a>1.3.7. 分配用户角色</h3><ul>
+<li>请求路径：users/:id/role</li>
+<li>请求方法：put</li>
+<li>请求参数</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>参数说明</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>id</td>
+<td>用户 ID</td>
+<td>不能为空<code>参数是url参数:id</code></td>
+</tr>
+<tr>
+<td>rid</td>
+<td>角色 id</td>
+<td>不能为空<code>参数body参数</code></td>
+</tr>
+</tbody></table>
+<ul>
+<li>响应参数</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>参数说明</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>id</td>
+<td>用户 ID</td>
+<td></td>
+</tr>
+<tr>
+<td>role_id</td>
+<td>角色 ID</td>
+<td></td>
+</tr>
+<tr>
+<td>mobile</td>
+<td>手机号</td>
+<td></td>
+</tr>
+<tr>
+<td>email</td>
+<td>邮箱</td>
+<td></td>
+</tr>
+</tbody></table>
+<ul>
+<li>响应数据</li>
+</ul>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">&quot;data&quot;</span>: &#123;</span><br><span class="line">        <span class="attr">&quot;id&quot;</span>: <span class="number">508</span>,</span><br><span class="line">        <span class="attr">&quot;rid&quot;</span>: <span class="string">&quot;30&quot;</span>,</span><br><span class="line">        <span class="attr">&quot;username&quot;</span>: <span class="string">&quot;asdf1&quot;</span>,</span><br><span class="line">        <span class="attr">&quot;mobile&quot;</span>: <span class="string">&quot;123123&quot;</span>,</span><br><span class="line">        <span class="attr">&quot;email&quot;</span>: <span class="string">&quot;adfsa@qq.com&quot;</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">&quot;meta&quot;</span>: &#123;</span><br><span class="line">        <span class="attr">&quot;msg&quot;</span>: <span class="string">&quot;设置角色成功&quot;</span>,</span><br><span class="line">        <span class="attr">&quot;status&quot;</span>: <span class="number">200</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="1-4-权限管理"><a href="#1-4-权限管理" class="headerlink" title="1.4. 权限管理"></a>1.4. 权限管理</h2><h3 id="1-4-1-所有权限列表"><a href="#1-4-1-所有权限列表" class="headerlink" title="1.4.1. 所有权限列表"></a>1.4.1. 所有权限列表</h3><ul>
+<li>请求路径：rights/:type</li>
+<li>请求方法：get</li>
+<li>请求参数</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>参数说明</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>type</td>
+<td>类型</td>
+<td>值 list 或 tree , list 列表显示权限, tree 树状显示权限,<code>参数是url参数:type</code></td>
+</tr>
+</tbody></table>
+<ul>
+<li>响应参数</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>参数说明</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>id</td>
+<td>权限 ID</td>
+<td></td>
+</tr>
+<tr>
+<td>authName</td>
+<td>权限说明</td>
+<td></td>
+</tr>
+<tr>
+<td>level</td>
+<td>权限层级</td>
+<td></td>
+</tr>
+<tr>
+<td>pid</td>
+<td>权限父 ID</td>
+<td></td>
+</tr>
+<tr>
+<td>path</td>
+<td>对应访问路径</td>
+<td></td>
+</tr>
+</tbody></table>
+<ul>
+<li>响应数据 type=list</li>
+</ul>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line">  &#123;</span><br><span class="line">    <span class="attr">&quot;data&quot;</span>: [</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="attr">&quot;id&quot;</span>: <span class="number">101</span>,</span><br><span class="line">            <span class="attr">&quot;authName&quot;</span>: <span class="string">&quot;商品管理&quot;</span>,</span><br><span class="line">            <span class="attr">&quot;level&quot;</span>: <span class="string">&quot;0&quot;</span>,</span><br><span class="line">            <span class="attr">&quot;pid&quot;</span>: <span class="number">0</span>,</span><br><span class="line">            <span class="attr">&quot;path&quot;</span>: <span class="literal">null</span></span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="attr">&quot;id&quot;</span>: <span class="number">102</span>,</span><br><span class="line">            <span class="attr">&quot;authName&quot;</span>: <span class="string">&quot;订单管理&quot;</span>,</span><br><span class="line">            <span class="attr">&quot;level&quot;</span>: <span class="string">&quot;0&quot;</span>,</span><br><span class="line">            <span class="attr">&quot;pid&quot;</span>: <span class="number">0</span>,</span><br><span class="line">            <span class="attr">&quot;path&quot;</span>: <span class="literal">null</span></span><br><span class="line">        &#125;</span><br><span class="line">    ],</span><br><span class="line">    <span class="attr">&quot;meta&quot;</span>: &#123;</span><br><span class="line">        <span class="attr">&quot;msg&quot;</span>: <span class="string">&quot;获取权限列表成功&quot;</span>,</span><br><span class="line">        <span class="attr">&quot;status&quot;</span>: <span class="number">200</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>type=tree</p>
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  data: [</span><br><span class="line">    &#123;</span><br><span class="line">      id: 101,</span><br><span class="line">      authName: &#x27;商品管理&#x27;,</span><br><span class="line">      path: null,</span><br><span class="line">      pid: 0,</span><br><span class="line">      children: [</span><br><span class="line">        &#123;</span><br><span class="line">          id: 104,</span><br><span class="line">          authName: &#x27;商品列表&#x27;,</span><br><span class="line">          path: null,</span><br><span class="line">          pid: 101,</span><br><span class="line">          children: [</span><br><span class="line">            &#123;</span><br><span class="line">              id: 105,</span><br><span class="line">              authName: &#x27;添加商品&#x27;,</span><br><span class="line">              path: null,</span><br><span class="line">              pid: &#x27;104,101&#x27;</span><br><span class="line">            &#125;</span><br><span class="line">          ]</span><br><span class="line">        &#125;</span><br><span class="line">      ]</span><br><span class="line">    &#125;</span><br><span class="line">  ],</span><br><span class="line">  meta: &#123;</span><br><span class="line">    msg: &#x27;获取权限列表成功&#x27;,</span><br><span class="line">    status: 200</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="1-4-2-左侧菜单权限"><a href="#1-4-2-左侧菜单权限" class="headerlink" title="1.4.2. 左侧菜单权限"></a>1.4.2. 左侧菜单权限</h3><ul>
+<li>请求路径：menus</li>
+<li>请求方法：get</li>
+<li>响应数据</li>
+</ul>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">&quot;data&quot;</span>:</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="attr">&quot;id&quot;</span>: <span class="number">101</span>,</span><br><span class="line">            <span class="attr">&quot;authName&quot;</span>: <span class="string">&quot;商品管理&quot;</span>,</span><br><span class="line">            <span class="attr">&quot;path&quot;</span>: <span class="literal">null</span>,</span><br><span class="line">            <span class="attr">&quot;children&quot;</span>: [</span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="attr">&quot;id&quot;</span>: <span class="number">104</span>,</span><br><span class="line">                    <span class="attr">&quot;authName&quot;</span>: <span class="string">&quot;商品列表&quot;</span>,</span><br><span class="line">                    <span class="attr">&quot;path&quot;</span>: <span class="literal">null</span>,</span><br><span class="line">                    <span class="attr">&quot;children&quot;</span>: []</span><br><span class="line">                &#125;</span><br><span class="line">            ]</span><br><span class="line">        &#125;</span><br><span class="line">    <span class="string">&quot;meta&quot;</span>: &#123;</span><br><span class="line">        <span class="attr">&quot;msg&quot;</span>: <span class="string">&quot;获取菜单列表成功&quot;</span>,</span><br><span class="line">        <span class="attr">&quot;status&quot;</span>: <span class="number">200</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="1-5-角色管理"><a href="#1-5-角色管理" class="headerlink" title="1.5. 角色管理"></a>1.5. 角色管理</h2><h3 id="1-5-1-角色列表"><a href="#1-5-1-角色列表" class="headerlink" title="1.5.1. 角色列表"></a>1.5.1. 角色列表</h3><ul>
+<li><p>请求路径：roles</p>
+</li>
+<li><p>请求方法：get</p>
+</li>
+<li><p>响应数据说明</p>
+<ul>
+<li>第一层为角色信息</li>
+</ul>
+<ul>
+<li>第二层开始为权限说明，权限一共有 3 层权限</li>
+<li>最后一层权限，不包含 <code>children</code> 属性</li>
+</ul>
+</li>
+<li><p>响应数据</p>
+</li>
+</ul>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">&quot;data&quot;</span>: [</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="attr">&quot;id&quot;</span>: <span class="number">30</span>,</span><br><span class="line">            <span class="attr">&quot;roleName&quot;</span>: <span class="string">&quot;主管&quot;</span>,</span><br><span class="line">            <span class="attr">&quot;roleDesc&quot;</span>: <span class="string">&quot;技术负责人&quot;</span>,</span><br><span class="line">            <span class="attr">&quot;children&quot;</span>: [</span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="attr">&quot;id&quot;</span>: <span class="number">101</span>,</span><br><span class="line">                    <span class="attr">&quot;authName&quot;</span>: <span class="string">&quot;商品管理&quot;</span>,</span><br><span class="line">                    <span class="attr">&quot;path&quot;</span>: <span class="literal">null</span>,</span><br><span class="line">                    <span class="attr">&quot;children&quot;</span>: [</span><br><span class="line">                        &#123;</span><br><span class="line">                            <span class="attr">&quot;id&quot;</span>: <span class="number">104</span>,</span><br><span class="line">                            <span class="attr">&quot;authName&quot;</span>: <span class="string">&quot;商品列表&quot;</span>,</span><br><span class="line">                            <span class="attr">&quot;path&quot;</span>: <span class="literal">null</span>,</span><br><span class="line">                            <span class="attr">&quot;children&quot;</span>: [</span><br><span class="line">                                &#123;</span><br><span class="line">                                    <span class="attr">&quot;id&quot;</span>: <span class="number">105</span>,</span><br><span class="line">                                    <span class="attr">&quot;authName&quot;</span>: <span class="string">&quot;添加商品&quot;</span>,</span><br><span class="line">                                    <span class="attr">&quot;path&quot;</span>: <span class="literal">null</span></span><br><span class="line">                                &#125;</span><br><span class="line">                            ]</span><br><span class="line">                        &#125;</span><br><span class="line">                    ]</span><br><span class="line">                &#125;</span><br><span class="line">            ]</span><br><span class="line">        &#125;</span><br><span class="line">    ],</span><br><span class="line">    <span class="attr">&quot;meta&quot;</span>: &#123;</span><br><span class="line">        <span class="attr">&quot;msg&quot;</span>: <span class="string">&quot;获取成功&quot;</span>,</span><br><span class="line">        <span class="attr">&quot;status&quot;</span>: <span class="number">200</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="1-5-2-添加角色"><a href="#1-5-2-添加角色" class="headerlink" title="1.5.2. 添加角色"></a>1.5.2. 添加角色</h3><ul>
+<li>请求路径：roles</li>
+<li>请求方法：post</li>
+<li>请求参数</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>参数说明</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>roleName</td>
+<td>角色名称</td>
+<td>不能为空</td>
+</tr>
+<tr>
+<td>roleDesc</td>
+<td>角色描述</td>
+<td>可以为空</td>
+</tr>
+</tbody></table>
+<ul>
+<li>响应参数</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>参数说明</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>roleId</td>
+<td>角色 ID</td>
+<td></td>
+</tr>
+<tr>
+<td>roleName</td>
+<td>角色名称</td>
+<td></td>
+</tr>
+<tr>
+<td>roleDesc</td>
+<td>角色描述</td>
+<td></td>
+</tr>
+</tbody></table>
+<ul>
+<li>响应数据</li>
+</ul>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">&quot;data&quot;</span>: &#123;</span><br><span class="line">        <span class="attr">&quot;roleId&quot;</span>: <span class="number">40</span>,</span><br><span class="line">        <span class="attr">&quot;roleName&quot;</span>: <span class="string">&quot;admin2&quot;</span>,</span><br><span class="line">        <span class="attr">&quot;roleDesc&quot;</span>: <span class="string">&quot;admin2Desc&quot;</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">&quot;meta&quot;</span>: &#123;</span><br><span class="line">        <span class="attr">&quot;msg&quot;</span>: <span class="string">&quot;创建成功&quot;</span>,</span><br><span class="line">        <span class="attr">&quot;status&quot;</span>: <span class="number">201</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="1-5-3-根据-ID-查询角色"><a href="#1-5-3-根据-ID-查询角色" class="headerlink" title="1.5.3. 根据 ID 查询角色"></a>1.5.3. 根据 ID 查询角色</h3><ul>
+<li>请求路径：roles/:id</li>
+<li>请求方法：get</li>
+<li>请求参数</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>参数说明</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>:id</td>
+<td>角色 ID</td>
+<td>不能为空<code>携带在url中</code></td>
+</tr>
+</tbody></table>
+<ul>
+<li>响应参数</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>参数说明</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>roleId</td>
+<td>角色 ID</td>
+<td></td>
+</tr>
+<tr>
+<td>roleName</td>
+<td>角色名称</td>
+<td></td>
+</tr>
+<tr>
+<td>roleDesc</td>
+<td>角色描述</td>
+<td></td>
+</tr>
+</tbody></table>
+<ul>
+<li>响应数据</li>
+</ul>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">&quot;data&quot;</span>: &#123;</span><br><span class="line">        <span class="attr">&quot;roleId&quot;</span>: <span class="number">31</span>,</span><br><span class="line">        <span class="attr">&quot;roleName&quot;</span>: <span class="string">&quot;测试角色&quot;</span>,</span><br><span class="line">        <span class="attr">&quot;roleDesc&quot;</span>: <span class="string">&quot;测试负责人&quot;</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">&quot;meta&quot;</span>: &#123;</span><br><span class="line">        <span class="attr">&quot;msg&quot;</span>: <span class="string">&quot;获取成功&quot;</span>,</span><br><span class="line">        <span class="attr">&quot;status&quot;</span>: <span class="number">200</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="1-5-4-编辑提交角色"><a href="#1-5-4-编辑提交角色" class="headerlink" title="1.5.4. 编辑提交角色"></a>1.5.4. 编辑提交角色</h3><ul>
+<li>请求路径：roles/:id</li>
+<li>请求方法：put</li>
+<li>请求参数</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>参数说明</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>:id</td>
+<td>角色 ID</td>
+<td>不能为空<code>携带在url中</code></td>
+</tr>
+<tr>
+<td>roleName</td>
+<td>角色名称</td>
+<td>不能为空</td>
+</tr>
+<tr>
+<td>roleDesc</td>
+<td>角色描述</td>
+<td>可以为空</td>
+</tr>
+</tbody></table>
+<ul>
+<li>响应数据</li>
+</ul>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">&quot;data&quot;</span>: &#123;</span><br><span class="line">        <span class="attr">&quot;roleId&quot;</span>: <span class="number">31</span>,</span><br><span class="line">        <span class="attr">&quot;roleName&quot;</span>: <span class="string">&quot;测试角色&quot;</span>,</span><br><span class="line">        <span class="attr">&quot;roleDesc&quot;</span>: <span class="string">&quot;测试角色描述&quot;</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">&quot;meta&quot;</span>: &#123;</span><br><span class="line">        <span class="attr">&quot;msg&quot;</span>: <span class="string">&quot;获取成功&quot;</span>,</span><br><span class="line">        <span class="attr">&quot;status&quot;</span>: <span class="number">200</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="1-5-5-删除角色"><a href="#1-5-5-删除角色" class="headerlink" title="1.5.5. 删除角色"></a>1.5.5. 删除角色</h3><ul>
+<li>请求路径：roles/:id</li>
+<li>请求方法：delete</li>
+<li>请求参数</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>参数说明</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>:id</td>
+<td>角色 ID</td>
+<td>不能为空<code>携带在url中</code></td>
+</tr>
+</tbody></table>
+<ul>
+<li>响应数据</li>
+</ul>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">&quot;data&quot;</span>: <span class="literal">null</span>,</span><br><span class="line">    <span class="attr">&quot;meta&quot;</span>: &#123;</span><br><span class="line">        <span class="attr">&quot;msg&quot;</span>: <span class="string">&quot;删除成功&quot;</span>,</span><br><span class="line">        <span class="attr">&quot;status&quot;</span>: <span class="number">200</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="1-5-6-角色授权"><a href="#1-5-6-角色授权" class="headerlink" title="1.5.6. 角色授权"></a>1.5.6. 角色授权</h3><ul>
+<li>请求路径：roles/:roleId/rights</li>
+<li>请求方法：post</li>
+<li>请求参数：通过 <code>请求体</code> 发送给后端</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>参数说明</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>:roleId</td>
+<td>角色 ID</td>
+<td>不能为空<code>携带在url中</code></td>
+</tr>
+<tr>
+<td>rids</td>
+<td>权限 ID 列表（字符串）</td>
+<td>以 <code>,</code> 分割的权限 ID 列表（获取所有被选中、叶子节点的key和半选中节点的key, 包括 1，2，3级节点）</td>
+</tr>
+</tbody></table>
+<ul>
+<li>响应数据</li>
+</ul>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">&quot;data&quot;</span>: <span class="literal">null</span>,</span><br><span class="line">    <span class="attr">&quot;meta&quot;</span>: &#123;</span><br><span class="line">        <span class="attr">&quot;msg&quot;</span>: <span class="string">&quot;更新成功&quot;</span>,</span><br><span class="line">        <span class="attr">&quot;status&quot;</span>: <span class="number">200</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="1-5-7-删除角色指定权限"><a href="#1-5-7-删除角色指定权限" class="headerlink" title="1.5.7. 删除角色指定权限"></a>1.5.7. 删除角色指定权限</h3><ul>
+<li><p>请求路径：roles/:roleId/rights/:rightId</p>
+</li>
+<li><p>请求方法：delete</p>
+</li>
+<li><p>请求参数</p>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>参数说明</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>:roleId</td>
+<td>角色 ID</td>
+<td>不能为空<code>携带在url中</code></td>
+</tr>
+<tr>
+<td>:rightId</td>
+<td>权限 ID</td>
+<td>不能为空<code>携带在url中</code></td>
+</tr>
+</tbody></table>
+</li>
+<li><p>响应数据说明 </p>
+<ul>
+<li>返回的data, 是当前角色下最新的权限数据</li>
+</ul>
+</li>
+<li><p>响应数据</p>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">&quot;data&quot;</span>: [</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="attr">&quot;id&quot;</span>: <span class="number">101</span>,</span><br><span class="line">            <span class="attr">&quot;authName&quot;</span>: <span class="string">&quot;商品管理&quot;</span>,</span><br><span class="line">            <span class="attr">&quot;path&quot;</span>: <span class="literal">null</span>,</span><br><span class="line">            <span class="attr">&quot;children&quot;</span>: [</span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="attr">&quot;id&quot;</span>: <span class="number">104</span>,</span><br><span class="line">                    <span class="attr">&quot;authName&quot;</span>: <span class="string">&quot;商品列表&quot;</span>,</span><br><span class="line">                    <span class="attr">&quot;path&quot;</span>: <span class="literal">null</span>,</span><br><span class="line">                    <span class="attr">&quot;children&quot;</span>: [</span><br><span class="line">                        &#123;</span><br><span class="line">                            <span class="attr">&quot;id&quot;</span>: <span class="number">105</span>,</span><br><span class="line">                            <span class="attr">&quot;authName&quot;</span>: <span class="string">&quot;添加商品&quot;</span>,</span><br><span class="line">                            <span class="attr">&quot;path&quot;</span>: <span class="literal">null</span></span><br><span class="line">                        &#125;,</span><br><span class="line">                        &#123;</span><br><span class="line">                            <span class="attr">&quot;id&quot;</span>: <span class="number">116</span>,</span><br><span class="line">                            <span class="attr">&quot;authName&quot;</span>: <span class="string">&quot;修改&quot;</span>,</span><br><span class="line">                            <span class="attr">&quot;path&quot;</span>: <span class="literal">null</span></span><br><span class="line">                        &#125;</span><br><span class="line">                    ]</span><br><span class="line">                &#125;</span><br><span class="line">            ]</span><br><span class="line">        &#125;</span><br><span class="line">    ],</span><br><span class="line">    <span class="attr">&quot;meta&quot;</span>: &#123;</span><br><span class="line">        <span class="attr">&quot;msg&quot;</span>: <span class="string">&quot;取消权限成功&quot;</span>,</span><br><span class="line">        <span class="attr">&quot;status&quot;</span>: <span class="number">200</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="1-6-商品分类管理"><a href="#1-6-商品分类管理" class="headerlink" title="1.6. 商品分类管理"></a>1.6. 商品分类管理</h2></li>
+</ul>
+<h3 id="1-6-1-商品分类数据列表"><a href="#1-6-1-商品分类数据列表" class="headerlink" title="1.6.1. 商品分类数据列表"></a>1.6.1. 商品分类数据列表</h3><ul>
+<li>请求路径：categories</li>
+<li>请求方法：get</li>
+<li>请求参数</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>参数说明</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>type</td>
+<td>[1,2,3]</td>
+<td>值：1，2，3 分别表示显示一层二层三层分类列表<br />【可选参数】如果不传递，则默认获取所有级别的分类</td>
+</tr>
+<tr>
+<td>pagenum</td>
+<td>当前页码值</td>
+<td>【可选参数】如果不传递，则默认获取所有分类</td>
+</tr>
+<tr>
+<td>pagesize</td>
+<td>每页显示多少条数据</td>
+<td>【可选参数】如果不传递，则默认获取所有分类</td>
+</tr>
+</tbody></table>
+<ul>
+<li>响应参数</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>参数说明</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>cat_id</td>
+<td>分类 ID</td>
+<td></td>
+</tr>
+<tr>
+<td>cat_name</td>
+<td>分类名称</td>
+<td></td>
+</tr>
+<tr>
+<td>cat_pid</td>
+<td>分类父 ID</td>
+<td></td>
+</tr>
+<tr>
+<td>cat_level</td>
+<td>分类当前层级</td>
+<td></td>
+</tr>
+</tbody></table>
+<ul>
+<li>响应数据</li>
+</ul>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">&quot;data&quot;</span>: [</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="attr">&quot;cat_id&quot;</span>: <span class="number">1</span>,</span><br><span class="line">            <span class="attr">&quot;cat_name&quot;</span>: <span class="string">&quot;大家电&quot;</span>,</span><br><span class="line">            <span class="attr">&quot;cat_pid&quot;</span>: <span class="number">0</span>,</span><br><span class="line">            <span class="attr">&quot;cat_level&quot;</span>: <span class="number">0</span>,</span><br><span class="line">            <span class="attr">&quot;cat_deleted&quot;</span>: <span class="literal">false</span>,</span><br><span class="line">            <span class="attr">&quot;children&quot;</span>: [</span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="attr">&quot;cat_id&quot;</span>: <span class="number">3</span>,</span><br><span class="line">                    <span class="attr">&quot;cat_name&quot;</span>: <span class="string">&quot;电视&quot;</span>,</span><br><span class="line">                    <span class="attr">&quot;cat_pid&quot;</span>: <span class="number">1</span>,</span><br><span class="line">                    <span class="attr">&quot;cat_level&quot;</span>: <span class="number">1</span>,</span><br><span class="line">                    <span class="attr">&quot;cat_deleted&quot;</span>: <span class="literal">false</span>,</span><br><span class="line">                    <span class="attr">&quot;children&quot;</span>: [</span><br><span class="line">                        &#123;</span><br><span class="line">                            <span class="attr">&quot;cat_id&quot;</span>: <span class="number">6</span>,</span><br><span class="line">                            <span class="attr">&quot;cat_name&quot;</span>: <span class="string">&quot;曲面电视&quot;</span>,</span><br><span class="line">                            <span class="attr">&quot;cat_pid&quot;</span>: <span class="number">3</span>,</span><br><span class="line">                            <span class="attr">&quot;cat_level&quot;</span>: <span class="number">2</span>,</span><br><span class="line">                            <span class="attr">&quot;cat_deleted&quot;</span>: <span class="literal">false</span></span><br><span class="line">                        &#125;,</span><br><span class="line">                        &#123;</span><br><span class="line">                            <span class="attr">&quot;cat_id&quot;</span>: <span class="number">7</span>,</span><br><span class="line">                            <span class="attr">&quot;cat_name&quot;</span>: <span class="string">&quot;海信&quot;</span>,</span><br><span class="line">                            <span class="attr">&quot;cat_pid&quot;</span>: <span class="number">3</span>,</span><br><span class="line">                            <span class="attr">&quot;cat_level&quot;</span>: <span class="number">2</span>,</span><br><span class="line">                            <span class="attr">&quot;cat_deleted&quot;</span>: <span class="literal">false</span></span><br><span class="line">                        &#125;</span><br><span class="line">                    ]</span><br><span class="line">                &#125;</span><br><span class="line">            ]</span><br><span class="line">        &#125;</span><br><span class="line">    ],</span><br><span class="line">    <span class="attr">&quot;meta&quot;</span>: &#123;</span><br><span class="line">        <span class="attr">&quot;msg&quot;</span>: <span class="string">&quot;获取成功&quot;</span>,</span><br><span class="line">        <span class="attr">&quot;status&quot;</span>: <span class="number">200</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="1-6-2-添加分类"><a href="#1-6-2-添加分类" class="headerlink" title="1.6.2. 添加分类"></a>1.6.2. 添加分类</h3><ul>
+<li>请求路径：categories</li>
+<li>请求方法：post</li>
+<li>请求参数</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>参数说明</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>cat_pid</td>
+<td>分类父 ID</td>
+<td>不能为空，如果要添加1级分类，则父分类Id应该设置为  <code>0</code></td>
+</tr>
+<tr>
+<td>cat_name</td>
+<td>分类名称</td>
+<td>不能为空</td>
+</tr>
+<tr>
+<td>cat_level</td>
+<td>分类层级</td>
+<td>不能为空，<code>0</code>表示一级分类；<code>1</code>表示二级分类；<code>2</code>表示三级分类</td>
+</tr>
+</tbody></table>
+<ul>
+<li>响应数据</li>
+</ul>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">&quot;data&quot;</span>: &#123;</span><br><span class="line">        <span class="attr">&quot;cat_id&quot;</span>: <span class="number">62</span>,</span><br><span class="line">        <span class="attr">&quot;cat_name&quot;</span>: <span class="string">&quot;相框&quot;</span>,</span><br><span class="line">        <span class="attr">&quot;cat_pid&quot;</span>: <span class="string">&quot;1&quot;</span>,</span><br><span class="line">        <span class="attr">&quot;cat_level&quot;</span>: <span class="string">&quot;1&quot;</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">&quot;meta&quot;</span>: &#123;</span><br><span class="line">        <span class="attr">&quot;msg&quot;</span>: <span class="string">&quot;创建成功&quot;</span>,</span><br><span class="line">        <span class="attr">&quot;status&quot;</span>: <span class="number">201</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="1-6-3-根据-id-查询分类"><a href="#1-6-3-根据-id-查询分类" class="headerlink" title="1.6.3. 根据 id 查询分类"></a>1.6.3. 根据 id 查询分类</h3><ul>
+<li>请求路径：categories/:id</li>
+<li>请求方法：get</li>
+<li>请求参数</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>参数说明</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>:id</td>
+<td>分类 ID</td>
+<td>不能为空<code>携带在url中</code></td>
+</tr>
+</tbody></table>
+<ul>
+<li>响应数据</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;data&quot;: &#123;</span><br><span class="line">        &quot;cat_id&quot;: 3,</span><br><span class="line">        &quot;cat_name&quot;: &quot;厨卫电器&quot;,</span><br><span class="line">        &quot;cat_pid&quot;: 0,</span><br><span class="line">        &quot;cat_level&quot;: 0</span><br><span class="line">    &#125;,</span><br><span class="line">    &quot;meta&quot;: &#123;</span><br><span class="line">        &quot;msg&quot;: &quot;获取成功&quot;,</span><br><span class="line">        &quot;status&quot;: 200</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="1-6-4-编辑提交分类"><a href="#1-6-4-编辑提交分类" class="headerlink" title="1.6.4. 编辑提交分类"></a>1.6.4. 编辑提交分类</h3><ul>
+<li>请求路径：categories/:id</li>
+<li>请求方法：put</li>
+<li>请求参数</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>参数说明</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>:id</td>
+<td>分类 ID</td>
+<td>不能为空<code>携带在url中</code></td>
+</tr>
+<tr>
+<td>cat_name</td>
+<td>分类名称</td>
+<td>不能为空【此参数，放到请求体中】</td>
+</tr>
+</tbody></table>
+<ul>
+<li>响应数据</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;data&quot;: &#123;</span><br><span class="line">        &quot;cat_id&quot;: 22,</span><br><span class="line">        &quot;cat_name&quot;: &quot;自拍杆&quot;,</span><br><span class="line">        &quot;cat_pid&quot;: 7,</span><br><span class="line">        &quot;cat_level&quot;: 2</span><br><span class="line">    &#125;,</span><br><span class="line">    &quot;meta&quot;: &#123;</span><br><span class="line">        &quot;msg&quot;: &quot;更新成功&quot;,</span><br><span class="line">        &quot;status&quot;: 200</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="1-6-5-删除分类"><a href="#1-6-5-删除分类" class="headerlink" title="1.6.5. 删除分类"></a>1.6.5. 删除分类</h3><ul>
+<li>请求路径：categories/:id</li>
+<li>请求方法：delete</li>
+<li>请求参数</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>参数说明</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>:id</td>
+<td>分类 ID</td>
+<td>不能为空<code>携带在url中</code></td>
+</tr>
+</tbody></table>
+<ul>
+<li>响应数据</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;data&quot;: null,</span><br><span class="line">    &quot;meta&quot;: &#123;</span><br><span class="line">        &quot;msg&quot;: &quot;删除成功&quot;,</span><br><span class="line">        &quot;status&quot;: 200</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="1-7-分类参数管理"><a href="#1-7-分类参数管理" class="headerlink" title="1.7. 分类参数管理"></a>1.7. 分类参数管理</h2><h3 id="1-7-1-参数列表"><a href="#1-7-1-参数列表" class="headerlink" title="1.7.1. 参数列表"></a>1.7.1. 参数列表</h3><ul>
+<li>请求路径：categories/:id/attributes</li>
+<li>请求方法：get</li>
+<li>请求参数</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>参数说明</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>:id</td>
+<td>分类 ID</td>
+<td>不能为空<code>携带在url中</code></td>
+</tr>
+<tr>
+<td>sel</td>
+<td>[only,many]</td>
+<td>不能为空,通过 only 或 many 来获取分类静态参数还是动态参数</td>
+</tr>
+</tbody></table>
+<ul>
+<li>响应参数</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>参数说明</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>attr_id</td>
+<td>分类参数 ID</td>
+<td></td>
+</tr>
+<tr>
+<td>attr_name</td>
+<td>分类参数名称</td>
+<td></td>
+</tr>
+<tr>
+<td>cat_id</td>
+<td>分类参数所属分类</td>
+<td></td>
+</tr>
+<tr>
+<td>attr_sel</td>
+<td>only:输入框(唯一) many:后台下拉列表/前台单选框</td>
+<td></td>
+</tr>
+<tr>
+<td>attr_write</td>
+<td>manual:手工录入 list:从列表选择</td>
+<td></td>
+</tr>
+<tr>
+<td>attr_vals</td>
+<td>如果 attr_write:list,那么有值，该值以逗号分隔</td>
+<td></td>
+</tr>
+</tbody></table>
+<ul>
+<li>响应数据</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;data&quot;: [</span><br><span class="line">        &#123;</span><br><span class="line">            &quot;attr_id&quot;: 1,</span><br><span class="line">            &quot;attr_name&quot;: &quot;cpu&quot;,</span><br><span class="line">            &quot;cat_id&quot;: 22,</span><br><span class="line">            &quot;attr_sel&quot;: &quot;only&quot;,</span><br><span class="line">            &quot;attr_write&quot;: &quot;manual&quot;,</span><br><span class="line">            &quot;attr_vals&quot;: &quot;ffff&quot;</span><br><span class="line">        &#125;</span><br><span class="line">    ],</span><br><span class="line">    &quot;meta&quot;: &#123;</span><br><span class="line">        &quot;msg&quot;: &quot;获取成功&quot;,</span><br><span class="line">        &quot;status&quot;: 200</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="1-7-2-添加动态参数或者静态属性"><a href="#1-7-2-添加动态参数或者静态属性" class="headerlink" title="1.7.2. 添加动态参数或者静态属性"></a>1.7.2. 添加动态参数或者静态属性</h3><ul>
+<li>请求路径：categories/:id/attributes</li>
+<li>请求方法：post</li>
+<li>请求参数</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>参数说明</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>:id</td>
+<td>分类 ID</td>
+<td>不能为空<code>携带在url中</code></td>
+</tr>
+<tr>
+<td>attr_name</td>
+<td>参数名称</td>
+<td>不能为空</td>
+</tr>
+<tr>
+<td>attr_sel</td>
+<td>[only,many]</td>
+<td>不能为空</td>
+</tr>
+<tr>
+<td>attr_vals</td>
+<td>如果是 many 就需要填写值的选项，以逗号分隔</td>
+<td>【可选参数】</td>
+</tr>
+</tbody></table>
+<ul>
+<li>响应数据</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;data&quot;: &#123;</span><br><span class="line">        &quot;attr_id&quot;: 44,</span><br><span class="line">        &quot;attr_name&quot;: &quot;测试参数&quot;,</span><br><span class="line">        &quot;cat_id&quot;: &quot;1&quot;,</span><br><span class="line">        &quot;attr_sel&quot;: &quot;many&quot;,</span><br><span class="line">        &quot;attr_write&quot;: &quot;list&quot;,</span><br><span class="line">        &quot;attr_vals&quot;: &quot;a,b,c&quot;</span><br><span class="line">    &#125;,</span><br><span class="line">    &quot;meta&quot;: &#123;</span><br><span class="line">        &quot;msg&quot;: &quot;创建成功&quot;,</span><br><span class="line">        &quot;status&quot;: 201</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="1-7-3-删除参数"><a href="#1-7-3-删除参数" class="headerlink" title="1.7.3. 删除参数"></a>1.7.3. 删除参数</h3><ul>
+<li>请求路径： categories/:id/attributes/:attrid</li>
+<li>请求方法：delete</li>
+<li>请求参数</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>参数说明</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>:id</td>
+<td>分类 ID</td>
+<td>不能为空<code>携带在url中</code></td>
+</tr>
+<tr>
+<td>:attrid</td>
+<td>参数 ID</td>
+<td>不能为空<code>携带在url中</code></td>
+</tr>
+</tbody></table>
+<ul>
+<li>响应数据</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;data&quot;: null,</span><br><span class="line">    &quot;meta&quot;: &#123;</span><br><span class="line">        &quot;msg&quot;: &quot;删除成功&quot;,</span><br><span class="line">        &quot;status&quot;: 200</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="1-7-4-根据-ID-查询参数"><a href="#1-7-4-根据-ID-查询参数" class="headerlink" title="1.7.4. 根据 ID 查询参数"></a>1.7.4. 根据 ID 查询参数</h3><ul>
+<li>请求路径：categories/:id/attributes/:attrId</li>
+<li>请求方法：get</li>
+<li>请求参数</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>参数说明</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>:id</td>
+<td>分类 ID</td>
+<td>不能为空<code>携带在url中</code></td>
+</tr>
+<tr>
+<td>:attrId</td>
+<td>属性 ID</td>
+<td>不能为空<code>携带在url中</code></td>
+</tr>
+<tr>
+<td>attr_sel</td>
+<td>[only,many]</td>
+<td>不能为空</td>
+</tr>
+<tr>
+<td>attr_vals</td>
+<td>如果是 many 就需要填写值的选项，以逗号分隔</td>
+<td></td>
+</tr>
+</tbody></table>
+<ul>
+<li>响应数据</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;data&quot;: &#123;</span><br><span class="line">        &quot;attr_id&quot;: 1,</span><br><span class="line">        &quot;attr_name&quot;: &quot;cpu&quot;,</span><br><span class="line">        &quot;cat_id&quot;: 22,</span><br><span class="line">        &quot;attr_sel&quot;: &quot;only&quot;,</span><br><span class="line">        &quot;attr_write&quot;: &quot;manual&quot;,</span><br><span class="line">        &quot;attr_vals&quot;: &quot;ffff&quot;</span><br><span class="line">    &#125;,</span><br><span class="line">    &quot;meta&quot;: &#123;</span><br><span class="line">        &quot;msg&quot;: &quot;获取成功&quot;,</span><br><span class="line">        &quot;status&quot;: 200</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="1-7-5-编辑提交参数"><a href="#1-7-5-编辑提交参数" class="headerlink" title="1.7.5. 编辑提交参数"></a>1.7.5. 编辑提交参数</h3><ul>
+<li>请求路径：categories/:id/attributes/:attrId</li>
+<li>请求方法：put</li>
+<li>请求参数</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>参数说明</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>:id</td>
+<td>分类 ID</td>
+<td>不能为空<code>携带在url中</code></td>
+</tr>
+<tr>
+<td>:attrId</td>
+<td>属性 ID</td>
+<td>不能为空<code>携带在url中</code></td>
+</tr>
+<tr>
+<td>attr_name</td>
+<td>新属性的名字</td>
+<td>不能为空，携带在<code>请求体</code>中</td>
+</tr>
+<tr>
+<td>attr_sel</td>
+<td>属性的类型[many或only]</td>
+<td>不能为空，携带在<code>请求体</code>中</td>
+</tr>
+<tr>
+<td>attr_vals</td>
+<td>参数的属性值</td>
+<td>可选参数，携带在<code>请求体</code>中</td>
+</tr>
+</tbody></table>
+<ul>
+<li>响应数据</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;data&quot;: &#123;</span><br><span class="line">        &quot;attr_id&quot;: 9,</span><br><span class="line">        &quot;attr_name&quot;: &quot;测试更新&quot;,</span><br><span class="line">        &quot;cat_id&quot;: &quot;43&quot;,</span><br><span class="line">        &quot;attr_sel&quot;: &quot;only&quot;,</span><br><span class="line">        &quot;attr_write&quot;: &quot;manual&quot;,</span><br><span class="line">        &quot;attr_vals&quot;: &quot;abc&quot;</span><br><span class="line">    &#125;,</span><br><span class="line">    &quot;meta&quot;: &#123;</span><br><span class="line">        &quot;msg&quot;: &quot;更新成功&quot;,</span><br><span class="line">        &quot;status&quot;: 200</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="1-8-商品管理"><a href="#1-8-商品管理" class="headerlink" title="1.8. 商品管理"></a>1.8. 商品管理</h2><h3 id="1-8-1-商品列表数据"><a href="#1-8-1-商品列表数据" class="headerlink" title="1.8.1. 商品列表数据"></a>1.8.1. 商品列表数据</h3><ul>
+<li>请求路径：goods</li>
+<li>请求方法：get</li>
+<li>请求参数</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>参数说明</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>query</td>
+<td>查询参数</td>
+<td>可以为空</td>
+</tr>
+<tr>
+<td>pagenum</td>
+<td>当前页码</td>
+<td>不能为空</td>
+</tr>
+<tr>
+<td>pagesize</td>
+<td>每页显示条数</td>
+<td>不能为空</td>
+</tr>
+</tbody></table>
+<ul>
+<li>响应参数</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>参数说明</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>total</td>
+<td>总共商品条数</td>
+<td></td>
+</tr>
+<tr>
+<td>pagenum</td>
+<td>当前商品页数</td>
+<td></td>
+</tr>
+<tr>
+<td>goods_id</td>
+<td>商品 ID</td>
+<td></td>
+</tr>
+<tr>
+<td>goods_name</td>
+<td>商品名称</td>
+<td></td>
+</tr>
+<tr>
+<td>goods_price</td>
+<td>价格</td>
+<td></td>
+</tr>
+<tr>
+<td>goods_number</td>
+<td>数量</td>
+<td></td>
+</tr>
+<tr>
+<td>goods_weight</td>
+<td>重量</td>
+<td>不能为空</td>
+</tr>
+<tr>
+<td>goods_state</td>
+<td>商品状态</td>
+<td>商品状态 0: 未通过 1: 审核中 2: 已审核</td>
+</tr>
+<tr>
+<td>add_time</td>
+<td>添加时间</td>
+<td></td>
+</tr>
+<tr>
+<td>upd_time</td>
+<td>更新时间</td>
+<td></td>
+</tr>
+<tr>
+<td>hot_mumber</td>
+<td>热销品数量</td>
+<td></td>
+</tr>
+<tr>
+<td>is_promote</td>
+<td>是否是热销品</td>
+<td></td>
+</tr>
+</tbody></table>
+<ul>
+<li>响应数据</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;data&quot;: &#123;</span><br><span class="line">        &quot;total&quot;: 50,</span><br><span class="line">        &quot;pagenum&quot;: &quot;1&quot;,</span><br><span class="line">        &quot;goods&quot;: [</span><br><span class="line">            &#123;</span><br><span class="line">                &quot;goods_id&quot;: 144,</span><br><span class="line">                &quot;goods_name&quot;: &quot;asfdsd&quot;,</span><br><span class="line">                &quot;goods_price&quot;: 1,</span><br><span class="line">                &quot;goods_number&quot;: 1,</span><br><span class="line">                &quot;goods_weight&quot;: 1,</span><br><span class="line">                &quot;goods_state&quot;: null,</span><br><span class="line">                &quot;add_time&quot;: 1512954923,</span><br><span class="line">                &quot;upd_time&quot;: 1512954923,</span><br><span class="line">                &quot;hot_mumber&quot;: 0,</span><br><span class="line">                &quot;is_promote&quot;: false</span><br><span class="line">            &#125;</span><br><span class="line">        ]</span><br><span class="line">    &#125;,</span><br><span class="line">    &quot;meta&quot;: &#123;</span><br><span class="line">        &quot;msg&quot;: &quot;获取成功&quot;,</span><br><span class="line">        &quot;status&quot;: 200</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="1-8-2-添加商品"><a href="#1-8-2-添加商品" class="headerlink" title="1.8.2. 添加商品"></a>1.8.2. 添加商品</h3><ul>
+<li>请求路径：goods</li>
+<li>请求方法：post</li>
+<li>请求参数</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>参数说明</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>goods_name</td>
+<td>商品名称</td>
+<td>不能为空</td>
+</tr>
+<tr>
+<td>goods_cat</td>
+<td>以为’,’分割的分类列表</td>
+<td>不能为空</td>
+</tr>
+<tr>
+<td>goods_price</td>
+<td>价格</td>
+<td>不能为空</td>
+</tr>
+<tr>
+<td>goods_number</td>
+<td>数量</td>
+<td>不能为空</td>
+</tr>
+<tr>
+<td>goods_weight</td>
+<td>重量</td>
+<td>不能为空</td>
+</tr>
+<tr>
+<td>goods_introduce</td>
+<td>介绍</td>
+<td>可以为空</td>
+</tr>
+<tr>
+<td>pics</td>
+<td>上传的图片临时路径（对象）</td>
+<td>可以为空</td>
+</tr>
+<tr>
+<td>attrs</td>
+<td>商品的参数（数组），包含 <code>动态参数</code> 和 <code>静态属性</code></td>
+<td>可以为空</td>
+</tr>
+</tbody></table>
+<ul>
+<li>请求数据</li>
+</ul>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">&quot;goods_name&quot;</span>:<span class="string">&quot;test_goods_name2&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;goods_cat&quot;</span>: <span class="string">&quot;1,2,3&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;goods_price&quot;</span>:<span class="number">20</span>,</span><br><span class="line">  <span class="attr">&quot;goods_number&quot;</span>:<span class="number">30</span>,</span><br><span class="line">  <span class="attr">&quot;goods_weight&quot;</span>:<span class="number">40</span>,</span><br><span class="line">  <span class="attr">&quot;goods_introduce&quot;</span>:<span class="string">&quot;abc&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;pics&quot;</span>:[</span><br><span class="line">    &#123;<span class="attr">&quot;pic&quot;</span>:<span class="string">&quot;/tmp_uploads/30f08d52c551ecb447277eae232304b8&quot;</span>&#125;</span><br><span class="line">    ],</span><br><span class="line">  <span class="attr">&quot;attrs&quot;</span>:[</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="attr">&quot;attr_id&quot;</span>:<span class="number">15</span>,</span><br><span class="line">      <span class="attr">&quot;attr_value&quot;</span>:<span class="string">&quot;ddd&quot;</span></span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="attr">&quot;attr_id&quot;</span>:<span class="number">15</span>,</span><br><span class="line">      <span class="attr">&quot;attr_value&quot;</span>:<span class="string">&quot;eee&quot;</span></span><br><span class="line">    &#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>响应参数</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>参数说明</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>total</td>
+<td>总共商品条数</td>
+<td></td>
+</tr>
+<tr>
+<td>pagenum</td>
+<td>当前商品页数</td>
+<td></td>
+</tr>
+<tr>
+<td>goods_id</td>
+<td>商品 ID</td>
+<td></td>
+</tr>
+<tr>
+<td>goods_cat</td>
+<td>以为’,’分割的分类列表</td>
+<td></td>
+</tr>
+<tr>
+<td>goods_name</td>
+<td>商品名称</td>
+<td></td>
+</tr>
+<tr>
+<td>goods_price</td>
+<td>价格</td>
+<td></td>
+</tr>
+<tr>
+<td>goods_number</td>
+<td>数量</td>
+<td></td>
+</tr>
+<tr>
+<td>goods_weight</td>
+<td>重量</td>
+<td>不能为空</td>
+</tr>
+<tr>
+<td>goods_state</td>
+<td>商品状态</td>
+<td>商品状态 0: 未通过 1: 审核中 2: 已审核</td>
+</tr>
+<tr>
+<td>add_time</td>
+<td>添加时间</td>
+<td></td>
+</tr>
+<tr>
+<td>upd_time</td>
+<td>更新时间</td>
+<td></td>
+</tr>
+<tr>
+<td>hot_mumber</td>
+<td>热销品数量</td>
+<td></td>
+</tr>
+<tr>
+<td>is_promote</td>
+<td>是否是热销品</td>
+<td></td>
+</tr>
+<tr>
+<td>pics</td>
+<td>上传的图片临时路径（对象）</td>
+<td>pics_id:图片 ID,goods_id:商品 ID,pics_big:大图,pics_mid:中图,pics_sma:小图</td>
+</tr>
+<tr>
+<td>attrs</td>
+<td>商品的参数（数组）</td>
+<td>goods_id:商品 ID,attr_value:当前商品的参数值,add_price:浮动价格,attr_vals:预定义的参数值,attr_sel:手动输入，还是单选,</td>
+</tr>
+</tbody></table>
+<ul>
+<li>响应数据</li>
+</ul>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">&quot;data&quot;</span>: &#123;</span><br><span class="line">        <span class="attr">&quot;goods_id&quot;</span>: <span class="number">145</span>,</span><br><span class="line">        <span class="attr">&quot;goods_name&quot;</span>: <span class="string">&quot;test_goods_name2&quot;</span>,</span><br><span class="line">        <span class="attr">&quot;goods_price&quot;</span>: <span class="number">20</span>,</span><br><span class="line">        <span class="attr">&quot;cat_id&quot;</span>: <span class="number">1</span>,</span><br><span class="line">        <span class="attr">&quot;goods_number&quot;</span>: <span class="number">30</span>,</span><br><span class="line">        <span class="attr">&quot;goods_weight&quot;</span>: <span class="number">40</span>,</span><br><span class="line">        <span class="attr">&quot;goods_introduce&quot;</span>: <span class="string">&quot;abc&quot;</span>,</span><br><span class="line">        <span class="attr">&quot;goods_big_logo&quot;</span>: <span class="string">&quot;&quot;</span>,</span><br><span class="line">        <span class="attr">&quot;goods_small_logo&quot;</span>: <span class="string">&quot;&quot;</span>,</span><br><span class="line">        <span class="attr">&quot;goods_state&quot;</span>: <span class="number">1</span>,</span><br><span class="line">        <span class="attr">&quot;add_time&quot;</span>: <span class="number">1512962370</span>,</span><br><span class="line">        <span class="attr">&quot;upd_time&quot;</span>: <span class="number">1512962370</span>,</span><br><span class="line">        <span class="attr">&quot;hot_mumber&quot;</span>: <span class="number">0</span>,</span><br><span class="line">        <span class="attr">&quot;is_promote&quot;</span>: <span class="literal">false</span>,</span><br><span class="line">        <span class="attr">&quot;pics&quot;</span>: [</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="attr">&quot;pics_id&quot;</span>: <span class="number">397</span>,</span><br><span class="line">                <span class="attr">&quot;goods_id&quot;</span>: <span class="number">145</span>,</span><br><span class="line">                <span class="attr">&quot;pics_big&quot;</span>: <span class="string">&quot;uploads/goodspics/big_30f08d52c551ecb447277eae232304b8&quot;</span>,</span><br><span class="line">                <span class="attr">&quot;pics_mid&quot;</span>: <span class="string">&quot;uploads/goodspics/mid_30f08d52c551ecb447277eae232304b8&quot;</span>,</span><br><span class="line">                <span class="attr">&quot;pics_sma&quot;</span>: <span class="string">&quot;uploads/goodspics/sma_30f08d52c551ecb447277eae232304b8&quot;</span></span><br><span class="line">            &#125;</span><br><span class="line">        ],</span><br><span class="line">        <span class="attr">&quot;attrs&quot;</span>: [</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="attr">&quot;goods_id&quot;</span>: <span class="number">145</span>,</span><br><span class="line">                <span class="attr">&quot;attr_id&quot;</span>: <span class="number">15</span>,</span><br><span class="line">                <span class="attr">&quot;attr_value&quot;</span>: <span class="string">&quot;ddd&quot;</span>,</span><br><span class="line">                <span class="attr">&quot;add_price&quot;</span>: <span class="literal">null</span>,</span><br><span class="line">                <span class="attr">&quot;attr_name&quot;</span>: <span class="string">&quot;fffffff&quot;</span>,</span><br><span class="line">                <span class="attr">&quot;attr_sel&quot;</span>: <span class="string">&quot;many&quot;</span>,</span><br><span class="line">                <span class="attr">&quot;attr_write&quot;</span>: <span class="string">&quot;list&quot;</span>,</span><br><span class="line">                <span class="attr">&quot;attr_vals&quot;</span>: <span class="string">&quot;&quot;</span></span><br><span class="line">            &#125;,</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="attr">&quot;goods_id&quot;</span>: <span class="number">145</span>,</span><br><span class="line">                <span class="attr">&quot;attr_id&quot;</span>: <span class="number">15</span>,</span><br><span class="line">                <span class="attr">&quot;attr_value&quot;</span>: <span class="string">&quot;eee&quot;</span>,</span><br><span class="line">                <span class="attr">&quot;add_price&quot;</span>: <span class="literal">null</span>,</span><br><span class="line">                <span class="attr">&quot;attr_name&quot;</span>: <span class="string">&quot;fffffff&quot;</span>,</span><br><span class="line">                <span class="attr">&quot;attr_sel&quot;</span>: <span class="string">&quot;many&quot;</span>,</span><br><span class="line">                <span class="attr">&quot;attr_write&quot;</span>: <span class="string">&quot;list&quot;</span>,</span><br><span class="line">                <span class="attr">&quot;attr_vals&quot;</span>: <span class="string">&quot;&quot;</span></span><br><span class="line">            &#125;</span><br><span class="line">        ]</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">&quot;meta&quot;</span>: &#123;</span><br><span class="line">        <span class="attr">&quot;msg&quot;</span>: <span class="string">&quot;创建商品成功&quot;</span>,</span><br><span class="line">        <span class="attr">&quot;status&quot;</span>: <span class="number">201</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="1-8-3-根据-ID-查询商品"><a href="#1-8-3-根据-ID-查询商品" class="headerlink" title="1.8.3. 根据 ID 查询商品"></a>1.8.3. 根据 ID 查询商品</h3><ul>
+<li>请求路径：goods/:id</li>
+<li>请求方法：get</li>
+<li>请求参数</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>参数说明</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>id</td>
+<td>商品 ID</td>
+<td>不能为空<code>携带在url中</code></td>
+</tr>
+</tbody></table>
+<ul>
+<li>响应参数</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>参数说明</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>total</td>
+<td>总共商品条数</td>
+<td></td>
+</tr>
+<tr>
+<td>pagenum</td>
+<td>当前商品页数</td>
+<td></td>
+</tr>
+<tr>
+<td>goods_id</td>
+<td>商品 ID</td>
+<td></td>
+</tr>
+<tr>
+<td>goods_name</td>
+<td>商品名称</td>
+<td></td>
+</tr>
+<tr>
+<td>goods_price</td>
+<td>价格</td>
+<td></td>
+</tr>
+<tr>
+<td>goods_number</td>
+<td>数量</td>
+<td></td>
+</tr>
+<tr>
+<td>goods_weight</td>
+<td>重量</td>
+<td>不能为空</td>
+</tr>
+<tr>
+<td>goods_state</td>
+<td>商品状态</td>
+<td>商品状态 0: 未通过 1: 审核中 2: 已审核</td>
+</tr>
+<tr>
+<td>add_time</td>
+<td>添加时间</td>
+<td></td>
+</tr>
+<tr>
+<td>upd_time</td>
+<td>更新时间</td>
+<td></td>
+</tr>
+<tr>
+<td>hot_mumber</td>
+<td>热销品数量</td>
+<td></td>
+</tr>
+<tr>
+<td>is_promote</td>
+<td>是否是热销品</td>
+<td></td>
+</tr>
+<tr>
+<td>pics</td>
+<td>上传的图片临时路径（对象）</td>
+<td>pics_id:图片 ID,goods_id:商品 ID,pics_big:大图,pics_mid:中图,pics_sma:小图</td>
+</tr>
+<tr>
+<td>attrs</td>
+<td>商品的参数（数组）</td>
+<td>goods_id:商品 ID,attr_value:当前商品的参数值,add_price:浮动价格,attr_vals:预定义的参数值,attr_sel:手动输入，还是单选,</td>
+</tr>
+</tbody></table>
+<ul>
+<li>响应数据</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;data&quot;: &#123;</span><br><span class="line">        &quot;goods_id&quot;: 145,</span><br><span class="line">        &quot;goods_name&quot;: &quot;test_goods_name2&quot;,</span><br><span class="line">        &quot;goods_price&quot;: 20,</span><br><span class="line">        &quot;goods_number&quot;: 30,</span><br><span class="line">        &quot;goods_weight&quot;: 40,</span><br><span class="line">        &quot;goods_introduce&quot;: &quot;abc&quot;,</span><br><span class="line">        &quot;goods_big_logo&quot;: &quot;&quot;,</span><br><span class="line">        &quot;goods_small_logo&quot;: &quot;&quot;,</span><br><span class="line">        &quot;goods_state&quot;: 1,</span><br><span class="line">        &quot;add_time&quot;: 1512962370,</span><br><span class="line">        &quot;upd_time&quot;: 1512962370,</span><br><span class="line">        &quot;hot_mumber&quot;: 0,</span><br><span class="line">        &quot;is_promote&quot;: false,</span><br><span class="line">        &quot;pics&quot;: [</span><br><span class="line">            &#123;</span><br><span class="line">                &quot;pics_id&quot;: 397,</span><br><span class="line">                &quot;goods_id&quot;: 145,</span><br><span class="line">                &quot;pics_big&quot;: &quot;uploads&#x2F;goodspics&#x2F;big_30f08d52c551ecb447277eae232304b8&quot;,</span><br><span class="line">                &quot;pics_mid&quot;: &quot;uploads&#x2F;goodspics&#x2F;mid_30f08d52c551ecb447277eae232304b8&quot;,</span><br><span class="line">                &quot;pics_sma&quot;: &quot;uploads&#x2F;goodspics&#x2F;sma_30f08d52c551ecb447277eae232304b8&quot;</span><br><span class="line">            &#125;</span><br><span class="line">        ],</span><br><span class="line">        &quot;attrs&quot;: [</span><br><span class="line">            &#123;</span><br><span class="line">                &quot;goods_id&quot;: 145,</span><br><span class="line">                &quot;attr_id&quot;: 15,</span><br><span class="line">                &quot;attr_value&quot;: &quot;ddd&quot;,</span><br><span class="line">                &quot;add_price&quot;: null,</span><br><span class="line">                &quot;attr_name&quot;: &quot;fffffff&quot;,</span><br><span class="line">                &quot;attr_sel&quot;: &quot;many&quot;,</span><br><span class="line">                &quot;attr_write&quot;: &quot;list&quot;,</span><br><span class="line">                &quot;attr_vals&quot;: &quot;&quot;</span><br><span class="line">            &#125;,</span><br><span class="line">            &#123;</span><br><span class="line">                &quot;goods_id&quot;: 145,</span><br><span class="line">                &quot;attr_id&quot;: 15,</span><br><span class="line">                &quot;attr_value&quot;: &quot;eee&quot;,</span><br><span class="line">                &quot;add_price&quot;: null,</span><br><span class="line">                &quot;attr_name&quot;: &quot;fffffff&quot;,</span><br><span class="line">                &quot;attr_sel&quot;: &quot;many&quot;,</span><br><span class="line">                &quot;attr_write&quot;: &quot;list&quot;,</span><br><span class="line">                &quot;attr_vals&quot;: &quot;&quot;</span><br><span class="line">            &#125;</span><br><span class="line">        ]</span><br><span class="line">    &#125;,</span><br><span class="line">    &quot;meta&quot;: &#123;</span><br><span class="line">        &quot;msg&quot;: &quot;创建商品成功&quot;,</span><br><span class="line">        &quot;status&quot;: 201</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="1-8-4-编辑提交商品"><a href="#1-8-4-编辑提交商品" class="headerlink" title="1.8.4. 编辑提交商品"></a>1.8.4. 编辑提交商品</h3><ul>
+<li>请求路径：goods/:id</li>
+<li>请求方法：put</li>
+<li>请求参数</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>参数说明</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>id</td>
+<td>商品 ID</td>
+<td>不能为空<code>携带在url中</code></td>
+</tr>
+<tr>
+<td>goods_name</td>
+<td>商品名称</td>
+<td>不能为空</td>
+</tr>
+<tr>
+<td>goods_price</td>
+<td>价格</td>
+<td>不能为空</td>
+</tr>
+<tr>
+<td>goods_number</td>
+<td>数量</td>
+<td>不能为空</td>
+</tr>
+<tr>
+<td>goods_weight</td>
+<td>重量</td>
+<td>不能为空</td>
+</tr>
+<tr>
+<td>goods_introduce</td>
+<td>介绍</td>
+<td>可以为空</td>
+</tr>
+<tr>
+<td>pics</td>
+<td>上传的图片临时路径（对象）</td>
+<td>可以为空</td>
+</tr>
+<tr>
+<td>attrs</td>
+<td>商品的参数（数组）</td>
+<td>可以为空</td>
+</tr>
+</tbody></table>
+<ul>
+<li>请求数据</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;goods_name&quot;:&quot;test_goods_name2&quot;,</span><br><span class="line">  &quot;goods_price&quot;:20,</span><br><span class="line">  &quot;goods_number&quot;:30,</span><br><span class="line">  &quot;goods_weight&quot;:40,</span><br><span class="line">  &quot;goods_introduce&quot;:&quot;abc&quot;,</span><br><span class="line">  &quot;pics&quot;:[</span><br><span class="line">    &#123;&quot;pic&quot;:&quot;&#x2F;tmp_uploads&#x2F;30f08d52c551ecb447277eae232304b8&quot;&#125;</span><br><span class="line">    ],</span><br><span class="line">  &quot;attrs&quot;:[</span><br><span class="line">    &#123;</span><br><span class="line">      &quot;attr_id&quot;:15,</span><br><span class="line">      &quot;attr_value&quot;:&quot;ddd&quot;</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      &quot;attr_id&quot;:15,</span><br><span class="line">      &quot;attr_value&quot;:&quot;eee&quot;</span><br><span class="line">    &#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>响应参数</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>参数说明</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>total</td>
+<td>总共商品条数</td>
+<td></td>
+</tr>
+<tr>
+<td>pagenum</td>
+<td>当前商品页数</td>
+<td></td>
+</tr>
+<tr>
+<td>goods_id</td>
+<td>商品 ID</td>
+<td></td>
+</tr>
+<tr>
+<td>goods_name</td>
+<td>商品名称</td>
+<td></td>
+</tr>
+<tr>
+<td>goods_price</td>
+<td>价格</td>
+<td></td>
+</tr>
+<tr>
+<td>goods_number</td>
+<td>数量</td>
+<td></td>
+</tr>
+<tr>
+<td>goods_weight</td>
+<td>重量</td>
+<td>不能为空</td>
+</tr>
+<tr>
+<td>goods_state</td>
+<td>商品状态</td>
+<td>商品状态 0: 未通过 1: 审核中 2: 已审核</td>
+</tr>
+<tr>
+<td>add_time</td>
+<td>添加时间</td>
+<td></td>
+</tr>
+<tr>
+<td>upd_time</td>
+<td>更新时间</td>
+<td></td>
+</tr>
+<tr>
+<td>hot_mumber</td>
+<td>热销品数量</td>
+<td></td>
+</tr>
+<tr>
+<td>is_promote</td>
+<td>是否是热销品</td>
+<td></td>
+</tr>
+<tr>
+<td>pics</td>
+<td>上传的图片临时路径（对象）</td>
+<td>pics_id:图片 ID,goods_id:商品 ID,pics_big:大图,pics_mid:中图,pics_sma:小图</td>
+</tr>
+<tr>
+<td>attrs</td>
+<td>商品的参数（数组）</td>
+<td>goods_id:商品 ID,attr_value:当前商品的参数值,add_price:浮动价格,attr_vals:预定义的参数值,attr_sel:手动输入，还是单选,</td>
+</tr>
+</tbody></table>
+<ul>
+<li>响应数据</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;data&quot;: &#123;</span><br><span class="line">        &quot;goods_id&quot;: 145,</span><br><span class="line">        &quot;goods_name&quot;: &quot;test_goods_name2&quot;,</span><br><span class="line">        &quot;goods_price&quot;: 20,</span><br><span class="line">        &quot;goods_number&quot;: 30,</span><br><span class="line">        &quot;goods_weight&quot;: 40,</span><br><span class="line">        &quot;goods_introduce&quot;: &quot;abc&quot;,</span><br><span class="line">        &quot;goods_big_logo&quot;: &quot;&quot;,</span><br><span class="line">        &quot;goods_small_logo&quot;: &quot;&quot;,</span><br><span class="line">        &quot;goods_state&quot;: 1,</span><br><span class="line">        &quot;add_time&quot;: 1512962370,</span><br><span class="line">        &quot;upd_time&quot;: 1512962370,</span><br><span class="line">        &quot;hot_mumber&quot;: 0,</span><br><span class="line">        &quot;is_promote&quot;: false,</span><br><span class="line">        &quot;pics&quot;: [</span><br><span class="line">            &#123;</span><br><span class="line">                &quot;pics_id&quot;: 397,</span><br><span class="line">                &quot;goods_id&quot;: 145,</span><br><span class="line">                &quot;pics_big&quot;: &quot;uploads&#x2F;goodspics&#x2F;big_30f08d52c551ecb447277eae232304b8&quot;,</span><br><span class="line">                &quot;pics_mid&quot;: &quot;uploads&#x2F;goodspics&#x2F;mid_30f08d52c551ecb447277eae232304b8&quot;,</span><br><span class="line">                &quot;pics_sma&quot;: &quot;uploads&#x2F;goodspics&#x2F;sma_30f08d52c551ecb447277eae232304b8&quot;</span><br><span class="line">            &#125;</span><br><span class="line">        ],</span><br><span class="line">        &quot;attrs&quot;: [</span><br><span class="line">            &#123;</span><br><span class="line">                &quot;goods_id&quot;: 145,</span><br><span class="line">                &quot;attr_id&quot;: 15,</span><br><span class="line">                &quot;attr_value&quot;: &quot;ddd&quot;,</span><br><span class="line">                &quot;add_price&quot;: null,</span><br><span class="line">                &quot;attr_name&quot;: &quot;fffffff&quot;,</span><br><span class="line">                &quot;attr_sel&quot;: &quot;many&quot;,</span><br><span class="line">                &quot;attr_write&quot;: &quot;list&quot;,</span><br><span class="line">                &quot;attr_vals&quot;: &quot;&quot;</span><br><span class="line">            &#125;,</span><br><span class="line">            &#123;</span><br><span class="line">                &quot;goods_id&quot;: 145,</span><br><span class="line">                &quot;attr_id&quot;: 15,</span><br><span class="line">                &quot;attr_value&quot;: &quot;eee&quot;,</span><br><span class="line">                &quot;add_price&quot;: null,</span><br><span class="line">                &quot;attr_name&quot;: &quot;fffffff&quot;,</span><br><span class="line">                &quot;attr_sel&quot;: &quot;many&quot;,</span><br><span class="line">                &quot;attr_write&quot;: &quot;list&quot;,</span><br><span class="line">                &quot;attr_vals&quot;: &quot;&quot;</span><br><span class="line">            &#125;</span><br><span class="line">        ]</span><br><span class="line">    &#125;,</span><br><span class="line">    &quot;meta&quot;: &#123;</span><br><span class="line">        &quot;msg&quot;: &quot;创建商品成功&quot;,</span><br><span class="line">        &quot;status&quot;: 201</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="1-8-5-删除商品"><a href="#1-8-5-删除商品" class="headerlink" title="1.8.5. 删除商品"></a>1.8.5. 删除商品</h3><ul>
+<li>请求路径：goods/:id</li>
+<li>请求方法：delete</li>
+<li>请求参数</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>参数说明</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>id</td>
+<td>商品 ID</td>
+<td>不能为空<code>携带在url中</code></td>
+</tr>
+</tbody></table>
+<ul>
+<li>响应数据</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;data&quot;: null,</span><br><span class="line">    &quot;meta&quot;: &#123;</span><br><span class="line">        &quot;msg&quot;: &quot;删除成功&quot;,</span><br><span class="line">        &quot;status&quot;: 200</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>###同步商品图片</p>
+<ul>
+<li>请求路径：goods/:id/pics</li>
+<li>请求方法：put</li>
+<li>请求参数</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>参数说明</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>id</td>
+<td>商品 ID</td>
+<td>不能为空<code>携带在url中</code></td>
+</tr>
+<tr>
+<td>pics</td>
+<td>商品图片集合</td>
+<td>如果有 pics_id 字段会保留该图片，如果没有 pics_id 但是有 pic 字段就会新生成图片数据</td>
+</tr>
+</tbody></table>
+<ul>
+<li>请求数据</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">;[</span><br><span class="line">  &#123; pic: &#39;tmp_uploads&#x2F;db28f6316835836e97653b5c75e418be.png&#39; &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    pics_id: 397,</span><br><span class="line">    goods_id: 145,</span><br><span class="line">    pics_big: &#39;uploads&#x2F;goodspics&#x2F;big_30f08d52c551ecb447277eae232304b8&#39;,</span><br><span class="line">    pics_mid: &#39;uploads&#x2F;goodspics&#x2F;mid_30f08d52c551ecb447277eae232304b8&#39;,</span><br><span class="line">    pics_sma: &#39;uploads&#x2F;goodspics&#x2F;sma_30f08d52c551ecb447277eae232304b8&#39;</span><br><span class="line">  &#125;</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<ul>
+<li>响应数据</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;data&quot;: &#123;</span><br><span class="line">        &quot;goods_id&quot;: 96,</span><br><span class="line">        &quot;goods_name&quot;: &quot;iphoneXX&quot;,</span><br><span class="line">        &quot;goods_price&quot;: 2,</span><br><span class="line">        &quot;goods_number&quot;: 22,</span><br><span class="line">        &quot;goods_weight&quot;: 22,</span><br><span class="line">        &quot;goods_introduce&quot;: null,</span><br><span class="line">        &quot;goods_big_logo&quot;: &quot;.&#x2F;uploads&#x2F;goods&#x2F;20171113&#x2F;483a3b8e99e534ec3e4312dbbaee7c9d.jpg&quot;,</span><br><span class="line">        &quot;goods_small_logo&quot;: &quot;.&#x2F;uploads&#x2F;goods&#x2F;20171113&#x2F;small_483a3b8e99e534ec3e4312dbbaee7c9d.jpg&quot;,</span><br><span class="line">        &quot;goods_state&quot;: 0,</span><br><span class="line">        &quot;is_del&quot;: &quot;1&quot;,</span><br><span class="line">        &quot;add_time&quot;: 1510045904,</span><br><span class="line">        &quot;upd_time&quot;: 1512635159,</span><br><span class="line">        &quot;delete_time&quot;: 1512635159,</span><br><span class="line">        &quot;hot_mumber&quot;: 0,</span><br><span class="line">        &quot;is_promote&quot;: false,</span><br><span class="line">        &quot;pics&quot;: [</span><br><span class="line">            &#123;</span><br><span class="line">                &quot;pics_id&quot;: 383,</span><br><span class="line">                &quot;goods_id&quot;: 96,</span><br><span class="line">                &quot;pics_big&quot;: &quot;uploads&#x2F;goodspics&#x2F;big_6f5750132abd3f5b2b93dd722fcde653.jpg&quot;,</span><br><span class="line">                &quot;pics_mid&quot;: &quot;uploads&#x2F;goodspics&#x2F;mid_6f5750132abd3f5b2b93dd722fcde653.jpg&quot;,</span><br><span class="line">                &quot;pics_sma&quot;: &quot;uploads&#x2F;goodspics&#x2F;sma_6f5750132abd3f5b2b93dd722fcde653.jpg&quot;</span><br><span class="line">            &#125;</span><br><span class="line">        ],</span><br><span class="line">        &quot;attrs&quot;: [</span><br><span class="line">            &#123;</span><br><span class="line">                &quot;goods_id&quot;: 96,</span><br><span class="line">                &quot;attr_id&quot;: 15,</span><br><span class="line">                &quot;attr_value&quot;: &quot;eee&quot;,</span><br><span class="line">                &quot;add_price&quot;: null,</span><br><span class="line">                &quot;attr_name&quot;: &quot;fffffff&quot;,</span><br><span class="line">                &quot;attr_sel&quot;: &quot;many&quot;,</span><br><span class="line">                &quot;attr_write&quot;: &quot;list&quot;,</span><br><span class="line">                &quot;attr_vals&quot;: &quot;&quot;</span><br><span class="line">            &#125;,</span><br><span class="line">            &#123;</span><br><span class="line">                &quot;goods_id&quot;: 96,</span><br><span class="line">                &quot;attr_id&quot;: 15,</span><br><span class="line">                &quot;attr_value&quot;: &quot;ddd&quot;,</span><br><span class="line">                &quot;add_price&quot;: null,</span><br><span class="line">                &quot;attr_name&quot;: &quot;fffffff&quot;,</span><br><span class="line">                &quot;attr_sel&quot;: &quot;many&quot;,</span><br><span class="line">                &quot;attr_write&quot;: &quot;list&quot;,</span><br><span class="line">                &quot;attr_vals&quot;: &quot;&quot;</span><br><span class="line">            &#125;</span><br><span class="line">        ]</span><br><span class="line">    &#125;,</span><br><span class="line">    &quot;meta&quot;: &#123;</span><br><span class="line">        &quot;msg&quot;: &quot;更新成功&quot;,</span><br><span class="line">        &quot;status&quot;: 200</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>###同步商品属性</p>
+<ul>
+<li>请求路径：goods/:id/attributes</li>
+<li>请求方法：put</li>
+<li>请求参数</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>参数说明</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>id</td>
+<td>商品 ID</td>
+<td>不能为空<code>携带在url中</code></td>
+</tr>
+</tbody></table>
+<ul>
+<li>请求数据</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">;[</span><br><span class="line">  &#123;</span><br><span class="line">    attr_id: 15,</span><br><span class="line">    attr_value: &#39;ddd&#39;</span><br><span class="line">  &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    attr_id: 15,</span><br><span class="line">    attr_value: &#39;eee&#39;</span><br><span class="line">  &#125;</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<ul>
+<li>响应数据</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;data&quot;: &#123;</span><br><span class="line">        &quot;goods_id&quot;: 96,</span><br><span class="line">        &quot;goods_name&quot;: &quot;iphoneXX&quot;,</span><br><span class="line">        &quot;goods_price&quot;: 2,</span><br><span class="line">        &quot;goods_number&quot;: 22,</span><br><span class="line">        &quot;goods_weight&quot;: 22,</span><br><span class="line">        &quot;goods_introduce&quot;: null,</span><br><span class="line">        &quot;goods_big_logo&quot;: &quot;.&#x2F;uploads&#x2F;goods&#x2F;20171113&#x2F;483a3b8e99e534ec3e4312dbbaee7c9d.jpg&quot;,</span><br><span class="line">        &quot;goods_small_logo&quot;: &quot;.&#x2F;uploads&#x2F;goods&#x2F;20171113&#x2F;small_483a3b8e99e534ec3e4312dbbaee7c9d.jpg&quot;,</span><br><span class="line">        &quot;goods_state&quot;: 0,</span><br><span class="line">        &quot;is_del&quot;: &quot;1&quot;,</span><br><span class="line">        &quot;add_time&quot;: 1510045904,</span><br><span class="line">        &quot;upd_time&quot;: 1512635159,</span><br><span class="line">        &quot;delete_time&quot;: 1512635159,</span><br><span class="line">        &quot;hot_mumber&quot;: 0,</span><br><span class="line">        &quot;is_promote&quot;: false,</span><br><span class="line">        &quot;pics&quot;: [</span><br><span class="line">            &#123;</span><br><span class="line">                &quot;pics_id&quot;: 383,</span><br><span class="line">                &quot;goods_id&quot;: 96,</span><br><span class="line">                &quot;pics_big&quot;: &quot;uploads&#x2F;goodspics&#x2F;big_6f5750132abd3f5b2b93dd722fcde653.jpg&quot;,</span><br><span class="line">                &quot;pics_mid&quot;: &quot;uploads&#x2F;goodspics&#x2F;mid_6f5750132abd3f5b2b93dd722fcde653.jpg&quot;,</span><br><span class="line">                &quot;pics_sma&quot;: &quot;uploads&#x2F;goodspics&#x2F;sma_6f5750132abd3f5b2b93dd722fcde653.jpg&quot;</span><br><span class="line">            &#125;</span><br><span class="line">        ],</span><br><span class="line">        &quot;attrs&quot;: [</span><br><span class="line">            &#123;</span><br><span class="line">                &quot;goods_id&quot;: 96,</span><br><span class="line">                &quot;attr_id&quot;: 15,</span><br><span class="line">                &quot;attr_value&quot;: &quot;eee&quot;,</span><br><span class="line">                &quot;add_price&quot;: null,</span><br><span class="line">                &quot;attr_name&quot;: &quot;fffffff&quot;,</span><br><span class="line">                &quot;attr_sel&quot;: &quot;many&quot;,</span><br><span class="line">                &quot;attr_write&quot;: &quot;list&quot;,</span><br><span class="line">                &quot;attr_vals&quot;: &quot;&quot;</span><br><span class="line">            &#125;,</span><br><span class="line">            &#123;</span><br><span class="line">                &quot;goods_id&quot;: 96,</span><br><span class="line">                &quot;attr_id&quot;: 15,</span><br><span class="line">                &quot;attr_value&quot;: &quot;ddd&quot;,</span><br><span class="line">                &quot;add_price&quot;: null,</span><br><span class="line">                &quot;attr_name&quot;: &quot;fffffff&quot;,</span><br><span class="line">                &quot;attr_sel&quot;: &quot;many&quot;,</span><br><span class="line">                &quot;attr_write&quot;: &quot;list&quot;,</span><br><span class="line">                &quot;attr_vals&quot;: &quot;&quot;</span><br><span class="line">            &#125;</span><br><span class="line">        ]</span><br><span class="line">    &#125;,</span><br><span class="line">    &quot;meta&quot;: &#123;</span><br><span class="line">        &quot;msg&quot;: &quot;更新成功&quot;,</span><br><span class="line">        &quot;status&quot;: 200</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>###商品图片处理必须安装 GraphicsMagick</p>
+<ul>
+<li>linux</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">apt-get install GraphicsMagick</span><br></pre></td></tr></table></figure>
+<ul>
+<li>Mac OS X</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">brew install GraphicsMagick</span><br></pre></td></tr></table></figure>
+<ul>
+<li>Windows <a target="_blank" rel="noopener" href="https://sourceforge.net/projects/graphicsmagick/files/graphicsmagick-binaries/1.3.27/GraphicsMagick-1.3.27-Q8-win64-dll.exe/download">点击下载</a></li>
+</ul>
+<h2 id="1-9-图片上传"><a href="#1-9-图片上传" class="headerlink" title="1.9. 图片上传"></a>1.9. 图片上传</h2><ul>
+<li>请求路径：upload</li>
+<li>请求方法：post</li>
+<li>请求参数</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>参数说明</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>file</td>
+<td>上传文件</td>
+<td></td>
+</tr>
+</tbody></table>
+<ul>
+<li>响应数据</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;data&quot;: &#123;</span><br><span class="line">        &quot;tmp_path&quot;: &quot;tmp_uploads&#x2F;ccfc5179a914e94506bcbb7377e8985f.png&quot;,</span><br><span class="line">        &quot;url&quot;: &quot;http:&#x2F;&#x2F;127.0.0.1:8888tmp_uploads&#x2F;ccfc5179a914e94506bcbb7377e8985f.png&quot;</span><br><span class="line">    &#125;,</span><br><span class="line">    &quot;meta&quot;: &#123;</span><br><span class="line">        &quot;msg&quot;: &quot;上传成功&quot;,</span><br><span class="line">        &quot;status&quot;: 200</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="1-10-订单管理"><a href="#1-10-订单管理" class="headerlink" title="1.10. 订单管理"></a>1.10. 订单管理</h2><h3 id="1-10-1-订单数据列表"><a href="#1-10-1-订单数据列表" class="headerlink" title="1.10.1. 订单数据列表"></a>1.10.1. 订单数据列表</h3><ul>
+<li>请求路径：orders</li>
+<li>请求方法：get</li>
+<li>请求参数</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>参数说明</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>query</td>
+<td>查询参数</td>
+<td>可以为空</td>
+</tr>
+<tr>
+<td>pagenum</td>
+<td>当前页码</td>
+<td>不能为空</td>
+</tr>
+<tr>
+<td>pagesize</td>
+<td>每页显示条数</td>
+<td>不能为空</td>
+</tr>
+<tr>
+<td>user_id</td>
+<td>用户 ID</td>
+<td>可以为空</td>
+</tr>
+<tr>
+<td>pay_status</td>
+<td>支付状态</td>
+<td>可以为空</td>
+</tr>
+<tr>
+<td>is_send</td>
+<td>是否发货</td>
+<td>可以为空</td>
+</tr>
+<tr>
+<td>order_fapiao_title</td>
+<td>[‘个人’,’公司’]</td>
+<td>可以为空</td>
+</tr>
+<tr>
+<td>order_fapiao_company</td>
+<td>公司名称</td>
+<td>可以为空</td>
+</tr>
+<tr>
+<td>order_fapiao_content</td>
+<td>发票内容</td>
+<td>可以为空</td>
+</tr>
+<tr>
+<td>consignee_addr</td>
+<td>发货地址</td>
+<td>可以为空</td>
+</tr>
+</tbody></table>
+<ul>
+<li>响应数据</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;data&quot;: &#123;</span><br><span class="line">        &quot;total&quot;: 1,</span><br><span class="line">        &quot;pagenum&quot;: &quot;1&quot;,</span><br><span class="line">        &quot;goods&quot;: [</span><br><span class="line">            &#123;</span><br><span class="line">                &quot;order_id&quot;: 47,</span><br><span class="line">                &quot;user_id&quot;: 133,</span><br><span class="line">                &quot;order_number&quot;: &quot;itcast-59e7502d7993d&quot;,</span><br><span class="line">                &quot;order_price&quot;: 322,</span><br><span class="line">                &quot;order_pay&quot;: &quot;1&quot;,</span><br><span class="line">                &quot;is_send&quot;: &quot;是&quot;,</span><br><span class="line">                &quot;trade_no&quot;: &quot;&quot;,</span><br><span class="line">                &quot;order_fapiao_title&quot;: &quot;个人&quot;,</span><br><span class="line">                &quot;order_fapiao_company&quot;: &quot;&quot;,</span><br><span class="line">                &quot;order_fapiao_content&quot;: &quot;办公用品&quot;,</span><br><span class="line">                &quot;consignee_addr&quot;: &quot;a:7:&#123;s:6:\&quot;cgn_id\&quot;;i:1;s:7:\&quot;user_id\&quot;;i:133;s:8:\&quot;cgn_name\&quot;;s:9:\&quot;王二柱\&quot;;s:11:\&quot;cgn_address\&quot;;s:51:\&quot;北京市海淀区苏州街长远天地大厦305室\&quot;;s:7:\&quot;cgn_tel\&quot;;s:11:\&quot;13566771298\&quot;;s:8:\&quot;cgn_code\&quot;;s:6:\&quot;306810\&quot;;s:11:\&quot;delete_time\&quot;;N;&#125;&quot;,</span><br><span class="line">                &quot;pay_status&quot;: &quot;1&quot;,</span><br><span class="line">                &quot;create_time&quot;: 1508331565,</span><br><span class="line">                &quot;update_time&quot;: 1508331565</span><br><span class="line">            &#125;</span><br><span class="line">        ]</span><br><span class="line">    &#125;,</span><br><span class="line">    &quot;meta&quot;: &#123;</span><br><span class="line">        &quot;msg&quot;: &quot;获取成功&quot;,</span><br><span class="line">        &quot;status&quot;: 200</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="1-10-2-修改订单状态"><a href="#1-10-2-修改订单状态" class="headerlink" title="1.10.2. 修改订单状态"></a>1.10.2. 修改订单状态</h3><ul>
+<li>请求路径：orders/:id</li>
+<li>请求方法：put</li>
+<li>请求参数</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>参数说明</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>id</td>
+<td>订单 ID</td>
+<td>不能为空<code>携带在url中</code></td>
+</tr>
+<tr>
+<td>is_send</td>
+<td>订单是否发货</td>
+<td>1:已经发货，0:未发货</td>
+</tr>
+<tr>
+<td>order_pay</td>
+<td>订单支付</td>
+<td>支付方式 0 未支付 1 支付宝 2 微信 3 银行卡</td>
+</tr>
+<tr>
+<td>order_price</td>
+<td>订单价格</td>
+<td></td>
+</tr>
+<tr>
+<td>order_number</td>
+<td>订单数量</td>
+<td></td>
+</tr>
+<tr>
+<td>pay_status</td>
+<td>支付状态</td>
+<td>订单状态： 0 未付款、1 已付款</td>
+</tr>
+</tbody></table>
+<ul>
+<li>请求数据说明<ul>
+<li>所有请求数据都是增量更新，如果参数不填写，就不会更新该字段</li>
+</ul>
+</li>
+<li>响应数据</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;data&quot;: &#123;</span><br><span class="line">        &quot;order_id&quot;: 67,</span><br><span class="line">        &quot;user_id&quot;: 1,</span><br><span class="line">        &quot;order_number&quot;: &quot;itcast-g7kmck71vjaujfgoi&quot;,</span><br><span class="line">        &quot;order_price&quot;: 20,</span><br><span class="line">        &quot;order_pay&quot;: &quot;0&quot;,</span><br><span class="line">        &quot;is_send&quot;: &quot;否&quot;,</span><br><span class="line">        &quot;trade_no&quot;: &quot;&quot;,</span><br><span class="line">        &quot;order_fapiao_title&quot;: &quot;个人&quot;,</span><br><span class="line">        &quot;order_fapiao_company&quot;: &quot;&quot;,</span><br><span class="line">        &quot;order_fapiao_content&quot;: &quot;&quot;,</span><br><span class="line">        &quot;consignee_addr&quot;: &quot;&quot;,</span><br><span class="line">        &quot;pay_status&quot;: &quot;0&quot;,</span><br><span class="line">        &quot;create_time&quot;: 1512533560,</span><br><span class="line">        &quot;update_time&quot;: 1512533560,</span><br><span class="line">        &quot;goods&quot;: [</span><br><span class="line">            &#123;</span><br><span class="line">                &quot;id&quot;: 82,</span><br><span class="line">                &quot;order_id&quot;: 67,</span><br><span class="line">                &quot;goods_id&quot;: 96,</span><br><span class="line">                &quot;goods_price&quot;: 333,</span><br><span class="line">                &quot;goods_number&quot;: 2,</span><br><span class="line">                &quot;goods_total_price&quot;: 999</span><br><span class="line">            &#125;,</span><br><span class="line">            &#123;</span><br><span class="line">                &quot;id&quot;: 83,</span><br><span class="line">                &quot;order_id&quot;: 67,</span><br><span class="line">                &quot;goods_id&quot;: 95,</span><br><span class="line">                &quot;goods_price&quot;: 666,</span><br><span class="line">                &quot;goods_number&quot;: 5,</span><br><span class="line">                &quot;goods_total_price&quot;: 999</span><br><span class="line">            &#125;</span><br><span class="line">        ]</span><br><span class="line">    &#125;,</span><br><span class="line">    &quot;meta&quot;: &#123;</span><br><span class="line">        &quot;msg&quot;: &quot;获取成功&quot;,</span><br><span class="line">        &quot;status&quot;: 200</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="1-10-3-查看订单详情"><a href="#1-10-3-查看订单详情" class="headerlink" title="1.10.3. 查看订单详情"></a>1.10.3. 查看订单详情</h3><ul>
+<li>请求路径：orders/:id</li>
+<li>请求方法：get</li>
+<li>请求参数</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>参数说明</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>id</td>
+<td>订单 ID</td>
+<td>不能为空<code>携带在url中</code></td>
+</tr>
+</tbody></table>
+<ul>
+<li>响应数据</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;data&quot;: &#123;</span><br><span class="line">        &quot;order_id&quot;: 67,</span><br><span class="line">        &quot;user_id&quot;: 1,</span><br><span class="line">        &quot;order_number&quot;: &quot;itcast-g7kmck71vjaujfgoi&quot;,</span><br><span class="line">        &quot;order_price&quot;: 20,</span><br><span class="line">        &quot;order_pay&quot;: &quot;0&quot;,</span><br><span class="line">        &quot;is_send&quot;: &quot;否&quot;,</span><br><span class="line">        &quot;trade_no&quot;: &quot;&quot;,</span><br><span class="line">        &quot;order_fapiao_title&quot;: &quot;个人&quot;,</span><br><span class="line">        &quot;order_fapiao_company&quot;: &quot;&quot;,</span><br><span class="line">        &quot;order_fapiao_content&quot;: &quot;&quot;,</span><br><span class="line">        &quot;consignee_addr&quot;: &quot;&quot;,</span><br><span class="line">        &quot;pay_status&quot;: &quot;0&quot;,</span><br><span class="line">        &quot;create_time&quot;: 1512533560,</span><br><span class="line">        &quot;update_time&quot;: 1512533560,</span><br><span class="line">        &quot;goods&quot;: [</span><br><span class="line">            &#123;</span><br><span class="line">                &quot;id&quot;: 82,</span><br><span class="line">                &quot;order_id&quot;: 67,</span><br><span class="line">                &quot;goods_id&quot;: 96,</span><br><span class="line">                &quot;goods_price&quot;: 333,</span><br><span class="line">                &quot;goods_number&quot;: 2,</span><br><span class="line">                &quot;goods_total_price&quot;: 999</span><br><span class="line">            &#125;,</span><br><span class="line">            &#123;</span><br><span class="line">                &quot;id&quot;: 83,</span><br><span class="line">                &quot;order_id&quot;: 67,</span><br><span class="line">                &quot;goods_id&quot;: 95,</span><br><span class="line">                &quot;goods_price&quot;: 666,</span><br><span class="line">                &quot;goods_number&quot;: 5,</span><br><span class="line">                &quot;goods_total_price&quot;: 999</span><br><span class="line">            &#125;</span><br><span class="line">        ]</span><br><span class="line">    &#125;,</span><br><span class="line">    &quot;meta&quot;: &#123;</span><br><span class="line">        &quot;msg&quot;: &quot;获取成功&quot;,</span><br><span class="line">        &quot;status&quot;: 200</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="1-10-4-修改地址"><a href="#1-10-4-修改地址" class="headerlink" title="1.10.4. 修改地址"></a>1.10.4. 修改地址</h3><ol>
+<li><a target="_blank" rel="noopener" href="https://github.com/iceyangcc/provinces-china">省市区/县联动效果 - 结合ElementUI的 el-cascader 组件</a></li>
+</ol>
+<h3 id="1-10-5-查看物流信息"><a href="#1-10-5-查看物流信息" class="headerlink" title="1.10.5. 查看物流信息"></a>1.10.5. 查看物流信息</h3><ul>
+<li><p>请求路径：/kuaidi/:id</p>
+</li>
+<li><p>请求方法：get</p>
+</li>
+<li><p>供测试的物流单号：1106975712662</p>
+</li>
+<li><p>响应数据：</p>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">&quot;data&quot;</span>: [</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="attr">&quot;time&quot;</span>: <span class="string">&quot;2018-05-10 09:39:00&quot;</span>,</span><br><span class="line">      <span class="attr">&quot;ftime&quot;</span>: <span class="string">&quot;2018-05-10 09:39:00&quot;</span>,</span><br><span class="line">      <span class="attr">&quot;context&quot;</span>: <span class="string">&quot;已签收,感谢使用顺丰,期待再次为您服务&quot;</span>,</span><br><span class="line">      <span class="attr">&quot;location&quot;</span>: <span class="string">&quot;&quot;</span></span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="attr">&quot;time&quot;</span>: <span class="string">&quot;2018-05-10 08:23:00&quot;</span>,</span><br><span class="line">      <span class="attr">&quot;ftime&quot;</span>: <span class="string">&quot;2018-05-10 08:23:00&quot;</span>,</span><br><span class="line">      <span class="attr">&quot;context&quot;</span>: <span class="string">&quot;[北京市]北京海淀育新小区营业点派件员 顺丰速运 95338正在为您派件&quot;</span>,</span><br><span class="line">      <span class="attr">&quot;location&quot;</span>: <span class="string">&quot;&quot;</span></span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="attr">&quot;time&quot;</span>: <span class="string">&quot;2018-05-10 07:32:00&quot;</span>,</span><br><span class="line">      <span class="attr">&quot;ftime&quot;</span>: <span class="string">&quot;2018-05-10 07:32:00&quot;</span>,</span><br><span class="line">      <span class="attr">&quot;context&quot;</span>: <span class="string">&quot;快件到达 [北京海淀育新小区营业点]&quot;</span>,</span><br><span class="line">      <span class="attr">&quot;location&quot;</span>: <span class="string">&quot;&quot;</span></span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="attr">&quot;time&quot;</span>: <span class="string">&quot;2018-05-10 02:03:00&quot;</span>,</span><br><span class="line">      <span class="attr">&quot;ftime&quot;</span>: <span class="string">&quot;2018-05-10 02:03:00&quot;</span>,</span><br><span class="line">      <span class="attr">&quot;context&quot;</span>: <span class="string">&quot;快件在[北京顺义集散中心]已装车,准备发往 [北京海淀育新小区营业点]&quot;</span>,</span><br><span class="line">      <span class="attr">&quot;location&quot;</span>: <span class="string">&quot;&quot;</span></span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="attr">&quot;time&quot;</span>: <span class="string">&quot;2018-05-09 23:05:00&quot;</span>,</span><br><span class="line">      <span class="attr">&quot;ftime&quot;</span>: <span class="string">&quot;2018-05-09 23:05:00&quot;</span>,</span><br><span class="line">      <span class="attr">&quot;context&quot;</span>: <span class="string">&quot;快件到达 [北京顺义集散中心]&quot;</span>,</span><br><span class="line">      <span class="attr">&quot;location&quot;</span>: <span class="string">&quot;&quot;</span></span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="attr">&quot;time&quot;</span>: <span class="string">&quot;2018-05-09 21:21:00&quot;</span>,</span><br><span class="line">      <span class="attr">&quot;ftime&quot;</span>: <span class="string">&quot;2018-05-09 21:21:00&quot;</span>,</span><br><span class="line">      <span class="attr">&quot;context&quot;</span>: <span class="string">&quot;快件在[北京宝胜营业点]已装车,准备发往 [北京顺义集散中心]&quot;</span>,</span><br><span class="line">      <span class="attr">&quot;location&quot;</span>: <span class="string">&quot;&quot;</span></span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="attr">&quot;time&quot;</span>: <span class="string">&quot;2018-05-09 13:07:00&quot;</span>,</span><br><span class="line">      <span class="attr">&quot;ftime&quot;</span>: <span class="string">&quot;2018-05-09 13:07:00&quot;</span>,</span><br><span class="line">      <span class="attr">&quot;context&quot;</span>: <span class="string">&quot;顺丰速运 已收取快件&quot;</span>,</span><br><span class="line">      <span class="attr">&quot;location&quot;</span>: <span class="string">&quot;&quot;</span></span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="attr">&quot;time&quot;</span>: <span class="string">&quot;2018-05-09 12:25:03&quot;</span>,</span><br><span class="line">      <span class="attr">&quot;ftime&quot;</span>: <span class="string">&quot;2018-05-09 12:25:03&quot;</span>,</span><br><span class="line">      <span class="attr">&quot;context&quot;</span>: <span class="string">&quot;卖家发货&quot;</span>,</span><br><span class="line">      <span class="attr">&quot;location&quot;</span>: <span class="string">&quot;&quot;</span></span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="attr">&quot;time&quot;</span>: <span class="string">&quot;2018-05-09 12:22:24&quot;</span>,</span><br><span class="line">      <span class="attr">&quot;ftime&quot;</span>: <span class="string">&quot;2018-05-09 12:22:24&quot;</span>,</span><br><span class="line">      <span class="attr">&quot;context&quot;</span>: <span class="string">&quot;您的订单将由HLA（北京海淀区清河中街店）门店安排发货。&quot;</span>,</span><br><span class="line">      <span class="attr">&quot;location&quot;</span>: <span class="string">&quot;&quot;</span></span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="attr">&quot;time&quot;</span>: <span class="string">&quot;2018-05-08 21:36:04&quot;</span>,</span><br><span class="line">      <span class="attr">&quot;ftime&quot;</span>: <span class="string">&quot;2018-05-08 21:36:04&quot;</span>,</span><br><span class="line">      <span class="attr">&quot;context&quot;</span>: <span class="string">&quot;商品已经下单&quot;</span>,</span><br><span class="line">      <span class="attr">&quot;location&quot;</span>: <span class="string">&quot;&quot;</span></span><br><span class="line">    &#125;</span><br><span class="line">  ],</span><br><span class="line">  <span class="attr">&quot;meta&quot;</span>: &#123; <span class="attr">&quot;status&quot;</span>: <span class="number">200</span>, <span class="attr">&quot;message&quot;</span>: <span class="string">&quot;获取物流信息成功！&quot;</span> &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h2 id="1-11-数据统计"><a href="#1-11-数据统计" class="headerlink" title="1.11. 数据统计"></a>1.11. 数据统计</h2><h3 id="1-11-1-基于时间统计的折线图"><a href="#1-11-1-基于时间统计的折线图" class="headerlink" title="1.11.1.  基于时间统计的折线图"></a>1.11.1.  基于时间统计的折线图</h3><ul>
+<li><p>请求路径：reports/type/1</p>
+</li>
+<li><p>请求方法：get</p>
+</li>
+<li><p>响应数据</p>
+</li>
+<li><p>需要合并的选项</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">options: &#123;</span><br><span class="line">        title: &#123;</span><br><span class="line">          text: <span class="string">&#x27;用户来源&#x27;</span></span><br><span class="line">        &#125;,</span><br><span class="line">        tooltip: &#123;</span><br><span class="line">          trigger: <span class="string">&#x27;axis&#x27;</span>,</span><br><span class="line">          axisPointer: &#123;</span><br><span class="line">            type: <span class="string">&#x27;cross&#x27;</span>,</span><br><span class="line">            label: &#123;</span><br><span class="line">              backgroundColor: <span class="string">&#x27;#E9EEF3&#x27;</span></span><br><span class="line">            &#125;</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        grid: &#123;</span><br><span class="line">          left: <span class="string">&#x27;3%&#x27;</span>,</span><br><span class="line">          right: <span class="string">&#x27;4%&#x27;</span>,</span><br><span class="line">          bottom: <span class="string">&#x27;3%&#x27;</span>,</span><br><span class="line">          containLabel: <span class="literal">true</span></span><br><span class="line">        &#125;,</span><br><span class="line">        xAxis: [</span><br><span class="line">          &#123;</span><br><span class="line">            boundaryGap: <span class="literal">false</span></span><br><span class="line">          &#125;</span><br><span class="line">        ],</span><br><span class="line">        yAxis: [</span><br><span class="line">          &#123;</span><br><span class="line">            type: <span class="string">&#x27;value&#x27;</span></span><br><span class="line">          &#125;</span><br><span class="line">        ]</span><br><span class="line">      &#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">一百个Chocolate</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://yangchaoyi.vip/posts/2020709/">https://yangchaoyi.vip/posts/2020709/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://yangchaoyi.vip" target="_blank">超逸の博客</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E9%A1%B9%E7%9B%AE/">项目</a></div><div class="post_share"><div class="social-share" data-image="https://cdn.jsdelivr.net/gh/chocolate1999/cdn/img/20200708170355.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/posts/2020704/"><img class="prev-cover" data-lazy-src="https://cdn.jsdelivr.net/gh/chocolate1999/cdn/img/20200704214120.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">【项目总结文档】Vue全家桶开发电商管理系统项目</div></div></a></div><div class="next-post pull-right"><a href="/posts/34924/"><img class="next-cover" data-lazy-src="https://cdn.jsdelivr.net/gh/chocolate1999/cdn/img/20200526110732.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">2020 零基础到快速开发  Vue全家桶开发电商管理系统（Element-UI）【目录】</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span> 相关推荐</span></div><div class="relatedPosts-list"><div><a href="/posts/35725/" title="【Vue全家桶+SSR+Koa2全栈开发】项目搭建过程  整合  学习目录（持续更新中）"><img class="cover" data-lazy-src="https://cdn.jsdelivr.net/gh/chocolate1999/cdn/img/20200526104803.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-05-07</div><div class="title">【Vue全家桶+SSR+Koa2全栈开发】项目搭建过程  整合  学习目录（持续更新中）</div></div></a></div><div><a href="/posts/2020704/" title="【项目总结文档】Vue全家桶开发电商管理系统项目"><img class="cover" data-lazy-src="https://cdn.jsdelivr.net/gh/chocolate1999/cdn/img/20200704214120.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-05-07</div><div class="title">【项目总结文档】Vue全家桶开发电商管理系统项目</div></div></a></div><div><a href="/posts/34924/" title="2020 零基础到快速开发  Vue全家桶开发电商管理系统（Element-UI）【目录】"><img class="cover" data-lazy-src="https://cdn.jsdelivr.net/gh/chocolate1999/cdn/img/20200526110732.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-05-07</div><div class="title">2020 零基础到快速开发  Vue全家桶开发电商管理系统（Element-UI）【目录】</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-info-avatar is-center"><img class="avatar-img" data-lazy-src="/img/Chocolate.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-info__name">一百个Chocolate</div><div class="author-info__description">不是只会写业务代码的前端攻城狮！</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">62</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">标签</div><div class="length-num">30</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">分类</div><div class="length-num">8</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/Chocolate1999"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://chocolate.blog.csdn.net/" target="_blank" title=""><i class="iconfont icon-csdn"></i></a><a class="social-icon" href="https://juejin.im/user/5ed1c55be51d457889261840/posts" target="_blank" title=""><i class="iconfont icon-juejin"></i></a><a class="social-icon" href="https://github.com/Chocolate1999" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="https://space.bilibili.com/351534170" target="_blank" title=""><i class="iconfont icon-bilibili1"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>小狮子初心</span></div><div class="announcement_content">最近收到了很多小伙伴的关注，在此非常感谢各位的支持。<br/>Chocolate 开通了个人公众号，在这里分享我的大厂面试经历，租房攻略，计算机领域那些事儿。<br/>希望小伙伴们能够喜欢我的文章，这里是小狮子前端，保持狮子座的热情带给你学习的动力，愿我们成为最好的自己~<br/><img src="https://cdn.jsdelivr.net/gh/chocolate1999/cdn/img/20201202223856.jpg"> <br/>QQ交流群：666151691</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-%E7%94%B5%E5%95%86%E7%AE%A1%E7%90%86%E5%90%8E%E5%8F%B0-API-%E6%8E%A5%E5%8F%A3%E6%96%87%E6%A1%A3"><span class="toc-number">1.</span> <span class="toc-text">1. 电商管理后台 API 接口文档</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1-API-V1-%E6%8E%A5%E5%8F%A3%E8%AF%B4%E6%98%8E"><span class="toc-number">1.1.</span> <span class="toc-text">1.1. API V1 接口说明</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-1-%E6%94%AF%E6%8C%81%E7%9A%84%E8%AF%B7%E6%B1%82%E6%96%B9%E6%B3%95"><span class="toc-number">1.1.1.</span> <span class="toc-text">1.1.1. 支持的请求方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-2-%E9%80%9A%E7%94%A8%E8%BF%94%E5%9B%9E%E7%8A%B6%E6%80%81%E8%AF%B4%E6%98%8E"><span class="toc-number">1.1.2.</span> <span class="toc-text">1.1.2. 通用返回状态说明</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-2-%E7%99%BB%E5%BD%95"><span class="toc-number">1.2.</span> <span class="toc-text">1.2. 登录</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-1-%E7%99%BB%E5%BD%95%E9%AA%8C%E8%AF%81%E6%8E%A5%E5%8F%A3"><span class="toc-number">1.2.1.</span> <span class="toc-text">1.2.1. 登录验证接口</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-3-%E7%94%A8%E6%88%B7%E7%AE%A1%E7%90%86"><span class="toc-number">1.3.</span> <span class="toc-text">1.3. 用户管理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-1-%E7%94%A8%E6%88%B7%E6%95%B0%E6%8D%AE%E5%88%97%E8%A1%A8"><span class="toc-number">1.3.1.</span> <span class="toc-text">1.3.1. 用户数据列表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-2-%E6%B7%BB%E5%8A%A0%E7%94%A8%E6%88%B7"><span class="toc-number">1.3.2.</span> <span class="toc-text">1.3.2. 添加用户</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-3-%E4%BF%AE%E6%94%B9%E7%94%A8%E6%88%B7%E7%8A%B6%E6%80%81"><span class="toc-number">1.3.3.</span> <span class="toc-text">1.3.3. 修改用户状态</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-4-%E6%A0%B9%E6%8D%AE-ID-%E6%9F%A5%E8%AF%A2%E7%94%A8%E6%88%B7%E4%BF%A1%E6%81%AF"><span class="toc-number">1.3.4.</span> <span class="toc-text">1.3.4. 根据 ID 查询用户信息</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-5-%E7%BC%96%E8%BE%91%E7%94%A8%E6%88%B7%E6%8F%90%E4%BA%A4"><span class="toc-number">1.3.5.</span> <span class="toc-text">1.3.5. 编辑用户提交</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-6-%E5%88%A0%E9%99%A4%E5%8D%95%E4%B8%AA%E7%94%A8%E6%88%B7"><span class="toc-number">1.3.6.</span> <span class="toc-text">1.3.6. 删除单个用户</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-7-%E5%88%86%E9%85%8D%E7%94%A8%E6%88%B7%E8%A7%92%E8%89%B2"><span class="toc-number">1.3.7.</span> <span class="toc-text">1.3.7. 分配用户角色</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-4-%E6%9D%83%E9%99%90%E7%AE%A1%E7%90%86"><span class="toc-number">1.4.</span> <span class="toc-text">1.4. 权限管理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-4-1-%E6%89%80%E6%9C%89%E6%9D%83%E9%99%90%E5%88%97%E8%A1%A8"><span class="toc-number">1.4.1.</span> <span class="toc-text">1.4.1. 所有权限列表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-4-2-%E5%B7%A6%E4%BE%A7%E8%8F%9C%E5%8D%95%E6%9D%83%E9%99%90"><span class="toc-number">1.4.2.</span> <span class="toc-text">1.4.2. 左侧菜单权限</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-5-%E8%A7%92%E8%89%B2%E7%AE%A1%E7%90%86"><span class="toc-number">1.5.</span> <span class="toc-text">1.5. 角色管理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-5-1-%E8%A7%92%E8%89%B2%E5%88%97%E8%A1%A8"><span class="toc-number">1.5.1.</span> <span class="toc-text">1.5.1. 角色列表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-5-2-%E6%B7%BB%E5%8A%A0%E8%A7%92%E8%89%B2"><span class="toc-number">1.5.2.</span> <span class="toc-text">1.5.2. 添加角色</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-5-3-%E6%A0%B9%E6%8D%AE-ID-%E6%9F%A5%E8%AF%A2%E8%A7%92%E8%89%B2"><span class="toc-number">1.5.3.</span> <span class="toc-text">1.5.3. 根据 ID 查询角色</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-5-4-%E7%BC%96%E8%BE%91%E6%8F%90%E4%BA%A4%E8%A7%92%E8%89%B2"><span class="toc-number">1.5.4.</span> <span class="toc-text">1.5.4. 编辑提交角色</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-5-5-%E5%88%A0%E9%99%A4%E8%A7%92%E8%89%B2"><span class="toc-number">1.5.5.</span> <span class="toc-text">1.5.5. 删除角色</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-5-6-%E8%A7%92%E8%89%B2%E6%8E%88%E6%9D%83"><span class="toc-number">1.5.6.</span> <span class="toc-text">1.5.6. 角色授权</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-5-7-%E5%88%A0%E9%99%A4%E8%A7%92%E8%89%B2%E6%8C%87%E5%AE%9A%E6%9D%83%E9%99%90"><span class="toc-number">1.5.7.</span> <span class="toc-text">1.5.7. 删除角色指定权限</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-6-%E5%95%86%E5%93%81%E5%88%86%E7%B1%BB%E7%AE%A1%E7%90%86"><span class="toc-number">1.6.</span> <span class="toc-text">1.6. 商品分类管理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-6-1-%E5%95%86%E5%93%81%E5%88%86%E7%B1%BB%E6%95%B0%E6%8D%AE%E5%88%97%E8%A1%A8"><span class="toc-number">1.6.1.</span> <span class="toc-text">1.6.1. 商品分类数据列表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-6-2-%E6%B7%BB%E5%8A%A0%E5%88%86%E7%B1%BB"><span class="toc-number">1.6.2.</span> <span class="toc-text">1.6.2. 添加分类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-6-3-%E6%A0%B9%E6%8D%AE-id-%E6%9F%A5%E8%AF%A2%E5%88%86%E7%B1%BB"><span class="toc-number">1.6.3.</span> <span class="toc-text">1.6.3. 根据 id 查询分类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-6-4-%E7%BC%96%E8%BE%91%E6%8F%90%E4%BA%A4%E5%88%86%E7%B1%BB"><span class="toc-number">1.6.4.</span> <span class="toc-text">1.6.4. 编辑提交分类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-6-5-%E5%88%A0%E9%99%A4%E5%88%86%E7%B1%BB"><span class="toc-number">1.6.5.</span> <span class="toc-text">1.6.5. 删除分类</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-7-%E5%88%86%E7%B1%BB%E5%8F%82%E6%95%B0%E7%AE%A1%E7%90%86"><span class="toc-number">1.7.</span> <span class="toc-text">1.7. 分类参数管理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-7-1-%E5%8F%82%E6%95%B0%E5%88%97%E8%A1%A8"><span class="toc-number">1.7.1.</span> <span class="toc-text">1.7.1. 参数列表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-7-2-%E6%B7%BB%E5%8A%A0%E5%8A%A8%E6%80%81%E5%8F%82%E6%95%B0%E6%88%96%E8%80%85%E9%9D%99%E6%80%81%E5%B1%9E%E6%80%A7"><span class="toc-number">1.7.2.</span> <span class="toc-text">1.7.2. 添加动态参数或者静态属性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-7-3-%E5%88%A0%E9%99%A4%E5%8F%82%E6%95%B0"><span class="toc-number">1.7.3.</span> <span class="toc-text">1.7.3. 删除参数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-7-4-%E6%A0%B9%E6%8D%AE-ID-%E6%9F%A5%E8%AF%A2%E5%8F%82%E6%95%B0"><span class="toc-number">1.7.4.</span> <span class="toc-text">1.7.4. 根据 ID 查询参数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-7-5-%E7%BC%96%E8%BE%91%E6%8F%90%E4%BA%A4%E5%8F%82%E6%95%B0"><span class="toc-number">1.7.5.</span> <span class="toc-text">1.7.5. 编辑提交参数</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-8-%E5%95%86%E5%93%81%E7%AE%A1%E7%90%86"><span class="toc-number">1.8.</span> <span class="toc-text">1.8. 商品管理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-8-1-%E5%95%86%E5%93%81%E5%88%97%E8%A1%A8%E6%95%B0%E6%8D%AE"><span class="toc-number">1.8.1.</span> <span class="toc-text">1.8.1. 商品列表数据</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-8-2-%E6%B7%BB%E5%8A%A0%E5%95%86%E5%93%81"><span class="toc-number">1.8.2.</span> <span class="toc-text">1.8.2. 添加商品</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-8-3-%E6%A0%B9%E6%8D%AE-ID-%E6%9F%A5%E8%AF%A2%E5%95%86%E5%93%81"><span class="toc-number">1.8.3.</span> <span class="toc-text">1.8.3. 根据 ID 查询商品</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-8-4-%E7%BC%96%E8%BE%91%E6%8F%90%E4%BA%A4%E5%95%86%E5%93%81"><span class="toc-number">1.8.4.</span> <span class="toc-text">1.8.4. 编辑提交商品</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-8-5-%E5%88%A0%E9%99%A4%E5%95%86%E5%93%81"><span class="toc-number">1.8.5.</span> <span class="toc-text">1.8.5. 删除商品</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-9-%E5%9B%BE%E7%89%87%E4%B8%8A%E4%BC%A0"><span class="toc-number">1.9.</span> <span class="toc-text">1.9. 图片上传</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-10-%E8%AE%A2%E5%8D%95%E7%AE%A1%E7%90%86"><span class="toc-number">1.10.</span> <span class="toc-text">1.10. 订单管理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-10-1-%E8%AE%A2%E5%8D%95%E6%95%B0%E6%8D%AE%E5%88%97%E8%A1%A8"><span class="toc-number">1.10.1.</span> <span class="toc-text">1.10.1. 订单数据列表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-10-2-%E4%BF%AE%E6%94%B9%E8%AE%A2%E5%8D%95%E7%8A%B6%E6%80%81"><span class="toc-number">1.10.2.</span> <span class="toc-text">1.10.2. 修改订单状态</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-10-3-%E6%9F%A5%E7%9C%8B%E8%AE%A2%E5%8D%95%E8%AF%A6%E6%83%85"><span class="toc-number">1.10.3.</span> <span class="toc-text">1.10.3. 查看订单详情</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-10-4-%E4%BF%AE%E6%94%B9%E5%9C%B0%E5%9D%80"><span class="toc-number">1.10.4.</span> <span class="toc-text">1.10.4. 修改地址</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-10-5-%E6%9F%A5%E7%9C%8B%E7%89%A9%E6%B5%81%E4%BF%A1%E6%81%AF"><span class="toc-number">1.10.5.</span> <span class="toc-text">1.10.5. 查看物流信息</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-11-%E6%95%B0%E6%8D%AE%E7%BB%9F%E8%AE%A1"><span class="toc-number">1.11.</span> <span class="toc-text">1.11. 数据统计</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-11-1-%E5%9F%BA%E4%BA%8E%E6%97%B6%E9%97%B4%E7%BB%9F%E8%AE%A1%E7%9A%84%E6%8A%98%E7%BA%BF%E5%9B%BE"><span class="toc-number">1.11.1.</span> <span class="toc-text">1.11.1.  基于时间统计的折线图</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/posts/20210506/" title="时隔两个月，来一份总结【文末彩蛋】"><img data-lazy-src="https://cdn.jsdelivr.net/gh/chocolate1999/cdn/img/20210506215206.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="时隔两个月，来一份总结【文末彩蛋】"/></a><div class="content"><a class="title" href="/posts/20210506/" title="时隔两个月，来一份总结【文末彩蛋】">时隔两个月，来一份总结【文末彩蛋】</a><time datetime="2021-05-07T14:38:41.474Z" title="发表于 2021-05-07 22:38:41">2021-05-07</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/50975/" title="15个前端攻城狮必备的学习网站 | 你知道几个？（附视频介绍）"><img data-lazy-src="https://cdn.jsdelivr.net/gh/chocolate1999/cdn/img/20200610155519.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="15个前端攻城狮必备的学习网站 | 你知道几个？（附视频介绍）"/></a><div class="content"><a class="title" href="/posts/50975/" title="15个前端攻城狮必备的学习网站 | 你知道几个？（附视频介绍）">15个前端攻城狮必备的学习网站 | 你知道几个？（附视频介绍）</a><time datetime="2021-05-07T13:48:39.367Z" title="发表于 2021-05-07 21:48:39">2021-05-07</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/20541/" title="前端知识梳理之webpack篇"><img data-lazy-src="https://cdn.jsdelivr.net/gh/chocolate1999/cdn/img/20200914094504.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="前端知识梳理之webpack篇"/></a><div class="content"><a class="title" href="/posts/20541/" title="前端知识梳理之webpack篇">前端知识梳理之webpack篇</a><time datetime="2021-05-07T13:48:39.366Z" title="发表于 2021-05-07 21:48:39">2021-05-07</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/20201009/" title="某跳动面试官：说说微信扫码登录背后的实现原理？"><img data-lazy-src="https://cdn.jsdelivr.net/gh/chocolate1999/cdn/img/20201009202845.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="某跳动面试官：说说微信扫码登录背后的实现原理？"/></a><div class="content"><a class="title" href="/posts/20201009/" title="某跳动面试官：说说微信扫码登录背后的实现原理？">某跳动面试官：说说微信扫码登录背后的实现原理？</a><time datetime="2021-05-07T13:48:39.366Z" title="发表于 2021-05-07 21:48:39">2021-05-07</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/205511/" title="前端知识梳理之Vue篇"><img data-lazy-src="https://cdn.jsdelivr.net/gh/chocolate1999/cdn/img/20200911085935.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="前端知识梳理之Vue篇"/></a><div class="content"><a class="title" href="/posts/205511/" title="前端知识梳理之Vue篇">前端知识梳理之Vue篇</a><time datetime="2021-05-07T13:48:39.365Z" title="发表于 2021-05-07 21:48:39">2021-05-07</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2019 - 2021  <i id="heartbeat" class="fa fas fa-heartbeat"></i> 一百个Chocolate</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text"><p><a style="margin-inline:5px" target="_blank" href="https://hexo.io/"><img src="https://img.shields.io/badge/Frame-Hexo-blue?style=flat&logo=hexo" title="博客框架为Hexo"></a><a style="margin-inline:5px" target="_blank" href="https://butterfly.js.org/"><img src="https://img.shields.io/badge/Theme-Butterfly-6513df?style=flat&logo=bitdefender" title="主题采用butterfly"></a><a style="margin-inline:5px" target="_blank" href="https://www.jsdelivr.com/"><img src="https://img.shields.io/badge/CDN-jsDelivr-orange?style=flat&logo=jsDelivr" title="本站使用JsDelivr为静态资源提供CDN加速"></a><a style="margin-inline:5px" target="_blank" href="https://vercel.com/ "><img src="https://img.shields.io/badge/Hosted-Vervel-brightgreen?style=flat&logo=Vercel" title="本站采用双线部署，默认线路托管于Vercel"></a><a style="margin-inline:5px" target="_blank" href="https://vercel.com/ "><img src="https://img.shields.io/badge/Hosted-Coding-0cedbe?style=flat&logo=Codio" title="本站采用双线部署，联通线路托管于Coding"></a><a style="margin-inline:5px" target="_blank" href="https://github.com/"><img src="https://img.shields.io/badge/Source-Github-d021d6?style=flat&logo=GitHub" title="本站项目由Gtihub托管"></a><a style="margin-inline:5px" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img src="https://img.shields.io/badge/Copyright-BY--NC--SA%204.0-d42328?style=flat&logo=Claris" title="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可"></a></p></div><div class="icp"><a target="_blank" rel="noopener" href="http://www.beian.miit.gov.cn/"><img class="icp-icon" src="/img/icp.png"/><span>湘ICP备20002952号</span></a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="font-plus" type="button" title="放大字体"><i class="fas fa-plus"></i></button><button id="font-minus" type="button" title="缩小字体"><i class="fas fa-minus"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="chat_btn" type="button" title="rightside.chat_btn"><i class="fas fa-sms"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div></div><hr/><div id="local-search-results"></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/vue@2.6.11"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><script src="/js/search/local-search.js"></script><script async="async">var preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',preloader.endLoading())
+setTimeout(function(){preloader.endLoading();}, 5000);</script><div class="js-pjax"></div><script src="https://cdn.jsdelivr.net/gh/sviptzk/StaticFile_HEXO@master/xkTool/v3.1.1/xkTool.js"></script><script defer src="https://cdn.jsdelivr.net/npm/hexo-theme-volantis@latest/source/js/issues.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = [
+  'title',
+  '#config-diff',
+  '#body-wrap',
+  '#rightside-config-hide',
+  '#rightside-config-show',
+  '.js-pjax'
+]
+
+if (false) {
+  pjaxSelectors.unshift('meta[property="og:image"]', 'meta[property="og:title"]', 'meta[property="og:url"]')
+}
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  if (typeof gtag === 'function') {
+    gtag('config', '', {'page_path': window.location.pathname});
+  }
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // Analytics
+  if (false) {
+    MtaH5.pgv()
+  }
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+
+  typeof preloader === 'object' && preloader.endLoading()
+})
+
+
+document.addEventListener('pjax:send', function () {
+  typeof preloader === 'object' && preloader.initLoading()
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

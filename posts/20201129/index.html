@@ -1,0 +1,983 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>「星辰大海」JS自测清单（三） | 超逸の博客</title><meta name="keywords" content="CSS，面试，JS，前端，女友"><meta name="author" content="一百个Chocolate"><meta name="copyright" content="一百个Chocolate"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="星辰大海」JS自测清单（三）转载自 javascript-questions（star支持一波）  我们的征途是星辰大海~  答案在问题下方的折叠部分，点击即可展开问题。祝你好运 :heart: 110. 这个函数干了什么?JSON.parse()  A: Parses JSON to a JavaScript value B: Parses a JavaScript object to JSON">
+<meta property="og:type" content="article">
+<meta property="og:title" content="「星辰大海」JS自测清单（三）">
+<meta property="og:url" content="https://yangchaoyi.vip/posts/20201129/index.html">
+<meta property="og:site_name" content="超逸の博客">
+<meta property="og:description" content="星辰大海」JS自测清单（三）转载自 javascript-questions（star支持一波）  我们的征途是星辰大海~  答案在问题下方的折叠部分，点击即可展开问题。祝你好运 :heart: 110. 这个函数干了什么?JSON.parse()  A: Parses JSON to a JavaScript value B: Parses a JavaScript object to JSON">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/chocolate1999/cdn/img/20201207195926.png">
+<meta property="article:published_time" content="2021-05-07T13:48:39.333Z">
+<meta property="article:modified_time" content="2021-05-07T13:48:39.334Z">
+<meta property="article:author" content="一百个Chocolate">
+<meta property="article:tag" content="面试">
+<meta property="article:tag" content="JS">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/chocolate1999/cdn/img/20201207195926.png"><link rel="shortcut icon" href="/img/favicon.ico"><link rel="canonical" href="https://yangchaoyi.vip/posts/20201129/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  noticeOutdate: {"limitDay":500,"position":"top","messagePrev":"It has been","messageNext":"days since the last update, the content of the article may be outdated."},
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#121212","position":"bottom-left"},
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isanchor: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = { 
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2021-05-07 21:48:39'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const now = new Date()
+          const hour = now.getHours()
+          const isNight = hour <= 6 || hour >= 18
+          if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
+          else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const fontSizeVal = saveToLocal.get('global-font-size')
+    if (fontSizeVal !== undefined) {
+      document.documentElement.style.setProperty('--global-font-size', fontSizeVal + 'px')
+    }
+    })(window)</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/l-lin/font-awesome-animation/dist/font-awesome-animation.min.css"  media="defer" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/sviptzk/HexoStaticFile@master/Hexo/css/flink.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/sviptzk/HexoStaticFile@master/Hexo/css/iconfont.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Rr210/Lantern@2.4/dl.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/HCLonely/images@master/others/heartbeat.min.css"><meta name="generator" content="Hexo 5.3.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="wizard-scene"><div class="wizard-objects"><div class="wizard-square"></div><div class="wizard-circle"></div><div class="wizard-triangle"></div></div><div class="wizard"><div class="wizard-body"></div><div class="wizard-right-arm"><div class="wizard-right-hand"></div></div><div class="wizard-left-arm"><div class="wizard-left-hand"></div></div><div class="wizard-head"><div class="wizard-beard"></div><div class="wizard-face"><div class="wizard-adds"></div></div><div class="wizard-hat"><div class="wizard-hat-of-the-hat"></div><div class="wizard-four-point-star --first"></div><div class="wizard-four-point-star --second"></div><div class="wizard-four-point-star --third"></div></div></div></div></div></div><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" data-lazy-src="/img/Chocolate.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">62</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">30</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">8</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-book"></i><span> 文章</span><i class="fas fa-chevron-down expand hide"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> 时间轴</span></a></li><li><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></li><li><a class="site-page" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> 分类</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 娱乐</span><i class="fas fa-chevron-down expand hide"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/bangumis/"><i class="fa-fw fab fa-youtube"></i><span> 番剧</span></a></li><li><a class="site-page" href="/movies/"><i class="fa-fw fa fa-film"></i><span> 电影</span></a></li><li><a class="site-page" href="/books/"><i class="fa-fw fas fa-book"></i><span> 书单</span></a></li><li><a class="site-page" href="/music/"><i class="fa-fw fa fa-music"></i><span> 音乐</span></a></li><li><a class="site-page" href="/"><i class="fa-fw fas fa-gamepad"></i><span> 游戏</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fa fa-heartbeat"></i><span> 清单</span><i class="fas fa-chevron-down expand hide"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/gallery/"><i class="fa-fw far fa-image"></i><span> 相册</span></a></li><li><a class="site-page" href="/home/"><i class="fa-fw fab fa-phoenix-framework"></i><span> 主页</span></a></li><li><a class="site-page" href="/sponsorWall/"><i class="fa-fw fas fa-money-check-alt"></i><span> 赞助墙</span></a></li><li><a class="site-page" href="/box/"><i class="fa-fw fas fa-th-large"></i><span> 聚宝盒</span></a></li></ul></div><div class="menus_item"><a class="site-page" target="_blank" rel="noopener" href="https://hearling.github.io/"><i class="fa-fw fas fa-book"></i><span> HearLingの博客</span></a></div><div class="menus_item"><a class="site-page" href="/talk/"><i class="fa-fw fas fa-coffee"></i><span> 说说</span></a></div><div class="menus_item"><a class="site-page" href="/contact/"><i class="fa-fw far fa-comments"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 关于</span><i class="fas fa-chevron-down expand hide"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/about/"><i class="fa-fw fa fa-heart"></i><span> 关于我</span></a></li><li><a class="site-page" target="_blank" rel="noopener" href="https://yangchaoyi.avosapps.us/"><i class="fa-fw fas fa-box"></i><span> Valine评论后台</span></a></li><li><a class="site-page" target="_blank" rel="noopener" href="https://console.leancloud.app/applist.html#/apps"><i class="fa-fw fas fa-box"></i><span> LeanCloud应用</span></a></li></ul></div></div></div></div><div class="post" id="body-wrap"><header class="not-top-img" id="page-header"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">超逸の博客</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-book"></i><span> 文章</span><i class="fas fa-chevron-down expand hide"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> 时间轴</span></a></li><li><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></li><li><a class="site-page" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> 分类</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 娱乐</span><i class="fas fa-chevron-down expand hide"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/bangumis/"><i class="fa-fw fab fa-youtube"></i><span> 番剧</span></a></li><li><a class="site-page" href="/movies/"><i class="fa-fw fa fa-film"></i><span> 电影</span></a></li><li><a class="site-page" href="/books/"><i class="fa-fw fas fa-book"></i><span> 书单</span></a></li><li><a class="site-page" href="/music/"><i class="fa-fw fa fa-music"></i><span> 音乐</span></a></li><li><a class="site-page" href="/"><i class="fa-fw fas fa-gamepad"></i><span> 游戏</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fa fa-heartbeat"></i><span> 清单</span><i class="fas fa-chevron-down expand hide"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/gallery/"><i class="fa-fw far fa-image"></i><span> 相册</span></a></li><li><a class="site-page" href="/home/"><i class="fa-fw fab fa-phoenix-framework"></i><span> 主页</span></a></li><li><a class="site-page" href="/sponsorWall/"><i class="fa-fw fas fa-money-check-alt"></i><span> 赞助墙</span></a></li><li><a class="site-page" href="/box/"><i class="fa-fw fas fa-th-large"></i><span> 聚宝盒</span></a></li></ul></div><div class="menus_item"><a class="site-page" target="_blank" rel="noopener" href="https://hearling.github.io/"><i class="fa-fw fas fa-book"></i><span> HearLingの博客</span></a></div><div class="menus_item"><a class="site-page" href="/talk/"><i class="fa-fw fas fa-coffee"></i><span> 说说</span></a></div><div class="menus_item"><a class="site-page" href="/contact/"><i class="fa-fw far fa-comments"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 关于</span><i class="fas fa-chevron-down expand hide"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/about/"><i class="fa-fw fa fa-heart"></i><span> 关于我</span></a></li><li><a class="site-page" target="_blank" rel="noopener" href="https://yangchaoyi.avosapps.us/"><i class="fa-fw fas fa-box"></i><span> Valine评论后台</span></a></li><li><a class="site-page" target="_blank" rel="noopener" href="https://console.leancloud.app/applist.html#/apps"><i class="fa-fw fas fa-box"></i><span> LeanCloud应用</span></a></li></ul></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav></header><main class="layout" id="content-inner"><div id="post"><div id="post-info"><h1 class="post-title">「星辰大海」JS自测清单（三）</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-05-07T13:48:39.333Z" title="发表于 2021-05-07 21:48:39">2021-05-07</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2021-05-07T13:48:39.334Z" title="更新于 2021-05-07 21:48:39">2021-05-07</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%86%99%E7%BB%99%E5%A5%B3%E5%8F%8B/">写给女友</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">8.8k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>38分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div><div class="top-img gist" style="background-image: url(/false)"></div><article class="post-content" id="article-container"><h2 id="星辰大海」JS自测清单（三）"><a href="#星辰大海」JS自测清单（三）" class="headerlink" title="星辰大海」JS自测清单（三）"></a>星辰大海」JS自测清单（三）</h2><p>转载自 <a target="_blank" rel="noopener" href="https://github.com/lydiahallie/javascript-questions">javascript-questions</a>（star支持一波）</p>
+<blockquote>
+<p>我们的征途是星辰大海~</p>
+</blockquote>
+<p>答案在问题下方的折叠部分，点击即可展开问题。祝你好运 :heart:</p>
+<h6 id="110-这个函数干了什么"><a href="#110-这个函数干了什么" class="headerlink" title="110. 这个函数干了什么?"></a>110. 这个函数干了什么?</h6><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">JSON</span>.parse()</span><br></pre></td></tr></table></figure>
+<ul>
+<li>A: Parses JSON to a JavaScript value</li>
+<li>B: Parses a JavaScript object to JSON</li>
+<li>C: Parses any JavaScript value to JSON</li>
+<li>D: Parses JSON to a JavaScript object only</li>
+</ul>
+<details><summary><b>答案</b></summary>
+<p>
+
+<h4 id="答案-A"><a href="#答案-A" class="headerlink" title="答案: A"></a>答案: A</h4><p>使用<code>JSON.parse()</code>方法，我们可以将JSON字符串解析为JavaScript值。</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 将数字字符串化为有效的JSON，然后将JSON字符串解析为JavaScript值:</span></span><br><span class="line"><span class="keyword">const</span> jsonNumber = <span class="built_in">JSON</span>.stringify(<span class="number">4</span>) <span class="comment">// &#x27;4&#x27;</span></span><br><span class="line"><span class="built_in">JSON</span>.parse(jsonNumber) <span class="comment">// 4</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 将数组值字符串化为有效的JSON，然后将JSON字符串解析为JavaScript值:</span></span><br><span class="line"><span class="keyword">const</span> jsonArray = <span class="built_in">JSON</span>.stringify([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]) <span class="comment">// &#x27;[1, 2, 3]&#x27;</span></span><br><span class="line"><span class="built_in">JSON</span>.parse(jsonArray) <span class="comment">// [1, 2, 3]</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 将对象字符串化为有效的JSON，然后将JSON字符串解析为JavaScript值:</span></span><br><span class="line"><span class="keyword">const</span> jsonArray = <span class="built_in">JSON</span>.stringify(&#123; <span class="attr">name</span>: <span class="string">&quot;Lydia&quot;</span> &#125;) <span class="comment">// &#x27;&#123;&quot;name&quot;:&quot;Lydia&quot;&#125;&#x27;</span></span><br><span class="line"><span class="built_in">JSON</span>.parse(jsonArray) <span class="comment">// &#123; name: &#x27;Lydia&#x27; &#125;</span></span><br></pre></td></tr></table></figure>
+</p>
+</details>
+
+<hr>
+<h6 id="111-输出什么"><a href="#111-输出什么" class="headerlink" title="111. 输出什么?"></a>111. 输出什么?</h6><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> name = <span class="string">&#x27;Lydia&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getName</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(name)</span><br><span class="line">  <span class="keyword">let</span> name = <span class="string">&#x27;Sarah&#x27;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">getName()</span><br></pre></td></tr></table></figure>
+<ul>
+<li>A: Lydia</li>
+<li>B: Sarah</li>
+<li>C: <code>undefined</code></li>
+<li>D: <code>ReferenceError</code></li>
+</ul>
+<details><summary><b>答案</b></summary>
+<p>
+
+<h4 id="答案-D"><a href="#答案-D" class="headerlink" title="答案: D"></a>答案: D</h4><p>每个函数都有其自己的执行上下文。 <code>getName</code>函数首先在其自身的上下文（范围）内查找，以查看其是否包含我们尝试访问的变量<code>name</code>。 上述情况，<code>getName</code>函数包含其自己的<code>name</code>变量：我们用<code>let</code>关键字和<code>Sarah</code>的值声明变量<code>name</code>。</p>
+<p>带有<code>let</code>关键字（和<code>const</code>）的变量被提升，但是与<code>var</code>不同，它不会被<strong><em>初始化</em></strong>。 在我们声明（初始化）它们之前，无法访问它们。 这称为“暂时性死区”。 当我们尝试在声明变量之前访问变量时，JavaScript会抛出<code>ReferenceError: Cannot access &#39;name&#39; before initialization</code>。</p>
+<p>如果我们不在<code>getName</code>函数中声明<code>name</code>变量，则javascript引擎会查看原型练。会找到其外部作用域有一个名为<code>name</code>的变量，其值为<code>Lydia</code>。 在这种情况下，它将打印<code>Lydia</code>：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> name = <span class="string">&#x27;Lydia&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getName</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(name)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">getName() <span class="comment">// Lydia</span></span><br></pre></td></tr></table></figure>
+</p>
+</details>
+
+<hr>
+<h6 id="112-输出什么？"><a href="#112-输出什么？" class="headerlink" title="112. 输出什么？"></a>112. 输出什么？</h6><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span>* <span class="title">generatorOne</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">yield</span> [<span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;b&#x27;</span>, <span class="string">&#x27;c&#x27;</span>];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span>* <span class="title">generatorTwo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">yield</span>* [<span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;b&#x27;</span>, <span class="string">&#x27;c&#x27;</span>];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> one = generatorOne()</span><br><span class="line"><span class="keyword">const</span> two = generatorTwo()</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(one.next().value)</span><br><span class="line"><span class="built_in">console</span>.log(two.next().value)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>A: <code>a</code> and <code>a</code></li>
+<li>B: <code>a</code> and <code>undefined</code></li>
+<li>C: <code>[&#39;a&#39;, &#39;b&#39;, &#39;c&#39;]</code> and <code>a</code></li>
+<li>D: <code>a</code> and <code>[&#39;a&#39;, &#39;b&#39;, &#39;c&#39;]</code></li>
+</ul>
+<details><summary><b>答案</b></summary>
+<p>
+
+<h4 id="答案-C"><a href="#答案-C" class="headerlink" title="答案: C"></a>答案: C</h4><p>通过 <code>yield</code> 关键字, 我们在 <code>Generator</code> 函数里执行<code>yield</code>表达式. 通过 <code>yield*</code> 关键字, 我们可以在一个<code>Generator</code> 函数里面执行（<code>yield</code>表达式）另一个 <code>Generator</code> 函数, 或可遍历的对象 (如数组).</p>
+<p>在函数 <code>generatorOne</code> 中, 我们通过 <code>yield</code> 关键字 yield 了一个完整的数组 <code>[&#39;a&#39;, &#39;b&#39;, &#39;c&#39;]</code>。函数<code>one</code>通过<code>next</code>方法返回的对象的<code>value</code> 属性的值 (<code>one.next().value</code>) 等价于数组 <code>[&#39;a&#39;, &#39;b&#39;, &#39;c&#39;]</code>.</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(one.next().value) <span class="comment">// [&#x27;a&#x27;, &#x27;b&#x27;, &#x27;c&#x27;]</span></span><br><span class="line"><span class="built_in">console</span>.log(one.next().value) <span class="comment">// undefined</span></span><br></pre></td></tr></table></figure>
+<p>在函数 <code>generatorTwo</code> 中, 我们使用 <code>yield*</code> 关键字。就相当于函数<code>two</code>第一个<code>yield</code>的值, 等价于在迭代器中第一个 <code>yield</code> 的值。数组<code>[&#39;a&#39;, &#39;b&#39;, &#39;c&#39;]</code>就是这个迭代器. 第一个 <code>yield</code> 的值就是 <code>a</code>, 所以我们第一次调用 <code>two.next().value</code>时, 就返回<code>a</code>。</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(two.next().value) <span class="comment">// &#x27;a&#x27;</span></span><br><span class="line"><span class="built_in">console</span>.log(two.next().value) <span class="comment">// &#x27;b&#x27;</span></span><br><span class="line"><span class="built_in">console</span>.log(two.next().value) <span class="comment">// &#x27;c&#x27;</span></span><br><span class="line"><span class="built_in">console</span>.log(two.next().value) <span class="comment">// undefined</span></span><br></pre></td></tr></table></figure>
+</p>
+</details>
+
+<hr>
+<h6 id="113-输出什么？"><a href="#113-输出什么？" class="headerlink" title="113. 输出什么？"></a>113. 输出什么？</h6><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="string">`<span class="subst">$&#123;(x =&gt; x)(<span class="string">&#x27;I love&#x27;</span>)&#125;</span> to program`</span>)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>A: <code>I love to program</code></li>
+<li>B: <code>undefined to program</code></li>
+<li>C: <code>$&#123;(x =&gt; x)(&#39;I love&#39;) to program</code></li>
+<li>D: <code>TypeError</code></li>
+</ul>
+<details><summary><b>答案</b></summary>
+<p>
+
+<h4 id="答案-A-1"><a href="#答案-A-1" class="headerlink" title="答案: A"></a>答案: A</h4><p>带有模板字面量的表达式首先被执行。相当于字符串会包含表达式，这个立即执行函数 <code>(x =&gt; x)(&#39;I love&#39;)</code> 返回的值. 我们向箭头函数 <code>x =&gt; x</code> 传递 <code>&#39;I love&#39;</code> 作为参数。<code>x</code> 等价于返回的 <code>&#39;I love&#39;</code>。这就是结果 <code>I love to program</code>。</p>
+</p>
+</details>
+
+<hr>
+<h6 id="114-将会发生什么"><a href="#114-将会发生什么" class="headerlink" title="114. 将会发生什么?"></a>114. 将会发生什么?</h6><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> config = &#123;</span><br><span class="line">  alert: <span class="built_in">setInterval</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&#x27;Alert!&#x27;</span>)</span><br><span class="line">  &#125;, <span class="number">1000</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">config = <span class="literal">null</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>A: <code>setInterval</code> 的回调不会被调用</li>
+<li>B: <code>setInterval</code> 的回调被调用一次</li>
+<li>C: <code>setInterval</code> 的回调仍然会被每秒钟调用</li>
+<li>D: 我们从没调用过 <code>config.alert()</code>, config 为 <code>null</code></li>
+</ul>
+<details><summary><b>答案</b></summary>
+<p>
+
+<h4 id="答案-C-1"><a href="#答案-C-1" class="headerlink" title="答案: C"></a>答案: C</h4><p>一般情况下当我们将对象赋值为 <code>null</code>, 那些对象会被进行 <em>垃圾回收（garbage collected）</em> 因为已经没有对这些对象的引用了。然而，<code>setInterval</code>的参数是一个箭头函数（所以上下文绑定到对象 <code>config</code> 了），回调函数仍然保留着对 <code>config</code>的引用。只要存在引用，对象就不会被垃圾回收。因为没有被垃圾回收，<code>setInterval</code> 的回调每1000ms (1s)会被调用一次。</p>
+</p>
+</details>
+
+<hr>
+<h6 id="115-哪一个方法会返回-39-Hello-world-39-？"><a href="#115-哪一个方法会返回-39-Hello-world-39-？" class="headerlink" title="115. 哪一个方法会返回 &#39;Hello world!&#39; ？"></a>115. 哪一个方法会返回 <code>&#39;Hello world!&#39;</code> ？</h6><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> myMap = <span class="keyword">new</span> <span class="built_in">Map</span>()</span><br><span class="line"><span class="keyword">const</span> myFunc = <span class="function">() =&gt;</span> <span class="string">&#x27;greeting&#x27;</span></span><br><span class="line"></span><br><span class="line">myMap.set(myFunc, <span class="string">&#x27;Hello world!&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">//1</span></span><br><span class="line">myMap.get(<span class="string">&#x27;greeting&#x27;</span>)</span><br><span class="line"><span class="comment">//2</span></span><br><span class="line">myMap.get(myFunc)</span><br><span class="line"><span class="comment">//3</span></span><br><span class="line">myMap.get(<span class="function">() =&gt;</span> <span class="string">&#x27;greeting&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>A: 1</li>
+<li>B: 2</li>
+<li>C: 2 and 3</li>
+<li>D: All of them</li>
+</ul>
+<details><summary><b>答案</b></summary>
+<p>
+
+<h4 id="答案-B"><a href="#答案-B" class="headerlink" title="答案: B"></a>答案: B</h4><p>当通过 <code>set</code> 方法添加一个键值对，一个传递给 <code>set</code>方法的参数将会是键名，第二个参数将会是值。在这个case里，键名为 <em>函数</em> <code>() =&gt; &#39;greeting&#39;</code>，值为<code>&#39;Hello world&#39;</code>。 <code>myMap</code> 现在就是 <code>&#123; () =&gt; &#39;greeting&#39; =&gt; &#39;Hello world!&#39; &#125;</code>。</p>
+<p>1 是错的，因为键名不是 <code>&#39;greeting&#39;</code> 而是 <code>() =&gt; &#39;greeting&#39;</code>。<br>3 是错的，因为我们给<code>get</code> 方法传递了一个新的函数。对象受 <em>引用</em> 影响。函数也是对象，因此两个函数严格上并不等价，尽管他们相同：他们有两个不同的内存引用地址。</p>
+</p>
+</details>
+
+<hr>
+<h6 id="116-输出什么？"><a href="#116-输出什么？" class="headerlink" title="116. 输出什么？"></a>116. 输出什么？</h6><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> person = &#123;</span><br><span class="line">  name: <span class="string">&quot;Lydia&quot;</span>,</span><br><span class="line">  age: <span class="number">21</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> changeAge = <span class="function">(<span class="params">x = &#123; ...person &#125;</span>) =&gt;</span> x.age += <span class="number">1</span></span><br><span class="line"><span class="keyword">const</span> changeAgeAndName = <span class="function">(<span class="params">x = &#123; ...person &#125;</span>) =&gt;</span> &#123;</span><br><span class="line">  x.age += <span class="number">1</span></span><br><span class="line">  x.name = <span class="string">&quot;Sarah&quot;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">changeAge(person)</span><br><span class="line">changeAgeAndName()</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(person)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>A: <code>&#123;name: &quot;Sarah&quot;, age: 22&#125;</code></li>
+<li>B: <code>&#123;name: &quot;Sarah&quot;, age: 23&#125;</code></li>
+<li>C: <code>&#123;name: &quot;Lydia&quot;, age: 22&#125;</code></li>
+<li>D: <code>&#123;name: &quot;Lydia&quot;, age: 23&#125;</code></li>
+</ul>
+<details><summary><b>答案</b></summary>
+<p>
+
+<h4 id="答案-C-2"><a href="#答案-C-2" class="headerlink" title="答案: C"></a>答案: C</h4><p>函数 <code>changeAge</code> 和函数 <code>changeAgeAndName</code> 有着不同的参数，定义一个 <em>新</em> 生成的对象 <code>&#123; ...person &#125;</code>。这个对象有着所有 <code>person</code> 对象 中 k/v 值的副本。</p>
+<p>首项, 我们调用 <code>changeAge</code> 函数并传递 <code>person</code> 对象作为它的参数。这个函数对 <code>age</code> 属性进行加一操作。<code>person</code> 现在是 <code>&#123; name: &quot;Lydia&quot;, age: 22 &#125;</code>。</p>
+<p>然后，我们调用函数 <code>changeAgeAndName</code> ，然而我们没有传递参数。取而代之，<code>x</code> 的值等价 <em>new</em> 生成的对象: <code>&#123; ...person &#125;</code>。因为它是一个新生成的对象，它并不会对对象 <code>person</code> 造成任何副作用。<code>person</code> 仍然等价于 <code>&#123; name: &quot;Lydia&quot;, age: 22 &#125;</code>。</p>
+</p>
+</details>
+
+<hr>
+<h6 id="117-下面那个选项将会返回-6"><a href="#117-下面那个选项将会返回-6" class="headerlink" title="117. 下面那个选项将会返回 6?"></a>117. 下面那个选项将会返回 <code>6</code>?</h6><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sumValues</span>(<span class="params">x, y, z</span>) </span>&#123;</span><br><span class="line">	<span class="keyword">return</span> x + y + z;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>A: <code>sumValues([...1, 2, 3])</code></li>
+<li>B: <code>sumValues([...[1, 2, 3]])</code></li>
+<li>C: <code>sumValues(...[1, 2, 3])</code></li>
+<li>D: <code>sumValues([1, 2, 3])</code></li>
+</ul>
+<details><summary><b>答案</b></summary>
+<p>
+
+<h4 id="答案-C-3"><a href="#答案-C-3" class="headerlink" title="答案: C"></a>答案: C</h4><p>通过展开操作符 <code>...</code>，我们可以 <em>暂开</em> 单个可迭代的元素。函数 <code>sumValues</code> function 接收三个参数： <code>x</code>, <code>y</code> 和 <code>z</code>。<code>...[1, 2, 3]</code> 的执行结果为 <code>1, 2, 3</code>，将会传递给函数 <code>sumValues</code>。</p>
+</p>
+</details>
+
+<hr>
+<h6 id="118-输出什么？"><a href="#118-输出什么？" class="headerlink" title="118. 输出什么？"></a>118. 输出什么？</h6><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> num = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">const</span> list = [<span class="string">&quot;🥳&quot;</span>, <span class="string">&quot;🤠&quot;</span>, <span class="string">&quot;🥰&quot;</span>, <span class="string">&quot;🤪&quot;</span>];</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(list[(num += <span class="number">1</span>)]);</span><br></pre></td></tr></table></figure>
+<ul>
+<li>A: <code>🤠</code></li>
+<li>B: <code>🥰</code></li>
+<li>C: <code>SyntaxError</code></li>
+<li>D: <code>ReferenceError</code></li>
+</ul>
+<details><summary><b>答案</b></summary>
+<p>
+
+<h4 id="答案-B-1"><a href="#答案-B-1" class="headerlink" title="答案: B"></a>答案: B</h4><p>通过 <code>+=</code> 操作符，我们对值 <code>num</code> 进行加 <code>1</code> 操作。 <code>num</code> 有初始值 <code>1</code>，因此 <code>1 + 1</code> 的执行结果为 <code>2</code>。数组 <code>list</code> 的第二项为 🥰，<code>console.log(list[2])</code> 输出 🥰.</p>
+</p>
+</details>
+
+<hr>
+<h6 id="119-输出什么？"><a href="#119-输出什么？" class="headerlink" title="119. 输出什么？"></a>119. 输出什么？</h6><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> person = &#123;</span><br><span class="line">	firstName: <span class="string">&quot;Lydia&quot;</span>,</span><br><span class="line">	lastName: <span class="string">&quot;Hallie&quot;</span>,</span><br><span class="line">	pet: &#123;</span><br><span class="line">		name: <span class="string">&quot;Mara&quot;</span>,</span><br><span class="line">		breed: <span class="string">&quot;Dutch Tulip Hound&quot;</span></span><br><span class="line">	&#125;,</span><br><span class="line">	<span class="function"><span class="title">getFullName</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="string">`<span class="subst">$&#123;<span class="built_in">this</span>.firstName&#125;</span> <span class="subst">$&#123;<span class="built_in">this</span>.lastName&#125;</span>`</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(person.pet?.name);</span><br><span class="line"><span class="built_in">console</span>.log(person.pet?.family?.name);</span><br><span class="line"><span class="built_in">console</span>.log(person.getFullName?.());</span><br><span class="line"><span class="built_in">console</span>.log(member.getLastName?.());</span><br></pre></td></tr></table></figure>
+<ul>
+<li>A: <code>undefined</code> <code>undefined</code> <code>undefined</code> <code>undefined</code></li>
+<li>B: <code>Mara</code> <code>undefined</code> <code>Lydia Hallie</code> <code>undefined</code></li>
+<li>C: <code>Mara</code> <code>null</code> <code>Lydia Hallie</code> <code>null</code></li>
+<li>D: <code>null</code> <code>ReferenceError</code> <code>null</code> <code>ReferenceError</code></li>
+</ul>
+<details><summary><b>答案</b></summary>
+<p>
+
+<h4 id="答案-B-2"><a href="#答案-B-2" class="headerlink" title="答案: B"></a>答案: B</h4><p>通过 ES10 或 TS3.7+<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/%E5%8F%AF%E9%80%89%E9%93%BE">可选链操作符 <code>?.</code></a>，我们不再需要显式检测更深层的嵌套值是否有效。如果我们尝试获取 <code>undefined</code> 或 <code>null</code> 的值 (<em>nullish</em>)，表达将会短路并返回 <code>undefined</code>.</p>
+<p><code>person.pet?.name</code>： <code>person</code> 有一个名为 <code>pet</code> 的属性： <code>person.pet</code> 不是 nullish。它有个名为 <code>name</code> 的属性，并返回字符串 <code>Mara</code>。<br><code>person.pet?.family?.name</code>： <code>person</code> 有一个名为 <code>pet</code> 的属性： <code>person.pet</code> 不是 nullish. <code>pet</code> <em>并没有</em> 一个名为 <code>family</code> 的属性, <code>person.pet.family</code> 是 nullish。表达式返回 <code>undefined</code>。<br><code>person.getFullName?.()</code>： <code>person</code> 有一个名为 <code>getFullName</code> 的属性： <code>person.getFullName()</code> 不是 nullish 并可以被调用，返回字符串 <code>Lydia Hallie</code>。<br><code>member.getLastName?.()</code>: <code>member</code> is not defined: <code>member.getLastName()</code> is nullish. The expression returns <code>undefined</code>.</p>
+</p>
+</details>
+
+<hr>
+<h6 id="120-输出什么？"><a href="#120-输出什么？" class="headerlink" title="120. 输出什么？"></a>120. 输出什么？</h6><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> groceries = [<span class="string">&quot;banana&quot;</span>, <span class="string">&quot;apple&quot;</span>, <span class="string">&quot;peanuts&quot;</span>];</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (groceries.indexOf(<span class="string">&quot;banana&quot;</span>)) &#123;</span><br><span class="line">	<span class="built_in">console</span>.log(<span class="string">&quot;We have to buy bananas!&quot;</span>);</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">	<span class="built_in">console</span>.log(<span class="string">`We don&#x27;t have to buy bananas!`</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>A: We have to buy bananas!</li>
+<li>B: We don’t have to buy bananas</li>
+<li>C: <code>undefined</code></li>
+<li>D: <code>1</code></li>
+</ul>
+<details><summary><b>答案</b></summary>
+<p>
+
+<h4 id="答案-B-3"><a href="#答案-B-3" class="headerlink" title="答案: B"></a>答案: B</h4><p>我们传递了一个状态 <code>groceries.indexOf(&quot;banana&quot;)</code> 给if条件语句。<code>groceries.indexOf(&quot;banana&quot;)</code> 返回 <code>0</code>， 一个 falsy 的值。因为if条件语句的状态为 falsy，<code>else</code> 块区内的代码执行，并且 <code>We don&#39;t have to buy bananas!</code> 被输出.</p>
+</p>
+</details>
+
+<hr>
+<h6 id="121-输出什么"><a href="#121-输出什么" class="headerlink" title="121. 输出什么?"></a>121. 输出什么?</h6><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> config = &#123;</span><br><span class="line">	languages: [],</span><br><span class="line">	<span class="keyword">set</span> <span class="title">language</span>(<span class="params">lang</span>) &#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="built_in">this</span>.languages.push(lang);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(config.language);</span><br></pre></td></tr></table></figure>
+<ul>
+<li>A: <code>function language(lang) &#123; this.languages.push(lang &#125;</code></li>
+<li>B: <code>0</code></li>
+<li>C: <code>[]</code></li>
+<li>D: <code>undefined</code></li>
+</ul>
+<details><summary><b>答案</b></summary>
+<p>
+
+<h4 id="答案-D-1"><a href="#答案-D-1" class="headerlink" title="答案: D"></a>答案: D</h4><p>方法 <code>language</code> 是一个 <code>setter</code>。Setters 并不保存一个实际值，它们的使命在于 <em>修改</em> 属性。当调用方法 <code>setter</code>， 返回 <code>undefined</code>。</p>
+</p>
+</details>
+
+<hr>
+<h6 id="122-输出什么？"><a href="#122-输出什么？" class="headerlink" title="122. 输出什么？"></a>122. 输出什么？</h6><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> name = <span class="string">&quot;Lydia Hallie&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(!<span class="keyword">typeof</span> name === <span class="string">&quot;object&quot;</span>);</span><br><span class="line"><span class="built_in">console</span>.log(!<span class="keyword">typeof</span> name === <span class="string">&quot;string&quot;</span>);</span><br></pre></td></tr></table></figure>
+<ul>
+<li>A: <code>false</code> <code>true</code></li>
+<li>B: <code>true</code> <code>false</code></li>
+<li>C: <code>false</code> <code>false</code></li>
+<li>D: <code>true</code> <code>true</code></li>
+</ul>
+<details><summary><b>答案</b></summary>
+<p>
+
+<h4 id="答案-C-4"><a href="#答案-C-4" class="headerlink" title="答案: C"></a>答案: C</h4><p><code>typeof name</code> 返回 <code>&quot;string&quot;</code>。字符串 <code>&quot;string&quot;</code> 是一个 truthy 的值，因此 <code>!typeof name</code> 返回一个布尔值 <code>false</code>。 <code>false === &quot;object&quot;</code> 和 <code>false === &quot;string&quot;</code> 都返回 <code>false</code>。</p>
+<p>（如果我们想检测一个值的类型，我们应该用 <code>!==</code> 而不是 <code>!typeof</code>）</p>
+</p>
+</details>
+
+<hr>
+<h6 id="123-输出什么"><a href="#123-输出什么" class="headerlink" title="123. 输出什么?"></a>123. 输出什么?</h6><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> add = <span class="function"><span class="params">x</span> =&gt;</span> <span class="function"><span class="params">y</span> =&gt;</span> <span class="function"><span class="params">z</span> =&gt;</span> &#123;</span><br><span class="line">	<span class="built_in">console</span>.log(x, y, z);</span><br><span class="line">	<span class="keyword">return</span> x + y + z;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">add(<span class="number">4</span>)(<span class="number">5</span>)(<span class="number">6</span>);</span><br></pre></td></tr></table></figure>
+<ul>
+<li>A: <code>4</code> <code>5</code> <code>6</code></li>
+<li>B: <code>6</code> <code>5</code> <code>4</code></li>
+<li>C: <code>4</code> <code>function</code> <code>function</code></li>
+<li>D: <code>undefined</code> <code>undefined</code> <code>6</code></li>
+</ul>
+<details><summary><b>答案</b></summary>
+<p>
+
+<h4 id="答案-A-2"><a href="#答案-A-2" class="headerlink" title="答案: A"></a>答案: A</h4><p>函数 <code>add</code> 是一个返回 返回箭头函数的箭头函数 的箭头函数（still with me?）。第一个函数接收一个值为 <code>4</code> 的参数 <code>x</code>。我们调用第二个函数，它接收一个值为 <code>5</code> 的参数 <code>y</code>。然后我们调用第三个函数，它接收一个值为 <code>6</code> 的参数 <code>z</code>。当我们尝试在最后一个箭头函数中获取 <code>x</code>, <code>y</code> 和 <code>z</code> 的值，JS 引擎根据作用域链去找 <code>x</code> 和 <code>y</code> 的值。得到 <code>4</code> <code>5</code> <code>6</code>.</p>
+</p>
+</details>
+
+<hr>
+<h6 id="124-输出什么？"><a href="#124-输出什么？" class="headerlink" title="124. 输出什么？"></a>124. 输出什么？</h6><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span>* <span class="title">range</span>(<span class="params">start, end</span>) </span>&#123;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">let</span> i = start; i &lt;= end; i++) &#123;</span><br><span class="line">		<span class="keyword">yield</span> <span class="built_in">Promise</span>.resolve(i);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">(<span class="keyword">async</span> () =&gt; &#123;</span><br><span class="line">	<span class="keyword">const</span> gen = range(<span class="number">1</span>, <span class="number">3</span>);</span><br><span class="line">	<span class="keyword">for</span> <span class="keyword">await</span> (<span class="keyword">const</span> item <span class="keyword">of</span> gen) &#123;</span><br><span class="line">		<span class="built_in">console</span>.log(item);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;)();</span><br></pre></td></tr></table></figure>
+<ul>
+<li>A: <code>Promise &#123;1&#125;</code> <code>Promise &#123;2&#125;</code> <code>Promise &#123;3&#125;</code></li>
+<li>B: <code>Promise &#123;&lt;pending&gt;&#125;</code> <code>Promise &#123;&lt;pending&gt;&#125;</code> <code>Promise &#123;&lt;pending&gt;&#125;</code></li>
+<li>C: <code>1</code> <code>2</code> <code>3</code></li>
+<li>D: <code>undefined</code> <code>undefined</code> <code>undefined</code></li>
+</ul>
+<details><summary><b>答案</b></summary>
+<p>
+
+<h4 id="答案-C-5"><a href="#答案-C-5" class="headerlink" title="答案: C"></a>答案: C</h4><p>我们给 函数range 传递： <code>Promise&#123;1&#125;</code>, <code>Promise&#123;2&#125;</code>, <code>Promise&#123;3&#125;</code>，Generator 函数 <code>range</code> 返回一个全是 async object promise 数组。我们将 async object 赋值给变量 <code>gen</code>，之后我们使用<code>for await ... of</code> 进行循环遍历。我们将返回的 Promise 实例赋值给 <code>item</code>： 第一个返回 <code>Promise&#123;1&#125;</code>， 第二个返回 <code>Promise&#123;2&#125;</code>，之后是 <code>Promise&#123;3&#125;</code>。因为我们正 <em>awaiting</em> <code>item</code> 的值，resolved 状态的 promsie，promise数组的resolved <em>值</em> 以此为： <code>1</code>，<code>2</code>，<code>3</code>.</p>
+</p>
+</details>
+
+<hr>
+<h6 id="125-输出什么？"><a href="#125-输出什么？" class="headerlink" title="125. 输出什么？"></a>125. 输出什么？</h6><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> myFunc = <span class="function">(<span class="params">&#123; x, y, z &#125;</span>) =&gt;</span> &#123;</span><br><span class="line">	<span class="built_in">console</span>.log(x, y, z);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">myFunc(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>);</span><br></pre></td></tr></table></figure>
+<ul>
+<li>A: <code>1</code> <code>2</code> <code>3</code></li>
+<li>B: <code>&#123;1: 1&#125;</code> <code>&#123;2: 2&#125;</code> <code>&#123;3: 3&#125;</code></li>
+<li>C: <code>&#123; 1: undefined &#125;</code> <code>undefined</code> <code>undefined</code></li>
+<li>D: <code>undefined</code> <code>undefined</code> <code>undefined</code></li>
+</ul>
+<details><summary><b>答案</b></summary>
+<p>
+
+<h4 id="答案-D-2"><a href="#答案-D-2" class="headerlink" title="答案: D"></a>答案: D</h4><p><code>myFunc</code> 期望接收一个包含 <code>x</code>, <code>y</code> 和 <code>z</code> 属性的对象作为它的参数。因为我们仅仅传递三个单独的数字值 (1, 2, 3) 而不是一个含有 <code>x</code>, <code>y</code> 和 <code>z</code> 属性的对象 ({x: 1, y: 2, z: 3})， <code>x</code>, <code>y</code> 和 <code>z</code> 有着各自的默认值 <code>undefined</code>.</p>
+</p>
+</details>
+
+<hr>
+<h6 id="126-输出什么？"><a href="#126-输出什么？" class="headerlink" title="126. 输出什么？"></a>126. 输出什么？</h6><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getFine</span>(<span class="params">speed, amount</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> formattedSpeed = <span class="keyword">new</span> <span class="built_in">Intl</span>.NumberFormat(&#123;</span><br><span class="line">    <span class="string">&#x27;en-US&#x27;</span>,</span><br><span class="line">    &#123; <span class="attr">style</span>: <span class="string">&#x27;unit&#x27;</span>, <span class="attr">unit</span>: <span class="string">&#x27;mile-per-hour&#x27;</span> &#125;</span><br><span class="line">  &#125;).format(speed)</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> formattedAmount = <span class="keyword">new</span> <span class="built_in">Intl</span>.NumberFormat(&#123;</span><br><span class="line">    <span class="string">&#x27;en-US&#x27;</span>,</span><br><span class="line">    &#123; <span class="attr">style</span>: <span class="string">&#x27;currency&#x27;</span>, <span class="attr">currency</span>: <span class="string">&#x27;USD&#x27;</span> &#125;</span><br><span class="line">  &#125;).format(amount)</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> <span class="string">`The driver drove <span class="subst">$&#123;formattedSpeed&#125;</span> and has to pay <span class="subst">$&#123;formattedAmount&#125;</span>`</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(getFine(<span class="number">130</span>, <span class="number">300</span>))</span><br></pre></td></tr></table></figure>
+<ul>
+<li>A: The driver drove 130 and has to pay 300</li>
+<li>B: The driver drove 130 mph and has to pay $300.00</li>
+<li>C: The driver drove undefined and has to pay undefined</li>
+<li>D: The driver drove 130.00 and has to pay 300.00</li>
+</ul>
+<details><summary><b>答案</b></summary>
+<p>
+
+<h4 id="答案-B-4"><a href="#答案-B-4" class="headerlink" title="答案: B"></a>答案: B</h4><p>通过方法 <code>Intl.NumberFormat</code>，我们可以格式化任意区域的数字值。我们对数字值 <code>130</code> 进行 <code>mile-per-hour</code> 作为 <code>unit</code> 的 <code>en-US</code> 区域 格式化，结果为 <code>130 mph</code>。对数字值 <code>300</code> 进行 <code>USD</code> 作为 <code>currentcy</code> 的 <code>en-US</code> 区域格式化，结果为 <code>$300.00</code>.</p>
+</p>
+</details>
+
+<hr>
+<h6 id="127-输出什么？"><a href="#127-输出什么？" class="headerlink" title="127. 输出什么？"></a>127. 输出什么？</h6><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> spookyItems = [<span class="string">&quot;👻&quot;</span>, <span class="string">&quot;🎃&quot;</span>, <span class="string">&quot;🕸&quot;</span>];</span><br><span class="line">(&#123; <span class="attr">item</span>: spookyItems[<span class="number">3</span>] &#125; = &#123; <span class="attr">item</span>: <span class="string">&quot;💀&quot;</span> &#125;);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(spookyItems);</span><br></pre></td></tr></table></figure>
+<ul>
+<li>A: <code>[&quot;👻&quot;, &quot;🎃&quot;, &quot;🕸&quot;]</code></li>
+<li>B: <code>[&quot;👻&quot;, &quot;🎃&quot;, &quot;🕸&quot;, &quot;💀&quot;]</code></li>
+<li>C: <code>[&quot;👻&quot;, &quot;🎃&quot;, &quot;🕸&quot;, &#123; item: &quot;💀&quot; &#125;]</code></li>
+<li>D: <code>[&quot;👻&quot;, &quot;🎃&quot;, &quot;🕸&quot;, &quot;[object Object]&quot;]</code></li>
+</ul>
+<details><summary><b>答案</b></summary>
+<p>
+
+<h4 id="答案-B-5"><a href="#答案-B-5" class="headerlink" title="答案: B"></a>答案: B</h4><p>通过解构对象们，我们可以从右手边的对象中拆出值，并且将拆出的值分配给左手边对象同名的属性。在这种情况下，我们将值 “💀” 分配给 <code>spookyItems[3]</code>。相当于我们正在篡改数组 <code>spookyItems</code>，我们给它添加了值 “💀”。当输出 <code>spookyItems</code> 时，结果为 <code>[&quot;👻&quot;, &quot;🎃&quot;, &quot;🕸&quot;, &quot;💀&quot;]</code>。</p>
+</p>
+</details>
+
+<hr>
+<h6 id="128-输出什么？"><a href="#128-输出什么？" class="headerlink" title="128. 输出什么？"></a>128. 输出什么？</h6><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> name = <span class="string">&quot;Lydia Hallie&quot;</span>;</span><br><span class="line"><span class="keyword">const</span> age = <span class="number">21</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Number</span>.isNaN(name));</span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Number</span>.isNaN(age));</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">isNaN</span>(name));</span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">isNaN</span>(age));</span><br></pre></td></tr></table></figure>
+<ul>
+<li>A: <code>true</code> <code>false</code> <code>true</code> <code>false</code></li>
+<li>B: <code>true</code> <code>false</code> <code>false</code> <code>false</code></li>
+<li>C: <code>false</code> <code>false</code> <code>true</code> <code>false</code></li>
+<li>D: <code>false</code> <code>true</code> <code>false</code> <code>true</code></li>
+</ul>
+<details><summary><b>答案</b></summary>
+<p>
+
+<h4 id="答案-C-6"><a href="#答案-C-6" class="headerlink" title="答案: C"></a>答案: C</h4><p>通过方法 <code>Number.isNaN</code>，你可以检测你传递的值是否为 <em>数字值</em> 并且是否等价于 <code>NaN</code>。<code>name</code> 不是一个数字值，因此 <code>Number.isNaN(name)</code> 返回 <code>false</code>。<code>age</code> 是一个数字值，但它不等价于 <code>NaN</code>，因此 <code>Number.isNaN(age)</code> 返回 <code>false</code>.</p>
+<p>通过方法 <code>isNaN</code>， 你可以检测你传递的值是否一个 number。<code>name</code> 不是一个 <code>number</code>，因此 <code>isNaN(name)</code> 返回 <code>true</code>. <code>age</code> 是一个 <code>number</code> 因此 <code>isNaN(age)</code> 返回 <code>false</code>.</p>
+</p>
+</details>
+
+<hr>
+<h6 id="129-输出什么？"><a href="#129-输出什么？" class="headerlink" title="129. 输出什么？"></a>129. 输出什么？</h6><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> randomValue = <span class="number">21</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getInfo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">	<span class="built_in">console</span>.log(<span class="keyword">typeof</span> randomValue);</span><br><span class="line">	<span class="keyword">const</span> randomValue = <span class="string">&quot;Lydia Hallie&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">getInfo();</span><br></pre></td></tr></table></figure>
+<ul>
+<li>A: <code>&quot;number&quot;</code></li>
+<li>B: <code>&quot;string&quot;</code></li>
+<li>C: <code>undefined</code></li>
+<li>D: <code>ReferenceError</code></li>
+</ul>
+<details><summary><b>答案</b></summary>
+<p>
+
+<h4 id="答案-D-3"><a href="#答案-D-3" class="headerlink" title="答案: D"></a>答案: D</h4><p>通过 <code>const</code> 关键字声明的变量在被初始化之前不可被引用：这被称之为 _暂时性死区_。在函数 <code>getInfo</code> 中, 变量 <code>randomValue</code> 声明在<code>getInfo</code> 的作用域的此法环境中。在想要对 <code>typeof randomValue</code> 进行log之前，变量 <code>randomValue</code> 仍未被初始化： 错误<code>ReferenceError</code> 被抛出! JS引擎并不会根据作用域链网上寻找该变量，因为我们已经在 <code>getInfo</code> 函数中声明了 <code>randomValue</code> 变量。</p>
+</p>
+</details>
+
+<hr>
+<h6 id="130-输出什么？"><a href="#130-输出什么？" class="headerlink" title="130. 输出什么？"></a>130. 输出什么？</h6><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> myPromise = <span class="built_in">Promise</span>.resolve(<span class="string">&quot;Woah some cool data&quot;</span>);</span><br><span class="line"></span><br><span class="line">(<span class="keyword">async</span> () =&gt; &#123;</span><br><span class="line">	<span class="keyword">try</span> &#123;</span><br><span class="line">		<span class="built_in">console</span>.log(<span class="keyword">await</span> myPromise);</span><br><span class="line">	&#125; <span class="keyword">catch</span> &#123;</span><br><span class="line">		<span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">`Oops didn&#x27;t work`</span>);</span><br><span class="line">	&#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">		<span class="built_in">console</span>.log(<span class="string">&quot;Oh finally!&quot;</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;)();</span><br></pre></td></tr></table></figure>
+<ul>
+<li>A: <code>Woah some cool data</code></li>
+<li>B: <code>Oh finally!</code></li>
+<li>C: <code>Woah some cool data</code> <code>Oh finally!</code></li>
+<li>D: <code>Oops didn&#39;t work</code> <code>Oh finally!</code></li>
+</ul>
+<details><summary><b>答案</b></summary>
+<p>
+
+<h4 id="答案-C-7"><a href="#答案-C-7" class="headerlink" title="答案: C"></a>答案: C</h4><p>在 <code>try</code> 块区，我们打印 <code>myPromise</code> 变量的 awaited 值： <code>&quot;Woah some cool data&quot;</code>。因为<code>try</code> 块区没有错误抛出，<code>catch</code> 块区的代码并不执行。<code>finally</code> 块区的代码 <em>总是</em> 执行，<code>&quot;Oh finally!&quot;</code> 被输出。</p>
+</p>
+</details>
+
+<hr>
+<h6 id="131-输出什么？"><a href="#131-输出什么？" class="headerlink" title="131. 输出什么？"></a>131. 输出什么？</h6><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> emojis = [<span class="string">&quot;🥑&quot;</span>, [<span class="string">&quot;✨&quot;</span>, <span class="string">&quot;✨&quot;</span>, [<span class="string">&quot;🍕&quot;</span>, <span class="string">&quot;🍕&quot;</span>]]];</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(emojis.flat(<span class="number">1</span>));</span><br></pre></td></tr></table></figure>
+<ul>
+<li>A: <code>[&#39;🥑&#39;, [&#39;✨&#39;, &#39;✨&#39;, [&#39;🍕&#39;, &#39;🍕&#39;]]]</code></li>
+<li>B: <code>[&#39;🥑&#39;, &#39;✨&#39;, &#39;✨&#39;, [&#39;🍕&#39;, &#39;🍕&#39;]]</code></li>
+<li>C: <code>[&#39;🥑&#39;, [&#39;✨&#39;, &#39;✨&#39;, &#39;🍕&#39;, &#39;🍕&#39;]]</code></li>
+<li>D: <code>[&#39;🥑&#39;, &#39;✨&#39;, &#39;✨&#39;, &#39;🍕&#39;, &#39;🍕&#39;]</code></li>
+</ul>
+<details><summary><b>答案</b></summary>
+<p>
+
+<h4 id="答案-B-6"><a href="#答案-B-6" class="headerlink" title="答案: B"></a>答案: B</h4><p>通过方法 <code>flat</code>， 我们可以创建一个新的, 已被扁平化的数组。被扁平化的深度取决于我们传递的值。在这个case里，我们传递了值 <code>1</code> (并不必要，这是默认值)，相当于只有第一层的数组才会被连接。即这个 case 里的 <code>[&#39;🥑&#39;]</code> and <code>[&#39;✨&#39;, &#39;✨&#39;, [&#39;🍕&#39;, &#39;🍕&#39;]]</code>。连接这两个数组得到结果 <code>[&#39;🥑&#39;, &#39;✨&#39;, &#39;✨&#39;, [&#39;🍕&#39;, &#39;🍕&#39;]]</code>.</p>
+</p>
+</details>
+
+<hr>
+<h6 id="132-输出什么？"><a href="#132-输出什么？" class="headerlink" title="132. 输出什么？"></a><a name=20191224></a>132. 输出什么？</h6><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Counter</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="title">constructor</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">		<span class="built_in">this</span>.count = <span class="number">0</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="title">increment</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">		<span class="built_in">this</span>.count++;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> counterOne = <span class="keyword">new</span> Counter();</span><br><span class="line">counterOne.increment();</span><br><span class="line">counterOne.increment();</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> counterTwo = counterOne;</span><br><span class="line">counterTwo.increment();</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(counterOne.count);</span><br></pre></td></tr></table></figure>
+<ul>
+<li>A: <code>0</code></li>
+<li>B: <code>1</code></li>
+<li>C: <code>2</code></li>
+<li>D: <code>3</code></li>
+</ul>
+<details><summary><b>答案</b></summary>
+<p>
+
+<h4 id="答案-D-4"><a href="#答案-D-4" class="headerlink" title="答案: D"></a>答案: D</h4><p><code>counterOne</code> 是类 <code>Counter</code> 的一个实例。类 Counter 包含一个<code>count</code> 属性在它的构造函数里， 和一个 <code>increment</code> 方法。首先，我们通过 <code>counterOne.increment()</code> 调用方法 <code>increment</code> 两次。现在, <code>counterOne.count</code> 为 <code>2</code>.</p>
+<img src= "/img/loading.gif" data-lazy-src="https://i.imgur.com/KxLlTm9.png" width="400">
+
+<p>然后，我们创建一个新的变量 <code>counterTwo</code> 并将 <code>counterOne</code> 的引用地址赋值给它。因为对象受引用地址的影响，我们刚刚创建了一个新的对象，其引用地址和 <code>counterOne</code> 的等价。因此它们指向同一块内存地址，任何对其的副作用都会影响 <code>counterTwo</code>。现在 <code>counterTwo.count</code> 为 <code>2</code>。</p>
+<p>我们调用 <code>counterTwo.increment()</code> 将 <code>count</code> 的值设为 <code>3</code>。然后，我们打印 <code>counterOne</code> 里的count，结果为 <code>3</code>。</p>
+<img src= "/img/loading.gif" data-lazy-src="https://i.imgur.com/BNBHXmc.png" width="400">
+
+</p>
+</details>
+
+<hr>
+<h6 id="133-输出什么？"><a href="#133-输出什么？" class="headerlink" title="133. 输出什么？"></a>133. 输出什么？</h6><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> myPromise = <span class="built_in">Promise</span>.resolve(<span class="built_in">Promise</span>.resolve(<span class="string">&quot;Promise!&quot;</span>));</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">funcOne</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">	myPromise.then(<span class="function"><span class="params">res</span> =&gt;</span> res).then(<span class="function"><span class="params">res</span> =&gt;</span> <span class="built_in">console</span>.log(res));</span><br><span class="line">	<span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> <span class="built_in">console</span>.log(<span class="string">&quot;Timeout!&quot;</span>, <span class="number">0</span>));</span><br><span class="line">	<span class="built_in">console</span>.log(<span class="string">&quot;Last line!&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">funcTwo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">	<span class="keyword">const</span> res = <span class="keyword">await</span> myPromise;</span><br><span class="line">	<span class="built_in">console</span>.log(<span class="keyword">await</span> res);</span><br><span class="line">	<span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> <span class="built_in">console</span>.log(<span class="string">&quot;Timeout!&quot;</span>, <span class="number">0</span>));</span><br><span class="line">	<span class="built_in">console</span>.log(<span class="string">&quot;Last line!&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">funcOne();</span><br><span class="line">funcTwo();</span><br></pre></td></tr></table></figure>
+<ul>
+<li>A: <code>Promise! Last line! Promise! Last line! Last line! Promise!</code></li>
+<li>B: <code>Last line! Timeout! Promise! Last line! Timeout! Promise!</code></li>
+<li>C: <code>Promise! Last line! Last line! Promise! Timeout! Timeout!</code></li>
+<li>D: <code>Last line! Promise! Promise! Last line! Timeout! Timeout!</code></li>
+</ul>
+<details><summary><b>答案</b></summary>
+<p>
+
+<h4 id="答案-D-5"><a href="#答案-D-5" class="headerlink" title="答案: D"></a>答案: D</h4><p>首先，我们调用 <code>funcOne</code>。在函数 <code>funcOne</code> 的第一行，我们调用<code>myPromise</code> promise <em>异步操作_。当JS引擎在忙于执行 promise，它继续执行函数 <code>funcOne</code>。下一行 _异步操作</em> <code>setTimeout</code>，其回调函数被 Web API 调用。 (详情请参考我关于event loop的文章.)</p>
+<p>promise 和 timeout 都是异步操作，函数继续执行当JS引擎忙于执行promise 和 处理 <code>setTimeout</code> 的回调。相当于 <code>Last line!</code> 首先被输出， 因为它不是异步操作。执行完 <code>funcOne</code> 的最后一行，promise 状态转变为 resolved，<code>Promise!</code> 被打印。然而，因为我们调用了 <code>funcTwo()</code>, 调用栈不为空，<code>setTimeout</code> 的回调仍不能入栈。</p>
+<p>我们现在处于 <code>funcTwo</code>，先 <em>awaiting</em> myPromise。通过 <code>await</code> 关键字， 我们暂停了函数的执行直到 promise 状态变为 resolved (或 rejected)。然后，我们输出 <code>res</code> 的 awaited 值（因为 promise 本身返回一个 promise）。 接着输出 <code>Promise!</code>。</p>
+<p>下一行就是 <em>异步操作</em> <code>setTimeout</code>，其回调函数被 Web API 调用。</p>
+<p>我们执行到函数 <code>funcTwo</code> 的最后一行，输出 <code>Last line!</code>。现在，因为 <code>funcTwo</code> 出栈，调用栈为空。在事件队列中等待的回调函数（<code>() =&gt; console.log(&quot;Timeout!&quot;)</code> from <code>funcOne</code>, and <code>() =&gt; console.log(&quot;Timeout!&quot;)</code> from <code>funcTwo</code>）以此入栈。第一个回调输出 <code>Timeout!</code>，并出栈。然后，第二个回调输出 <code>Timeout!</code>，并出栈。得到结果 <code>Last line! Promise! Promise! Last line! Timeout! Timeout!</code></p>
+</p>
+</details>
+
+<hr>
+<h6 id="134-我们怎样才能在-index-js-中调用-sum-js-中的-sum？"><a href="#134-我们怎样才能在-index-js-中调用-sum-js-中的-sum？" class="headerlink" title="134. 我们怎样才能在 index.js 中调用 sum.js? 中的 sum？"></a>134. 我们怎样才能在 <code>index.js</code> 中调用 <code>sum.js?</code> 中的 <code>sum</code>？</h6><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// sum.js</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="function"><span class="keyword">function</span> <span class="title">sum</span>(<span class="params">x</span>) </span>&#123;</span><br><span class="line">	<span class="keyword">return</span> x + x;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// index.js</span></span><br><span class="line"><span class="keyword">import</span> * <span class="keyword">as</span> sum <span class="keyword">from</span> <span class="string">&quot;./sum&quot;</span>;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>A: <code>sum(4)</code></li>
+<li>B: <code>sum.sum(4)</code></li>
+<li>C: <code>sum.default(4)</code></li>
+<li>D: 默认导出不用 <code>*</code> 来导入，只能具名导出</li>
+</ul>
+<details><summary><b>答案</b></summary>
+<p>
+
+<h4 id="答案-C-8"><a href="#答案-C-8" class="headerlink" title="答案: C"></a>答案: C</h4><p>使用符号 <code>*</code>，我们引入文件中的所有值，包括默认和具名。如果我们有以下文件：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// info.js</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> name = <span class="string">&quot;Lydia&quot;</span>;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> age = <span class="number">21</span>;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="string">&quot;I love JavaScript&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// index.js</span></span><br><span class="line"><span class="keyword">import</span> * <span class="keyword">as</span> info <span class="keyword">from</span> <span class="string">&quot;./info&quot;</span>;</span><br><span class="line"><span class="built_in">console</span>.log(info);</span><br></pre></td></tr></table></figure>
+<p>将会输出以下内容：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="keyword">default</span>: <span class="string">&quot;I love JavaScript&quot;</span>,</span><br><span class="line">  name: <span class="string">&quot;Lydia&quot;</span>,</span><br><span class="line">  age: <span class="number">21</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>以 <code>sum</code> 为例，相当于以下形式引入值 <code>sum</code>：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">&#123; <span class="attr">default</span>: <span class="function"><span class="keyword">function</span> <span class="title">sum</span>(<span class="params">x</span>) </span>&#123; <span class="keyword">return</span> x + x &#125; &#125;</span><br></pre></td></tr></table></figure>
+<p>我们可以通过调用 <code>sum.default</code> 来调用该函数</p>
+</p>
+</details>
+
+<hr>
+<h6 id="135-输出什么？"><a href="#135-输出什么？" class="headerlink" title="135. 输出什么？"></a>135. 输出什么？</h6><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> handler = &#123;</span><br><span class="line">	set: <span class="function">() =&gt;</span> <span class="built_in">console</span>.log(<span class="string">&quot;Added a new property!&quot;</span>),</span><br><span class="line">	get: <span class="function">() =&gt;</span> <span class="built_in">console</span>.log(<span class="string">&quot;Accessed a property!&quot;</span>)</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> person = <span class="keyword">new</span> <span class="built_in">Proxy</span>(&#123;&#125;, handler);</span><br><span class="line"></span><br><span class="line">person.name = <span class="string">&quot;Lydia&quot;</span>;</span><br><span class="line">person.name;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>A: <code>Added a new property!</code></li>
+<li>B: <code>Accessed a property!</code></li>
+<li>C: <code>Added a new property!</code> <code>Accessed a property!</code></li>
+<li>D: 没有任何输出</li>
+</ul>
+<details><summary><b>答案</b></summary>
+<p>
+
+<h4 id="答案-C-9"><a href="#答案-C-9" class="headerlink" title="答案: C"></a>答案: C</h4><p>使用 Proxy 对象，我们可以给一个对象添加自定义行为。在这个 case，我们传递一个包含以下属性的对象 <code>handler</code> : <code>set</code> and <code>get</code>。每当我门 <em>设置</em> 属性值时 <code>set</code> 被调用，每当我们 <em>获取</em> 时 <code>get</code> 被调用。</p>
+<p>第一个参数是一个空对象 <code>&#123;&#125;</code>，作为 <code>person</code> 的值。对于这个对象，自定义行为被定义在对象 <code>handler</code>。如果我们向对象 <code>person</code> 添加属性，<code>set</code> 将被调用。如果我们获取 <code>person</code> 的属性, <code>get</code> 将被调用。</p>
+<p>首先，我们向 proxy 对象(<code>person.name = &quot;Lydia&quot;</code>)添加一个属性 <code>name</code>。<code>set</code> 被调用并输出 <code>&quot;Added a new property!&quot;</code>。</p>
+<p>然后，我们获取 proxy 对象的一个属性，对象 handler 的属性 <code>get</code> 被调用。输出 <code>&quot;Accessed a property!&quot;</code>。</p>
+</p>
+</details>
+
+<hr>
+<h6 id="136-以下哪一项会对对象-person-有副作用？"><a href="#136-以下哪一项会对对象-person-有副作用？" class="headerlink" title="136. 以下哪一项会对对象 person 有副作用？"></a>136. 以下哪一项会对对象 <code>person</code> 有副作用？</h6><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> person = &#123; <span class="attr">name</span>: <span class="string">&quot;Lydia Hallie&quot;</span> &#125;;</span><br><span class="line"></span><br><span class="line"><span class="built_in">Object</span>.seal(person);</span><br></pre></td></tr></table></figure>
+<ul>
+<li>A: <code>person.name = &quot;Evan Bacon&quot;</code></li>
+<li>B: <code>person.age = 21</code></li>
+<li>C: <code>delete person.name</code></li>
+<li>D: <code>Object.assign(person, &#123; age: 21 &#125;)</code></li>
+</ul>
+<details><summary><b>答案</b></summary>
+<p>
+
+<h4 id="答案-A-3"><a href="#答案-A-3" class="headerlink" title="答案: A"></a>答案: A</h4><p>使用 <code>Object.seal</code> 我们可以防止新属性 <em>被添加_，或者存在属性 _被移除</em>.</p>
+<p>然而，你仍然可以对存在属性进行更改。</p>
+</p>
+</details>
+
+<hr>
+<h6 id="137-以下哪一项会对对象-person-有副作用？"><a href="#137-以下哪一项会对对象-person-有副作用？" class="headerlink" title="137. 以下哪一项会对对象 person 有副作用？"></a>137. 以下哪一项会对对象 <code>person</code> 有副作用？</h6><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> person = &#123;</span><br><span class="line">	name: <span class="string">&quot;Lydia Hallie&quot;</span>,</span><br><span class="line">	address: &#123;</span><br><span class="line">		street: <span class="string">&quot;100 Main St&quot;</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="built_in">Object</span>.freeze(person);</span><br></pre></td></tr></table></figure>
+<ul>
+<li>A: <code>person.name = &quot;Evan Bacon&quot;</code></li>
+<li>B: <code>delete person.address</code></li>
+<li>C: <code>person.address.street = &quot;101 Main St&quot;</code></li>
+<li>D: <code>person.pet = &#123; name: &quot;Mara&quot; &#125;</code></li>
+</ul>
+<details><summary><b>答案</b></summary>
+<p>
+
+<h4 id="答案-C-10"><a href="#答案-C-10" class="headerlink" title="答案: C"></a>答案: C</h4><p>使用方法 <code>Object.freeze</code> 对一个对象进行 _冻结_。不能对属性进行添加，修改，删除。</p>
+<p>然而，它仅 对对象进行 <em>浅</em> 冻结，意味着只有 对象中的 <em>直接</em> 属性被冻结。如果属性是另一个 object，像案例中的 <code>address</code>，<code>address</code> 中的属性没有被冻结，仍然可以被修改。</p>
+</p>
+</details>
+
+<hr>
+<h6 id="138-输出什么？"><a href="#138-输出什么？" class="headerlink" title="138. 输出什么？"></a>138. 输出什么？</h6><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> add = <span class="function"><span class="params">x</span> =&gt;</span> x + x;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">myFunc</span>(<span class="params">num = <span class="number">2</span>, value = add(num)</span>) </span>&#123;</span><br><span class="line">	<span class="built_in">console</span>.log(num, value);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">myFunc();</span><br><span class="line">myFunc(<span class="number">3</span>);</span><br></pre></td></tr></table></figure>
+<ul>
+<li>A: <code>2</code> <code>4</code> and <code>3</code> <code>6</code></li>
+<li>B: <code>2</code> <code>NaN</code> and <code>3</code> <code>NaN</code></li>
+<li>C: <code>2</code> <code>Error</code> and <code>3</code> <code>6</code></li>
+<li>D: <code>2</code> <code>4</code> and <code>3</code> <code>Error</code></li>
+</ul>
+<details><summary><b>答案</b></summary>
+<p>
+
+<h4 id="答案-A-4"><a href="#答案-A-4" class="headerlink" title="答案: A"></a>答案: A</h4><p>首先我们不传递任何参数调用 <code>myFunc()</code>。因为我们没有传递参数，<code>num</code> 和 <code>value</code> 获取它们各自的默认值：num 为 <code>2</code>, 而 <code>value</code> 为函数 <code>add</code> 的返回值。对于函数 <code>add</code>，我们传递值为2的 <code>num</code> 作为参数。函数 <code>add</code> 返回 <code>4</code> 作为 <code>value</code> 的值。</p>
+<p>然后，我们调用 <code>myFunc(3)</code> 并传递值 <code>3</code> 参数 <code>num</code> 的值。我们没有给 <code>value</code> 传递值。因为我们没有给参数 <code>value</code> 传递值，它获取默认值：函数 <code>add</code> 的返回值。对于函数 <code>add</code>，我们传递值为3的 <code>num</code>给它。函数 <code>add</code> 返回 <code>6</code> 作为 <code>value</code> 的值。</p>
+</p>
+</details>
+
+<hr>
+<h6 id="139-输出什么？"><a href="#139-输出什么？" class="headerlink" title="139. 输出什么？"></a>139. 输出什么？</h6><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Counter</span> </span>&#123;</span><br><span class="line">  #number = <span class="number">10</span></span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="title">increment</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="built_in">this</span>.#number++</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="title">getNum</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">this</span>.#number</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> counter = <span class="keyword">new</span> Counter()</span><br><span class="line">counter.increment()</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(counter.#number)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>A: <code>10</code></li>
+<li>B: <code>11</code></li>
+<li>C: <code>undefined</code></li>
+<li>D: <code>SyntaxError</code></li>
+</ul>
+<details><summary><b>答案</b></summary>
+<p>
+
+<h4 id="答案-D-6"><a href="#答案-D-6" class="headerlink" title="答案: D"></a>答案: D</h4><p>在 ES2020 中，通过 <code>#</code> 我们可以给 class 添加私有变量。在 class 的外部我们无法获取该值。当我们尝试输出 <code>counter.#number</code>，语法错误被抛出：我们无法在 class <code>Counter</code> 外部获取它!</p>
+</p>
+</details>
+
+<hr>
+<h6 id="140-选择哪一个？"><a href="#140-选择哪一个？" class="headerlink" title="140. 选择哪一个？"></a>140. 选择哪一个？</h6><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> teams = [</span><br><span class="line">	&#123; <span class="attr">name</span>: <span class="string">&quot;Team 1&quot;</span>, <span class="attr">members</span>: [<span class="string">&quot;Paul&quot;</span>, <span class="string">&quot;Lisa&quot;</span>] &#125;,</span><br><span class="line">	&#123; <span class="attr">name</span>: <span class="string">&quot;Team 2&quot;</span>, <span class="attr">members</span>: [<span class="string">&quot;Laura&quot;</span>, <span class="string">&quot;Tim&quot;</span>] &#125;</span><br><span class="line">];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span>* <span class="title">getMembers</span>(<span class="params">members</span>) </span>&#123;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; members.length; i++) &#123;</span><br><span class="line">		<span class="keyword">yield</span> members[i];</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span>* <span class="title">getTeams</span>(<span class="params">teams</span>) </span>&#123;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; teams.length; i++) &#123;</span><br><span class="line">		<span class="comment">// ✨ SOMETHING IS MISSING HERE ✨</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> obj = getTeams(teams);</span><br><span class="line">obj.next(); <span class="comment">// &#123; value: &quot;Paul&quot;, done: false &#125;</span></span><br><span class="line">obj.next(); <span class="comment">// &#123; value: &quot;Lisa&quot;, done: false &#125;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>A: <code>yield getMembers(teams[i].members)</code></li>
+<li>B: <code>yield* getMembers(teams[i].members)</code></li>
+<li>C: <code>return getMembers(teams[i].members)</code></li>
+<li>D: <code>return yield getMembers(teams[i].members)</code></li>
+</ul>
+<details><summary><b>答案</b></summary>
+<p>
+
+<h4 id="答案-B-7"><a href="#答案-B-7" class="headerlink" title="答案: B"></a>答案: B</h4><p>为了遍历 <code>teams</code> 数组中对象的属性 <code>members</code> 中的每一项，我们需要将 <code>teams[i].members</code> 传递给 Generator 函数 <code>getMembers</code>。Generator 函数返回一个 generator 对象。为了遍历这个 generator 对象中的每一项，我们需要使用 <code>yield*</code>.</p>
+<p>如果我们没有写 <code>yield</code>，<code>return yield</code> 或者 <code>return</code>，整个 Generator 函数不会第一时间 return 当我们调用 <code>next</code> 方法.</p>
+</p>
+</details>
+
+<hr>
+<h6 id="141-输出什么？"><a href="#141-输出什么？" class="headerlink" title="141. 输出什么？"></a>141. 输出什么？</h6><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> person = &#123;</span><br><span class="line">	name: <span class="string">&quot;Lydia Hallie&quot;</span>,</span><br><span class="line">	hobbies: [<span class="string">&quot;coding&quot;</span>]</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">addHobby</span>(<span class="params">hobby, hobbies = person.hobbies</span>) </span>&#123;</span><br><span class="line">	hobbies.push(hobby);</span><br><span class="line">	<span class="keyword">return</span> hobbies;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">addHobby(<span class="string">&quot;running&quot;</span>, []);</span><br><span class="line">addHobby(<span class="string">&quot;dancing&quot;</span>);</span><br><span class="line">addHobby(<span class="string">&quot;baking&quot;</span>, person.hobbies);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(person.hobbies);</span><br></pre></td></tr></table></figure>
+<ul>
+<li>A: <code>[&quot;coding&quot;]</code></li>
+<li>B: <code>[&quot;coding&quot;, &quot;dancing&quot;]</code></li>
+<li>C: <code>[&quot;coding&quot;, &quot;dancing&quot;, &quot;baking&quot;]</code></li>
+<li>D: <code>[&quot;coding&quot;, &quot;running&quot;, &quot;dancing&quot;, &quot;baking&quot;]</code></li>
+</ul>
+<details><summary><b>答案</b></summary>
+<p>
+
+<h4 id="答案-C-11"><a href="#答案-C-11" class="headerlink" title="答案: C"></a>答案: C</h4><p>函数 <code>addHobby</code> 接受两个参数，<code>hobby</code> 和有着对象 <code>person</code> 中数组 <code>hobbies</code> 默认值的 <code>hobbies</code>。</p>
+<p>首相，我们调用函数 <code>addHobby</code>，并给 <code>hobby</code> 传递 <code>&quot;running&quot;</code> 以及给 <code>hobbies</code> 传递一个空数组。因为我们给 <code>hobbies</code> 传递了空数组，<code>&quot;running&quot;</code> 被添加到这个空数组。</p>
+<p>然后，我们调用函数 <code>addHobby</code>，并给 <code>hobby</code> 传递 <code>&quot;dancing&quot;</code>。我们不向 <code>hobbies</code> 传递值，因此它获取其默认值 —— 对象 <code>person</code> 的 属性 <code>hobbies</code>。我们向数组 <code>person.hobbies</code> push <code>dancing</code>。</p>
+<p>最后，我们调用函数 <code>addHobby</code>，并向 <code>hobby</code> 传递 值 <code>&quot;bdaking&quot;</code>，并且向 <code>hobbies</code> 传递 <code>person.hobbies</code>。我们向数组 <code>person.hobbies</code> push <code>dancing</code>。</p>
+<p>pushing <code>dancing</code> 和 <code>baking</code> 之后，<code>person.hobbies</code> 的值为 <code>[&quot;coding&quot;, &quot;dancing&quot;, &quot;baking&quot;]</code></p>
+</p>
+</details>
+
+<hr>
+<h6 id="142-输出什么？"><a href="#142-输出什么？" class="headerlink" title="142. 输出什么？"></a>142. 输出什么？</h6><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Bird</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="title">constructor</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">		<span class="built_in">console</span>.log(<span class="string">&quot;I&#x27;m a bird. 🦢&quot;</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Flamingo</span> <span class="keyword">extends</span> <span class="title">Bird</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="title">constructor</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">		<span class="built_in">console</span>.log(<span class="string">&quot;I&#x27;m pink. 🌸&quot;</span>);</span><br><span class="line">		<span class="built_in">super</span>();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> pet = <span class="keyword">new</span> Flamingo();</span><br></pre></td></tr></table></figure>
+<ul>
+<li>A: <code>I&#39;m pink. 🌸</code></li>
+<li>B: <code>I&#39;m pink. 🌸</code> <code>I&#39;m a bird. 🦢</code></li>
+<li>C: <code>I&#39;m a bird. 🦢</code> <code>I&#39;m pink. 🌸</code></li>
+<li>D: Nothing, we didn’t call any method</li>
+</ul>
+<details><summary><b>答案</b></summary>
+<p>
+
+<h4 id="答案-B-8"><a href="#答案-B-8" class="headerlink" title="答案: B"></a>答案: B</h4><p>我们创建了类 <code>Flamingo</code> 的实例 <code>pet</code>。当我们实例化这个实例，<code>Flamingo</code> 中的 <code>constructor</code> 被调用。首相，输出 <code>&quot;I&#39;m pink. 🌸&quot;</code>, 之后我们调用<code>super()</code>。<code>super()</code> 调用父类的构造函数，<code>Bird</code>。<code>Bird</code> 的构造函数被调用，并输出 <code>&quot;I&#39;m a bird. 🦢&quot;</code>。</p>
+</p>
+</details>
+
+<hr>
+<h6 id="143-哪一个选项会导致报错？"><a href="#143-哪一个选项会导致报错？" class="headerlink" title="143. 哪一个选项会导致报错？"></a>143. 哪一个选项会导致报错？</h6><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> emojis = [<span class="string">&quot;🎄&quot;</span>, <span class="string">&quot;🎅🏼&quot;</span>, <span class="string">&quot;🎁&quot;</span>, <span class="string">&quot;⭐&quot;</span>];</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 1 */</span> emojis.push(<span class="string">&quot;🦌&quot;</span>);</span><br><span class="line"><span class="comment">/* 2 */</span> emojis.splice(<span class="number">0</span>, <span class="number">2</span>);</span><br><span class="line"><span class="comment">/* 3 */</span> emojis = [...emojis, <span class="string">&quot;🥂&quot;</span>];</span><br><span class="line"><span class="comment">/* 4 */</span> emojis.length = <span class="number">0</span>;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>A: 1</li>
+<li>B: 1 and 2</li>
+<li>C: 3 and 4</li>
+<li>D: 3</li>
+</ul>
+<details><summary><b>答案</b></summary>
+<p>
+
+<h4 id="答案-D-7"><a href="#答案-D-7" class="headerlink" title="答案: D"></a>答案: D</h4><p><code>const</code> 关键字意味着我们不能 <em>重定义</em> 变量中的值，它 _仅可读_。而然，值本身不可修改。数组 <code>emojis</code> 中的值可被修改，如 push 新的值, 拼接，又或者将数组的长度设置为0。</p>
+</p>
+</details>
+
+<hr>
+<h6 id="144-我们需要向对象-person-添加什么，以致执行-person-时获得形如-quot-Lydia-Hallie-quot-21-的输出？"><a href="#144-我们需要向对象-person-添加什么，以致执行-person-时获得形如-quot-Lydia-Hallie-quot-21-的输出？" class="headerlink" title="144. 我们需要向对象 person 添加什么，以致执行 [...person] 时获得形如 [&quot;Lydia Hallie&quot;, 21] 的输出？"></a>144. 我们需要向对象 <code>person</code> 添加什么，以致执行 <code>[...person]</code> 时获得形如 <code>[&quot;Lydia Hallie&quot;, 21]</code> 的输出？</h6><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> person = &#123;</span><br><span class="line">  name: <span class="string">&quot;Lydia Hallie&quot;</span>,</span><br><span class="line">  age: <span class="number">21</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">[...person] <span class="comment">// [&quot;Lydia Hallie&quot;, 21]</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>A: 不需要，对象默认就是可迭代的</li>
+<li>B: <code>*[Symbol.iterator]() &#123; for (let x in this) yield* this[x] &#125;</code></li>
+<li>C: <code>*[Symbol.iterator]() &#123; for (let x in this) yield* Object.values(this) &#125;</code></li>
+<li>D: <code>*[Symbol.iterator]() &#123; for (let x in this) yield this &#125;</code></li>
+</ul>
+<details><summary><b>答案</b></summary>
+<p>
+
+<h4 id="答案-C-12"><a href="#答案-C-12" class="headerlink" title="答案: C"></a>答案: C</h4><p>对象默认并不是可迭代的。如果迭代规则被定义，则一个对象是可迭代的（An iterable is an iterable if the iterator protocol is present）。我们可以通过添加迭代器symbol <code>[Symbol.iterator]</code> 来定义迭代规则，其返回一个 generator 对象，比如说构建一个 generator 函数 <code>*[Symbol.iterator]() &#123;&#125;</code>。如果我们想要返回数组 <code>[&quot;Lydia Hallie&quot;, 21]</code>: <code>yield* Object.values(this)</code>，这个 generator 函数一定要 yield 对象 <code>person</code> 的<code>Object.values</code>。</p>
+</p>
+</details>
+
+<hr>
+<h6 id="145-输出什么？"><a href="#145-输出什么？" class="headerlink" title="145. 输出什么？"></a>145. 输出什么？</h6><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> count = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">const</span> nums = [<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>];</span><br><span class="line"></span><br><span class="line">nums.forEach(<span class="function"><span class="params">num</span> =&gt;</span> &#123;</span><br><span class="line">	<span class="keyword">if</span> (num) count += <span class="number">1</span></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(count)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>A: 1</li>
+<li>B: 2</li>
+<li>C: 3</li>
+<li>D: 4<details><summary><b>答案</b></summary>
+<p>
+
+</li>
+</ul>
+<h4 id="答案-C-13"><a href="#答案-C-13" class="headerlink" title="答案: C"></a>答案: C</h4><p>在 <code>forEach</code> 循环内部的 <code>if</code> 会判断 <code>num</code> 的值是truthy或者是falsy。因为 <code>nums</code> 数组的第一个数字是 <code>0</code>，一个falsy值， <code>if</code> 语句代码块不会被执行。<code>count</code> 仅仅在 <code>nums</code> 数组的其他3个数字 <code>1</code>，<code>2</code>，<code>3</code> 时加1。因为 <code>count</code> 执行了3次加 <code>1</code> 运算，所以 <code>count</code> 的值为 <code>3</code>。</p>
+</p>
+</details>
+
+<hr>
+<h6 id="146-输出是什么？"><a href="#146-输出是什么？" class="headerlink" title="146. 输出是什么？"></a>146. 输出是什么？</h6><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getFruit</span>(<span class="params">fruits</span>) </span>&#123;</span><br><span class="line">	<span class="built_in">console</span>.log(fruits?.[<span class="number">1</span>]?.[<span class="number">1</span>])</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">getFruit([[<span class="string">&#x27;🍊&#x27;</span>, <span class="string">&#x27;🍌&#x27;</span>], [<span class="string">&#x27;🍍&#x27;</span>]])</span><br><span class="line">getFruit()</span><br><span class="line">getFruit([[<span class="string">&#x27;🍍&#x27;</span>], [<span class="string">&#x27;🍊&#x27;</span>, <span class="string">&#x27;🍌&#x27;</span>]])</span><br></pre></td></tr></table></figure>
+<ul>
+<li>A: <code>null</code>, <code>undefined</code>, 🍌</li>
+<li>B: <code>[]</code>, <code>null</code>, 🍌</li>
+<li>C: <code>[]</code>, <code>[]</code>, 🍌</li>
+<li>D: <code>undefined</code>, <code>undefined</code>, 🍌</li>
+</ul>
+<details><summary><b>答案</b></summary>
+<p>
+
+<h4 id="答案-D-8"><a href="#答案-D-8" class="headerlink" title="答案: D"></a>答案: D</h4><p><code>?</code> 允许我们去选择性地访问对象内部更深层的嵌套属性。 我们尝试打印 <code>fruits</code> 数组索引值为 <code>1</code> 的子数组内部的索引值为 <code>1</code> 的元素。 如果在 <code>fruits</code> 数组索引值 为 <code>1</code> 的位置不存在元素，会直接返回 <code>undefined</code>。 如果 <code>fruits</code> 数组在索引值为 <code>1</code> 的位置存在元素，但是子数组在索引值为 <code>1</code> 的位置不存在元素，也会返回 <code>undefined</code>。</p>
+<p>首先，我们尝试打印 <code>[[&#39;🍊&#39;, &#39;🍌&#39;], [&#39;🍍&#39;]]</code> 的子数组 <code>[&#39;🍍&#39;]</code> 的第2个元素。这个子数组只包含一个元素，也就意味着在索引值为 <code>1</code> 的位置不存在元素，所以返回的是 <code>undefined</code> 。</p>
+<p>其次，我们在没有传入任何参数调用了 <code>getFruits</code> 函数，也就意味着形参 <code>fruits</code> 的默认值为<code>undefined</code>。因为我们选择性地链接了 <code>fruits</code> 在索引值为 <code>1</code> 的元素，因为在索引值为 <code>1</code> 的位置不存在元素，因此返回的是 <code>undefined</code> 。</p>
+<p>最后，我们尝试打印 <code>[&#39;🍍&#39;], [&#39;🍊&#39;, &#39;🍌&#39;]</code> 的子数组 <code>[&#39;🍊&#39;, &#39;🍌&#39;]</code> 的第2个元素。子数组索引值为 <code>1</code>的位置为 <code>🍌</code> ，因此它被打印出了。</p>
+</p>
+</details>
+
+<hr>
+<h6 id="147-输出什么？"><a href="#147-输出什么？" class="headerlink" title="147. 输出什么？"></a>147. 输出什么？</h6><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Calc</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="title">constructor</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">		<span class="built_in">this</span>.count = <span class="number">0</span> </span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="title">increase</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">		<span class="built_in">this</span>.count ++</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> calc = <span class="keyword">new</span> Calc()</span><br><span class="line"><span class="keyword">new</span> Calc().increase()</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(calc.count)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>A: <code>0</code></li>
+<li>B: <code>1</code></li>
+<li>C: <code>undefined</code></li>
+<li>D: <code>ReferenceError</code></li>
+</ul>
+<details><summary><b>答案</b></summary>
+<p>
+
+<h4 id="答案-A-5"><a href="#答案-A-5" class="headerlink" title="答案: A"></a>答案: A</h4><p>我们设置 <code>calc</code> 变量为 <code>Calc</code> 类的一个新实例。 然后，我们初始化一个 <code>Calc</code> 的新实例，而且调用了这个实例的 <code>increase</code> 方法。因为count属性是在 <code>Calc</code> class的constructor内部的，所以count属性不会在 <code>Calc</code> 的原型链上共享出去。这就意味着calc实例的count值不会被更新，count仍然是 <code>0</code>。</p>
+</p>
+</details>
+
+<hr>
+<h6 id="148-输出什么"><a href="#148-输出什么" class="headerlink" title="148. 输出什么?"></a>148. 输出什么?</h6><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> user = &#123;</span><br><span class="line">	email: <span class="string">&quot;e@mail.com&quot;</span>,</span><br><span class="line">	password: <span class="string">&quot;12345&quot;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> updateUser = <span class="function">(<span class="params">&#123; email, password &#125;</span>) =&gt;</span> &#123;</span><br><span class="line">	<span class="keyword">if</span> (email) &#123;</span><br><span class="line">		<span class="built_in">Object</span>.assign(user, &#123; email &#125;)</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> (password) &#123;</span><br><span class="line">		user.password = password</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> user</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> updatedUser = updateUser(&#123; <span class="attr">email</span>: <span class="string">&quot;new@email.com&quot;</span> &#125;)</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(updatedUser === user)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>A: <code>false</code></li>
+<li>B: <code>true</code></li>
+<li>C: <code>TypeError</code></li>
+<li>D: <code>ReferenceError</code></li>
+</ul>
+<details><summary><b>答案</b></summary>
+<p>
+
+<h4 id="答案-B-9"><a href="#答案-B-9" class="headerlink" title="答案: B"></a>答案: B</h4><p> <code>updateUser</code> 函数更新user的 <code>email</code> 和 <code>password</code> 属性的值， 如果它们的值传入函数， 函数返回的就是 <code>user</code> 对象。 <code>updateUser</code> 函数的返回值是 <code>user</code> 对象，意味着updatedUser的值与 <code>user</code> 指向的是同一个 <code>user</code> 对象。<code>updatedUser === user</code> 为 <code>true</code>.</p>
+</p>
+</details>
+
+<hr>
+<h6 id="149-输出什么"><a href="#149-输出什么" class="headerlink" title="149. 输出什么?"></a>149. 输出什么?</h6><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> fruit = [<span class="string">&#x27;🍌&#x27;</span>, <span class="string">&#x27;🍊&#x27;</span>, <span class="string">&#x27;🍎&#x27;</span>]</span><br><span class="line"></span><br><span class="line">fruit.slice(<span class="number">0</span>, <span class="number">1</span>)</span><br><span class="line">fruit.splice(<span class="number">0</span>, <span class="number">1</span>)</span><br><span class="line">fruit.unshift(<span class="string">&#x27;🍇&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(fruit)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>A: <code>[&#39;🍌&#39;, &#39;🍊&#39;, &#39;🍎&#39;]</code></li>
+<li>B: <code>[&#39;🍊&#39;, &#39;🍎&#39;]</code></li>
+<li>C: <code>[&#39;🍇&#39;, &#39;🍊&#39;, &#39;🍎&#39;]</code></li>
+<li>D: <code>[&#39;🍇&#39;, &#39;🍌&#39;, &#39;🍊&#39;, &#39;🍎&#39;]</code></li>
+</ul>
+<details><summary><b>答案</b></summary>
+<p>
+
+<h4 id="答案-C-14"><a href="#答案-C-14" class="headerlink" title="答案: C"></a>答案: C</h4><p>首先，我们在fruit数组上调用 <code>slice</code> 方法。 slice方法不会修改原始数组，但是会返回从数组切片下来的值：香蕉emoji。<br>其次，我们在fruit数组上调用 <code>splice</code> 方法。 splice方法会修改原始数组，也就意味着fruit数组此时为 <code>[&#39;🍊&#39;, &#39;🍎&#39;]</code>。<br>最后，我们在fruit数组上调用 <code>unshift</code> 方法，通过添加一个值的方式改变了原始数组，添加的是’🍇’，它成为了数组的第一个元素。现在fruit数组的组成为 <code>[&#39;🍇&#39;, &#39;🍊&#39;, &#39;🍎&#39;]</code>。</p>
+</p>
+</details>
+
+<hr>
+<h6 id="150-输出什么"><a href="#150-输出什么" class="headerlink" title="150. 输出什么?"></a>150. 输出什么?</h6><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> animals = &#123;&#125;;</span><br><span class="line"><span class="keyword">let</span> dog = &#123; <span class="attr">emoji</span>: <span class="string">&#x27;🐶&#x27;</span> &#125;</span><br><span class="line"><span class="keyword">let</span> cat = &#123; <span class="attr">emoji</span>: <span class="string">&#x27;🐈&#x27;</span> &#125;</span><br><span class="line"></span><br><span class="line">animals[dog] = &#123; ...dog, <span class="attr">name</span>: <span class="string">&quot;Mara&quot;</span> &#125;</span><br><span class="line">animals[cat] = &#123; ...cat, <span class="attr">name</span>: <span class="string">&quot;Sara&quot;</span> &#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(animals[dog])</span><br></pre></td></tr></table></figure>
+<ul>
+<li>A: <code>&#123; emoji: &quot;🐶&quot;, name: &quot;Mara&quot; &#125;</code></li>
+<li>B: <code>&#123; emoji: &quot;🐈&quot;, name: &quot;Sara&quot; &#125;</code></li>
+<li>C: <code>undefined</code></li>
+<li>D: <code>ReferenceError</code></li>
+</ul>
+<details><summary><b>答案</b></summary>
+<p>
+
+<h4 id="答案-B-10"><a href="#答案-B-10" class="headerlink" title="答案: B"></a>答案: B</h4><p>对象的键会被转换为字符串。</p>
+<p>因为  <code>dog</code> 的值是一个对象，   <code>animals[dog]</code> 实际上意味着我们创建了一个叫做 <code>&quot;object Object&quot;</code> 的属性来代表新的对象。  <code>animals[&quot;object Object&quot;]</code> 现在等于 <code>&#123; emoji: &quot;🐶&quot;, name: &quot;Mara&quot;&#125;</code>。</p>
+<p><code>cat</code> 也是一个对象，<code>animals[cat]</code> 实际上意味着我们在用新的cat的属性覆盖  <code>animals[``&quot;``object Object``&quot;``]</code> 的值。</p>
+<p>打印  <code>animals[dog]</code>，实际上是<code>animals[&quot;object Object&quot;]</code>，这是因为转化<code>dog</code>对象为一个字符串结果 <code>&quot;object Object&quot;</code> ，所以返回 <code>&#123; emoji: &quot;🐈&quot;, name: &quot;Sara&quot; &#125;</code>。</p>
+</p>
+</details>
+
+<hr>
+<h6 id="151-输出什么"><a href="#151-输出什么" class="headerlink" title="151. 输出什么?"></a>151. 输出什么?</h6><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> user = &#123;</span><br><span class="line">	email: <span class="string">&quot;my@email.com&quot;</span>,</span><br><span class="line">	updateEmail: <span class="function"><span class="params">email</span> =&gt;</span> &#123;</span><br><span class="line">		<span class="built_in">this</span>.email = email</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">user.updateEmail(<span class="string">&quot;new@email.com&quot;</span>)</span><br><span class="line"><span class="built_in">console</span>.log(user.email)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>A: <code>my@email.com</code></li>
+<li>B: <code>new@email.com</code></li>
+<li>C: <code>undefined</code></li>
+<li>D: <code>ReferenceError</code></li>
+</ul>
+<details><summary><b>答案</b></summary>
+<p>
+
+<h4 id="答案-A-6"><a href="#答案-A-6" class="headerlink" title="答案: A"></a>答案: A</h4><p><code>updateEmail</code> 函数是一个箭头函数，它没有和 <code>user</code> 对象绑定。这就意味着 <code>this</code> 关键字不会引用到 <code>user</code> 对象，但是会引用到全局对象。 <code>user</code> 对象内部的 <code>email</code> 的值不会更新。当打印 <code>user.email</code> 的时候， 原始值 <code>my@email.com</code> 被返回。</p>
+</p>
+</details>
+
+<hr>
+<h6 id="152-输出什么"><a href="#152-输出什么" class="headerlink" title="152. 输出什么?"></a>152. 输出什么?</h6><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> promise1 = <span class="built_in">Promise</span>.resolve(<span class="string">&#x27;First&#x27;</span>)</span><br><span class="line"><span class="keyword">const</span> promise2 = <span class="built_in">Promise</span>.resolve(<span class="string">&#x27;Second&#x27;</span>)</span><br><span class="line"><span class="keyword">const</span> promise3 = <span class="built_in">Promise</span>.reject(<span class="string">&#x27;Third&#x27;</span>)</span><br><span class="line"><span class="keyword">const</span> promise4 = <span class="built_in">Promise</span>.resolve(<span class="string">&#x27;Fourth&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> runPromises = <span class="keyword">async</span> () =&gt; &#123;</span><br><span class="line">	<span class="keyword">const</span> res1 = <span class="keyword">await</span> <span class="built_in">Promise</span>.all([promise1, promise2])</span><br><span class="line">	<span class="keyword">const</span> res2  = <span class="keyword">await</span> <span class="built_in">Promise</span>.all([promise3, promise4])</span><br><span class="line">	<span class="keyword">return</span> [res1, res2]</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">runPromises()</span><br><span class="line">	.then(<span class="function"><span class="params">res</span> =&gt;</span> <span class="built_in">console</span>.log(res))</span><br><span class="line">	.catch(<span class="function"><span class="params">err</span> =&gt;</span> <span class="built_in">console</span>.log(err))</span><br></pre></td></tr></table></figure>
+<ul>
+<li>A: <code>[[&#39;First&#39;, &#39;Second&#39;], [&#39;Fourth&#39;]]</code></li>
+<li>B: <code>[[&#39;First&#39;, &#39;Second&#39;], [&#39;Third&#39;, &#39;Fourth&#39;]]</code></li>
+<li>C: <code>[[&#39;First&#39;, &#39;Second&#39;]]</code></li>
+<li>D: <code>&#39;Third&#39;</code></li>
+</ul>
+<details><summary><b>答案</b></summary>
+<p>
+
+<h4 id="答案-D-9"><a href="#答案-D-9" class="headerlink" title="答案: D"></a>答案: D</h4><p> <code>Promise.all</code> 方法可以并行式运行promise。如果其中一个promise失败了，<code>Promise.all</code> 方法会带上被reject的promise的值_rejects_。在这个例子中， <code>promise3</code> 带着 <code>&quot;Third&quot;</code> 值reject。我们在调用 <code>runPromises</code> 时在 <code>runPromises</code> 函数内部的 <code>catch</code> 方法去捕获任意error从而捕获到被reject的值。因为 <code>promise3</code> 带着 <code>&quot;Third&quot;</code> 被reject，所以只有 <code>&quot;Third&quot;</code> 打印。</p>
+</p>
+</details>
+
+<hr>
+<h6 id="153-哪个作为method的值可以打印-name-quot-Lydia-quot-age-22"><a href="#153-哪个作为method的值可以打印-name-quot-Lydia-quot-age-22" class="headerlink" title="153. 哪个作为method的值可以打印{ name: &quot;Lydia&quot;, age: 22 }?"></a>153. 哪个作为<code>method</code>的值可以打印<code>&#123; name: &quot;Lydia&quot;, age: 22 &#125;</code>?</h6><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> keys = [<span class="string">&quot;name&quot;</span>, <span class="string">&quot;age&quot;</span>]</span><br><span class="line"><span class="keyword">const</span> values = [<span class="string">&quot;Lydia&quot;</span>, <span class="number">22</span>]</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> method = <span class="comment">/* ?? */</span></span><br><span class="line"><span class="built_in">Object</span>[method](keys.map(<span class="function">(<span class="params">_, i</span>) =&gt;</span> &#123;</span><br><span class="line">	<span class="keyword">return</span> [keys[i], values[i]]</span><br><span class="line">&#125;)) <span class="comment">// &#123; name: &quot;Lydia&quot;, age: 22 &#125;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>A: <code>entries</code></li>
+<li>B: <code>values</code></li>
+<li>C: <code>fromEntries</code></li>
+<li>D: <code>forEach</code></li>
+</ul>
+<details><summary><b>答案</b></summary>
+<p>
+
+<h4 id="答案-C-15"><a href="#答案-C-15" class="headerlink" title="答案: C"></a>答案: C</h4><p> <code>fromEntries</code> 方法可以将二维数组转换为对象。在每个子数组的第一个元素是key，在每个子数组的第二个元素是value。在这个例子中，我们映射了 <code>keys</code> 数组，它返回了一个数组，数组的第一个元素为keys数组当前索引的值，第二个元素为values数组当前索引的值。</p>
+<p>这样就创建了一个包含正确keys和values的子数组的数组，因此结果为<code>&#123; name: &quot;Lydia&quot;, age: 22 &#125;</code>。</p>
+</p>
+</details>
+
+<hr>
+<h6 id="154-输出什么"><a href="#154-输出什么" class="headerlink" title="154. 输出什么?"></a>154. 输出什么?</h6><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> createMember = <span class="function">(<span class="params">&#123; email, address = &#123;&#125;&#125;</span>) =&gt;</span> &#123;</span><br><span class="line">	<span class="keyword">const</span> validEmail = <span class="regexp">/.+\@.+\..+/</span>.test(email)</span><br><span class="line">	<span class="keyword">if</span> (!validEmail) <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">&quot;Valid email pls&quot;</span>)</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> &#123;</span><br><span class="line">		email,</span><br><span class="line">		address: address ? address : <span class="literal">null</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> member = createMember(&#123; <span class="attr">email</span>: <span class="string">&quot;my@email.com&quot;</span> &#125;)</span><br><span class="line"><span class="built_in">console</span>.log(member)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>A: <code>&#123; email: &quot;my@email.com&quot;, address: null &#125;</code></li>
+<li>B: <code>&#123; email: &quot;my@email.com&quot; &#125;</code></li>
+<li>C: <code>&#123; email: &quot;my@email.com&quot;, address: &#123;&#125; &#125;</code></li>
+<li>D: <code>&#123; email: &quot;my@email.com&quot;, address: undefined &#125;</code></li>
+</ul>
+<details><summary><b>答案</b></summary>
+<p>
+
+<h4 id="答案-C-16"><a href="#答案-C-16" class="headerlink" title="答案: C"></a>答案: C</h4><p> <code>address</code> 的默认值是一个空对象 <code>&#123;&#125;</code>。当我们设置 <code>member</code> 变量为 <code>createMember</code> 函数返回的对象，我们没有为address参数传值，意味着address的值为默认的空对象 <code>&#123;&#125;</code>。一个空对象是一个truthy值，意味着 <code>address ? address : null</code> 条件会返回 <code>true</code>。address的值为空对象 <code>&#123;&#125;</code>。</p>
+</p>
+</details>
+
+<hr>
+<h6 id="155-输出什么"><a href="#155-输出什么" class="headerlink" title="155. 输出什么?"></a>155. 输出什么?</h6><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> randomValue = &#123; <span class="attr">name</span>: <span class="string">&quot;Lydia&quot;</span> &#125;</span><br><span class="line">randomValue = <span class="number">23</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (!<span class="keyword">typeof</span> randomValue === <span class="string">&quot;string&quot;</span>) &#123;</span><br><span class="line">	<span class="built_in">console</span>.log(<span class="string">&quot;It&#x27;s not a string!&quot;</span>)</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">	<span class="built_in">console</span>.log(<span class="string">&quot;Yay it&#x27;s a string!&quot;</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>A: <code>It&#39;s not a string!</code></li>
+<li>B: <code>Yay it&#39;s a string!</code></li>
+<li>C: <code>TypeError</code></li>
+<li>D: <code>undefined</code></li>
+</ul>
+<details><summary><b>答案</b></summary>
+<p>
+
+<h4 id="答案-B-11"><a href="#答案-B-11" class="headerlink" title="答案: B"></a>答案: B</h4><p> <code>if</code> 语句的条件判断 <code>!typeof randomValue</code> 的值是否等于 <code>&quot;string&quot;</code>。 <code>!</code> 操作符将这个值转化为一个布尔值。如果值是truthy的话，返回值会是 <code>false</code>，如果值是falsy，返回值会是 <code>true</code>。在这里， <code>typeof randomValue</code> 的返回值是一个truthy值 <code>&quot;number&quot;</code>，意味着 <code>!typeof randomValue</code> 的值是一个布尔值 <code>false</code>。</p>
+<p> <code>!typeof randomValue === &quot;string&quot;</code> 总是返回false，因为我们实际上是在执行 <code>false === &quot;string&quot;</code>。因为条件返回的是 <code>false</code>，所以 <code>else</code> 语句中的代码块会被运行，因此打印 <code>Yay it&#39;s a string!</code> 。</p>
+</p>
+</details></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">一百个Chocolate</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://yangchaoyi.vip/posts/20201129/">https://yangchaoyi.vip/posts/20201129/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://yangchaoyi.vip" target="_blank">超逸の博客</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E9%9D%A2%E8%AF%95/">面试</a><a class="post-meta__tags" href="/tags/JS/">JS</a></div><div class="post_share"><div class="social-share" data-image="https://cdn.jsdelivr.net/gh/chocolate1999/cdn/img/20201207195926.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/posts/20201128/"><img class="prev-cover" data-lazy-src="https://cdn.jsdelivr.net/gh/chocolate1999/cdn/img/20201204234916.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">「星辰大海」JS自测清单（二）</div></div></a></div><div class="next-post pull-right"><a href="/posts/20201127/"><img class="next-cover" data-lazy-src="https://cdn.jsdelivr.net/gh/chocolate1999/cdn/img/20201128000459.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">「星辰大海」JS自测清单（一）</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span> 相关推荐</span></div><div class="relatedPosts-list"><div><a href="/posts/2021520/" title="「星辰大海」Chocolate 同学 前端学习路线总结【建议收藏】"><img class="cover" data-lazy-src="https://cdn.jsdelivr.net/gh/chocolate1999/cdn/img/20201210205243.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-05-07</div><div class="title">「星辰大海」Chocolate 同学 前端学习路线总结【建议收藏】</div></div></a></div><div><a href="/posts/20211214/" title="「星辰大海」你可能需要知道的 promise 知识的总结（内附思维导图）"><img class="cover" data-lazy-src="https://cdn.jsdelivr.net/gh/chocolate1999/cdn/img/20201214213852.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-05-07</div><div class="title">「星辰大海」你可能需要知道的 promise 知识的总结（内附思维导图）</div></div></a></div><div><a href="/posts/20201202/" title="「星辰大海」写给女友的一系列 JS 数组操作"><img class="cover" data-lazy-src="https://cdn.jsdelivr.net/gh/chocolate1999/cdn/img/20201202000328.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-05-07</div><div class="title">「星辰大海」写给女友的一系列 JS 数组操作</div></div></a></div><div><a href="/posts/20201205/" title="「星辰大海」女友：消息队列 和 事件循环系统终于弄明白了！（内附思维导图）"><img class="cover" data-lazy-src="https://cdn.jsdelivr.net/gh/chocolate1999/cdn/img/20201205231444.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-05-07</div><div class="title">「星辰大海」女友：消息队列 和 事件循环系统终于弄明白了！（内附思维导图）</div></div></a></div><div><a href="/posts/20201128/" title="「星辰大海」JS自测清单（二）"><img class="cover" data-lazy-src="https://cdn.jsdelivr.net/gh/chocolate1999/cdn/img/20201204234916.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-05-07</div><div class="title">「星辰大海」JS自测清单（二）</div></div></a></div><div><a href="/posts/20201127/" title="「星辰大海」JS自测清单（一）"><img class="cover" data-lazy-src="https://cdn.jsdelivr.net/gh/chocolate1999/cdn/img/20201128000459.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-05-07</div><div class="title">「星辰大海」JS自测清单（一）</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-info-avatar is-center"><img class="avatar-img" data-lazy-src="/img/Chocolate.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-info__name">一百个Chocolate</div><div class="author-info__description">不是只会写业务代码的前端攻城狮！</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">62</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">标签</div><div class="length-num">30</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">分类</div><div class="length-num">8</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/Chocolate1999"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://chocolate.blog.csdn.net/" target="_blank" title=""><i class="iconfont icon-csdn"></i></a><a class="social-icon" href="https://juejin.im/user/5ed1c55be51d457889261840/posts" target="_blank" title=""><i class="iconfont icon-juejin"></i></a><a class="social-icon" href="https://github.com/Chocolate1999" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="https://space.bilibili.com/351534170" target="_blank" title=""><i class="iconfont icon-bilibili1"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>小狮子初心</span></div><div class="announcement_content">最近收到了很多小伙伴的关注，在此非常感谢各位的支持。<br/>Chocolate 开通了个人公众号，在这里分享我的大厂面试经历，租房攻略，计算机领域那些事儿。<br/>希望小伙伴们能够喜欢我的文章，这里是小狮子前端，保持狮子座的热情带给你学习的动力，愿我们成为最好的自己~<br/><img src="https://cdn.jsdelivr.net/gh/chocolate1999/cdn/img/20201202223856.jpg"> <br/>QQ交流群：666151691</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%98%9F%E8%BE%B0%E5%A4%A7%E6%B5%B7%E3%80%8DJS%E8%87%AA%E6%B5%8B%E6%B8%85%E5%8D%95%EF%BC%88%E4%B8%89%EF%BC%89"><span class="toc-number">1.</span> <span class="toc-text">星辰大海」JS自测清单（三）</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#110-%E8%BF%99%E4%B8%AA%E5%87%BD%E6%95%B0%E5%B9%B2%E4%BA%86%E4%BB%80%E4%B9%88"><span class="toc-number">1.0.0.0.1.</span> <span class="toc-text">110. 这个函数干了什么?</span></a></li></ol></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AD%94%E6%A1%88-A"><span class="toc-number">1.0.1.</span> <span class="toc-text">答案: A</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#111-%E8%BE%93%E5%87%BA%E4%BB%80%E4%B9%88"><span class="toc-number">1.0.1.0.1.</span> <span class="toc-text">111. 输出什么?</span></a></li></ol></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AD%94%E6%A1%88-D"><span class="toc-number">1.0.2.</span> <span class="toc-text">答案: D</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#112-%E8%BE%93%E5%87%BA%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-number">1.0.2.0.1.</span> <span class="toc-text">112. 输出什么？</span></a></li></ol></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AD%94%E6%A1%88-C"><span class="toc-number">1.0.3.</span> <span class="toc-text">答案: C</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#113-%E8%BE%93%E5%87%BA%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-number">1.0.3.0.1.</span> <span class="toc-text">113. 输出什么？</span></a></li></ol></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AD%94%E6%A1%88-A-1"><span class="toc-number">1.0.4.</span> <span class="toc-text">答案: A</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#114-%E5%B0%86%E4%BC%9A%E5%8F%91%E7%94%9F%E4%BB%80%E4%B9%88"><span class="toc-number">1.0.4.0.1.</span> <span class="toc-text">114. 将会发生什么?</span></a></li></ol></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AD%94%E6%A1%88-C-1"><span class="toc-number">1.0.5.</span> <span class="toc-text">答案: C</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#115-%E5%93%AA%E4%B8%80%E4%B8%AA%E6%96%B9%E6%B3%95%E4%BC%9A%E8%BF%94%E5%9B%9E-39-Hello-world-39-%EF%BC%9F"><span class="toc-number">1.0.5.0.1.</span> <span class="toc-text">115. 哪一个方法会返回 &#39;Hello world!&#39; ？</span></a></li></ol></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AD%94%E6%A1%88-B"><span class="toc-number">1.0.6.</span> <span class="toc-text">答案: B</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#116-%E8%BE%93%E5%87%BA%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-number">1.0.6.0.1.</span> <span class="toc-text">116. 输出什么？</span></a></li></ol></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AD%94%E6%A1%88-C-2"><span class="toc-number">1.0.7.</span> <span class="toc-text">答案: C</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#117-%E4%B8%8B%E9%9D%A2%E9%82%A3%E4%B8%AA%E9%80%89%E9%A1%B9%E5%B0%86%E4%BC%9A%E8%BF%94%E5%9B%9E-6"><span class="toc-number">1.0.7.0.1.</span> <span class="toc-text">117. 下面那个选项将会返回 6?</span></a></li></ol></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AD%94%E6%A1%88-C-3"><span class="toc-number">1.0.8.</span> <span class="toc-text">答案: C</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#118-%E8%BE%93%E5%87%BA%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-number">1.0.8.0.1.</span> <span class="toc-text">118. 输出什么？</span></a></li></ol></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AD%94%E6%A1%88-B-1"><span class="toc-number">1.0.9.</span> <span class="toc-text">答案: B</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#119-%E8%BE%93%E5%87%BA%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-number">1.0.9.0.1.</span> <span class="toc-text">119. 输出什么？</span></a></li></ol></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AD%94%E6%A1%88-B-2"><span class="toc-number">1.0.10.</span> <span class="toc-text">答案: B</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#120-%E8%BE%93%E5%87%BA%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-number">1.0.10.0.1.</span> <span class="toc-text">120. 输出什么？</span></a></li></ol></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AD%94%E6%A1%88-B-3"><span class="toc-number">1.0.11.</span> <span class="toc-text">答案: B</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#121-%E8%BE%93%E5%87%BA%E4%BB%80%E4%B9%88"><span class="toc-number">1.0.11.0.1.</span> <span class="toc-text">121. 输出什么?</span></a></li></ol></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AD%94%E6%A1%88-D-1"><span class="toc-number">1.0.12.</span> <span class="toc-text">答案: D</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#122-%E8%BE%93%E5%87%BA%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-number">1.0.12.0.1.</span> <span class="toc-text">122. 输出什么？</span></a></li></ol></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AD%94%E6%A1%88-C-4"><span class="toc-number">1.0.13.</span> <span class="toc-text">答案: C</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#123-%E8%BE%93%E5%87%BA%E4%BB%80%E4%B9%88"><span class="toc-number">1.0.13.0.1.</span> <span class="toc-text">123. 输出什么?</span></a></li></ol></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AD%94%E6%A1%88-A-2"><span class="toc-number">1.0.14.</span> <span class="toc-text">答案: A</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#124-%E8%BE%93%E5%87%BA%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-number">1.0.14.0.1.</span> <span class="toc-text">124. 输出什么？</span></a></li></ol></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AD%94%E6%A1%88-C-5"><span class="toc-number">1.0.15.</span> <span class="toc-text">答案: C</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#125-%E8%BE%93%E5%87%BA%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-number">1.0.15.0.1.</span> <span class="toc-text">125. 输出什么？</span></a></li></ol></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AD%94%E6%A1%88-D-2"><span class="toc-number">1.0.16.</span> <span class="toc-text">答案: D</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#126-%E8%BE%93%E5%87%BA%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-number">1.0.16.0.1.</span> <span class="toc-text">126. 输出什么？</span></a></li></ol></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AD%94%E6%A1%88-B-4"><span class="toc-number">1.0.17.</span> <span class="toc-text">答案: B</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#127-%E8%BE%93%E5%87%BA%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-number">1.0.17.0.1.</span> <span class="toc-text">127. 输出什么？</span></a></li></ol></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AD%94%E6%A1%88-B-5"><span class="toc-number">1.0.18.</span> <span class="toc-text">答案: B</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#128-%E8%BE%93%E5%87%BA%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-number">1.0.18.0.1.</span> <span class="toc-text">128. 输出什么？</span></a></li></ol></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AD%94%E6%A1%88-C-6"><span class="toc-number">1.0.19.</span> <span class="toc-text">答案: C</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#129-%E8%BE%93%E5%87%BA%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-number">1.0.19.0.1.</span> <span class="toc-text">129. 输出什么？</span></a></li></ol></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AD%94%E6%A1%88-D-3"><span class="toc-number">1.0.20.</span> <span class="toc-text">答案: D</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#130-%E8%BE%93%E5%87%BA%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-number">1.0.20.0.1.</span> <span class="toc-text">130. 输出什么？</span></a></li></ol></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AD%94%E6%A1%88-C-7"><span class="toc-number">1.0.21.</span> <span class="toc-text">答案: C</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#131-%E8%BE%93%E5%87%BA%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-number">1.0.21.0.1.</span> <span class="toc-text">131. 输出什么？</span></a></li></ol></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AD%94%E6%A1%88-B-6"><span class="toc-number">1.0.22.</span> <span class="toc-text">答案: B</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#132-%E8%BE%93%E5%87%BA%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-number">1.0.22.0.1.</span> <span class="toc-text">132. 输出什么？</span></a></li></ol></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AD%94%E6%A1%88-D-4"><span class="toc-number">1.0.23.</span> <span class="toc-text">答案: D</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#133-%E8%BE%93%E5%87%BA%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-number">1.0.23.0.1.</span> <span class="toc-text">133. 输出什么？</span></a></li></ol></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AD%94%E6%A1%88-D-5"><span class="toc-number">1.0.24.</span> <span class="toc-text">答案: D</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#134-%E6%88%91%E4%BB%AC%E6%80%8E%E6%A0%B7%E6%89%8D%E8%83%BD%E5%9C%A8-index-js-%E4%B8%AD%E8%B0%83%E7%94%A8-sum-js-%E4%B8%AD%E7%9A%84-sum%EF%BC%9F"><span class="toc-number">1.0.24.0.1.</span> <span class="toc-text">134. 我们怎样才能在 index.js 中调用 sum.js? 中的 sum？</span></a></li></ol></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AD%94%E6%A1%88-C-8"><span class="toc-number">1.0.25.</span> <span class="toc-text">答案: C</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#135-%E8%BE%93%E5%87%BA%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-number">1.0.25.0.1.</span> <span class="toc-text">135. 输出什么？</span></a></li></ol></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AD%94%E6%A1%88-C-9"><span class="toc-number">1.0.26.</span> <span class="toc-text">答案: C</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#136-%E4%BB%A5%E4%B8%8B%E5%93%AA%E4%B8%80%E9%A1%B9%E4%BC%9A%E5%AF%B9%E5%AF%B9%E8%B1%A1-person-%E6%9C%89%E5%89%AF%E4%BD%9C%E7%94%A8%EF%BC%9F"><span class="toc-number">1.0.26.0.1.</span> <span class="toc-text">136. 以下哪一项会对对象 person 有副作用？</span></a></li></ol></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AD%94%E6%A1%88-A-3"><span class="toc-number">1.0.27.</span> <span class="toc-text">答案: A</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#137-%E4%BB%A5%E4%B8%8B%E5%93%AA%E4%B8%80%E9%A1%B9%E4%BC%9A%E5%AF%B9%E5%AF%B9%E8%B1%A1-person-%E6%9C%89%E5%89%AF%E4%BD%9C%E7%94%A8%EF%BC%9F"><span class="toc-number">1.0.27.0.1.</span> <span class="toc-text">137. 以下哪一项会对对象 person 有副作用？</span></a></li></ol></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AD%94%E6%A1%88-C-10"><span class="toc-number">1.0.28.</span> <span class="toc-text">答案: C</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#138-%E8%BE%93%E5%87%BA%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-number">1.0.28.0.1.</span> <span class="toc-text">138. 输出什么？</span></a></li></ol></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AD%94%E6%A1%88-A-4"><span class="toc-number">1.0.29.</span> <span class="toc-text">答案: A</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#139-%E8%BE%93%E5%87%BA%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-number">1.0.29.0.1.</span> <span class="toc-text">139. 输出什么？</span></a></li></ol></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AD%94%E6%A1%88-D-6"><span class="toc-number">1.0.30.</span> <span class="toc-text">答案: D</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#140-%E9%80%89%E6%8B%A9%E5%93%AA%E4%B8%80%E4%B8%AA%EF%BC%9F"><span class="toc-number">1.0.30.0.1.</span> <span class="toc-text">140. 选择哪一个？</span></a></li></ol></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AD%94%E6%A1%88-B-7"><span class="toc-number">1.0.31.</span> <span class="toc-text">答案: B</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#141-%E8%BE%93%E5%87%BA%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-number">1.0.31.0.1.</span> <span class="toc-text">141. 输出什么？</span></a></li></ol></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AD%94%E6%A1%88-C-11"><span class="toc-number">1.0.32.</span> <span class="toc-text">答案: C</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#142-%E8%BE%93%E5%87%BA%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-number">1.0.32.0.1.</span> <span class="toc-text">142. 输出什么？</span></a></li></ol></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AD%94%E6%A1%88-B-8"><span class="toc-number">1.0.33.</span> <span class="toc-text">答案: B</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#143-%E5%93%AA%E4%B8%80%E4%B8%AA%E9%80%89%E9%A1%B9%E4%BC%9A%E5%AF%BC%E8%87%B4%E6%8A%A5%E9%94%99%EF%BC%9F"><span class="toc-number">1.0.33.0.1.</span> <span class="toc-text">143. 哪一个选项会导致报错？</span></a></li></ol></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AD%94%E6%A1%88-D-7"><span class="toc-number">1.0.34.</span> <span class="toc-text">答案: D</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#144-%E6%88%91%E4%BB%AC%E9%9C%80%E8%A6%81%E5%90%91%E5%AF%B9%E8%B1%A1-person-%E6%B7%BB%E5%8A%A0%E4%BB%80%E4%B9%88%EF%BC%8C%E4%BB%A5%E8%87%B4%E6%89%A7%E8%A1%8C-person-%E6%97%B6%E8%8E%B7%E5%BE%97%E5%BD%A2%E5%A6%82-quot-Lydia-Hallie-quot-21-%E7%9A%84%E8%BE%93%E5%87%BA%EF%BC%9F"><span class="toc-number">1.0.34.0.1.</span> <span class="toc-text">144. 我们需要向对象 person 添加什么，以致执行 [...person] 时获得形如 [&quot;Lydia Hallie&quot;, 21] 的输出？</span></a></li></ol></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AD%94%E6%A1%88-C-12"><span class="toc-number">1.0.35.</span> <span class="toc-text">答案: C</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#145-%E8%BE%93%E5%87%BA%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-number">1.0.35.0.1.</span> <span class="toc-text">145. 输出什么？</span></a></li></ol></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AD%94%E6%A1%88-C-13"><span class="toc-number">1.0.36.</span> <span class="toc-text">答案: C</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#146-%E8%BE%93%E5%87%BA%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-number">1.0.36.0.1.</span> <span class="toc-text">146. 输出是什么？</span></a></li></ol></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AD%94%E6%A1%88-D-8"><span class="toc-number">1.0.37.</span> <span class="toc-text">答案: D</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#147-%E8%BE%93%E5%87%BA%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-number">1.0.37.0.1.</span> <span class="toc-text">147. 输出什么？</span></a></li></ol></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AD%94%E6%A1%88-A-5"><span class="toc-number">1.0.38.</span> <span class="toc-text">答案: A</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#148-%E8%BE%93%E5%87%BA%E4%BB%80%E4%B9%88"><span class="toc-number">1.0.38.0.1.</span> <span class="toc-text">148. 输出什么?</span></a></li></ol></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AD%94%E6%A1%88-B-9"><span class="toc-number">1.0.39.</span> <span class="toc-text">答案: B</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#149-%E8%BE%93%E5%87%BA%E4%BB%80%E4%B9%88"><span class="toc-number">1.0.39.0.1.</span> <span class="toc-text">149. 输出什么?</span></a></li></ol></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AD%94%E6%A1%88-C-14"><span class="toc-number">1.0.40.</span> <span class="toc-text">答案: C</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#150-%E8%BE%93%E5%87%BA%E4%BB%80%E4%B9%88"><span class="toc-number">1.0.40.0.1.</span> <span class="toc-text">150. 输出什么?</span></a></li></ol></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AD%94%E6%A1%88-B-10"><span class="toc-number">1.0.41.</span> <span class="toc-text">答案: B</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#151-%E8%BE%93%E5%87%BA%E4%BB%80%E4%B9%88"><span class="toc-number">1.0.41.0.1.</span> <span class="toc-text">151. 输出什么?</span></a></li></ol></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AD%94%E6%A1%88-A-6"><span class="toc-number">1.0.42.</span> <span class="toc-text">答案: A</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#152-%E8%BE%93%E5%87%BA%E4%BB%80%E4%B9%88"><span class="toc-number">1.0.42.0.1.</span> <span class="toc-text">152. 输出什么?</span></a></li></ol></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AD%94%E6%A1%88-D-9"><span class="toc-number">1.0.43.</span> <span class="toc-text">答案: D</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#153-%E5%93%AA%E4%B8%AA%E4%BD%9C%E4%B8%BAmethod%E7%9A%84%E5%80%BC%E5%8F%AF%E4%BB%A5%E6%89%93%E5%8D%B0-name-quot-Lydia-quot-age-22"><span class="toc-number">1.0.43.0.1.</span> <span class="toc-text">153. 哪个作为method的值可以打印&amp;#123; name: &quot;Lydia&quot;, age: 22 &amp;#125;?</span></a></li></ol></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AD%94%E6%A1%88-C-15"><span class="toc-number">1.0.44.</span> <span class="toc-text">答案: C</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#154-%E8%BE%93%E5%87%BA%E4%BB%80%E4%B9%88"><span class="toc-number">1.0.44.0.1.</span> <span class="toc-text">154. 输出什么?</span></a></li></ol></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AD%94%E6%A1%88-C-16"><span class="toc-number">1.0.45.</span> <span class="toc-text">答案: C</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#155-%E8%BE%93%E5%87%BA%E4%BB%80%E4%B9%88"><span class="toc-number">1.0.45.0.1.</span> <span class="toc-text">155. 输出什么?</span></a></li></ol></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AD%94%E6%A1%88-B-11"><span class="toc-number">1.0.46.</span> <span class="toc-text">答案: B</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/posts/20210506/" title="时隔两个月，来一份总结【文末彩蛋】"><img data-lazy-src="https://cdn.jsdelivr.net/gh/chocolate1999/cdn/img/20210506215206.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="时隔两个月，来一份总结【文末彩蛋】"/></a><div class="content"><a class="title" href="/posts/20210506/" title="时隔两个月，来一份总结【文末彩蛋】">时隔两个月，来一份总结【文末彩蛋】</a><time datetime="2021-05-07T14:38:41.474Z" title="发表于 2021-05-07 22:38:41">2021-05-07</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/50975/" title="15个前端攻城狮必备的学习网站 | 你知道几个？（附视频介绍）"><img data-lazy-src="https://cdn.jsdelivr.net/gh/chocolate1999/cdn/img/20200610155519.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="15个前端攻城狮必备的学习网站 | 你知道几个？（附视频介绍）"/></a><div class="content"><a class="title" href="/posts/50975/" title="15个前端攻城狮必备的学习网站 | 你知道几个？（附视频介绍）">15个前端攻城狮必备的学习网站 | 你知道几个？（附视频介绍）</a><time datetime="2021-05-07T13:48:39.367Z" title="发表于 2021-05-07 21:48:39">2021-05-07</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/20541/" title="前端知识梳理之webpack篇"><img data-lazy-src="https://cdn.jsdelivr.net/gh/chocolate1999/cdn/img/20200914094504.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="前端知识梳理之webpack篇"/></a><div class="content"><a class="title" href="/posts/20541/" title="前端知识梳理之webpack篇">前端知识梳理之webpack篇</a><time datetime="2021-05-07T13:48:39.366Z" title="发表于 2021-05-07 21:48:39">2021-05-07</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/20201009/" title="某跳动面试官：说说微信扫码登录背后的实现原理？"><img data-lazy-src="https://cdn.jsdelivr.net/gh/chocolate1999/cdn/img/20201009202845.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="某跳动面试官：说说微信扫码登录背后的实现原理？"/></a><div class="content"><a class="title" href="/posts/20201009/" title="某跳动面试官：说说微信扫码登录背后的实现原理？">某跳动面试官：说说微信扫码登录背后的实现原理？</a><time datetime="2021-05-07T13:48:39.366Z" title="发表于 2021-05-07 21:48:39">2021-05-07</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/205511/" title="前端知识梳理之Vue篇"><img data-lazy-src="https://cdn.jsdelivr.net/gh/chocolate1999/cdn/img/20200911085935.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="前端知识梳理之Vue篇"/></a><div class="content"><a class="title" href="/posts/205511/" title="前端知识梳理之Vue篇">前端知识梳理之Vue篇</a><time datetime="2021-05-07T13:48:39.365Z" title="发表于 2021-05-07 21:48:39">2021-05-07</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2019 - 2021  <i id="heartbeat" class="fa fas fa-heartbeat"></i> 一百个Chocolate</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text"><p><a style="margin-inline:5px" target="_blank" href="https://hexo.io/"><img src="https://img.shields.io/badge/Frame-Hexo-blue?style=flat&logo=hexo" title="博客框架为Hexo"></a><a style="margin-inline:5px" target="_blank" href="https://butterfly.js.org/"><img src="https://img.shields.io/badge/Theme-Butterfly-6513df?style=flat&logo=bitdefender" title="主题采用butterfly"></a><a style="margin-inline:5px" target="_blank" href="https://www.jsdelivr.com/"><img src="https://img.shields.io/badge/CDN-jsDelivr-orange?style=flat&logo=jsDelivr" title="本站使用JsDelivr为静态资源提供CDN加速"></a><a style="margin-inline:5px" target="_blank" href="https://vercel.com/ "><img src="https://img.shields.io/badge/Hosted-Vervel-brightgreen?style=flat&logo=Vercel" title="本站采用双线部署，默认线路托管于Vercel"></a><a style="margin-inline:5px" target="_blank" href="https://vercel.com/ "><img src="https://img.shields.io/badge/Hosted-Coding-0cedbe?style=flat&logo=Codio" title="本站采用双线部署，联通线路托管于Coding"></a><a style="margin-inline:5px" target="_blank" href="https://github.com/"><img src="https://img.shields.io/badge/Source-Github-d021d6?style=flat&logo=GitHub" title="本站项目由Gtihub托管"></a><a style="margin-inline:5px" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img src="https://img.shields.io/badge/Copyright-BY--NC--SA%204.0-d42328?style=flat&logo=Claris" title="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可"></a></p></div><div class="icp"><a target="_blank" rel="noopener" href="http://www.beian.miit.gov.cn/"><img class="icp-icon" src="/img/icp.png"/><span>湘ICP备20002952号</span></a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="font-plus" type="button" title="放大字体"><i class="fas fa-plus"></i></button><button id="font-minus" type="button" title="缩小字体"><i class="fas fa-minus"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="chat_btn" type="button" title="rightside.chat_btn"><i class="fas fa-sms"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div></div><hr/><div id="local-search-results"></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/vue@2.6.11"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><script src="/js/search/local-search.js"></script><script async="async">var preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',preloader.endLoading())
+setTimeout(function(){preloader.endLoading();}, 5000);</script><div class="js-pjax"></div><script src="https://cdn.jsdelivr.net/gh/sviptzk/StaticFile_HEXO@master/xkTool/v3.1.1/xkTool.js"></script><script defer src="https://cdn.jsdelivr.net/npm/hexo-theme-volantis@latest/source/js/issues.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = [
+  'title',
+  '#config-diff',
+  '#body-wrap',
+  '#rightside-config-hide',
+  '#rightside-config-show',
+  '.js-pjax'
+]
+
+if (false) {
+  pjaxSelectors.unshift('meta[property="og:image"]', 'meta[property="og:title"]', 'meta[property="og:url"]')
+}
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  if (typeof gtag === 'function') {
+    gtag('config', '', {'page_path': window.location.pathname});
+  }
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // Analytics
+  if (false) {
+    MtaH5.pgv()
+  }
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+
+  typeof preloader === 'object' && preloader.endLoading()
+})
+
+
+document.addEventListener('pjax:send', function () {
+  typeof preloader === 'object' && preloader.initLoading()
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
