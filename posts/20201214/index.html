@@ -1,0 +1,658 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>「星辰大海」你可能需要知道的 promise 知识的总结（内附思维导图） | 超逸の博客</title><meta name="keywords" content="CSS，面试，JS，前端，女友"><meta name="author" content="一百个Chocolate"><meta name="copyright" content="一百个Chocolate"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="前言接上一期 「高频面试题」女友：消息队列 和 事件循环系统终于弄明白了！（内附思维导图） 文章出炉后，微信好友也多了不少，还挺好的~ 最近又重新整理一下 Promise 相关知识，一方面和上一期文章有个接应，另一方面，方便自己日后复盘回顾。  本篇文章参考视频学习而来，都是自己一个字一个字敲出来的，也加了自己的理解，视频就在参考处，建议大家先看视频，后续回顾的话通过本文几个例题就好了。✿✿ヽ(°">
+<meta property="og:type" content="article">
+<meta property="og:title" content="「星辰大海」你可能需要知道的 promise 知识的总结（内附思维导图）">
+<meta property="og:url" content="https://yangchaoyi.vip/posts/20201214/index.html">
+<meta property="og:site_name" content="超逸の博客">
+<meta property="og:description" content="前言接上一期 「高频面试题」女友：消息队列 和 事件循环系统终于弄明白了！（内附思维导图） 文章出炉后，微信好友也多了不少，还挺好的~ 最近又重新整理一下 Promise 相关知识，一方面和上一期文章有个接应，另一方面，方便自己日后复盘回顾。  本篇文章参考视频学习而来，都是自己一个字一个字敲出来的，也加了自己的理解，视频就在参考处，建议大家先看视频，后续回顾的话通过本文几个例题就好了。✿✿ヽ(°">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/chocolate1999/cdn/img/20201214213852.png">
+<meta property="article:published_time" content="2020-12-13T16:00:00.000Z">
+<meta property="article:modified_time" content="2022-05-05T14:36:56.756Z">
+<meta property="article:author" content="一百个Chocolate">
+<meta property="article:tag" content="面试">
+<meta property="article:tag" content="JS">
+<meta property="article:tag" content="总结">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/chocolate1999/cdn/img/20201214213852.png"><link rel="shortcut icon" href="/img/favicon.ico"><link rel="canonical" href="https://yangchaoyi.vip/posts/20201214/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  noticeOutdate: {"limitDay":500,"position":"top","messagePrev":"It has been","messageNext":"days since the last update, the content of the article may be outdated."},
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#121212","position":"bottom-left"},
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isanchor: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = { 
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-05-05 22:36:56'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const fontSizeVal = saveToLocal.get('global-font-size')
+    if (fontSizeVal !== undefined) {
+      document.documentElement.style.setProperty('--global-font-size', fontSizeVal + 'px')
+    }
+    })(window)</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/l-lin/font-awesome-animation/dist/font-awesome-animation.min.css"  media="defer" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/sviptzk/HexoStaticFile@master/Hexo/css/flink.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/kang-static@latest/Hexo/css/iconfont.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Rr210/Lantern@2.4/dl.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/HCLonely/images@master/others/heartbeat.min.css"><!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-double-row-display@1.00/cardlistpost.min.css"/>
+<style>#recent-posts > .recent-post-item >.recent-post-info > .article-meta-wrap > .tags:before {content:"\A";
+  white-space: pre;}#recent-posts > .recent-post-item >.recent-post-info > .article-meta-wrap > .tags > .article-meta__separator{display:none}</style>
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.4.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="wizard-scene"><div class="wizard-objects"><div class="wizard-square"></div><div class="wizard-circle"></div><div class="wizard-triangle"></div></div><div class="wizard"><div class="wizard-body"></div><div class="wizard-right-arm"><div class="wizard-right-hand"></div></div><div class="wizard-left-arm"><div class="wizard-left-hand"></div></div><div class="wizard-head"><div class="wizard-beard"></div><div class="wizard-face"><div class="wizard-adds"></div></div><div class="wizard-hat"><div class="wizard-hat-of-the-hat"></div><div class="wizard-four-point-star --first"></div><div class="wizard-four-point-star --second"></div><div class="wizard-four-point-star --third"></div></div></div></div></div></div><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" data-lazy-src="https://cdn.jsdelivr.net/gh/Chocolate1999/cdn/img/avatar.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">87</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">50</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">12</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fa fa-heartbeat"></i><span> 清单</span><i class="fas fa-chevron-down expand hide"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/gallery/"><i class="fa-fw far fa-image"></i><span> 相册</span></a></li><li><a class="site-page" href="/home/"><i class="fa-fw fab fa-phoenix-framework"></i><span> 主页</span></a></li><li><a class="site-page" href="/sponsorWall/"><i class="fa-fw fas fa-money-check-alt"></i><span> 赞助墙</span></a></li><li><a class="site-page" href="/box/"><i class="fa-fw fas fa-th-large"></i><span> 聚宝盒</span></a></li></ul></div><div class="menus_item"><a class="site-page" target="_blank" rel="noopener" href="https://hearling.github.io/"><i class="fa-fw fas fa-book"></i><span> HearLing</span></a></div><div class="menus_item"><a class="site-page" href="/contact/"><i class="fa-fw far fa-comments"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fa fa-heart"></i><span> 关于我</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="not-top-img" id="page-header"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">超逸の博客</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fa fa-heartbeat"></i><span> 清单</span><i class="fas fa-chevron-down expand hide"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/gallery/"><i class="fa-fw far fa-image"></i><span> 相册</span></a></li><li><a class="site-page" href="/home/"><i class="fa-fw fab fa-phoenix-framework"></i><span> 主页</span></a></li><li><a class="site-page" href="/sponsorWall/"><i class="fa-fw fas fa-money-check-alt"></i><span> 赞助墙</span></a></li><li><a class="site-page" href="/box/"><i class="fa-fw fas fa-th-large"></i><span> 聚宝盒</span></a></li></ul></div><div class="menus_item"><a class="site-page" target="_blank" rel="noopener" href="https://hearling.github.io/"><i class="fa-fw fas fa-book"></i><span> HearLing</span></a></div><div class="menus_item"><a class="site-page" href="/contact/"><i class="fa-fw far fa-comments"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fa fa-heart"></i><span> 关于我</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav></header><main class="layout" id="content-inner"><div id="post"><div id="post-info"><h1 class="post-title">「星辰大海」你可能需要知道的 promise 知识的总结（内附思维导图）</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2020-12-13T16:00:00.000Z" title="发表于 2020-12-14 00:00:00">2020-12-14</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-05-05T14:36:56.756Z" title="更新于 2022-05-05 22:36:56">2022-05-05</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">7.2k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>28分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div><article class="post-content" id="article-container"><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>接上一期 <a target="_blank" rel="noopener" href="https://juejin.cn/post/6902942813097459720">「高频面试题」女友：消息队列 和 事件循环系统终于弄明白了！（内附思维导图）</a> 文章出炉后，微信好友也多了不少，还挺好的~</p>
+<p>最近又重新整理一下 <code>Promise</code> 相关知识，一方面和上一期文章有个接应，另一方面，方便自己日后复盘回顾。</p>
+<blockquote>
+<p>本篇文章参考视频学习而来，都是自己一个字一个字敲出来的，也加了自己的理解，视频就在参考处，建议大家先看视频，后续回顾的话通过本文几个例题就好了。✿✿ヽ(°▽°)ノ✿</p>
+</blockquote>
+<p>学完本篇文章，你将会明白如下几大模块知识：</p>
+<ul>
+<li>迭代器</li>
+<li>生成器</li>
+<li>promise</li>
+<li>async、await</li>
+</ul>
+<p><img src= "/img/loading.gif" data-lazy-src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/83909feafe5343048a76c9d062eeb114~tplv-k3u1fbpfcp-zoom-1.image" alt=""></p>
+<blockquote>
+<p>（手机端可能看不清）获取高清PDF，请在微信公众号【小狮子前端】回复【promise知识】</p>
+</blockquote>
+<h2 id="迭代器是什么"><a href="#迭代器是什么" class="headerlink" title="迭代器是什么"></a>迭代器是什么</h2><h3 id="提出问题"><a href="#提出问题" class="headerlink" title="提出问题"></a>提出问题</h3><p>在了解迭代器之前，我们先来提出一个问题：</p>
+<blockquote>
+<p>遍历和迭代有什么区别？</p>
+</blockquote>
+<p>如下代码，对于数组、字符串、对象等我们可以按照如下方式进行遍历。</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>];</span><br><span class="line"><span class="keyword">var</span> str = <span class="string">&#x27;123&#x27;</span>;</span><br><span class="line"><span class="keyword">var</span> obj = &#123; <span class="attr">a</span>: <span class="number">1</span>, <span class="attr">b</span>: <span class="number">2</span> &#125;;</span><br><span class="line"><span class="comment">// 遍历数组</span></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; arr.length; i++) &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(arr[i]);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 遍历字符串</span></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; str.length; i++) &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(str[i]);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 遍历数组</span></span><br><span class="line">arr.forEach(<span class="function"><span class="keyword">function</span> (<span class="params">item</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(item);</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">// 遍历对象</span></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> key <span class="keyword">in</span> obj) &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(key, obj[key]);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log([...arguments]);</span><br><span class="line">&#125;</span><br><span class="line">test(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>);</span><br></pre></td></tr></table></figure>
+
+<p>但对于这些数据类型的不同，我们可能需要不同的遍历方式，比如对象我们需要通过 <code>for...in</code>，函数也不一样，那么我们想着是否对于不同数据类型可以用同一种遍历方式呢？</p>
+<p>没错，当然可以，这就是<strong>迭代</strong>，到此你应该明白了上文提出的问题：遍历和迭代有什么区别？</p>
+<blockquote>
+<p>迭代就是从目标源依次按逐个抽取的方式来提取数据，其中目标源满足：1、有序的 2、连续的  而遍历就没有这些要求，对于不同数据类型会有不同遍历方式。</p>
+</blockquote>
+<h3 id="迭代引入"><a href="#迭代引入" class="headerlink" title="迭代引入"></a>迭代引入</h3><p>而对于数据类型呢，在这里先提前告知大家，有哪些可以直接迭代出来的：</p>
+<blockquote>
+<p>Array、Map、Set、String、TypeArray、arguments、NodeList</p>
+</blockquote>
+<p>上述都是可以通过 <code>for..of</code> 来迭代出来。可能此时你会有疑问了，对象不可以么？（那我们不妨来试试）</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> arr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>]</span><br><span class="line"><span class="keyword">let</span> str = <span class="string">&#x27;123&#x27;</span></span><br><span class="line"><span class="keyword">let</span> obj = &#123; <span class="attr">a</span>: <span class="number">1</span>, <span class="attr">b</span>: <span class="number">2</span> &#125;</span><br><span class="line"><span class="built_in">console</span>.log(arr)</span><br><span class="line"><span class="built_in">console</span>.log(str)</span><br><span class="line"><span class="built_in">console</span>.log(obj)</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">let</span> item <span class="keyword">of</span> arr)&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(item);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">let</span> item <span class="keyword">of</span> str)&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(item);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">let</span> item <span class="keyword">of</span> obj)&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(item);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>通过打印之后，我们发现当我们遍历 <code>obj</code> 对象的时候会抛出错误：<code>Uncaught TypeError: obj is not iterable</code></p>
+<p>通过打印，我们发现，如果一个数据类型能迭代的话，会在原型上存在 <code>Symbol(Symbol.iterator)</code>方法，我们不妨来试着用一用这个方法，如下代码所示：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> arr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>]</span><br><span class="line"><span class="keyword">let</span> str = <span class="string">&#x27;123&#x27;</span></span><br><span class="line"><span class="keyword">let</span> obj = &#123; <span class="attr">a</span>: <span class="number">1</span>, <span class="attr">b</span>: <span class="number">2</span> &#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> iter = arr[<span class="built_in">Symbol</span>.iterator]();</span><br><span class="line"><span class="built_in">console</span>.log(iter.next()); <span class="comment">//  &#123;value: 1, done: false&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>此时会打印 <code>&#123;value: 1, done: false&#125;</code>，发现 <code>done</code> 为 <code>false</code>，这意味着还没有完成迭代，即可以继续迭代。对于这个数组而言，有4个元素，那我们可以通过迭代5次来完成对数组的迭代，如下代码所示：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> arr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>]</span><br><span class="line"><span class="keyword">let</span> iter = arr[<span class="built_in">Symbol</span>.iterator]();</span><br><span class="line"><span class="built_in">console</span>.log(iter.next()); <span class="comment">// &#123;value: 1, done: false&#125;</span></span><br><span class="line"><span class="built_in">console</span>.log(iter.next()); <span class="comment">// &#123;value: 2, done: false&#125;</span></span><br><span class="line"><span class="built_in">console</span>.log(iter.next()); <span class="comment">// &#123;value: 3, done: false&#125;</span></span><br><span class="line"><span class="built_in">console</span>.log(iter.next()); <span class="comment">// &#123;value: 4, done: false&#125;</span></span><br><span class="line"><span class="built_in">console</span>.log(iter.next()); <span class="comment">// &#123;value: undefined, done: true&#125;</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>总结：调用<code>Symbol(Symbol.iterator)</code>方法将会返回一个 <code>迭代器对象</code>，而这个迭代器对象具备 <code>next()</code> 方法，通过这个方法来实现逐步调用，同时每次调用的时候会返回一个对象，包括 <code>value</code> 和 <code>done</code> 两个属性，当<code>value</code>为 <code>undefined</code>，<code>done</code> 为 <code>true</code> 时迭代完成。</p>
+</blockquote>
+<h3 id="自己动手实现-Symbol-iterator"><a href="#自己动手实现-Symbol-iterator" class="headerlink" title="自己动手实现 Symbol.iterator"></a>自己动手实现 Symbol.iterator</h3><p>实现代码如下，我们依然可以获得与上文一样的结果。</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> arr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>]</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">makeIterator</span>(<span class="params">arr</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">let</span> index=<span class="number">0</span>;</span><br><span class="line">  <span class="keyword">return</span>&#123;</span><br><span class="line">    <span class="function"><span class="title">next</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">      <span class="keyword">if</span>(index&lt;arr.length)&#123;</span><br><span class="line">        <span class="keyword">return</span>&#123;</span><br><span class="line">          <span class="attr">value</span>: arr[index++], <span class="attr">done</span>: <span class="literal">false</span></span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">return</span> &#123;<span class="attr">value</span>: <span class="literal">undefined</span>, <span class="attr">done</span>: <span class="literal">true</span>&#125;;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> iter = makeIterator(arr);</span><br><span class="line"><span class="built_in">console</span>.log(iter.next()); <span class="comment">// &#123;value: 1, done: false&#125;</span></span><br><span class="line"><span class="built_in">console</span>.log(iter.next()); <span class="comment">// &#123;value: 2, done: false&#125;</span></span><br><span class="line"><span class="built_in">console</span>.log(iter.next()); <span class="comment">// &#123;value: 3, done: false&#125;</span></span><br><span class="line"><span class="built_in">console</span>.log(iter.next()); <span class="comment">// &#123;value: 4, done: false&#125;</span></span><br><span class="line"><span class="built_in">console</span>.log(iter.next()); <span class="comment">// &#123;value: undefined, done: true&#125;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="实现对象的自定义迭代器对象"><a href="#实现对象的自定义迭代器对象" class="headerlink" title="实现对象的自定义迭代器对象"></a>实现对象的自定义迭代器对象</h3><blockquote>
+<p>上文我们知道了对象是没办法进行迭代的，因为它的原型上没有 <code>Symbol(Symbol.iterator)</code> 方法，那么有了上文自己动手实现 <code>Symbol.iterator</code> 前置知识后，我们现在来实现对象的自定义迭代器对象。</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123; </span><br><span class="line">  <span class="attr">a</span>: <span class="number">1</span>,</span><br><span class="line">  <span class="attr">b</span>: <span class="number">2</span>,</span><br><span class="line">  <span class="attr">c</span>: <span class="number">3</span>,</span><br><span class="line">  [<span class="built_in">Symbol</span>.iterator]()&#123;</span><br><span class="line">    <span class="keyword">let</span> index = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">let</span> map = <span class="keyword">new</span> <span class="built_in">Map</span>([[<span class="string">&#x27;a&#x27;</span>,<span class="number">1</span>],[<span class="string">&#x27;b&#x27;</span>,<span class="number">2</span>],[<span class="string">&#x27;c&#x27;</span>,<span class="number">3</span>]]);</span><br><span class="line">    <span class="keyword">return</span>&#123;</span><br><span class="line">      <span class="function"><span class="title">next</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="comment">// 获取键值对</span></span><br><span class="line">        <span class="keyword">let</span> mapEntries = [...map.entries()];</span><br><span class="line">        <span class="keyword">if</span>(index &lt; map.size)&#123;</span><br><span class="line">          <span class="keyword">return</span>&#123;</span><br><span class="line">            <span class="attr">value</span>: mapEntries[index++], <span class="attr">done</span>: <span class="literal">false</span></span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> &#123;<span class="attr">value</span>: <span class="literal">undefined</span>, <span class="attr">done</span>: <span class="literal">true</span>&#125;;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">let</span> iter = obj[<span class="built_in">Symbol</span>.iterator]();</span><br><span class="line"><span class="built_in">console</span>.log(iter.next()); <span class="comment">// &#123;value: (2) [&quot;a&quot;, 1], done: false&#125;</span></span><br><span class="line"><span class="built_in">console</span>.log(iter.next()); <span class="comment">// &#123;value: (2) [&quot;b&quot;, 2], done: false&#125;</span></span><br><span class="line"><span class="built_in">console</span>.log(iter.next()); <span class="comment">// &#123;value: (2) [&quot;c&quot;, 3], done: false&#125;</span></span><br><span class="line"><span class="built_in">console</span>.log(iter.next()); <span class="comment">// &#123;value: undefined, done: true&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>从上文我们知道，我们可以通过 <code>for...of</code> 的方式来迭代，因此，对于上述代码我们可以换一种方式，如下：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">let</span> item <span class="keyword">of</span> obj)&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(item);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>结果也是能迭代打印对象数据，那么也就是说 <code>for...of</code> 就是调用 <code>[Symbol.iterator]()</code> 方法来实现迭代，它能一次性迭代出对象中所有属性和属性值。</p>
+<h2 id="生成器的使用"><a href="#生成器的使用" class="headerlink" title="生成器的使用"></a>生成器的使用</h2><h3 id="生成器初识"><a href="#生成器初识" class="headerlink" title="生成器初识"></a>生成器初识</h3><blockquote>
+<p>上文我们介绍了迭代器是什么，发现对象没办法使用迭代，然后我们自己动手实现了对对象的自定义迭代器，然后也发现了说 <code>for...of</code> 就是调用 <code>[Symbol.iterator]()</code> 方法来实现迭代，它能一次性迭代出对象中所有属性和属性值。</p>
+</blockquote>
+<p>接下来，我们来讲解生成器了。首先，生成器它能像迭代一样返回一个迭代器对象，然后调用 <code>next</code> 方法进行抽取，下面结合一个例子就能明白了：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span>* <span class="title">test</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="keyword">yield</span> <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">yield</span> <span class="number">2</span>;</span><br><span class="line">  <span class="keyword">yield</span> <span class="number">3</span>;</span><br><span class="line">  <span class="keyword">yield</span> <span class="number">4</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> iter = test();</span><br><span class="line"><span class="built_in">console</span>.log(iter.next()); <span class="comment">// &#123;value: 1, done: false&#125;</span></span><br><span class="line"><span class="built_in">console</span>.log(iter.next()); <span class="comment">// &#123;value: 2, done: false&#125;</span></span><br><span class="line"><span class="built_in">console</span>.log(iter.next()); <span class="comment">// &#123;value: 3, done: false&#125;</span></span><br><span class="line"><span class="built_in">console</span>.log(iter.next()); <span class="comment">// &#123;value: 4, done: false&#125;</span></span><br><span class="line"><span class="built_in">console</span>.log(iter.next()); <span class="comment">// &#123;value: undefined, done: true&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>同样，我们也可以通过 <code>for...of</code> 方式实现，这里就不再演示了。</p>
+<h3 id="探讨生成器"><a href="#探讨生成器" class="headerlink" title="探讨生成器"></a>探讨生成器</h3><p>我们不妨来看一下下面这段代码，看看会有怎样的结果：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span>* <span class="title">test</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="number">0</span>);</span><br><span class="line">  <span class="keyword">yield</span> <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">yield</span> <span class="number">2</span>;</span><br><span class="line">  <span class="keyword">yield</span> <span class="number">3</span>;</span><br><span class="line">  <span class="keyword">yield</span> <span class="number">4</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> iter = test();</span><br></pre></td></tr></table></figure>
+
+<p>结果显示是 <code>没有打印结果</code>，你是否以为会执行了 <code>test</code> 函数之后会默认输出 <code>0</code> 呢，答案<strong>不是</strong>，这很奇怪！ 那么我们不妨执行一下：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(iter.next()); </span><br><span class="line"><span class="comment">// 0</span></span><br><span class="line"><span class="comment">// &#123;value: 1, done: false&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>从结果上来看，当我们调用一下 <code>next</code> 方法之后，打印 <code>0</code> 的那行代码被执行了，而没有调用的时候就没执行。</p>
+<p>那么总结一下，<code>yeild</code> 实际上能够中断函数，这里就有 <code>return</code> 的味道了，不妨看看下面几个例子：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span>* <span class="title">test</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="number">0</span>);</span><br><span class="line">  <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> iter = test();</span><br><span class="line"><span class="built_in">console</span>.log(iter); <span class="comment">// 打印迭代器对象</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span>* <span class="title">test</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="number">0</span>);</span><br><span class="line">  <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> iter = test();</span><br><span class="line"><span class="built_in">console</span>.log(iter.next());</span><br><span class="line"><span class="comment">// 0</span></span><br><span class="line"><span class="comment">// &#123;value: 1, done: true&#125;</span></span><br></pre></td></tr></table></figure>
+<p>这里因为在抽取的时候没有遇到 <code>yield</code> 因此全部抽取完，然后 <code>done</code> 设置为 <code>true</code>，此时代表迭代完成。因此，生成器函数一般不会 <code>return</code> 一个值。</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span>* <span class="title">test</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="number">0</span>);</span><br><span class="line">  <span class="keyword">yield</span> <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> iter = test();</span><br><span class="line"><span class="built_in">console</span>.log(iter.next());</span><br><span class="line"><span class="comment">// 0</span></span><br><span class="line"><span class="comment">// &#123;value: 1, done: false&#125;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="探究生成器传参"><a href="#探究生成器传参" class="headerlink" title="探究生成器传参"></a>探究生成器传参</h3><p>上文我们介绍了生成器抽取相关问题，也提及了一般不会使用 <code>return</code> 返回一个值，下面我们来探究一下生成器传参是怎样的情况，例如如下代码：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span>* <span class="title">test</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="keyword">let</span> value1 = <span class="keyword">yield</span> <span class="number">1</span>;</span><br><span class="line">  <span class="built_in">console</span>.log(value1);</span><br><span class="line">  <span class="keyword">let</span> value2 = <span class="keyword">yield</span> <span class="number">2</span>;</span><br><span class="line">  <span class="built_in">console</span>.log(value2);</span><br><span class="line">  <span class="keyword">let</span> value3 = <span class="keyword">yield</span> <span class="number">3</span>;</span><br><span class="line">  <span class="built_in">console</span>.log(value3);</span><br><span class="line">  <span class="keyword">let</span> value4 = <span class="keyword">yield</span> <span class="number">4</span>;</span><br><span class="line">  <span class="built_in">console</span>.log(value4);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> iter = test();</span><br><span class="line"><span class="built_in">console</span>.log(iter.next(<span class="string">&#x27;one&#x27;</span>));</span><br><span class="line"><span class="built_in">console</span>.log(iter.next(<span class="string">&#x27;two&#x27;</span>));</span><br><span class="line"><span class="built_in">console</span>.log(iter.next(<span class="string">&#x27;three&#x27;</span>));</span><br><span class="line"><span class="built_in">console</span>.log(iter.next(<span class="string">&#x27;four&#x27;</span>));</span><br><span class="line"><span class="built_in">console</span>.log(iter.next());</span><br></pre></td></tr></table></figure>
+<p>打印结果如下：</p>
+<p><img src= "/img/loading.gif" data-lazy-src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/415528566a65462eb005558d8a179286~tplv-k3u1fbpfcp-zoom-1.image" alt=""></p>
+<blockquote>
+<p>从上述打印结果来看，我们发现，第一个 <code>yield</code> 的返回值是在调用第二个 <code>next</code> 方法时的<code>传参</code>。</p>
+</blockquote>
+<p>然而上述传参其实不太符合我们想象中的逻辑，可以有解决办法嘛？</p>
+<blockquote>
+<p>当然有办法，因此之后推出了 <code>async/await</code>。</p>
+</blockquote>
+<h2 id="Promise"><a href="#Promise" class="headerlink" title="Promise"></a>Promise</h2><p>关于 <code>Promise</code> 讲解的话，网上也是一大堆，但本篇还是以简单便捷的方式给大家呈现 <code>promise</code> 知识点，因此，可能需要你起初对 <code>promise</code> 有一定了解，本文不会从零去讲 <code>promise</code>，比如它的来源，为什么要使用 <code>promise</code> 这些问题，本文不会过多涉及，更多内容小狮子们可以参考文末提供的学习视频，通过系统学习过后，如若后续还想继续复盘的话，就可以参考本文，而无需再看一遍视频了，我想读者应该明白我这些话的意思了哈，下面我们正式进入 <code>promise</code> 章节。</p>
+<h3 id="Promise的特性"><a href="#Promise的特性" class="headerlink" title="Promise的特性"></a>Promise的特性</h3><p>1、promise 状态不受外界影响</p>
+<p>2、promise 的固化（一旦 promise 状态发生变化后就不能再更改）</p>
+<p>下面来看一个例子，看看会输出什么，这也就是 <code>promise</code> 的执行方式，通过 <strong>微任务</strong> 的方式来执行 <code>promise</code> 注册的回调函数，不管是成功还是失败。</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> promise = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span> (<span class="params">resolve, reject</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&#x27;promise&#x27;</span>);</span><br><span class="line">  resolve(<span class="string">&#x27;resolve&#x27;</span>);</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="built_in">setTimeout</span>(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&#x27;timeout&#x27;</span>);</span><br><span class="line">&#125;, <span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">promise.then(<span class="function"><span class="keyword">function</span> (<span class="params">data</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(data);</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">&#x27;Chocolate&#x27;</span>);</span><br></pre></td></tr></table></figure>
+
+<p>打印结果如下：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">promise</span><br><span class="line">Chocolate</span><br><span class="line">resolve</span><br><span class="line">timeout</span><br></pre></td></tr></table></figure>
+
+<p>这道题主要还是与事件循环相关，小狮子们可以阅读我的上一篇文章，看完我想你对事件循环的理解会更加深入一些：</p>
+<p><a target="_blank" rel="noopener" href="https://juejin.cn/post/6902942813097459720">「高频面试题」女友：消息队列 和 事件循环系统终于弄明白了！（内附思维导图）</a></p>
+<h3 id="thenable-对象"><a href="#thenable-对象" class="headerlink" title="thenable 对象"></a>thenable 对象</h3><p>直接看下面例子，你觉得会输出什么呢？</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> obj = &#123;</span><br><span class="line">  <span class="function"><span class="title">then</span>(<span class="params">resolve, reject</span>)</span> &#123;</span><br><span class="line">    resolve(<span class="number">11</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> p1 = <span class="built_in">Promise</span>.resolve(obj);</span><br><span class="line"></span><br><span class="line">p1.then(<span class="function"><span class="keyword">function</span> (<span class="params">data</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(data);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>答案是输出 <code>11</code>，解释一波，当绑定一个对象参数为 <code>thenable</code> 的时候，那么会默认调用对象的 <code>then</code> 方法，之后<code>then</code> 方法里面 <code>resolve</code> 传递的值，就会成为之后 <code>then</code> 回调传入的值，即上述代码中的 <code>data</code>。</p>
+<blockquote>
+<p>（如果<code>then</code> 方法是 <code>resolve</code> 则为成为状态，如果是 <code>reject</code> 则成为失败状态）</p>
+</blockquote>
+<p>上一句话怎么理解呢，我们不妨修改一下上文代码，如下：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> obj = &#123;</span><br><span class="line">  <span class="function"><span class="title">then</span>(<span class="params">resolve, reject</span>)</span> &#123;</span><br><span class="line">    <span class="comment">// resolve(11);</span></span><br><span class="line">    reject(<span class="number">10</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> p1 = <span class="built_in">Promise</span>.resolve(obj);</span><br><span class="line"></span><br><span class="line">p1.then(<span class="function"><span class="keyword">function</span> (<span class="params">data</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(data);</span><br><span class="line">&#125;, <span class="function"><span class="keyword">function</span> (<span class="params">err</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&#x27;err&#x27;</span> + err);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>输出结果是 <code>err10</code>，也就是说当我们<code>Promise</code> 执行 <code>reslove</code> 方法时，传入参数为对象并且包含 <code>then</code> 方法，那么就会改变当前 <code>promise</code> 的状态。</p>
+<p>但是，我们再试试改变一下上述代表，将 <code>Promise</code>执行 <code>reject</code> 方法，会有什么变化呢？</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> obj = &#123;</span><br><span class="line">  <span class="function"><span class="title">then</span>(<span class="params">resolve, reject</span>)</span> &#123;</span><br><span class="line">    <span class="comment">// resolve(11);</span></span><br><span class="line">    reject(<span class="number">10</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> p1 = <span class="built_in">Promise</span>.reject(obj);</span><br><span class="line"></span><br><span class="line">p1.then(<span class="function"><span class="keyword">function</span> (<span class="params">data</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(data);</span><br><span class="line">&#125;, <span class="function"><span class="keyword">function</span> (<span class="params">err</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(err);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>打印结果是 <code>&#123; then: [Function: then] &#125;</code>，发现并没有执行 <code>thenable</code> 对象，因为此时 <code>Promise</code> 执行的是 <code>reject</code>。</p>
+<blockquote>
+<p>总结：当 <code>Promise</code> 是 <code>reslove</code> 状态时，我们可以通过传入对象并且对象包含 <code>then</code> 方法，那么可以通过这个 <code>then</code> 方法来改变 <code>promise</code> 状态，并且进行传参。</p>
+</blockquote>
+<p>在此，穿插一道 <code>promise</code> 相关题目，看看输出结果是什么？</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">Promise</span>.resolve().then(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&#x27;promise1&#x27;</span>);</span><br><span class="line">  <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&#x27;setTimeout2&#x27;</span>);</span><br><span class="line">  &#125;, <span class="number">0</span>)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&#x27;setTimeout1&#x27;</span>);</span><br><span class="line">  <span class="built_in">Promise</span>.resolve().then(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&#x27;promise2&#x27;</span>);</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;, <span class="number">0</span>)</span><br></pre></td></tr></table></figure>
+
+<p>输出结果如下：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">promise1</span><br><span class="line">setTimeout1</span><br><span class="line">promise2</span><br><span class="line">setTimeout2</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>这里要注意的是首先执行上面微任务，是整个微任务底下的代码加入微任务队列，因此第一个定时器宏任务会在微任务执行的时候才会加入延迟队列（或者叫做 <code>Web APIs</code>）而第二个定时器宏任务在预编译代码的时候就在微任务之后加入了延迟队列，而它们都是设置的延时 <code>0</code> 秒，那么在下一次事件循环的时候显然第二个定时器会优先拿出来调用。</p>
+</blockquote>
+<h3 id="promise-的链式调用"><a href="#promise-的链式调用" class="headerlink" title="promise 的链式调用"></a>promise 的链式调用</h3><p>对于链式调用这一块，我想小狮子们应该或多或少的听说过，或许你听说过返回普通值，或者返回 <code>promise</code> 对象啥的，但应该对于这个链式调用理解的还是很模糊，接下来我们在这一章节一起来探讨一下：</p>
+<p>首先，还是由浅入深，看一下简单例子：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> p1 = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">  resolve(<span class="number">1</span>);</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">p1.then(<span class="function"><span class="params">res</span> =&gt;</span> <span class="built_in">console</span>.log(res));</span><br></pre></td></tr></table></figure>
+
+<p>显然改变了 <code>promise</code> 状态为 <code>resolve</code> 成功态，会输出 <code>1</code>。</p>
+<p>上面代码应该很容易就看出来了，下面我们对上文代码进行新增，尝试进行链式调用，如下：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> p1 = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">  resolve(<span class="number">1</span>);</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">p1.then(<span class="function"><span class="params">res</span> =&gt;</span> <span class="built_in">console</span>.log(res))</span><br><span class="line">  .then(<span class="function"><span class="params">res</span> =&gt;</span> <span class="built_in">console</span>.log(res + <span class="number">1</span>))</span><br><span class="line">  .then(<span class="function"><span class="params">res</span> =&gt;</span> <span class="built_in">console</span>.log(res + <span class="number">2</span>));</span><br></pre></td></tr></table></figure>
+
+<p>输出结果如下：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="number">1</span></span><br><span class="line"><span class="literal">NaN</span></span><br><span class="line"><span class="literal">NaN</span></span><br></pre></td></tr></table></figure>
+
+<p>这里来解释一下，首先我们想一想，为什么能进行链式调用呢？第一个 <code>then</code> 是因为 <code>promise</code> 状态变为了成功态，就可以执行回调，那么第二个 <code>then</code> 为什么能执行呢？带着这个问题，我们不妨打印一下第一个 <code>then</code> 的返回结果：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(p1.then(<span class="function"><span class="params">res</span> =&gt;</span> <span class="built_in">console</span>.log(res))) <span class="comment">// Promise &#123; &lt;pending&gt; &#125;</span></span><br></pre></td></tr></table></figure>
+<p>发现，执行 <code>then</code> 回调之后返回的也是 <code>promise</code>，那么为什么能进行链式调用也就解释的清了。如果我们接着执行 <code>then</code> 方法，那么 <code>p1.then</code> 会包装返回 <code>Promise.resolve(undefined)</code>，因为 <code>console.log</code> 函数默认返回值就是 <code>undefined</code>，因此第二个 <code>then</code> 回调打印的其实就是 <code>undefined+1</code>，显然结果就是 <code>NaN</code>。</p>
+<p>对于第三个 <code>then</code> 回调，得到的是第二个 <code>then</code>包装返回的<code>Promise.resolve(undefined)</code>，而 <code>console.log</code> 函数默认返回值就是 <code>undefined</code>，因此第三个 <code>then</code> 回调打印的其实就是 <code>undefined+2</code>，显然结果就是 <code>NaN</code>。</p>
+<p>我们继续修改一下代码，看看返回 <code>promise</code> 对象这种情况，如下：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> p1 = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">  resolve(<span class="number">1</span>);</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">p1.then(<span class="function"><span class="params">res</span> =&gt;</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">  reject(<span class="number">2</span>);</span><br><span class="line">&#125;))</span><br><span class="line">  .then(<span class="function"><span class="keyword">function</span> (<span class="params">res</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(res);</span><br><span class="line">  &#125;, <span class="function"><span class="keyword">function</span> (<span class="params">err</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&#x27;error:&#x27;</span> + err);</span><br><span class="line">  &#125;)</span><br></pre></td></tr></table></figure>
+<p>打印结果如下，这里就不解释了，可以参考上文讲述哈~</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">error:<span class="number">2</span></span><br></pre></td></tr></table></figure>
+
+<p>接着，我们看看如下代码，直接看它们区别，这对于你理解链式调用会有一定帮助。</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> p1 = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    resolve(<span class="number">10</span>);</span><br><span class="line">  &#125;, <span class="number">1000</span>)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">p1.then(<span class="function"><span class="params">res</span> =&gt;</span> &#123; <span class="built_in">console</span>.log(res); <span class="keyword">return</span> res + <span class="number">1</span> &#125;); <span class="comment">// 10</span></span><br><span class="line">p1.then(<span class="function"><span class="params">res</span> =&gt;</span> &#123; <span class="built_in">console</span>.log(res); <span class="keyword">return</span> res + <span class="number">1</span> &#125;); <span class="comment">// 10</span></span><br><span class="line">p1.then(<span class="function"><span class="params">res</span> =&gt;</span> &#123; <span class="built_in">console</span>.log(res); <span class="keyword">return</span> res + <span class="number">1</span> &#125;); <span class="comment">// 10</span></span><br><span class="line"></span><br><span class="line">p1.then(<span class="function"><span class="params">res</span> =&gt;</span> &#123; <span class="built_in">console</span>.log(res); <span class="keyword">return</span> res + <span class="number">1</span> &#125;) <span class="comment">// 10</span></span><br><span class="line">  .then(<span class="function"><span class="params">res</span> =&gt;</span> &#123; <span class="built_in">console</span>.log(res); <span class="keyword">return</span> res + <span class="number">1</span> &#125;) <span class="comment">// 11</span></span><br><span class="line">  .then(<span class="function"><span class="params">res</span> =&gt;</span> &#123; <span class="built_in">console</span>.log(res); <span class="keyword">return</span> res + <span class="number">1</span> &#125;); <span class="comment">// 12</span></span><br></pre></td></tr></table></figure>
+
+<p>对于第一种情况，它都是看的 <code>p1</code>的状态，为 <code>resolve</code>，那么执行结果都一样。</p>
+<p>对于第二种情况它会有三个 <code>promise</code> 状态，并且是链式调用的，那么下一个回调需要上一个回调的返回值。</p>
+<h3 id="promise-的固化-多层嵌套"><a href="#promise-的固化-多层嵌套" class="headerlink" title="promise 的固化 | 多层嵌套"></a>promise 的固化 | 多层嵌套</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> p1 = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">  resolve(<span class="number">1</span>);</span><br><span class="line">  reject(<span class="number">2</span>);</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">p1.then(<span class="function"><span class="params">res</span> =&gt;</span> <span class="built_in">console</span>.log(res))</span><br><span class="line">  .then()</span><br><span class="line">  .then()</span><br><span class="line">  .then(<span class="function"><span class="params">res</span> =&gt;</span> <span class="built_in">console</span>.log(res))</span><br><span class="line">  .catch(<span class="function"><span class="params">err</span> =&gt;</span> <span class="built_in">console</span>.log(err));</span><br></pre></td></tr></table></figure>
+
+<p>打印结果如下：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="number">1</span></span><br><span class="line"><span class="literal">undefined</span></span><br></pre></td></tr></table></figure>
+<p>解释一波，对于中间那两行 <code>.then()</code>，可能有的小狮子们会疑惑这到底是有啥用，我的回答是<strong>确实没用</strong>，会默认忽略掉！</p>
+<p>而 <code>promise</code> 固化即<strong>一旦状态发生变化后就不能再更改</strong>。</p>
+<h3 id="promise-状态依赖"><a href="#promise-状态依赖" class="headerlink" title="promise 状态依赖"></a>promise 状态依赖</h3><p>直接看下面这段代码，看看会输出什么？</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> p1 = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    reject(<span class="string">&#x27;400&#x27;</span>);</span><br><span class="line">  &#125;, <span class="number">3000</span>)</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> p2 = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    resolve(p1);</span><br><span class="line">  &#125;, <span class="number">1000</span>)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">p2.then(<span class="function"><span class="params">res</span> =&gt;</span> <span class="built_in">console</span>.log(res))</span><br><span class="line">  .catch(<span class="function"><span class="params">err</span> =&gt;</span> <span class="built_in">console</span>.log(<span class="string">&#x27;error:&#x27;</span>+err));</span><br></pre></td></tr></table></figure>
+
+<p>输出结果为<code>3s</code>之后打印 <code>error:400</code>，或许你会疑惑，我 <code>p2</code>明明是<code>resolve</code>状态，为什么会走到<code>catch</code>那里捕获错误呢，这里要解释一下了：</p>
+<blockquote>
+<p>当 <code>promise</code> 状态存在依赖时，它的状态与自身无关了，由依赖来决定，对于上述代码，就是 p2 的状态由依赖 p1 来决定，而p1是 <code>reject</code>，所以会走 <code>catch</code>。</p>
+</blockquote>
+<h3 id="Promise-all-Promise-race"><a href="#Promise-all-Promise-race" class="headerlink" title="Promise.all | Promise.race"></a>Promise.all | Promise.race</h3><blockquote>
+<p>有了上文 <code>promise</code> 的介绍，这两个方法就比较简单了，下文就直接给出例子啦~</p>
+</blockquote>
+<p> <strong>Promise.all 使用</strong></p>
+<p>传递一个异步请求数组，只有当请求状态全都是成功态，才能调用成功回调函数，同时，它会受 <code>reject</code> 的影响，只要有 <code>reject</code>，那么就不会调用 <code>then</code> 的回调。</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> p1 = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    resolve(<span class="number">10</span>);</span><br><span class="line">  &#125;, <span class="number">1000</span>)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> p2 = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    resolve(<span class="number">20</span>);</span><br><span class="line">  &#125;, <span class="number">2000</span>)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> p3 = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    resolve(<span class="number">30</span>);</span><br><span class="line">  &#125;, <span class="number">3000</span>)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> p4 = <span class="built_in">Promise</span>.all([p1, p2, p3]);</span><br><span class="line"></span><br><span class="line">p4.then(<span class="function"><span class="params">res</span> =&gt;</span> <span class="built_in">console</span>.log(res));</span><br></pre></td></tr></table></figure>
+
+<p>输出结果如下：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">[ <span class="number">10</span>, <span class="number">20</span>, <span class="number">30</span> ]</span><br></pre></td></tr></table></figure>
+
+<p> <strong>Promise.race使用</strong></p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> p1 = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    resolve(<span class="number">10</span>);</span><br><span class="line">  &#125;, <span class="number">1000</span>)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> p2 = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    reject(<span class="number">20</span>);</span><br><span class="line">  &#125;, <span class="number">2000</span>)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> p3 = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    resolve(<span class="number">30</span>);</span><br><span class="line">  &#125;, <span class="number">3000</span>)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> p4 = <span class="built_in">Promise</span>.race([p1, p2, p3]);</span><br><span class="line"></span><br><span class="line">p4.then(<span class="function"><span class="params">res</span> =&gt;</span> <span class="built_in">console</span>.log(res));</span><br></pre></td></tr></table></figure>
+
+<p>输出结果是 <code>10</code>，<code>Promise.race</code> 传参也是一个 <code>promise</code> 相关的数组，但是它不会受 <code>reject</code> 的影响，谁跑的最快就返回谁。</p>
+<h2 id="async-await"><a href="#async-await" class="headerlink" title="async | await"></a>async | await</h2><blockquote>
+<p>如果要细说的话，那么本文篇幅就会很多了，但本文文末会提供参考文献，或者大家留下关于 async、await 写的不错的文章链接。</p>
+</blockquote>
+<p>async await和generator的写法很像，就是将 Generator 函数的星号（*）替换成 async，将 yield 替换成await</p>
+<p>但async 函数对 Generator 函数做了改进：</p>
+<p>1、内置执行器：Generator函数的执行必须靠执行器，所以才有了 co 函数库，而 async 函数自带执行器.也就是说，async 函数的执行，与普通函数一模一样。</p>
+<p>2、更好的语义：async 和 await，比起星号和 yield，语义更清楚了。async 表示函数里有异步操作，await 表示紧跟在后面的表达式需要等待结果。</p>
+<p>3、更广的适用性： co 函数库约定，yield 命令后面只能是 Thunk 函数或 Promise 对象，而 async 函数的 await 命令后面，可以跟 Promise 对象和原始类型的值（数值、字符串和布尔值，但这时等同于同步操作）</p>
+<blockquote>
+<p>async 函数是非常新的语法功能，新到都不属于 ES6，而是属于 ES7。目前，它仍处于提案阶段，但是转码器 Babel 和 regenerator 都已经支持，转码后就能使用。</p>
+</blockquote>
+<h2 id="Promise-自测面试题（由易到难-满分100分）"><a href="#Promise-自测面试题（由易到难-满分100分）" class="headerlink" title="Promise 自测面试题（由易到难 | 满分100分）"></a>Promise 自测面试题（由易到难 | 满分100分）</h2><h3 id="第一题（5分）"><a href="#第一题（5分）" class="headerlink" title="第一题（5分）"></a>第一题（5分）</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">Promise</span>.resolve()</span><br><span class="line">  .then(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">&#x27;error!!!&#x27;</span>);</span><br><span class="line">  &#125;)</span><br><span class="line">  .then(<span class="function"><span class="params">res</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&#x27;then:&#x27;</span> + res);</span><br><span class="line">  &#125;)</span><br><span class="line">  .catch(<span class="function"><span class="params">err</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&#x27;catch:&#x27;</span> + err);</span><br><span class="line">  &#125;)</span><br></pre></td></tr></table></figure>
+<details><summary><b>查看答案</b></summary>
+<p>
+
+<p>输出结果如下：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">then:<span class="built_in">Error</span>: error!!!</span><br></pre></td></tr></table></figure>
+<p>第一题热身题，应该不成问题，还是解释一下： <code>Promise</code>是 <code>resolve</code>成功状态，那么就会执行第一个<code>then</code> 回调，返回值是 <code>Error</code>对象，那么就会封装一个 <code>Promise.resolve(参数为Error对象)</code>，然后又执行第二个 <code>then</code> 回调，那么打印结果如上所示。</p>
+</p>
+</details>
+
+<h3 id="第二题（5分）"><a href="#第二题（5分）" class="headerlink" title="第二题（5分）"></a>第二题（5分）</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> promise = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">  resolve(<span class="string">&#x27;success1&#x27;</span>);</span><br><span class="line">  reject(<span class="string">&#x27;error&#x27;</span>);</span><br><span class="line">  resolve(<span class="string">&#x27;success2&#x27;</span>);</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">promise</span><br><span class="line">  .then(<span class="function">(<span class="params">res</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&#x27;then:&#x27;</span> + res);</span><br><span class="line">  &#125;)</span><br><span class="line">  .catch(<span class="function">(<span class="params">err</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&#x27;catch:&#x27;</span> + err);</span><br><span class="line">  &#125;);</span><br></pre></td></tr></table></figure>
+
+<details><summary><b>查看答案</b></summary>
+<p>
+
+<p>输出结果如下：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">then:success1</span><br></pre></td></tr></table></figure>
+
+<p>本题主要考察 <code>promise</code> 的固化，一旦状态改变就不会再改变了！</p>
+</p>
+</details>
+
+<h3 id="第三题（10分）"><a href="#第三题（10分）" class="headerlink" title="第三题（10分）"></a>第三题（10分）</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> promise = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="number">1</span>);</span><br><span class="line">  resolve();</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="number">2</span>);</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">promise.then(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="number">3</span>);</span><br><span class="line">&#125;)</span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">4</span>);</span><br></pre></td></tr></table></figure>
+
+<details><summary><b>查看答案</b></summary>
+<p>
+
+<p>输出结果如下：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="number">1</span></span><br><span class="line"><span class="number">2</span></span><br><span class="line"><span class="number">4</span></span><br><span class="line"><span class="number">3</span></span><br></pre></td></tr></table></figure>
+
+<p>本题与事件循环相关，<code>Promise</code> 构造函数内部的<strong>执行器函数内部</strong>属于同步代码，<code>.then</code> 注册的回调函数属于<strong>微任务</strong>，那么会先输出同步代码 <code>1</code>，遇到 <code>resolve()</code> 并不会阻止后面同步代码的执行，因为并没有 <code>return</code> 语句。然后将微任务加入微任务队列，之后打印同步代码 <code>2</code>，之后继续先打印同步代码 <code>4</code>，最后取出微任务队列中的任务元素，打印 <code>3</code>，因此打印结果为 <code>1 2 4 3</code>。</p>
+</p>
+</details>
+
+<h3 id="第四题（10分）"><a href="#第四题（10分）" class="headerlink" title="第四题（10分）"></a>第四题（10分）</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> p1 = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">  reject(<span class="number">42</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">p1.catch((<span class="function"><span class="keyword">function</span> (<span class="params">value</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(value);</span><br><span class="line">  <span class="keyword">return</span> value + <span class="number">1</span>;</span><br><span class="line">&#125;)).then(<span class="function"><span class="keyword">function</span> (<span class="params">value</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(value);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<details><summary><b>查看答案</b></summary>
+<p>
+
+<p>输出结果如下：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="number">42</span></span><br><span class="line"><span class="number">43</span></span><br></pre></td></tr></table></figure>
+
+<p>解释： <code>p1</code> 是返回的 <code>reject</code> 状态的 <code>promise</code>，那么就会走 <code>catch</code>，首先就会打印 <code>42</code>，然后遇到 <code>return</code>语句，返回的是普通值，那么就会封装成 <code>Promise.resolve(43)</code>，那么就会执行后面的 <code>then</code> 回调，打印 <code>43</code>。</p>
+</p>
+</details>
+
+<h3 id="第五题（10分）"><a href="#第五题（10分）" class="headerlink" title="第五题（10分）"></a>第五题（10分）</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> p1 = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">  resolve(<span class="number">42</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> p2 = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">  reject(<span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">&#x27;TypeError!!!&#x27;</span>));</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">p1.then(<span class="function"><span class="keyword">function</span> (<span class="params">value</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(value);</span><br><span class="line">  <span class="keyword">return</span> p2;</span><br><span class="line">&#125;).then(<span class="function"><span class="keyword">function</span> (<span class="params">value</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(value);</span><br><span class="line">&#125;, <span class="function"><span class="keyword">function</span> (<span class="params">err</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(err);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<details><summary><b>查看答案</b></summary>
+<p>
+
+<p>输出结果如下：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="number">42</span></span><br><span class="line"><span class="attr">Error</span>: <span class="built_in">TypeError</span>!!!</span><br></pre></td></tr></table></figure>
+
+<p>解释一下，打印 <code>42</code>我想应该不用解释了，我们注意 <code>p1</code> 执行 <code>.then</code> 回调时返回的是 <code>p2</code>，而 p2 是失败的 <code>promise</code>状态，那么就不会像上一题一样进行 <code>promise.resolve()</code>的封装了，直接返回失败的状态，那么就只会执行 <code>then</code> 回调的第二个 <code>err</code> 那条路了。</p>
+</p>
+</details>
+
+<h3 id="第六题（10分）"><a href="#第六题（10分）" class="headerlink" title="第六题（10分）"></a>第六题（10分）</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&#x27;timer1&#x27;</span>);</span><br><span class="line">  <span class="built_in">Promise</span>.resolve().then(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&#x27;promise1&#x27;</span>);</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="built_in">Promise</span>.resolve().then(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&#x27;promise2&#x27;</span>);</span><br><span class="line">  <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&#x27;timer2&#x27;</span>);</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<details><summary><b>查看答案</b></summary>
+<p>
+
+<p>输出结果如下：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">promise2</span><br><span class="line">timer1</span><br><span class="line">promise1</span><br><span class="line">timer2</span><br></pre></td></tr></table></figure>
+
+<p>这题也是考察事件循环相关，首先遇到 <code>setTimeout</code>，加入宏任务队列，然后遇到 <code>Promise.resolve().then</code>微任务，加入微任务队列，此时主线程没有同步代码可执行，先拿出微任务队列中的人物执行，先执行同步代码 <code>promise2</code>，然后遇到 <code>setTimeout</code>，加入宏任务队列。此时微任务执行完毕，取出宏任务队列中的任务，依次执行即可，打印输出结果。</p>
+</p>
+</details>
+
+<h3 id="第七题（10分）"><a href="#第七题（10分）" class="headerlink" title="第七题（10分）"></a>第七题（10分）</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">Promise</span>.resolve()</span><br><span class="line">  .then(<span class="function">() =&gt;</span> &#123; <span class="comment">// 外层第一个then</span></span><br><span class="line">    <span class="built_in">Promise</span>.resolve().then(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="number">1</span>);</span><br><span class="line">    &#125;).then(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="number">2</span>);</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;)</span><br><span class="line">  .then(<span class="function">() =&gt;</span> &#123; <span class="comment">// 外层第二个then</span></span><br><span class="line">    <span class="built_in">console</span>.log(<span class="number">3</span>);</span><br><span class="line">  &#125;)</span><br></pre></td></tr></table></figure>
+
+<details><summary><b>查看答案</b></summary>
+<p>
+
+<p>输出结果如下：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="number">1</span></span><br><span class="line"><span class="number">3</span></span><br><span class="line"><span class="number">2</span></span><br></pre></td></tr></table></figure>
+
+<p>这道题很容易做错，你可能会想着打印出 <code>1 2 3</code>，但是最外层的两个 <code>then</code> 属于同一级别关系，因此会先加入外层第一个 <code>then</code> ，然后再加入外层第二个 <code>then</code>。此时主线程没有同步代码，于是取微任务队列中的任务，先执行输出 <code>1</code>，然后又添加了一个输出 2 的微任务，然后取出微任务队列头部的任务，输出 <code>3</code>，最后取出最后一个任务，输出 <code>2</code>。</p>
+</p>
+</details>
+
+<h3 id="第八题（10分）"><a href="#第八题（10分）" class="headerlink" title="第八题（10分）"></a>第八题（10分）</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">async1</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">await</span> async2();</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&#x27;async1 end&#x27;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">async2</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&#x27;async2 end&#x27;</span>);</span><br><span class="line">&#125;</span><br><span class="line">async1();</span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">10</span>);</span><br></pre></td></tr></table></figure>
+<details><summary><b>查看答案</b></summary>
+<p>
+
+<p>输出结果如下：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">async2 end</span><br><span class="line"><span class="number">10</span></span><br><span class="line">async1 end</span><br></pre></td></tr></table></figure>
+
+<p>这题考察了 <code>async/await</code>，在执行 <code>async1</code> 函数时，遇到 <code>await async2();</code> 这段代码，而 <code>async2</code>函数是个同步函数，直接输出 <code>async2 end</code>，然后因为是 <code>await</code>，返回的是 <code>promise</code>对象，返回值是 <code>async2()</code>执行的结果，即默认的 <code>undefined</code>，之后的代码属于微任务，加入微任务队列，此时再走同步代码，输出 <code>10</code>，之后，主线程已经执行完毕，然后去找微任务队列，取出之前加入的微任务，输出 <code>async1 end</code>。</p>
+</p>
+</details>
+
+<p>下面，我们还可以对上述代码进行一个变形，如下代码所示：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">async1</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">try</span> &#123;</span><br><span class="line">    <span class="keyword">await</span> async2();</span><br><span class="line">  &#125; <span class="keyword">catch</span> (err) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&#x27;async1 end&#x27;</span>);</span><br><span class="line">    <span class="built_in">console</span>.log(err);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">async2</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&#x27;async2 end&#x27;</span>);</span><br><span class="line">  <span class="keyword">return</span> <span class="built_in">Promise</span>.reject(<span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">&#x27;error!!!&#x27;</span>));</span><br><span class="line">&#125;</span><br><span class="line">async1();</span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">10</span>);</span><br></pre></td></tr></table></figure>
+
+<details><summary><b>查看答案</b></summary>
+<p>
+
+<p>输出结果如下：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">async2 end</span><br><span class="line"><span class="number">10</span></span><br><span class="line">async1 end</span><br><span class="line"><span class="attr">Error</span>: error!!!</span><br></pre></td></tr></table></figure>
+
+
+<p>这里要注意的就是对于 <code>await</code> 返回 <code>reject</code> 状态，必须要用 <code>try / catch</code> 进行捕获错误，不然就会报错！</p>
+</p>
+</details>
+
+<h3 id="第九题（15分）"><a href="#第九题（15分）" class="headerlink" title="第九题（15分）"></a>第九题（15分）</h3><blockquote>
+<p>下面这道题是特别特别经典的一道题了！</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">async1</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&#x27;async1 start&#x27;</span>);</span><br><span class="line">    <span class="keyword">await</span> async2();</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&#x27;async1 end&#x27;</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">async2</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&#x27;async2&#x27;</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">&#x27;script start&#x27;</span>);</span><br><span class="line"><span class="built_in">setTimeout</span>(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&#x27;setTimeout&#x27;</span>);</span><br><span class="line">&#125;, <span class="number">0</span>)</span><br><span class="line">async1();</span><br><span class="line"><span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span>(<span class="params">resolve</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&#x27;promise1&#x27;</span>);</span><br><span class="line">    resolve();</span><br><span class="line">&#125;).then(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&#x27;promise2&#x27;</span>);</span><br><span class="line">&#125;);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">&#x27;script end&#x27;</span>);</span><br></pre></td></tr></table></figure>
+
+<details><summary><b>查看答案</b></summary>
+<p>
+
+<blockquote>
+<p>总体思路就是：先执行宏任务（当前代码块也算是宏任务），然后执行当前宏任务产生的微任务，然后接着执行宏任务</p>
+</blockquote>
+<ul>
+<li>从上往下执行代码，先执行同步代码，输出 <code>script start</code></li>
+<li>遇到 <code>setTimeout</code> ，现把 <code>setTimeout</code> 的代码放到宏任务队列中</li>
+<li>执行 <code>async1()</code>，输出 <code>async1 start</code>, 然后执行 <code>async2()</code>, 输出 <code>async2</code>，把 <code>async2()</code> 后面的代码 <code>console.log(&#39;async1 end&#39;)</code>放到微任务队列中</li>
+<li>接着往下执行，输出 <code>promise1</code>，把 .then() 放到微任务队列中；<strong>注意 Promise 本身是同步的立即执行函数，.then是异步执行函数</strong></li>
+<li>接着往下执行， 输出 <code>script end</code>。同步代码（同时也是宏任务）执行完成，接下来开始执行刚才放到微任务中的代码</li>
+<li>依次执行微任务中的代码，依次输出 <code>async1 end</code>、 <code>promise2</code>, 微任务中的代码执行完成后，开始执行宏任务中的代码，输出 <code>setTimeout</code></li>
+</ul>
+<p>最后结果如下：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">script start</span><br><span class="line">async1 start</span><br><span class="line">async2</span><br><span class="line">promise1</span><br><span class="line">script end</span><br><span class="line">async1 end</span><br><span class="line">promise2</span><br><span class="line"><span class="built_in">setTimeout</span></span><br></pre></td></tr></table></figure>
+</p>
+</details>
+
+<h3 id="第十题（15分）"><a href="#第十题（15分）" class="headerlink" title="第十题（15分）"></a>第十题（15分）</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> a;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> b = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&#x27;promise1&#x27;</span>);</span><br><span class="line">  resolve();</span><br><span class="line">&#125;).then(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&#x27;promise2&#x27;</span>);</span><br><span class="line">&#125;).then(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&#x27;promise3&#x27;</span>);</span><br><span class="line">&#125;).then(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&#x27;promise4&#x27;</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">a = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="keyword">async</span> (resolve, reject) =&gt; &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(a);</span><br><span class="line">  <span class="keyword">await</span> b;</span><br><span class="line">  <span class="built_in">console</span>.log(a);</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&#x27;after1&#x27;</span>);</span><br><span class="line">  <span class="keyword">await</span> a;</span><br><span class="line">  resolve(<span class="literal">true</span>);</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&#x27;after2&#x27;</span>);</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">&#x27;end&#x27;</span>);</span><br></pre></td></tr></table></figure>
+
+<details><summary><b>查看答案</b></summary>
+<p>
+
+<p>输出结果如下：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">promise1</span><br><span class="line"><span class="literal">undefined</span></span><br><span class="line">end</span><br><span class="line">promise2</span><br><span class="line">promise3</span><br><span class="line">promise4</span><br><span class="line"><span class="built_in">Promise</span> &#123; &lt;pending&gt; &#125;</span><br><span class="line">after1</span><br></pre></td></tr></table></figure>
+<p>这道题是一道综合性比较强的题，但是如果理解了前面9道题，这道题应该问题也不是很大的，现在来解释一波：</p>
+<p>首先， <code>new Promise</code>里面是同步代码，会优先打印 <code>promise1</code>。然后注册了三个 <code>then</code> 的回调，加入微任务队列。</p>
+<p>之后来到下一个  <code>new Promise</code>，此时的 <code>a</code> 还没有接收到任务返回值，那么就是默认值 <code>undefined</code>。</p>
+<p>然后遇到 <code>await b</code>，然而 b 是一个promise 的实例， 已经在之前通过 new Promise 执行了，是三个微任务，之后先去找找看还有没有同步代码，于是找到了输出 <code>end</code>。</p>
+<p>此时主线程同步代码已经执行完毕，去找微任务，依次打印 <code>promise2 promise3 promise4</code>。</p>
+<p>而 <code>await b</code> 也是返回 <code>promise</code> 对象，即封装好的 <code>Promise.resolve(undefined)</code>。然而没有进行返回和接受。</p>
+<p>之后执行输出 <code>a</code>的那行代码，此时主线程同步代码已经执行完了，那么 <code>a</code> 也会返回一个 <code>Promise</code>，但是状态没有发生变化，因此打印的是 <code>Promise &#123; &lt;pending&gt; &#125;</code>。</p>
+<p>然后执行输出 <code>after1</code>。</p>
+<p>然后遇到 <code>await a</code>，而此时 <code>a</code>还是 <code>pending</code>，因此后面回调代码不会执行，这也是这道题的小坑，很容易跳进去！</p>
+</p>
+</details>
+
+
+<blockquote>
+<p>到此，自测面试题就结束了，满分100分，你得到多少分了呢？来评论区留下你的分数吧，你也可以提出疑问，让大伙一起解决~</p>
+</blockquote>
+<h2 id="本文参考"><a href="#本文参考" class="headerlink" title="本文参考"></a>本文参考</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1mp4y1z7KB">【全网首发更新完】迭代器 | 生成器 | promise | async | await</a></li>
+<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903586481209358">Async +Await</a></li>
+<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903582299324424">Generator用法详解+co</a></li>
+</ul>
+<blockquote>
+<p>建议大家伙先观看小夏老师的视频再来阅读本文~</p>
+</blockquote>
+<h2 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h2><p>文章产出不易，还望各位小伙伴们支持一波！</p>
+<p>往期精选：</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/Chocolate1999/Front-end-learning-to-organize-notes">小狮子前端の笔记仓库</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/Chocolate1999/leetcode-javascript">leetcode-javascript：LeetCode 力扣的 JavaScript 解题仓库，前端刷题路线（思维导图）</a></p>
+<p>小伙伴们可以在Issues中提交自己的解题代码，🤝 欢迎Contributing，可打卡刷题，Give a ⭐️ if this project helped you!</p>
+<p><a href="https://yangchaoyi.vip/">访问超逸の博客</a>，方便小伙伴阅读玩耍~</p>
+<p><img src= "/img/loading.gif" data-lazy-src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/3f8dd8f6d93e498ba33a76819052be06~tplv-k3u1fbpfcp-zoom-1.image" alt=""></p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">学如逆水行舟，不进则退</span><br></pre></td></tr></table></figure>
+
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">一百个Chocolate</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://yangchaoyi.vip/posts/20201214/">https://yangchaoyi.vip/posts/20201214/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://yangchaoyi.vip" target="_blank">超逸の博客</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E9%9D%A2%E8%AF%95/">面试</a><a class="post-meta__tags" href="/tags/JS/">JS</a><a class="post-meta__tags" href="/tags/%E6%80%BB%E7%BB%93/">总结</a></div><div class="post_share"><div class="social-share" data-image="https://cdn.jsdelivr.net/gh/chocolate1999/cdn/img/20201214213852.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/posts/20201219/"><img class="prev-cover" data-lazy-src="https://cdn.jsdelivr.net/gh/chocolate1999/cdn/img/20201219212726.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">「前端四问」一位师弟的提问，小狮子回答</div></div></a></div><div class="next-post pull-right"><a href="/posts/2021520/"><img class="next-cover" data-lazy-src="https://cdn.jsdelivr.net/gh/chocolate1999/cdn/img/20201210205243.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">「星辰大海」Chocolate 同学 前端学习路线总结【建议收藏】</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span> 相关推荐</span></div><div class="relatedPosts-list"><div><a href="/posts/2021520/" title="「星辰大海」Chocolate 同学 前端学习路线总结【建议收藏】"><img class="cover" data-lazy-src="https://cdn.jsdelivr.net/gh/chocolate1999/cdn/img/20201210205243.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-12-10</div><div class="title">「星辰大海」Chocolate 同学 前端学习路线总结【建议收藏】</div></div></a></div><div><a href="/posts/20210709/" title="一道匪夷所思的前端JS输出题"><img class="cover" data-lazy-src="https://img-blog.csdnimg.cn/20210709152621339.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MjQyOTcxOA==,size_16,color_FFFFFF,t_70" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-07-09</div><div class="title">一道匪夷所思的前端JS输出题</div></div></a></div><div><a href="/posts/20201205/" title="「星辰大海」消息队列 和 事件循环系统终于弄明白了！（内附思维导图）"><img class="cover" data-lazy-src="https://cdn.jsdelivr.net/gh/chocolate1999/cdn/img/20201205231444.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-12-05</div><div class="title">「星辰大海」消息队列 和 事件循环系统终于弄明白了！（内附思维导图）</div></div></a></div><div><a href="/posts/20201202/" title="「星辰大海」一系列 JS 数组操作"><img class="cover" data-lazy-src="https://cdn.jsdelivr.net/gh/chocolate1999/cdn/img/20201202000328.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-12-02</div><div class="title">「星辰大海」一系列 JS 数组操作</div></div></a></div><div><a href="/posts/20201129/" title="「星辰大海」JS自测清单（三）"><img class="cover" data-lazy-src="https://cdn.jsdelivr.net/gh/chocolate1999/cdn/img/20201207195926.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-11-29</div><div class="title">「星辰大海」JS自测清单（三）</div></div></a></div><div><a href="/posts/20201128/" title="「星辰大海」JS自测清单（二）"><img class="cover" data-lazy-src="https://cdn.jsdelivr.net/gh/chocolate1999/cdn/img/20201204234916.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-11-28</div><div class="title">「星辰大海」JS自测清单（二）</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="twikoo-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-info-avatar is-center"><img class="avatar-img" data-lazy-src="https://cdn.jsdelivr.net/gh/Chocolate1999/cdn/img/avatar.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-info__name">一百个Chocolate</div><div class="author-info__description">学如逆水行舟，不进则退。</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">87</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">标签</div><div class="length-num">50</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">分类</div><div class="length-num">12</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://space.bilibili.com/351534170"><i class="iconfont icon-bilibili"></i><span>关注</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://chocolate.blog.csdn.net/" target="_blank" title=""><i class="iconfont icon-csdn"></i></a><a class="social-icon" href="https://juejin.im/user/5ed1c55be51d457889261840/posts" target="_blank" title=""><i class="iconfont icon-juejin"></i></a><a class="social-icon" href="https://github.com/Chocolate1999" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="https://space.bilibili.com/351534170" target="_blank" title=""><i class="iconfont icon-bilibili1"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>简介</span></div><div class="announcement_content">2022 年 5 月更新，我们新建了一个<a href="https://docs.yangchaoyi.vip/" target="_blank">免费的文档网站</a>，一站式获取前端知识笔记大全，欢迎访问：<a href="https://docs.yangchaoyi.vip/" target="_blank">https://docs.yangchaoyi.vip/</a><br/>我是 Chocolate，一个小帅哥和某厂前端开发程序员，在这里分享知识与日常总结。<br/>希望能在 22 年在哔哩哔哩达成 10w 粉丝成就，<a target="_blank" rel="noopener" href="https://space.bilibili.com/351534170">B 站：一百个Chocolate</a><br/>座右铭：学如逆水行舟，不进则退。<br/> QQ交流群：666151691</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%AD%E4%BB%A3%E5%99%A8%E6%98%AF%E4%BB%80%E4%B9%88"><span class="toc-number">2.</span> <span class="toc-text">迭代器是什么</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8F%90%E5%87%BA%E9%97%AE%E9%A2%98"><span class="toc-number">2.1.</span> <span class="toc-text">提出问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%AD%E4%BB%A3%E5%BC%95%E5%85%A5"><span class="toc-number">2.2.</span> <span class="toc-text">迭代引入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%87%AA%E5%B7%B1%E5%8A%A8%E6%89%8B%E5%AE%9E%E7%8E%B0-Symbol-iterator"><span class="toc-number">2.3.</span> <span class="toc-text">自己动手实现 Symbol.iterator</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0%E5%AF%B9%E8%B1%A1%E7%9A%84%E8%87%AA%E5%AE%9A%E4%B9%89%E8%BF%AD%E4%BB%A3%E5%99%A8%E5%AF%B9%E8%B1%A1"><span class="toc-number">2.4.</span> <span class="toc-text">实现对象的自定义迭代器对象</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%9F%E6%88%90%E5%99%A8%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="toc-number">3.</span> <span class="toc-text">生成器的使用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%94%9F%E6%88%90%E5%99%A8%E5%88%9D%E8%AF%86"><span class="toc-number">3.1.</span> <span class="toc-text">生成器初识</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8E%A2%E8%AE%A8%E7%94%9F%E6%88%90%E5%99%A8"><span class="toc-number">3.2.</span> <span class="toc-text">探讨生成器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8E%A2%E7%A9%B6%E7%94%9F%E6%88%90%E5%99%A8%E4%BC%A0%E5%8F%82"><span class="toc-number">3.3.</span> <span class="toc-text">探究生成器传参</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Promise"><span class="toc-number">4.</span> <span class="toc-text">Promise</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Promise%E7%9A%84%E7%89%B9%E6%80%A7"><span class="toc-number">4.1.</span> <span class="toc-text">Promise的特性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#thenable-%E5%AF%B9%E8%B1%A1"><span class="toc-number">4.2.</span> <span class="toc-text">thenable 对象</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#promise-%E7%9A%84%E9%93%BE%E5%BC%8F%E8%B0%83%E7%94%A8"><span class="toc-number">4.3.</span> <span class="toc-text">promise 的链式调用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#promise-%E7%9A%84%E5%9B%BA%E5%8C%96-%E5%A4%9A%E5%B1%82%E5%B5%8C%E5%A5%97"><span class="toc-number">4.4.</span> <span class="toc-text">promise 的固化 | 多层嵌套</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#promise-%E7%8A%B6%E6%80%81%E4%BE%9D%E8%B5%96"><span class="toc-number">4.5.</span> <span class="toc-text">promise 状态依赖</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Promise-all-Promise-race"><span class="toc-number">4.6.</span> <span class="toc-text">Promise.all | Promise.race</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#async-await"><span class="toc-number">5.</span> <span class="toc-text">async | await</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Promise-%E8%87%AA%E6%B5%8B%E9%9D%A2%E8%AF%95%E9%A2%98%EF%BC%88%E7%94%B1%E6%98%93%E5%88%B0%E9%9A%BE-%E6%BB%A1%E5%88%86100%E5%88%86%EF%BC%89"><span class="toc-number">6.</span> <span class="toc-text">Promise 自测面试题（由易到难 | 满分100分）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E9%A2%98%EF%BC%885%E5%88%86%EF%BC%89"><span class="toc-number">6.1.</span> <span class="toc-text">第一题（5分）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E9%A2%98%EF%BC%885%E5%88%86%EF%BC%89"><span class="toc-number">6.2.</span> <span class="toc-text">第二题（5分）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%B8%89%E9%A2%98%EF%BC%8810%E5%88%86%EF%BC%89"><span class="toc-number">6.3.</span> <span class="toc-text">第三题（10分）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E5%9B%9B%E9%A2%98%EF%BC%8810%E5%88%86%EF%BC%89"><span class="toc-number">6.4.</span> <span class="toc-text">第四题（10分）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%BA%94%E9%A2%98%EF%BC%8810%E5%88%86%EF%BC%89"><span class="toc-number">6.5.</span> <span class="toc-text">第五题（10分）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E5%85%AD%E9%A2%98%EF%BC%8810%E5%88%86%EF%BC%89"><span class="toc-number">6.6.</span> <span class="toc-text">第六题（10分）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%B8%83%E9%A2%98%EF%BC%8810%E5%88%86%EF%BC%89"><span class="toc-number">6.7.</span> <span class="toc-text">第七题（10分）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E5%85%AB%E9%A2%98%EF%BC%8810%E5%88%86%EF%BC%89"><span class="toc-number">6.8.</span> <span class="toc-text">第八题（10分）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%B9%9D%E9%A2%98%EF%BC%8815%E5%88%86%EF%BC%89"><span class="toc-number">6.9.</span> <span class="toc-text">第九题（15分）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E5%8D%81%E9%A2%98%EF%BC%8815%E5%88%86%EF%BC%89"><span class="toc-number">6.10.</span> <span class="toc-text">第十题（15分）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%AC%E6%96%87%E5%8F%82%E8%80%83"><span class="toc-number">7.</span> <span class="toc-text">本文参考</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%80%E5%90%8E"><span class="toc-number">8.</span> <span class="toc-text">最后</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/posts/20211115/" title="React + TS 中实现鼠标水平拖动，横向滚动 | Mouse click and Drag Instead of Horizontal Scroll bar"><img data-lazy-src="https://cdn.jsdelivr.net/gh/Chocolate1999/cdn@master/img/202111152041528.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="React + TS 中实现鼠标水平拖动，横向滚动 | Mouse click and Drag Instead of Horizontal Scroll bar"/></a><div class="content"><a class="title" href="/posts/20211115/" title="React + TS 中实现鼠标水平拖动，横向滚动 | Mouse click and Drag Instead of Horizontal Scroll bar">React + TS 中实现鼠标水平拖动，横向滚动 | Mouse click and Drag Instead of Horizontal Scroll bar</a><time datetime="2021-11-14T16:00:00.000Z" title="发表于 2021-11-15 00:00:00">2021-11-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/20211108/" title="【更新中】快速掌握正则表达式"><img data-lazy-src="https://cdn.jsdelivr.net/gh/Chocolate1999/cdn@master/img/202111142244441.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="【更新中】快速掌握正则表达式"/></a><div class="content"><a class="title" href="/posts/20211108/" title="【更新中】快速掌握正则表达式">【更新中】快速掌握正则表达式</a><time datetime="2021-11-07T16:00:00.000Z" title="发表于 2021-11-08 00:00:00">2021-11-08</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/20211107/" title="【毕业论文】分享当年使用过的一些好用网站，包括论文去重，翻译，作图神器，免费文献查找 | 第 1 期"><img data-lazy-src="https://cdn.jsdelivr.net/gh/Chocolate1999/cdn@master/img/202111152054444.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="【毕业论文】分享当年使用过的一些好用网站，包括论文去重，翻译，作图神器，免费文献查找 | 第 1 期"/></a><div class="content"><a class="title" href="/posts/20211107/" title="【毕业论文】分享当年使用过的一些好用网站，包括论文去重，翻译，作图神器，免费文献查找 | 第 1 期">【毕业论文】分享当年使用过的一些好用网站，包括论文去重，翻译，作图神器，免费文献查找 | 第 1 期</a><time datetime="2021-11-06T16:00:00.000Z" title="发表于 2021-11-07 00:00:00">2021-11-07</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/20211002/" title="【大学回忆录】❤️大一阶段我对大学的奇葩幻想"><img data-lazy-src="https://cdn.jsdelivr.net/gh/Chocolate1999/cdn@master/img/202111152335416.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="【大学回忆录】❤️大一阶段我对大学的奇葩幻想"/></a><div class="content"><a class="title" href="/posts/20211002/" title="【大学回忆录】❤️大一阶段我对大学的奇葩幻想">【大学回忆录】❤️大一阶段我对大学的奇葩幻想</a><time datetime="2021-11-01T16:00:00.000Z" title="发表于 2021-11-02 00:00:00">2021-11-02</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/20211012/" title="前端如何与后端对接？当年差点和后端同学打起来了！"><img data-lazy-src="https://cdn.jsdelivr.net/gh/Chocolate1999/cdn@master/img/202111152049785.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="前端如何与后端对接？当年差点和后端同学打起来了！"/></a><div class="content"><a class="title" href="/posts/20211012/" title="前端如何与后端对接？当年差点和后端同学打起来了！">前端如何与后端对接？当年差点和后端同学打起来了！</a><time datetime="2021-10-11T16:00:00.000Z" title="发表于 2021-10-12 00:00:00">2021-10-12</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2019 - 2022  <i id="heartbeat" class="fa fas fa-heartbeat"></i> 一百个Chocolate</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text"><p><a style="margin-inline:5px" target="_blank" href="https://hexo.io/"><img src="https://img.shields.io/badge/Frame-Hexo-blue?style=flat&logo=hexo" title="博客框架为Hexo"></a><a style="margin-inline:5px" target="_blank" href="https://butterfly.js.org/"><img src="https://img.shields.io/badge/Theme-Butterfly-6513df?style=flat&logo=bitdefender" title="主题采用butterfly"></a><a style="margin-inline:5px" target="_blank" href="https://www.jsdelivr.com/"><img src="https://img.shields.io/badge/CDN-jsDelivr-orange?style=flat&logo=jsDelivr" title="本站使用JsDelivr为静态资源提供CDN加速"></a><a style="margin-inline:5px" target="_blank" href="https://vercel.com/ "><img src="https://img.shields.io/badge/Hosted-Vervel-brightgreen?style=flat&logo=Vercel" title="本站采用双线部署，默认线路托管于Vercel"></a><a style="margin-inline:5px" target="_blank" href="https://vercel.com/ "><img src="https://img.shields.io/badge/Hosted-Coding-0cedbe?style=flat&logo=Codio" title="本站采用双线部署，联通线路托管于Coding"></a><a style="margin-inline:5px" target="_blank" href="https://github.com/"><img src="https://img.shields.io/badge/Source-Github-d021d6?style=flat&logo=GitHub" title="本站项目由Gtihub托管"></a><a style="margin-inline:5px" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img src="https://img.shields.io/badge/Copyright-BY--NC--SA%204.0-d42328?style=flat&logo=Claris" title="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可"></a></p></div><div class="icp"><a target="_blank" rel="noopener" href="http://www.beian.miit.gov.cn/"><img class="icp-icon" src="/img/icp.png"/><span>湘ICP备20002952号</span></a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="font-plus" type="button" title="放大字体"><i class="fas fa-plus"></i></button><button id="font-minus" type="button" title="缩小字体"><i class="fas fa-minus"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="chat_btn" type="button" title="rightside.chat_btn"><i class="fas fa-sms"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div></div><hr/><div id="local-search-results"></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/vue@2.6.11"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><script src="/js/search/local-search.js"></script><script async="async">var preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',preloader.endLoading())
+setTimeout(function(){preloader.endLoading();}, 5000);</script><div class="js-pjax"><script>(()=>{
+  const $countDom = document.getElementById('twikoo-count')
+  const init = () => {
+    let initData = {
+      el: '#twikoo-wrap',
+      envId: 'https://twikoo-butterfly.vercel.app/',
+      region: ''
+    }
+
+    if (false) {
+      const otherData = false
+      initData = Object.assign(initData, otherData)
+    }
+    
+    twikoo.init(initData)
+  }
+
+  const getCount = () => {
+    twikoo.getCommentsCount({
+      envId: 'https://twikoo-butterfly.vercel.app/',
+      region: '',
+      urls: [window.location.pathname],
+      includeReply: false
+    }).then(function (res) {
+      $countDom.innerText = res[0].count
+    }).catch(function (err) {
+      console.error(err);
+    });
+  }
+
+  const loadTwikoo = (bool = false) => {
+    if (typeof twikoo === 'object') {
+      init()
+      bool && $countDom && setTimeout(getCount,0)
+    } else {
+      getScript('https://cdn.jsdelivr.net/npm/twikoo/dist/twikoo.all.min.js').then(()=> {
+        init()
+        bool && $countDom && setTimeout(getCount,0)
+      })
+    }
+  }
+
+  if ('Twikoo' === 'Twikoo' || !true) {
+    if (true) btf.loadComment(document.getElementById('twikoo-wrap'), loadTwikoo)
+    else loadTwikoo(true)
+  } else {
+    window.loadOtherComment = () => {
+      loadTwikoo()
+    }
+  }
+})()</script></div><script src="https://cdn.jsdelivr.net/gh/sviptzk/StaticFile_HEXO@master/xkTool/v3.1.1/xkTool.js"></script><script defer src="https://cdn.jsdelivr.net/npm/hexo-theme-volantis@latest/source/js/issues.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = [
+  'title',
+  '#config-diff',
+  '#body-wrap',
+  '#rightside-config-hide',
+  '#rightside-config-show',
+  '.js-pjax'
+]
+
+if (false) {
+  pjaxSelectors.unshift('meta[property="og:image"]', 'meta[property="og:title"]', 'meta[property="og:url"]')
+}
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  if (typeof gtag === 'function') {
+    gtag('config', '', {'page_path': window.location.pathname});
+  }
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // Analytics
+  if (false) {
+    MtaH5.pgv()
+  }
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+
+  typeof preloader === 'object' && preloader.endLoading()
+})
+
+
+document.addEventListener('pjax:send', function () {
+  typeof preloader === 'object' && preloader.initLoading()
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><!-- hexo injector body_end start --> <script data-pjax>if(document.getElementById('recent-posts') && (location.pathname ==='/'|| '/' ==='all')){
+    var parent = document.getElementById('recent-posts');
+    var child = '<div class="recent-post-item" style="width:100%;height: auto"><div id="catalog_magnet"><div class="magnet_item"><a class="magnet_link" href="https://yangchaoyi.vip/categories/Hexo/"><div class="magnet_link_context" style=""><span style="font-weight:500;flex:1">🍓 Hexo 魔改教程 (3)</span><span style="padding:0px 4px;border-radius: 8px;"><i class="fas fa-arrow-circle-right"></i></span></div></a></div><div class="magnet_item"><a class="magnet_link" href="https://yangchaoyi.vip/categories/JS/"><div class="magnet_link_context" style=""><span style="font-weight:500;flex:1">🍋 JS 灵魂之问 (4)</span><span style="padding:0px 4px;border-radius: 8px;"><i class="fas fa-arrow-circle-right"></i></span></div></a></div><div class="magnet_item"><a class="magnet_link" href="https://yangchaoyi.vip/categories/React/"><div class="magnet_link_context" style=""><span style="font-weight:500;flex:1">🍫 React (11)</span><span style="padding:0px 4px;border-radius: 8px;"><i class="fas fa-arrow-circle-right"></i></span></div></a></div><div class="magnet_item"><a class="magnet_link" href="https://yangchaoyi.vip/categories/前端/"><div class="magnet_link_context" style=""><span style="font-weight:500;flex:1">🍭 学习笔记汇总 (26)</span><span style="padding:0px 4px;border-radius: 8px;"><i class="fas fa-arrow-circle-right"></i></span></div></a></div><div class="magnet_item"><a class="magnet_link" href="https://yangchaoyi.vip/categories/总结/"><div class="magnet_link_context" style=""><span style="font-weight:500;flex:1">🌠 月度年度总结 (11)</span><span style="padding:0px 4px;border-radius: 8px;"><i class="fas fa-arrow-circle-right"></i></span></div></a></div><div class="magnet_item"><a class="magnet_link" href="https://yangchaoyi.vip/categories/算法/"><div class="magnet_link_context" style=""><span style="font-weight:500;flex:1">💡 前端刷题路径 (6)</span><span style="padding:0px 4px;border-radius: 8px;"><i class="fas fa-arrow-circle-right"></i></span></div></a></div><div class="magnet_item"><a class="magnet_link" href="https://yangchaoyi.vip/categories/面试整理/"><div class="magnet_link_context" style=""><span style="font-weight:500;flex:1">🌈 面经大全 (17)</span><span style="padding:0px 4px;border-radius: 8px;"><i class="fas fa-arrow-circle-right"></i></span></div></a></div><div class="magnet_item"><a class="magnet_link" href="https://yangchaoyi.vip/categories/随笔/"><div class="magnet_link_context" style=""><span style="font-weight:500;flex:1">🍬 工作与生活 (1)</span><span style="padding:0px 4px;border-radius: 8px;"><i class="fas fa-arrow-circle-right"></i></span></div></a></div><a class="magnet_link_more"  href="https://yangchaoyi.vip/categories" style="flex:1;text-align: center;margin-bottom: 10px;">查看更多...</a></div></div>';
+    console.log('已挂载magnet')
+    parent.insertAdjacentHTML("afterbegin",child)}
+     </script><style>#catalog_magnet{flex-wrap: wrap;display: flex;width:100%;justify-content:space-between;padding: 10px 10px 0 10px;align-content: flex-start;}.magnet_item{flex-basis: calc(50% - 5px);background: #f2f2f2;margin-bottom: 10px;border-radius: 8px;transition: all 0.2s ease-in-out;}.magnet_item:hover{background: #b30070}.magnet_link_more{color:#555}.magnet_link{color:black}.magnet_link:hover{color:white}@media screen and (max-width: 600px) {.magnet_item {flex-basis: 100%;}}.magnet_link_context{display:flex;padding: 10px;font-size:16px;transition: all 0.2s ease-in-out;}.magnet_link_context:hover{padding: 10px 20px;}</style>
+    <style></style><!-- hexo injector body_end end --></body></html>
